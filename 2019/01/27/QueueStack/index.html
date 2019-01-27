@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>Queue and Stack - Aoki&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="栈和队列  栈和队列的基本概念 栈的基本概念 栈的定义   只能在一端（栈顶Top）进行插入和删除操作的线性表 栈顶由一个称为栈顶指针的位置指示器top来指示，它是动态变化的 表的另一端栈底是固定不变的   栈的特点   先进先出（ＦＩＬＯ） 栈就如同一个狭窄的死胡同，最先进去的人（元素）只能够最后出来   栈的存储结构   可以用顺序表或者链表来存储栈：  a) 顺序栈  b) 链式栈   栈的">
+<meta name="keywords" content="List">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Queue and Stack">
+<meta property="og:url" content="http://yoursite.com/2019/01/27/QueueStack/index.html">
+<meta property="og:site_name" content="Aoki&#39;s Blog">
+<meta property="og:description" content="栈和队列  栈和队列的基本概念 栈的基本概念 栈的定义   只能在一端（栈顶Top）进行插入和删除操作的线性表 栈顶由一个称为栈顶指针的位置指示器top来指示，它是动态变化的 表的另一端栈底是固定不变的   栈的特点   先进先出（ＦＩＬＯ） 栈就如同一个狭窄的死胡同，最先进去的人（元素）只能够最后出来   栈的存储结构   可以用顺序表或者链表来存储栈：  a) 顺序栈  b) 链式栈   栈的">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-27T06:45:15.923Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Queue and Stack">
+<meta name="twitter:description" content="栈和队列  栈和队列的基本概念 栈的基本概念 栈的定义   只能在一端（栈顶Top）进行插入和删除操作的线性表 栈顶由一个称为栈顶指针的位置指示器top来指示，它是动态变化的 表的另一端栈底是固定不变的   栈的特点   先进先出（ＦＩＬＯ） 栈就如同一个狭窄的死胡同，最先进去的人（元素）只能够最后出来   栈的存储结构   可以用顺序表或者链表来存储栈：  a) 顺序栈  b) 链式栈   栈的">
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-133326618-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-133326618-2');
+</script>
+
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/gen.svg" alt="Queue and Stack" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="My GitHub" href="https://github.com/YHCClin?tab=repositories">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1548581470072&amp;di=ee7f02ae4ffa2ccc6257101f77c6b5d9&amp;imgtype=0&amp;src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20170627%2Fa3e6109615584b62a5eb86fe79243270_th.jpg" alt="Queue and Stack">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-01-27T06:30:48.907Z">2019-01-27</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/DataStructs/">DataStructs</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    16 minutes read (About 2395 words)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Queue and Stack
+            
+        </h1>
+        <div class="content">
+            <h1 id="栈和队列"><a href="#栈和队列" class="headerlink" title="栈和队列"></a>栈和队列</h1><hr>
+<hr>
+<h3 id="栈和队列的基本概念"><a href="#栈和队列的基本概念" class="headerlink" title="栈和队列的基本概念"></a>栈和队列的基本概念</h3><hr>
+<h4 id="栈的基本概念"><a href="#栈的基本概念" class="headerlink" title="栈的基本概念"></a>栈的基本概念</h4><ol>
+<li><em>栈的定义</em></li>
+</ol>
+<ul>
+<li>只能在一端（栈顶Top）进行插入和删除操作的线性表</li>
+<li>栈顶由一个称为栈顶指针的位置指示器top来指示，它是动态变化的</li>
+<li>表的另一端栈底是固定不变的</li>
+</ul>
+<ol start="2">
+<li><em>栈的特点</em></li>
+</ol>
+<ul>
+<li>先进先出（ＦＩＬＯ）</li>
+<li>栈就如同一个狭窄的死胡同，最先进去的人（元素）只能够最后出来</li>
+</ul>
+<ol start="3">
+<li><em>栈的存储结构</em></li>
+</ol>
+<ul>
+<li>可以用顺序表或者链表来存储栈：<br>  a) 顺序栈<br>  b) 链式栈</li>
+</ul>
+<ol start="4">
+<li><em>栈的数学性质</em></li>
+</ol>
+<ul>
+<li>当ｎ个元素以某种顺序进栈，并且可以在任何时候出栈（在满足先进后出的前提下）时，所获得的元素排列的数目Ｎ恰好满足函数 Catalan() 的计算，即：<pre><code>$$N = {\dfrac{1}{n+1}}×C\binom{n}{2n}$$ 
+</code></pre></li>
+</ul>
+<a id="more"></a>          
+<hr>
+<h4 id="队列的基本概念"><a href="#队列的基本概念" class="headerlink" title="队列的基本概念"></a>队列的基本概念</h4><hr>
+<ol>
+<li><em>队列的定义</em></li>
+</ol>
+<ul>
+<li>是一种操作受限的线性表，且只允许在表的一端进行插入，在另一端进行删除操作。</li>
+<li>可以插入的一端称为队尾（ｒｅａｒ），可以删除的一端称为队头（ｆｒｏｎｔ）</li>
+<li>插入元素称为进队，删除元素称为出队</li>
+</ul>
+<ol start="2">
+<li><em>队列的特点</em></li>
+</ol>
+<ul>
+<li>先进先出（ＦＩＦＯ），就像食堂打饭要排队一样，先来的人先有饭吃</li>
+</ul>
+<ol start="3">
+<li><em>队列的存储结构</em></li>
+</ol>
+<ul>
+<li>可用线性表或者链表来存储队列：<br>  a) 顺序队<br>  b) 链队</li>
+</ul>
+<hr>
+<h3 id="栈和队列的存储结构、算法与应用"><a href="#栈和队列的存储结构、算法与应用" class="headerlink" title="栈和队列的存储结构、算法与应用"></a>栈和队列的存储结构、算法与应用</h3><hr>
+<ol>
+<li><p><strong>顺序栈的定义</strong></p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">SqStack</span> &#123;</span></span><br><span class="line">  <span class="hljs-keyword">int</span> data[Maxsize]; <span class="hljs-comment">//一维数组用来存储数据</span></span><br><span class="line">  <span class="hljs-keyword">int</span> top;　<span class="hljs-comment">// ｔｏｐ指针用来指向栈顶元素,规定top=-1　为栈空，top=Maxsize-1 为栈满</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>链栈结点的定义</strong></p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">LNode</span> &#123;</span></span><br><span class="line">  <span class="hljs-keyword">int</span> data; <span class="hljs-comment">// 数据域</span></span><br><span class="line">  <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">LNode</span> *<span class="hljs-title">next</span>;</span>　<span class="hljs-comment">// 指针域</span></span><br><span class="line">&#125;LNode;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>顺序队列的定义</strong></p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">SqQueue</span> &#123;</span></span><br><span class="line">  <span class="hljs-keyword">int</span> data[Maxsize]; <span class="hljs-comment">//数组存放数据</span></span><br><span class="line">  <span class="hljs-keyword">int</span> front;　　<span class="hljs-comment">// 队首指针</span></span><br><span class="line">  <span class="hljs-keyword">int</span> rear;　　<span class="hljs-comment">// 队尾指针</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>链队的定义</strong><br>a) 链队结点定义：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">LQNode</span>&#123;</span></span><br><span class="line">      <span class="hljs-keyword">int</span> date; <span class="hljs-comment">//数据域</span></span><br><span class="line">      <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">LQNode</span> *<span class="hljs-title">next</span>;</span> <span class="hljs-comment">//指针域</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>b) 链队类型定义：   </p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 定义一个只包含两个指针域的结点来存放队头与队尾指针</span></span><br><span class="line">    <span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">LiQueue</span>&#123;</span></span><br><span class="line">      <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">LQNode</span> *<span class="hljs-title">front</span>;</span> <span class="hljs-comment">// 队首指针</span></span><br><span class="line">      <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">LQNode</span> *<span class="hljs-title">rear</span>;</span>  <span class="hljs-comment">//　队尾指针</span></span><br><span class="line">    &#125;　<span class="hljs-comment">// 链队类型定义</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="顺序栈"><a href="#顺序栈" class="headerlink" title="顺序栈"></a>顺序栈</h3><hr>
+<h5 id="顺序栈的几个关键要素："><a href="#顺序栈的几个关键要素：" class="headerlink" title="顺序栈的几个关键要素："></a>顺序栈的几个关键要素：</h5><ol>
+<li><strong>三个状态</strong><ul>
+<li>栈空状态：<strong>st.top = -1</strong>;</li>
+<li>栈满状态：<strong>st.top = Maxsize - 1</strong>;</li>
+<li>非法状态：栈满却继续入栈发生<strong>上溢</strong>；栈空继续出栈发生<strong>下溢</strong>；</li>
+</ul>
+</li>
+<li><strong>两个操作</strong><ul>
+<li>元素进栈：++(st.top); st.data[st.top]=x;</li>
+<li>元素出栈：x=st.data[st.top]; –(st.top);</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h5 id="初始化栈："><a href="#初始化栈：" class="headerlink" title="初始化栈："></a>初始化栈：</h5><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 初始化一个栈，只需将栈顶指针置为－１即可</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">initStack</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">  <span class="hljs-keyword">int</span> top = <span class="hljs-number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="判断栈空代码："><a href="#判断栈空代码：" class="headerlink" title="判断栈空代码："></a>判断栈空代码：</h5><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">EmptyStack</span><span class="hljs-params">(SqStack ss)</span></span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (ss.top == <span class="hljs-number">-1</span>)</span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>; <span class="hljs-comment">// 栈空返回１；</span></span><br><span class="line">  </span><br><span class="line">  <span class="hljs-keyword">else</span></span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;　<span class="hljs-comment">// 栈非空返回０；</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="进栈代码："><a href="#进栈代码：" class="headerlink" title="进栈代码："></a>进栈代码：</h5><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#defined Error 0</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">push</span><span class="hljs-params">(SqStack &amp;ss, <span class="hljs-keyword">int</span> x)</span></span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (ss.top == <span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> Error; <span class="hljs-comment">// 栈满时返回错误，无法入栈</span></span><br><span class="line">  ss.top++;</span><br><span class="line">  ss.data[ss.top] = x;</span><br><span class="line">  <span class="hljs-comment">// 也可一句话解决：　ss.data[++ss.top] = x;</span></span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;　<span class="hljs-comment">//入栈成功返回１</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="出栈代码："><a href="#出栈代码：" class="headerlink" title="出栈代码："></a>出栈代码：</h5><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">pop</span><span class="hljs-params">(SqStack &amp;ss,<span class="hljs-keyword">int</span> e)</span></span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (ss.top == <span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> Error; <span class="hljs-comment">// 栈空不能出栈</span></span><br><span class="line">  e = ss.data[ss.top];</span><br><span class="line">  --ss.top;</span><br><span class="line">  <span class="hljs-comment">//　也可一句话解决：　e = ss.data[ss.top--];</span></span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>【注】:<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对于自增操作，入++a;总是比a++;的执行效率要高一些，因此在使用二者都可以的情况下优先选择++a;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="链栈"><a href="#链栈" class="headerlink" title="链栈"></a>链栈</h3><hr>
+<h6 id="以下链栈都由带头结点的链表表示"><a href="#以下链栈都由带头结点的链表表示" class="headerlink" title="以下链栈都由带头结点的链表表示"></a>以下链栈都由带头结点的链表表示</h6><hr>
+<h5 id="顺序栈的几个关键要素：-1"><a href="#顺序栈的几个关键要素：-1" class="headerlink" title="顺序栈的几个关键要素："></a>顺序栈的几个关键要素：</h5><ol>
+<li>两个状态<ul>
+<li>栈空状态：lst –&gt; next = NULL;</li>
+<li>栈满状态：不存在栈满状态，因为单链表的内存空间是动态分配的</li>
+</ul>
+</li>
+<li>两个操作<ul>
+<li>元素（由指针ｐ所指）的进栈操作：p –&gt; next = lst –&gt; next; lst – next = p;//其实     就是头插法建立单链表的操作</li>
+<li>出栈操作：s = lst –&gt; next; x = s –&gt; data; lst –&gt; next = s –&gt; next;           free(s); //其实就是单链表的删除操作</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4 id="链栈的初始化代码："><a href="#链栈的初始化代码：" class="headerlink" title="链栈的初始化代码："></a>链栈的初始化代码：</h4><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 实际上，链栈的初始化与单链表的初始化并无不同</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">initLStack</span><span class="hljs-params">(LNode *&amp;lst)</span></span>&#123;</span><br><span class="line">  lst = (LNode*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(LNode)); <span class="hljs-comment">//制造一个头结点</span></span><br><span class="line">  lst --&gt; next = <span class="hljs-literal">NULL</span>;　<span class="hljs-comment">// 将链栈滞空</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="判断栈空代码：-1"><a href="#判断栈空代码：-1" class="headerlink" title="判断栈空代码："></a>判断栈空代码：</h4><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">isEmpty</span><span class="hljs-params">(LNode lst)</span></span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (lst --&gt; next == <span class="hljs-literal">NULL</span>) </span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>; <span class="hljs-comment">//栈空返回１；</span></span><br><span class="line">  <span class="hljs-keyword">else</span></span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;　<span class="hljs-comment">// 栈不空返回０；</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="进栈代码：-1"><a href="#进栈代码：-1" class="headerlink" title="进栈代码："></a>进栈代码：</h4><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">push</span><span class="hljs-params">(LNode &amp;lst,<span class="hljs-keyword">int</span> x)</span></span>&#123;</span><br><span class="line">  LNode s = (LNode*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(LNode));</span><br><span class="line">  s --&gt; data = x;</span><br><span class="line">  s --&gt; next = lst --&gt; next;</span><br><span class="line">  lst --&gt; next = s;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="出栈代码：-1"><a href="#出栈代码：-1" class="headerlink" title="出栈代码："></a>出栈代码：</h4><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">pop</span><span class="hljs-params">(LNode &amp;lst, <span class="hljs-keyword">int</span> &amp;e)</span></span>&#123; <span class="hljs-comment">// 用e返回出栈元素的值</span></span><br><span class="line">  <span class="hljs-keyword">if</span> (lst --&gt; next == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">  e = lst --&gt; next --&gt; data;</span><br><span class="line">  LNode *s = lst --&gt; next;</span><br><span class="line">  lst --&gt; next = s --&gt; next;</span><br><span class="line">  <span class="hljs-built_in">free</span>(s);</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="栈的应用"><a href="#栈的应用" class="headerlink" title="栈的应用"></a>栈的应用</h3><hr>
+<h6 id="栈的主要应用有："><a href="#栈的主要应用有：" class="headerlink" title="栈的主要应用有："></a>栈的主要应用有：</h6><ol>
+<li>括号匹配</li>
+<li>表达式求值</li>
+<li>逆波兰转换算法</li>
+</ol>
+<hr>
+<h4 id="括号匹配"><a href="#括号匹配" class="headerlink" title="括号匹配"></a>括号匹配</h4><hr>
+<h5 id="算法思想："><a href="#算法思想：" class="headerlink" title="算法思想："></a>算法思想：</h5><ul>
+<li>扫描整个表达式，判断当前符号是否为括号</li>
+<li>如果不是，继续扫描下一个字符</li>
+<li>如果是，判断是左括号还是右括号，是左括号将其入栈，是右括号就判断栈是否为空</li>
+<li>若栈为空，说明此表达式的右括号多与左夸号</li>
+<li>若栈不空则判断当前操作符是否和栈顶操作符匹配，若不匹配说明左右括号不匹配，若匹配则继续判断     下一个操作符。最后，判断栈是否为空，若不空则说明左括号多余右括     号，栈为空说明匹配成功。</li>
+</ul>
+<hr>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">initStack(Stack <span class="hljs-built_in">stack</span>)&#123;</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i ;i&lt;<span class="hljs-built_in">strlen</span>(str);i++)&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (str[i]==<span class="hljs-string">'&#123;'</span> || str[i]==<span class="hljs-string">'['</span> || str[i]==<span class="hljs-string">'('</span>)&#123;</span><br><span class="line">      push(<span class="hljs-built_in">stack</span>,str[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (str[i]==<span class="hljs-string">'&#123;'</span> &amp;&amp; getTopStack(<span class="hljs-built_in">stack</span>) == <span class="hljs-string">'&#125;'</span>)</span><br><span class="line">          pop(<span class="hljs-built_in">stack</span>);</span><br><span class="line">      <span class="hljs-keyword">if</span> (str[i]==<span class="hljs-string">'['</span> &amp;&amp; getToPStack(<span class="hljs-built_in">stack</span>) == <span class="hljs-string">']'</span>)</span><br><span class="line">          pop(<span class="hljs-built_in">stack</span>);</span><br><span class="line">      <span class="hljs-keyword">if</span> (str[i]==<span class="hljs-string">'('</span> &amp;&amp; getTopStack(<span class="hljs-built_in">stack</span>) == <span class="hljs-string">')'</span>)</span><br><span class="line">          pop(<span class="hljs-built_in">stack</span>);</span><br><span class="line">    &#125; </span><br><span class="line">      </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-comment">// 最后，若栈空则匹配成功，否则失败</span></span><br><span class="line">  <span class="hljs-keyword">if</span>(isEmpty() == <span class="hljs-literal">true</span>)&#123;</span><br><span class="line">      <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"括号匹配成功　！！！"</span>　&lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">else</span> <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"匹配失败　！！！"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="表达式求值"><a href="#表达式求值" class="headerlink" title="表达式求值"></a>表达式求值</h4><hr>
+<h5 id="算法思想：-1"><a href="#算法思想：-1" class="headerlink" title="算法思想："></a>算法思想：</h5><ul>
+<li>扫描表达式，当扫描到数时将其推入栈中，当扫描到一个运算符时，将该运算符作用于位于栈顶的两个数上，并将所得结果推入栈中</li>
+<li>以下将给出后缀表达式的求值程序</li>
+</ul>
+<hr>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">calcExp</span><span class="hljs-params">(<span class="hljs-keyword">char</span>* <span class="hljs-built_in">exp</span> , Stack s)</span></span>&#123;</span><br><span class="line">  <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-keyword">while</span> (<span class="hljs-built_in">exp</span>[i] != <span class="hljs-string">'\0'</span>)&#123; <span class="hljs-comment">//</span></span><br><span class="line">      <span class="hljs-keyword">if</span> (<span class="hljs-built_in">exp</span>[i]&gt;=<span class="hljs-string">'0'</span> &amp;&amp; <span class="hljs-built_in">exp</span>[i]&lt;=<span class="hljs-string">'9'</span>)&#123;</span><br><span class="line">        s.push(s , <span class="hljs-built_in">exp</span>[i]-<span class="hljs-string">'0'</span>); <span class="hljs-comment">//　若为数字，推入栈中</span></span><br><span class="line">      &#125;</span><br><span class="line">      else if(exp[i] == '运算符')&#123;</span><br><span class="line">          <span class="hljs-keyword">int</span> m = s.gettop(); <span class="hljs-comment">//　取栈顶元素后将其出栈</span></span><br><span class="line">          s.pop();</span><br><span class="line">          <span class="hljs-keyword">int</span> n = s.gettop(); <span class="hljs-comment">//　取栈顶元素后将其出栈</span></span><br><span class="line">          s.pop;</span><br><span class="line">          s.push(s, n[运算符]m); <span class="hljs-comment">//　将运算结果推入栈中</span></span><br><span class="line">      &#125; </span><br><span class="line">      i++; <span class="hljs-comment">// 继续遍历</span></span><br><span class="line">  &#125;</span><br><span class="line">      <span class="hljs-keyword">return</span> s.top;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="逆波兰转换算法"><a href="#逆波兰转换算法" class="headerlink" title="逆波兰转换算法"></a>逆波兰转换算法</h4><hr>
+<h5 id="算法思想：-2"><a href="#算法思想：-2" class="headerlink" title="算法思想："></a>算法思想：</h5><ul>
+<li>设立一个栈，存放运算符，初始栈为空，编译程序从左往右扫描中缀表达式，若遇到数字，直接输出，并输出一个空格为两个操作数之间的分隔符；</li>
+<li>若遇到运算符，则与栈顶比较，若运算符级别比栈顶级别高则进栈，否则退出栈顶元素并输出，之后输出一个空额作分隔符</li>
+<li>所遇到左括号，紧张；</li>
+<li>若遇到右括号，则一直退栈粗出知道退出第一个左括号为止</li>
+<li>当栈为空时，输出的结果即为<strong>后缀表达式</strong></li>
+</ul>
+<hr>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">tranfExp</span> <span class="hljs-params">(<span class="hljs-keyword">char</span>* <span class="hljs-built_in">exp</span> , Stack s)</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">while</span> (<span class="hljs-built_in">exp</span>[i] != <span class="hljs-string">'\0'</span>)&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">exp</span>[i] &gt;= <span class="hljs-string">'0'</span> &amp;&amp; <span class="hljs-built_in">exp</span>[i] &lt;= <span class="hljs-string">'9'</span>)&#123;</span><br><span class="line">            <span class="hljs-comment">//　若为数字，直接输出</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">exp</span>[i] == <span class="hljs-string">'('</span>)&#123;</span><br><span class="line">            <span class="hljs-comment">//　若为左括号，进栈</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">exp</span>[i] == <span class="hljs-string">')'</span>)&#123;</span><br><span class="line">            <span class="hljs-comment">//　若为右括号，出栈直至第一个左括号</span></span><br><span class="line">        &#125;</span><br><span class="line">        else if (exp[i] == '运算符')&#123;</span><br><span class="line">            <span class="hljs-comment">//　判断与栈顶元素的优先级大小</span></span><br><span class="line">            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">exp</span>[i] &gt; s.gettop())</span><br><span class="line">                s.push(<span class="hljs-built_in">exp</span>[i]);  <span class="hljs-comment">// 优先级大于栈顶运算符，将该运算符进栈</span></span><br><span class="line">            <span class="hljs-keyword">else</span>  <span class="hljs-comment">//　优先级小于栈顶运算符，退出栈顶元素并且输出</span></span><br><span class="line">    <span class="hljs-keyword">while</span> (s.isEmpty() == <span class="hljs-literal">false</span>)</span><br><span class="line">        pop();<span class="hljs-comment">//　把栈中剩余元素全部退出并输出</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<hr>
+<h3 id="顺序队"><a href="#顺序队" class="headerlink" title="顺序队"></a>顺序队</h3><hr>
+<h4 id="循环队列"><a href="#循环队列" class="headerlink" title="循环队列"></a>循环队列</h4><hr>
+<h5 id="循环队列的基本要素"><a href="#循环队列的基本要素" class="headerlink" title="循环队列的基本要素"></a>循环队列的基本要素</h5><ol>
+<li>两个状态：<ul>
+<li>队空状态：qu.rear = qu.front;</li>
+<li>队满状态：(qu.rear+1)%front == qu.front ;</li>
+</ul>
+</li>
+<li>两个操作：<ul>
+<li>元素x进队操作：qu.rear = (qu.rear+1)%MaxSize; qu.data[qu.rear] = x;</li>
+<li>出队操作：qu.front = (qu.front+1)%MaxSize; elem = qu.data[qu.front];//elem 保     存出队的元素</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4 id="循环队列的基本操作实现"><a href="#循环队列的基本操作实现" class="headerlink" title="循环队列的基本操作实现"></a>循环队列的基本操作实现</h4><ol>
+<li><p>初始化队列算法：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">initQueue</span><span class="hljs-params">(Queue &amp;qu)</span></span>&#123;</span><br><span class="line">  qu.front = <span class="hljs-number">0</span>; </span><br><span class="line">  qu.rear = <span class="hljs-number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>判断队空算法：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">isQEmpty</span><span class="hljs-params">(Queue qu)</span></span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (qu.front == qu.rear)&#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>; <span class="hljs-comment">//</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; <span class="hljs-comment">//</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进队算法：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">enterQueue</span><span class="hljs-params">(Queue &amp;qu , <span class="hljs-keyword">int</span> x)</span></span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> ((qu.rear+<span class="hljs-number">1</span>)%MaxSize == front)&#123;</span><br><span class="line">      <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"队列已满"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  qu.rear = (qu.rear+<span class="hljs-number">1</span>)%MaxSize;</span><br><span class="line">  qu.data[qu.rear] = x;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>出队算法：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">outQueue</span><span class="hljs-params">(Queue &amp;qu , <span class="hljs-keyword">int</span> e)</span></span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (qu.rear == qu.front)&#123;</span><br><span class="line">      <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"队空无法出队"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  qu.front = (qu.front+<span class="hljs-number">1</span>)%MaxSize;</span><br><span class="line">  e = qu.data[qu.front];</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<hr>
+<h3 id="链队"><a href="#链队" class="headerlink" title="链队"></a>链队</h3><h6 id="采用链式存储方式来实现队列，特点是假设内存无限大的情况下不存在队满上限"><a href="#采用链式存储方式来实现队列，特点是假设内存无限大的情况下不存在队满上限" class="headerlink" title="采用链式存储方式来实现队列，特点是假设内存无限大的情况下不存在队满上限"></a>采用链式存储方式来实现队列，特点是假设内存无限大的情况下不存在队满上限</h6><hr>
+<h5 id="链队的基本要素"><a href="#链队的基本要素" class="headerlink" title="链队的基本要素"></a>链队的基本要素</h5><ol>
+<li>两个状态：<ul>
+<li>队满状态： 不存在队满状态</li>
+<li>队空状态：que.rear = NULL || que.front = NULL (两个满足一个即可)</li>
+</ul>
+</li>
+<li>两个操作：<ul>
+<li>元素q进队操作：　分两种情况<pre><code>1. 当前队为空：que --&gt; rear = que --&gt; front = q;
+2. 当前队不空：que --&gt; rear --&gt; next = p;que --&gt; rear = p;
+</code></pre></li>
+<li>元素出队操作： s = que –&gt; front;  que –&gt; front = s –&gt; next;elem = s –&gt;                      data; free(s);</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4 id="链队的基本操作实现"><a href="#链队的基本操作实现" class="headerlink" title="链队的基本操作实现"></a>链队的基本操作实现</h4><p>1.初始化链队算法：<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">initLiQueue</span><span class="hljs-params">(LiQueue *&amp;que)</span></span>&#123;</span><br><span class="line">    que = (LiQueue*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(LiQueue));</span><br><span class="line">    que --&gt; rear = <span class="hljs-literal">NULL</span>;</span><br><span class="line">    que --&gt; front = <span class="hljs-literal">NULL</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2.判断队空算法：<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">isEmpty</span><span class="hljs-params">(LiQueue que)</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (que.rear = <span class="hljs-literal">NULL</span> || que.front = <span class="hljs-literal">NULL</span>)&#123;</span><br><span class="line">        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"队列为空"</span>　&lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>3.入队算法：<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">enterLiQueue</span><span class="hljs-params">(LiQueue &amp;que ， <span class="hljs-keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    LQNode* s = (LQNode*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(LQNode));</span><br><span class="line">    <span class="hljs-keyword">if</span> (isEmpty(que))&#123;  <span class="hljs-comment">// 若队列为空，进队操作比较特别</span></span><br><span class="line">        que --&gt; front = que --&gt; rear = s;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">else</span>&#123;</span><br><span class="line">        que --&gt; rear --&gt; next = s;</span><br><span class="line">        que -- rear = s;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">    &#125; </span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>4.出队算法：<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">outLiQueue</span><span class="hljs-params">(LiQueue &amp;que , <span class="hljs-keyword">int</span> &amp;elem)</span></span>&#123;</span><br><span class="line">    LQNode* s = que --&gt; front;</span><br><span class="line">    <span class="hljs-keyword">if</span> (isEmpty())&#123;</span><br><span class="line">        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"队为空，无法出队"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span> (que --&gt; front == que --&gt; rear)&#123; <span class="hljs-comment">// 若队列只有一个元素，出队操作比较特别</span></span><br><span class="line">        que --&gt; front = <span class="hljs-literal">NULL</span>;</span><br><span class="line">        que --&gt; rear = <span class="hljs-literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    que --&gt; front = s --&gt; next;</span><br><span class="line">    elem = s --&gt; data;</span><br><span class="line">    <span class="hljs-built_in">free</span>(s);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/List/">List</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="/images/alipay.png" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/wechatpay.png" alt="Wechat"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/01/27/String/">
+                <span class="level-item">String</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: false,
+        app_id: 'oR2IQXqpGEFy4GHNDgdmfSMR-gzGzoHsz',
+        app_key: 'hwYfVGzICBlXGiokUXaNqJsx',
+        placeholder: 'Say something...'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <img class="image is-128x128 has-mb-6" src="https://avatars1.githubusercontent.com/u/30885631?s=460&amp;v=4" alt="Aoki Lin">
+                    
+                    <p class="is-size-4 is-block">
+                        Aoki Lin
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        C/C++ Software Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Earth,Solar System</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        5
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Category
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        1
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        3
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://github.com/YHCClin">
+                Follow</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="http://github.com/YHCClin">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Facebook" href="http://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Twitter" href="https://twitter.com/echo_scottlin">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Dribbble" href="http://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Links
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.google.com" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Google</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.google.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.stackoverflow.com" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Stackoverflow</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.stackoverflow.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/DataStructs/">
+            <span class="level-start">
+                <span class="level-item">DataStructs</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/List/" style="font-size: 20px;">List</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/Tree/" style="font-size: 10px;">Tree</a>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/01/27/QueueStack/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1548581470072&amp;di=ee7f02ae4ffa2ccc6257101f77c6b5d9&amp;imgtype=0&amp;src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20170627%2Fa3e6109615584b62a5eb86fe79243270_th.jpg" alt="Queue and Stack">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-27T06:30:48.907Z">2019-01-27</time></div>
+                    <a href="/2019/01/27/QueueStack/" class="has-link-black-ter is-size-6">Queue and Stack</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/DataStructs/">DataStructs</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/27/String/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1548580675099&amp;di=6efdd9be8a2394de553173ab69c0bb70&amp;imgtype=0&amp;src=http%3A%2F%2Fs1.knowsky.com%2F20170206%2Fp3rqnw1kmbl32.png" alt="String">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-27T06:27:40.068Z">2019-01-27</time></div>
+                    <a href="/2019/01/27/String/" class="has-link-black-ter is-size-6">String</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/DataStructs/">DataStructs</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/27/linearList/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1548580411500&amp;di=d3bc8a8fb160d662bf3ef1d14ff4ae37&amp;imgtype=0&amp;src=http%3A%2F%2Fs2.cdn.deahu.com%2Fshow%2Flfile%2F7E73DBAD83122DAF20DFDD33CF1E9C8D.jpg" alt="Linear List">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-27T06:20:02.356Z">2019-01-27</time></div>
+                    <a href="/2019/01/27/linearList/" class="has-link-black-ter is-size-6">Linear List</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/DataStructs/">DataStructs</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/27/BinaryTree/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="BinaryTree">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-27T04:09:06.265Z">2019-01-27</time></div>
+                    <a href="/2019/01/27/BinaryTree/" class="has-link-black-ter is-size-6">BinaryTree</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/DataStructs/">DataStructs</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/27/hello-world/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello Friend">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-27T03:36:36.750Z">2019-01-27</time></div>
+                    <a href="/2019/01/27/hello-world/" class="has-link-black-ter is-size-6">Hello Friend</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/List/">
+                        <span class="tag">List</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/String/">
+                        <span class="tag">String</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Tree/">
+                        <span class="tag">Tree</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/01/27/QueueStack/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1548581470072&amp;di=ee7f02ae4ffa2ccc6257101f77c6b5d9&amp;imgtype=0&amp;src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20170627%2Fa3e6109615584b62a5eb86fe79243270_th.jpg" alt="Queue and Stack">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-27T06:30:48.907Z">2019-01-27</time></div>
+                    <a href="/2019/01/27/QueueStack/" class="has-link-black-ter is-size-6">Queue and Stack</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/DataStructs/">DataStructs</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/27/String/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1548580675099&amp;di=6efdd9be8a2394de553173ab69c0bb70&amp;imgtype=0&amp;src=http%3A%2F%2Fs1.knowsky.com%2F20170206%2Fp3rqnw1kmbl32.png" alt="String">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-27T06:27:40.068Z">2019-01-27</time></div>
+                    <a href="/2019/01/27/String/" class="has-link-black-ter is-size-6">String</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/DataStructs/">DataStructs</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/27/linearList/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1548580411500&amp;di=d3bc8a8fb160d662bf3ef1d14ff4ae37&amp;imgtype=0&amp;src=http%3A%2F%2Fs2.cdn.deahu.com%2Fshow%2Flfile%2F7E73DBAD83122DAF20DFDD33CF1E9C8D.jpg" alt="Linear List">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-27T06:20:02.356Z">2019-01-27</time></div>
+                    <a href="/2019/01/27/linearList/" class="has-link-black-ter is-size-6">Linear List</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/DataStructs/">DataStructs</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/27/BinaryTree/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="BinaryTree">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-27T04:09:06.265Z">2019-01-27</time></div>
+                    <a href="/2019/01/27/BinaryTree/" class="has-link-black-ter is-size-6">BinaryTree</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/DataStructs/">DataStructs</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/27/hello-world/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello Friend">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-27T03:36:36.750Z">2019-01-27</time></div>
+                    <a href="/2019/01/27/hello-world/" class="has-link-black-ter is-size-6">Hello Friend</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/List/">
+                        <span class="tag">List</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/String/">
+                        <span class="tag">String</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Tree/">
+                        <span class="tag">Tree</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/gen.svg" alt="Queue and Stack" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 AokiLin&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus">Icarus</a>
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

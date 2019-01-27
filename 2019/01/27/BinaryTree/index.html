@@ -7,13 +7,13 @@
 
 
 
-    <meta name="description" content="树与二叉树 树的基本概念 树的定义：前面所提到的线性结构的元素是一种一对一的关系，而树是一种一对多的非线性结构，下面将通过一个具体的树的例子讲解到底什么样的结构才是树以 及树的一些相关术语：">
+    <meta name="description" content="树的基本概念 树的定义：前面所提到的线性结构的元素是一种一对一的关系，而树是一种一对多的非线性结构，下面将通过一个具体的树的例子讲解到底什么样的结构才是树以 及树的一些相关术语：">
 <meta name="keywords" content="Tree">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BinaryTree">
 <meta property="og:url" content="http://yoursite.com/2019/01/27/BinaryTree/index.html">
 <meta property="og:site_name" content="Aoki&#39;s Blog">
-<meta property="og:description" content="树与二叉树 树的基本概念 树的定义：前面所提到的线性结构的元素是一种一对一的关系，而树是一种一对多的非线性结构，下面将通过一个具体的树的例子讲解到底什么样的结构才是树以 及树的一些相关术语：">
+<meta property="og:description" content="树的基本概念 树的定义：前面所提到的线性结构的元素是一种一对一的关系，而树是一种一对多的非线性结构，下面将通过一个具体的树的例子讲解到底什么样的结构才是树以 及树的一些相关术语：">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://maxiang.io/evernote/res/https://app.yinxiang.com/shard/s67/res/f5a9f8e9-28f2-43bd-b130-68ae6fd1ce6e?size=11364&format=image.png">
 <meta property="og:image" content="https://maxiang.io/evernote/res/https://app.yinxiang.com/shard/s67/res/129c6471-292f-45fa-b88b-f9b131a9519b?size=9145&format=image.png">
@@ -42,10 +42,10 @@
 <meta property="og:image" content="http://yoursite.com/2019/01/27/BinaryTree/深度截图_选择区域_20180809205410.png">
 <meta property="og:image" content="http://yoursite.com/2019/01/27/BinaryTree/深度截图_选择区域_20180809205718.png">
 <meta property="og:image" content="http://yoursite.com/2019/01/27/BinaryTree/深度截图_选择区域_20180809213107.png">
-<meta property="og:updated_time" content="2019-01-27T04:46:12.575Z">
+<meta property="og:updated_time" content="2019-01-27T06:43:27.635Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BinaryTree">
-<meta name="twitter:description" content="树与二叉树 树的基本概念 树的定义：前面所提到的线性结构的元素是一种一对一的关系，而树是一种一对多的非线性结构，下面将通过一个具体的树的例子讲解到底什么样的结构才是树以 及树的一些相关术语：">
+<meta name="twitter:description" content="树的基本概念 树的定义：前面所提到的线性结构的元素是一种一对一的关系，而树是一种一对多的非线性结构，下面将通过一个具体的树的例子讲解到底什么样的结构才是树以 及树的一些相关术语：">
 <meta name="twitter:image" content="https://maxiang.io/evernote/res/https://app.yinxiang.com/shard/s67/res/f5a9f8e9-28f2-43bd-b130-68ae6fd1ce6e?size=11364&format=image.png">
 
 
@@ -186,7 +186,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    an hour read (About 7449 words)
+                    an hour read (About 7444 words)
                 </span>
                 
             </div>
@@ -198,8 +198,7 @@
             
         </h1>
         <div class="content">
-            <h2 id="树与二叉树"><a href="#树与二叉树" class="headerlink" title="树与二叉树"></a>树与二叉树</h2><hr>
-<h4 id="树的基本概念"><a href="#树的基本概念" class="headerlink" title="树的基本概念"></a>树的基本概念</h4><hr>
+            <h4 id="树的基本概念"><a href="#树的基本概念" class="headerlink" title="树的基本概念"></a>树的基本概念</h4><hr>
 <p><strong>树的定义：</strong><br>前面所提到的线性结构的元素是一种一对一的关系，而树是一种一对多的非线性结构，下面将通过一个具体的树的例子讲解到底什么样的结构才是树以 及树的一些相关术语：<br><img src="https://maxiang.io/evernote/res/https://app.yinxiang.com/shard/s67/res/f5a9f8e9-28f2-43bd-b130-68ae6fd1ce6e?size=11364&amp;format=image.png" alt="Alt text"><br><a id="more"></a><br>上图就是个树结构的概图了，我们可以看到它是由唯一的一个根节点和若干棵互不相交的子树组成的，由此可知树的定义是地柜的，即在树的定义中又用到了树的定义。这里需要注意的是，树的结点数可以是零，若为零时，称为一棵<strong>空树</strong>。<br><strong>结点：</strong>上图中的每一个橙色圆圈都是结点，结点中不仅有数据域，还存在几个或零个指向其子树的指针；<br><strong>结点的度：</strong>该节点所引申出的分支数目，如上图中的B结点，向下引申出了E和F，故其度为2；<br><strong>树的度：</strong>树的度为树中所有结点的度的最大值，如上图树的度为A结点的度为3；<br><strong>叶子结点：</strong>又称为<em>终端结点</em>，指的是度为零的结点<br><strong>非终端结点：</strong>又称为分支结点，指的是度不为零的结点，上图中的ABCDEG都是非终端结点。另外，非终端结点除去根节点A之外的所有结点又称为<em>内部结点</em>。<br><strong>祖先：</strong>从树的根节点到某一节点的路径上的所有结点都成为该结点的祖先结点，如E的祖先节点为：<br>A和B，因为路径为：A–B–E；<br><strong>层次：</strong>根处为第一层，以此类推……，如上图树的层次为4层；<br><strong>结点的深度和高度：</strong>联系实际，只需记住，高度是从底往上数；而深度是从上往下数；比如结点B的高度为3；而深度为2。根节点A的高度为树的高度为4；<br><strong>有序树：</strong>树中结点的子树从左到右都是有次序的不能交换<br><strong>无序树：</strong>树中结点的子树没有次序，可以任意交换<br><strong>丰满树：</strong>理想的平衡树，要求除了最底层外，其他层都是满的<br><strong>森林：</strong>若干棵互不相交的树的集合，若吧上图中的根节点A去掉，就成了一个森林</p>
 <hr>
 <h4 id="树的存储结构"><a href="#树的存储结构" class="headerlink" title="树的存储结构"></a>树的存储结构</h4><ul>
@@ -486,6 +485,13 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/01/27/linearList/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Linear List</span>
+            </a>
+        </div>
+        
         
         <div class="level-end">
             <a class="level level-item has-link-grey  article-nav-next" href="/2019/01/27/hello-world/">
@@ -501,7 +507,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
         
 <div id="valine-thread"></div>
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
@@ -557,17 +563,17 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entradas
+                        Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        2
+                        5
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categoria
+                        Category
                     </p>
                     <p class="title has-text-weight-normal">
                         1
@@ -577,17 +583,17 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Etiqueta
+                        Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        1
+                        3
                     </p>
                 </div>
             </div>
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="http://github.com/YHCClin">
-                SEGUIR</a>
+                Follow</a>
         </div>
         
         
@@ -685,7 +691,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -694,7 +700,7 @@
                 <span class="level-item">DataStructs</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li>
             </ul>
@@ -706,9 +712,9 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nube de etiquetas
+            Tag Cloud
         </h3>
-        <a href="/tags/Tree/" style="font-size: 10px;">Tree</a>
+        <a href="/tags/List/" style="font-size: 20px;">List</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/Tree/" style="font-size: 10px;">Tree</a>
     </div>
 </div>
 
@@ -720,8 +726,65 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/01/27/QueueStack/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1548581470072&amp;di=ee7f02ae4ffa2ccc6257101f77c6b5d9&amp;imgtype=0&amp;src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20170627%2Fa3e6109615584b62a5eb86fe79243270_th.jpg" alt="Queue and Stack">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-27T06:30:48.907Z">2019-01-27</time></div>
+                    <a href="/2019/01/27/QueueStack/" class="has-link-black-ter is-size-6">Queue and Stack</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/DataStructs/">DataStructs</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/27/String/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1548580675099&amp;di=6efdd9be8a2394de553173ab69c0bb70&amp;imgtype=0&amp;src=http%3A%2F%2Fs1.knowsky.com%2F20170206%2Fp3rqnw1kmbl32.png" alt="String">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-27T06:27:40.068Z">2019-01-27</time></div>
+                    <a href="/2019/01/27/String/" class="has-link-black-ter is-size-6">String</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/DataStructs/">DataStructs</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/27/linearList/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1548580411500&amp;di=d3bc8a8fb160d662bf3ef1d14ff4ae37&amp;imgtype=0&amp;src=http%3A%2F%2Fs2.cdn.deahu.com%2Fshow%2Flfile%2F7E73DBAD83122DAF20DFDD33CF1E9C8D.jpg" alt="Linear List">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-27T06:20:02.356Z">2019-01-27</time></div>
+                    <a href="/2019/01/27/linearList/" class="has-link-black-ter is-size-6">Linear List</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/DataStructs/">DataStructs</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -769,7 +832,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -779,7 +842,7 @@
                     <span class="level-item">January 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -793,9 +856,23 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Etiquetas
+                Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/List/">
+                        <span class="tag">List</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/String/">
+                        <span class="tag">String</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Tree/">
@@ -824,8 +901,65 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/01/27/QueueStack/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1548581470072&amp;di=ee7f02ae4ffa2ccc6257101f77c6b5d9&amp;imgtype=0&amp;src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20170627%2Fa3e6109615584b62a5eb86fe79243270_th.jpg" alt="Queue and Stack">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-27T06:30:48.907Z">2019-01-27</time></div>
+                    <a href="/2019/01/27/QueueStack/" class="has-link-black-ter is-size-6">Queue and Stack</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/DataStructs/">DataStructs</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/27/String/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1548580675099&amp;di=6efdd9be8a2394de553173ab69c0bb70&amp;imgtype=0&amp;src=http%3A%2F%2Fs1.knowsky.com%2F20170206%2Fp3rqnw1kmbl32.png" alt="String">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-27T06:27:40.068Z">2019-01-27</time></div>
+                    <a href="/2019/01/27/String/" class="has-link-black-ter is-size-6">String</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/DataStructs/">DataStructs</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/27/linearList/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1548580411500&amp;di=d3bc8a8fb160d662bf3ef1d14ff4ae37&amp;imgtype=0&amp;src=http%3A%2F%2Fs2.cdn.deahu.com%2Fshow%2Flfile%2F7E73DBAD83122DAF20DFDD33CF1E9C8D.jpg" alt="Linear List">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-27T06:20:02.356Z">2019-01-27</time></div>
+                    <a href="/2019/01/27/linearList/" class="has-link-black-ter is-size-6">Linear List</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/DataStructs/">DataStructs</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -873,7 +1007,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -883,7 +1017,7 @@
                     <span class="level-item">January 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -897,9 +1031,23 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Etiquetas
+                Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/List/">
+                        <span class="tag">List</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/String/">
+                        <span class="tag">String</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Tree/">
@@ -1068,10 +1216,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
