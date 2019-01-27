@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>Array Marix GeneralList - Aoki&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="数组、矩阵与广义表 数组： 常见的数组有一维数组和二维数组，二维数组是元素可以看成是一维数组的一维数组。对于数组主要考察元素下标计算的问题。对于一维数组较为简单，而对于二维数组的元素位置计算较为复杂，要考虑行优先和列优先两种情况。 二维数组的行优先和列优先存储：   行优先：从起始行开始一行一行地存入连续空间中">
+<meta name="keywords" content="Array">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Array Marix GeneralList">
+<meta property="og:url" content="http://yoursite.com/2019/01/27/arrayandlist/index.html">
+<meta property="og:site_name" content="Aoki&#39;s Blog">
+<meta property="og:description" content="数组、矩阵与广义表 数组： 常见的数组有一维数组和二维数组，二维数组是元素可以看成是一维数组的一维数组。对于数组主要考察元素下标计算的问题。对于一维数组较为简单，而对于二维数组的元素位置计算较为复杂，要考虑行优先和列优先两种情况。 二维数组的行优先和列优先存储：   行优先：从起始行开始一行一行地存入连续空间中">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="blob:https://maxiang.io/532d783f-22f2-48b2-9efc-e70181ca9d07">
+<meta property="og:image" content="blob:https://maxiang.io/e0577d81-889e-4996-9ecc-c36d0b63edfc">
+<meta property="og:image" content="blob:https://maxiang.io/094de0e7-9df8-4c32-91ca-1eb213cfbd76">
+<meta property="og:image" content="blob:https://maxiang.io/ac657a9f-9afd-4683-8862-6c12310b8af1">
+<meta property="og:image" content="blob:https://maxiang.io/cd2aff9f-613d-4d6a-bb59-690d173db8a4">
+<meta property="og:image" content="blob:https://maxiang.io/e9ecf005-06d6-47d4-a375-2ae0189d2107">
+<meta property="og:image" content="blob:https://maxiang.io/9be871e2-cd98-418d-8fa4-c22b8ffef06d">
+<meta property="og:image" content="blob:https://maxiang.io/50db0dae-41e7-4124-a7ee-ab7cef74096e">
+<meta property="og:image" content="blob:https://maxiang.io/eaaee1f8-4cb4-4349-9356-304073f3454a">
+<meta property="og:image" content="blob:https://maxiang.io/9f3af042-044b-4495-aaa0-44c71d9a73a7">
+<meta property="og:image" content="blob:https://maxiang.io/376b3e8c-12ba-4cc0-80ee-6bdf27b17c25">
+<meta property="og:image" content="blob:https://maxiang.io/9c28954f-cf2c-4cd0-b445-a5b4f7a0ff8d">
+<meta property="og:image" content="blob:https://maxiang.io/460d6eeb-032a-4cda-9da7-51e8f85d4175">
+<meta property="og:image" content="blob:https://maxiang.io/6892ed19-12a4-4040-bf3e-993fdd2f2a29">
+<meta property="og:image" content="blob:https://maxiang.io/04192f91-35ca-47eb-a0e3-9d5cf759e6a7">
+<meta property="og:updated_time" content="2019-01-27T07:17:45.787Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Array Marix GeneralList">
+<meta name="twitter:description" content="数组、矩阵与广义表 数组： 常见的数组有一维数组和二维数组，二维数组是元素可以看成是一维数组的一维数组。对于数组主要考察元素下标计算的问题。对于一维数组较为简单，而对于二维数组的元素位置计算较为复杂，要考虑行优先和列优先两种情况。 二维数组的行优先和列优先存储：   行优先：从起始行开始一行一行地存入连续空间中">
+<meta name="twitter:image" content="blob:https://maxiang.io/532d783f-22f2-48b2-9efc-e70181ca9d07">
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-133326618-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-133326618-2');
+</script>
+
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/gen.svg" alt="Array Marix GeneralList" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="My GitHub" href="https://github.com/YHCClin?tab=repositories">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="blob:https://maxiang.io/532d783f-22f2-48b2-9efc-e70181ca9d07" alt="Array Marix GeneralList">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-01-27T07:07:54.237Z">2019-01-27</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/DataStructs/">DataStructs</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    11 minutes read (About 1661 words)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Array Marix GeneralList
+            
+        </h1>
+        <div class="content">
+            <h2 id="数组、矩阵与广义表"><a href="#数组、矩阵与广义表" class="headerlink" title="数组、矩阵与广义表"></a>数组、矩阵与广义表</h2><hr>
+<h4 id="数组："><a href="#数组：" class="headerlink" title="数组："></a>数组：</h4><ol>
+<li>常见的数组有一维数组和二维数组，二维数组是元素可以看成是一维数组的一维数组。对于数组主要考察元素下标计算的问题。对于一维数组较为简单，而对于二维数组的元素位置计算较为复杂，要考虑行优先和列优先两种情况。</li>
+<li>二维数组的行优先和列优先存储：</li>
+</ol>
+<ul>
+<li>行优先：从起始行开始一行一行地存入连续空间中<br><img src="blob:https://maxiang.io/532d783f-22f2-48b2-9efc-e70181ca9d07" alt="Alt text"><a id="more"></a></li>
+<li>列优先：从起始列开始一列一列地存入连续空间中<br><img src="blob:https://maxiang.io/e0577d81-889e-4996-9ecc-c36d0b63edfc" alt="Alt text"></li>
+</ul>
+<hr>
+<h4 id="矩阵的压缩存储："><a href="#矩阵的压缩存储：" class="headerlink" title="矩阵的压缩存储："></a>矩阵的压缩存储：</h4><hr>
+<h5 id="矩阵的定义"><a href="#矩阵的定义" class="headerlink" title="矩阵的定义"></a>矩阵的定义</h5><ul>
+<li>矩阵一般用一个二维数组A[m][n]表示，表示一个m行n列的矩阵</li>
+<li>其中m n 必须为常量，或者为预先定义的宏常量，如下：<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> m 5</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> n 6</span></span><br><span class="line"><span class="hljs-keyword">int</span> A[m][n];</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h5 id="矩阵的一般操作与实现"><a href="#矩阵的一般操作与实现" class="headerlink" title="矩阵的一般操作与实现"></a>矩阵的一般操作与实现</h5><ol>
+<li><p>矩阵的转置：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">transpose</span><span class="hljs-params">(<span class="hljs-keyword">int</span> A[][maxsize],<span class="hljs-keyword">int</span> B[][maxsize],<span class="hljs-keyword">int</span> m,<span class="hljs-keyword">int</span> n)</span></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; m ; ++i)&#123;</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; n ; ++j)&#123;</span><br><span class="line">			B[j][i] = A[i][j]; <span class="hljs-comment">// 矩阵转置操作，元素关于主对角线互换位置</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>矩阵相加:</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addition</span><span class="hljs-params">(<span class="hljs-keyword">int</span> A[][max],<span class="hljs-keyword">int</span> B[][max],<span class="hljs-keyword">int</span> C[][max],<span class="hljs-keyword">int</span> m,<span class="hljs-keyword">int</span> n)</span></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; m ; ++i)&#123;</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; n)&#123;</span><br><span class="line">			c[i][j] = A[i][j] + B[i][j]; <span class="hljs-comment">//对应位置元素相加</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>矩阵相乘：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Multiply</span><span class="hljs-params">(<span class="hljs-keyword">int</span> A[m][n],<span class="hljs-keyword">int</span> B[n][k],<span class="hljs-keyword">int</span> C[m][k],<span class="hljs-keyword">int</span> m,<span class="hljs-keyword">int</span> n,<span class="hljs-keyword">int</span> k)</span></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;m;++i)&#123;</span><br><span class="line">		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>;j&lt;k;++j)&#123;</span><br><span class="line">			C[i][j] = <span class="hljs-number">0</span>;</span><br><span class="line">			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> h = <span class="hljs-number">0</span>;h&lt;n;++h)&#123;</span><br><span class="line">				C[i][j] += A[i][h] * B[h][j];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<h4 id="特殊矩阵和稀疏矩阵"><a href="#特殊矩阵和稀疏矩阵" class="headerlink" title="特殊矩阵和稀疏矩阵"></a>特殊矩阵和稀疏矩阵</h4><hr>
+<ul>
+<li>矩阵中绝大多数元素都是0的矩阵称为稀疏矩阵(国外教材)</li>
+<li>相同的元素或者零元素在矩阵中的分布存在一定规律的矩阵称为特殊矩阵，反之称为稀疏矩阵(严版)</li>
+</ul>
+<hr>
+<ol>
+<li><strong>特殊矩阵</strong>：<br>a) 对称矩阵</li>
+</ol>
+<ul>
+<li>矩阵中的元素满足A[i][j] = A[j][i] 的矩阵称为对称矩阵<br><img src="blob:https://maxiang.io/094de0e7-9df8-4c32-91ca-1eb213cfbd76" alt="Alt text"></li>
+<li>如上图所示，只需要存储一半的元素就可以了，要还原出另一半只需根据A[i][j] = A[j][i]这个条件就行了。</li>
+<li>将一个n×n的对称矩阵存储在一维数组中，所需的存储空间为 $ \dfrac{(1+n)*n}{2}$</li>
+<li>需要保存的元素为：<br><img src="blob:https://maxiang.io/ac657a9f-9afd-4683-8862-6c12310b8af1" alt="Alt text"></li>
+<li>按照行优先来存储，保存在一维数组中，如下图所示：<h2 id=""><a href="#" class="headerlink" title=""></a><img src="blob:https://maxiang.io/cd2aff9f-613d-4d6a-bb59-690d173db8a4" alt="Alt text"></h2>b)三角阵</li>
+<li><em>上三角矩阵</em> 为矩阵下三角部分(不包括对角线)元素全为零</li>
+<li><em>下三角矩阵</em> 为矩阵上三角部分(不包括对角线)元素全为零</li>
+<li>三角矩阵的存储方式与对称矩阵类似，以下三角矩阵的存储为例，只需存储对角线及其以下部分的元素和其上三角中的一个元素C即可，如下图：<br><img src="blob:https://maxiang.io/e9ecf005-06d6-47d4-a375-2ae0189d2107" alt="Alt text"></li>
+</ul>
+<hr>
+<p>c)对角矩阵</p>
+<ul>
+<li>如下图所示的对角矩阵，其特点为除了主对角线以及其上下两条带状区域的元素外，其余元素都为C ( C可以为0)：<br><img src="blob:https://maxiang.io/9be871e2-cd98-418d-8fa4-c22b8ffef06d" alt="Alt text"></li>
+<li>下面介绍如何求出第i行带状区域内的第一个元素在一维数组中的下标，假设c存在数组的最后一位：</li>
+<li>当i=1时，带状区域内的第一个元素为矩阵当中的第一个元素，其在一维数组中的下标为0；</li>
+<li><p>当i&gt;1时，第i行之前的元素个数为 $2+(i-2)×3$，则带状区域的第一个元素在一维数组中的下标为 $2+(i-2)×3$<br>2.<strong>稀疏矩阵</strong></p>
+</li>
+<li><p>稀疏矩阵中的相同元素c不像特殊矩阵中的相同元素的位置分布那么有规律可循，故必须为其设计一些特殊的存储结构</p>
+</li>
+<li><strong>稀疏矩阵的顺序存储及其相关操作：</strong><br>常用的稀疏矩阵顺序存储方法有三元组表示法，和伪地址表示法。</li>
+</ul>
+<hr>
+<ol>
+<li>三元组表示法：<br>三元组数据结构为一个长度为n，表内每个元素都有三个分量的线性表，其三个分量分别为：“值”、“行下标”、“列下标”。<br>元素结构体定义如下：<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Trimat</span>&#123;</span></span><br><span class="line">	<span class="hljs-keyword">int</span> val; <span class="hljs-comment">// 值</span></span><br><span class="line">	<span class="hljs-keyword">int</span> i; <span class="hljs-comment">// 行下标</span></span><br><span class="line">	<span class="hljs-keyword">int</span> j; <span class="hljs-comment">// 列下标</span></span><br><span class="line">&#125;；</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>结构体示意图：<br><img src="blob:https://maxiang.io/50db0dae-41e7-4124-a7ee-ab7cef74096e" alt="Alt text"><br>结构题数组的定义：<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Trimat trimat[maxterms + 1]; // maxterms + 1;因为从第 1 行才开始存储元素</span><br></pre></td></tr></table></figure></p>
+<p>但是，为了方便起见，一般不用上诉结构体来定义三元组，直接申请一个二维数组就可以了：<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">int</span> trimat[maxterms + <span class="hljs-number">1</span>][<span class="hljs-number">3</span>];</span><br><span class="line"><span class="hljs-comment">// 如要求其他类型，可将int替换掉</span></span><br><span class="line"><span class="hljs-comment">// 需要注意的是，如果矩阵是float型的（或者其他非整型的数据类型）</span></span><br><span class="line"><span class="hljs-comment">// 则此时用一个数组来表示三元组应该写成如下形式：</span></span><br><span class="line"><span class="hljs-keyword">float</span> trimat[maxterms + <span class="hljs-number">1</span>][<span class="hljs-number">3</span>];</span><br><span class="line"><span class="hljs-comment">// 这个时候若要取当前非零元素的所在位置应该这么做：</span></span><br><span class="line">	(<span class="hljs-keyword">int</span>)trimat[k][<span class="hljs-number">1</span>];</span><br><span class="line">	(<span class="hljs-keyword">int</span>)trimat[k][<span class="hljs-number">2</span>];</span><br><span class="line"><span class="hljs-comment">// 就是将float 型的元素造型成int型，这样就可以避免很多不必要的问题的发生</span></span><br></pre></td></tr></table></figure></p>
+<p>上诉定义方式中：trimat[k][0]表示原矩阵中的元素按行优先顺序的第k个元素的值<br>trimat[k][1]、trimat[k][2]表示第k个非零元素在矩阵中的位置。事实上，trimat此时就是一个maxterms 行 3 列的二维数组，我们规定第0行的三个元素分别用来存储原矩阵中的非零元素个数，以及矩阵的行数与列数。<br>示意图如下：<br><img src="blob:https://maxiang.io/eaaee1f8-4cb4-4349-9356-304073f3454a" alt="Alt text"></p>
+<hr>
+<ul>
+<li>给定一个二维数组存储的矩阵，要求设计算法将其转化为三元组存储：</li>
+<li><p>算法分析：<br>建立一个三元组的核心问题在于求矩阵的非零元素个数以及非零元素的值，还有其在矩阵（原数组）中的位置，故只需扫描所给矩阵的二维数组即可得到相关数据，进而建立三元组。</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 建立三元组时，结点间的次序行按元素在矩阵中的行优先顺序排列</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">creattrimat</span><span class="hljs-params">(<span class="hljs-keyword">float</span> A[][max],<span class="hljs-keyword">int</span> m,<span class="hljs-keyword">int</span> n,<span class="hljs-keyword">float</span> B[][<span class="hljs-number">3</span>])</span></span>&#123;</span><br><span class="line"><span class="hljs-comment">// m,n 表示所给矩阵的规模为m×n</span></span><br><span class="line">	<span class="hljs-keyword">int</span> k = <span class="hljs-number">1</span>;</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;m;++i)&#123;</span><br><span class="line">		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j =<span class="hljs-number">0</span>;j&lt;n;++j)&#123; <span class="hljs-comment">// 双重循环扫描矩阵</span></span><br><span class="line">			<span class="hljs-keyword">if</span> (A[i][j] != <span class="hljs-number">0</span>)&#123; <span class="hljs-comment">// 若矩阵的[i][j] 上的元素不为零，将该元素连同其位置信息存入三元组中</span></span><br><span class="line">				B[k][<span class="hljs-number">0</span>] = A[i][j];</span><br><span class="line">				B[k][<span class="hljs-number">1</span>] = i;</span><br><span class="line">				B[k][<span class="hljs-number">2</span>] = j;</span><br><span class="line">				k++; <span class="hljs-comment">// k 指向三元组的下一个空间</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	B[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = k<span class="hljs-number">-1</span>; <span class="hljs-comment">// 将矩阵的基本信息存入三元组的第0行</span></span><br><span class="line">	B[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>] = m;</span><br><span class="line">	B[<span class="hljs-number">0</span>][<span class="hljs-number">2</span>] = n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设计算法打印出所给三元组存储的矩阵：</p>
+</li>
+<li>算法分析：<br>读取三元组的第0行，得到矩阵的相关信息<br>循环按行打印，若下标与三元组中的非零元素下标信息匹配则打印该非零元素，否则，打印0；<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(<span class="hljs-keyword">float</span> trimat[][<span class="hljs-number">3</span>])</span></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> m = trimat[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>];</span><br><span class="line">	<span class="hljs-keyword">int</span> n = trimat[<span class="hljs-number">0</span>][<span class="hljs-number">2</span>];</span><br><span class="line">	<span class="hljs-keyword">int</span> k = <span class="hljs-number">1</span>; <span class="hljs-comment">// 非零元素从第一行开始存储</span></span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;m;i++)&#123; <span class="hljs-comment">// 双重循环打印矩阵</span></span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>;j&lt;n;j++)&#123; <span class="hljs-comment">// 循环过程中检查第[i][j]下标是否与三元组中的非零元素相同，若相同打印该非零元素，若不同打印 0 ；</span></span><br><span class="line">			<span class="hljs-keyword">if</span>(i = (<span class="hljs-keyword">int</span>)trimat[k][<span class="hljs-number">1</span>] &amp;&amp; j == (<span class="hljs-keyword">int</span>)trimat[k][<span class="hljs-number">2</span>])&#123;</span><br><span class="line">				<span class="hljs-built_in">cout</span> &lt;&lt; trimat[k][<span class="hljs-number">0</span>] &lt;&lt; <span class="hljs-string">" "</span>;</span><br><span class="line">				++k; </span><br><span class="line">			&#125;</span><br><span class="line">			<span class="hljs-keyword">else</span> <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"0 "</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<ol start="2">
+<li>伪地址表示法：<br>伪地址表示法与三元组表示法在本质上并无差别，只不过是三元组表示法的每一行用两个存储单元来存放原矩阵非零元素的位置标记，而伪地址表示法可以只用一个存储单元来存放位置标记，原因是因为对于一个$ m×n $的矩阵，伪地址表示法将元素位置下标的两个整数用一个公式映射( $ n×(i-1) +j $)到了一个整数上，同样利用该公式也可还原原i和j的值。<br>我们来看一个例子：<br><img src="blob:https://maxiang.io/9f3af042-044b-4495-aaa0-44c71d9a73a7" alt="Alt text"></li>
+</ol>
+<hr>
+<ul>
+<li><strong>稀疏矩阵的链式存储及相关操作：</strong></li>
+</ul>
+<hr>
+<ol>
+<li>邻接表表示法：<br>邻接表表示法将矩阵中每一行的非零元素串联成一个单链表，链表结点中有三个分量：元素值、所在列、指针域<br>结点的定义如下：<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Listmat</span>&#123;</span></span><br><span class="line">	<span class="hljs-keyword">int</span> data;</span><br><span class="line">	<span class="hljs-keyword">int</span> col;</span><br><span class="line">	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Listmat</span> *<span class="hljs-title">next</span>;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>示意图如下：<br><img src="blob:https://maxiang.io/376b3e8c-12ba-4cc0-80ee-6bdf27b17c25" alt="Alt text"><br>上图中最左端为一个指针数组，用来存储指向每一行非零元素单链表的头指针，数组下标为表示行标号。</p>
+<ol start="2">
+<li>十字链表表示法：<br>在稀疏矩阵的十字链表存储结构中，矩阵的每一行用一个带头结点的链表表示，每一列也用一个带头结点的链表表示，这种存储结构中的链表结点有 5 个分量：行分量、列分量、数据域、指向下方结点的指针域、指向右方结点的指针域；结构图如下：<br><img src="blob:https://maxiang.io/9c28954f-cf2c-4cd0-b445-a5b4f7a0ff8d" alt="Alt text"><br>普通结点定义：<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">matNode</span>&#123;</span></span><br><span class="line">	<span class="hljs-keyword">int</span> row;</span><br><span class="line">	<span class="hljs-keyword">int</span> col;</span><br><span class="line">	<span class="hljs-keyword">int</span> data;</span><br><span class="line">	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">matNode</span> *<span class="hljs-title">down</span>;</span></span><br><span class="line">	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">matNode</span> *<span class="hljs-title">right</span>;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>头结点定义:<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CrossList</span>&#123;</span></span><br><span class="line">	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">matNode</span> *<span class="hljs-title">rhead</span>,*<span class="hljs-title">cheard</span>;</span> <span class="hljs-comment">// 指向两头结点数组的指针</span></span><br><span class="line">	<span class="hljs-keyword">int</span> m,n,k; <span class="hljs-comment">// 矩阵行数、列数、非零结点总数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>由于十字链表存储结构比较复杂，我们将通过其结构图例来深入了解它，图中附有详细的注释：</p>
+<p><img src="blob:https://maxiang.io/460d6eeb-032a-4cda-9da7-51e8f85d4175" alt="Alt text"><br>上图中，银灰色的结点为行头结点数组与列头结点数组，他们的定义如下：<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 其中的m n 为矩阵的行数和列数</span></span><br><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Rhead</span>&#123;</span> <span class="hljs-comment">// 行头结点数组</span></span><br><span class="line">	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">matNode</span> <span class="hljs-title">Rhead</span>[<span class="hljs-title">m</span>];</span>  <span class="hljs-comment">// 元素为matNode结点的数组</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Chead</span>&#123;</span> <span class="hljs-comment">// 列头结点数组</span></span><br><span class="line">	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">matNode</span> <span class="hljs-title">Chead</span>[<span class="hljs-title">n</span>];</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<ul>
+<li>在理解了十字链表存储结构后，我们来看一个实际的应用：<br>给定一个float型二维数组存储的稀疏矩阵，建立其对应的十字链表结构。<br><strong>算法分析</strong>：<br>首先应该建立整体框架，也就是十字链表头结点以及行、列头结点数组。然后，按行优先顺序遍历矩阵数组，若发现不为零的元素，分配一个结点空间将其值存入，调整行、列头结点的指针域指向该结点，如此直到结束遍历<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">creatCrossListmat</span><span class="hljs-params">(<span class="hljs-keyword">float</span> A[][maxsize],<span class="hljs-keyword">int</span> m,<span class="hljs-keyword">int</span> n,<span class="hljs-keyword">int</span> k,CrossList &amp;M)</span></span>&#123;</span><br><span class="line">	<span class="hljs-comment">//============================================</span></span><br><span class="line">	<span class="hljs-comment">// 搭建基本框架操作</span></span><br><span class="line">	<span class="hljs-comment">//============================================</span></span><br><span class="line">	<span class="hljs-comment">// 清空处理：</span></span><br><span class="line">	<span class="hljs-keyword">if</span> (M.rhead) <span class="hljs-built_in">free</span>(M.rhead);</span><br><span class="line">	<span class="hljs-keyword">if</span> (M.chead) <span class="hljs-built_in">free</span>(M.chead);</span><br><span class="line">	<span class="hljs-comment">// 将矩阵信息存入十字链表头结点：</span></span><br><span class="line">	M.m = m;</span><br><span class="line">	M.n = n;</span><br><span class="line">	M.k = k;</span><br><span class="line">	<span class="hljs-comment">// 申请行、列头结点数组空间：</span></span><br><span class="line">	<span class="hljs-keyword">if</span> (!(M.rhead = (matNode*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(matNode)*m)))</span><br><span class="line">		<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">	<span class="hljs-keyword">if</span> (!(M.chead = (matNode*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(matNode)*n)))</span><br><span class="line">		<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">	<span class="hljs-comment">// 将行、列头结点数组的right和down指针置空：</span></span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; m ; ++i)&#123;</span><br><span class="line">		M.rhead[i].right = <span class="hljs-literal">NULL</span>;</span><br><span class="line">		M.rhead[i].down = <span class="hljs-literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; n ;++i)&#123;</span><br><span class="line">		M.chead[i].right = <span class="hljs-literal">NULL</span>;</span><br><span class="line">		M.chead[i].down = <span class="hljs-literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-comment">//===================================================</span></span><br><span class="line">	<span class="hljs-comment">// 核心算法</span></span><br><span class="line">	<span class="hljs-comment">//===================================================</span></span><br><span class="line">	<span class="hljs-comment">// 建立链表的辅助指向列头结点的指针数组：</span></span><br><span class="line">	matNode *temp_r[maxsize];</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;n;++i)&#123;</span><br><span class="line">		temp_r[i] = &amp;(M.chead[i]); <span class="hljs-comment">// 引用</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-comment">// 行优先顺序遍历矩阵数组构建十字链表：</span></span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; m ;++i)&#123;</span><br><span class="line">		matNode *c = &amp;(M.rhead[i]);</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>;j &lt; n;++j)&#123;</span><br><span class="line">			<span class="hljs-keyword">if</span> (A[i][j] != <span class="hljs-number">0</span>)&#123;</span><br><span class="line">				matNode *p = (matNode*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(matNode));</span><br><span class="line">				p -&gt; row = i;</span><br><span class="line">				p -&gt; col = j;</span><br><span class="line">				p -&gt; val = A[i][j];</span><br><span class="line">				p -&gt; down = <span class="hljs-literal">NULL</span>;</span><br><span class="line">				p -&gt; right = <span class="hljs-literal">NULL</span>;</span><br><span class="line">				<span class="hljs-comment">// 如果某行（列）中已经连接了元素，那么就让这个元素充当该行（列）的头部，这样能使十字链表的行（列）头结点数组中的结点避免重复指向，覆盖；所以下面的代码所要做的事情很重要。</span></span><br><span class="line">				c -&gt; right = p; </span><br><span class="line">				c = p;</span><br><span class="line">				temp_r[j] -&gt; down = p;</span><br><span class="line">				temp_r[j] = p;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h4 id="广义表"><a href="#广义表" class="headerlink" title="广义表"></a>广义表</h4><ul>
+<li>表元素可以是原子类型的元素，也可以是广义表的一种线性表</li>
+</ul>
+<hr>
+<h5 id="三个重要概念："><a href="#三个重要概念：" class="headerlink" title="三个重要概念："></a>三个重要概念：</h5><ul>
+<li><strong>广义表的长度</strong>：表中最上层元素的个数</li>
+<li><strong>广义表的深度</strong>：表中括号的最大层数，求解时应将所有的子表展开在分析</li>
+<li><strong>表头(Head)和表尾(Tail)</strong>：当表非空时，第一个元素为广义表的表头，其余元素组成广义表的表尾<h5 id="两种存储结构："><a href="#两种存储结构：" class="headerlink" title="两种存储结构："></a>两种存储结构：</h5></li>
+<li><strong>头尾链表存储结构</strong>：<br>这种存储结构有两种结点，即原子结点和广义表结点。原子结点有两个域：标记域、数据域。广义表结点有三个域：标记域、头指针域、尾指针域<br>其中头指针指向一个原子结点或广义表结点，尾指针为空或者指向 <strong>本层中</strong> 的下一个广义表结点，而标记域用来区分广义表结点(1)与原子结点(0);<br><strong>示意图入下：</strong><br><img src="blob:https://maxiang.io/6892ed19-12a4-4040-bf3e-993fdd2f2a29" alt="Alt text"></li>
+<li><strong>扩展线性表结构</strong>：<br>该种存储结构同样有两种结点，与头尾链表存储结构不同的是这里的原子结点有三个域：标记域、数据域、尾指针域。<br><strong>示意图如下：</strong><br><img src="blob:https://maxiang.io/04192f91-35ca-47eb-a0e3-9d5cf759e6a7" alt="Alt text"></li>
+</ul>
+<hr>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Array/">Array</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="/images/alipay.png" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/wechatpay.png" alt="Wechat"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/01/27/QueueStack/">
+                <span class="level-item">Queue and Stack</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
+        
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: false,
+        app_id: 'oR2IQXqpGEFy4GHNDgdmfSMR-gzGzoHsz',
+        app_key: 'hwYfVGzICBlXGiokUXaNqJsx',
+        placeholder: 'Say something...'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <img class="image is-128x128 has-mb-6" src="https://avatars1.githubusercontent.com/u/30885631?s=460&amp;v=4" alt="Aoki Lin">
+                    
+                    <p class="is-size-4 is-block">
+                        Aoki Lin
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        C/C++ Software Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Earth,Solar System</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Entradas
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        6
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categoria
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        1
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Etiquetas
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        4
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://github.com/YHCClin">
+                SEGUIR</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="http://github.com/YHCClin">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Facebook" href="http://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Twitter" href="https://twitter.com/echo_scottlin">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Dribbble" href="http://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Links
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.google.com" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Google</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.google.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.stackoverflow.com" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Stackoverflow</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.stackoverflow.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categorias
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/DataStructs/">
+            <span class="level-start">
+                <span class="level-item">DataStructs</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Nube de etiquetas
+        </h3>
+        <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/List/" style="font-size: 20px;">List</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/Tree/" style="font-size: 10px;">Tree</a>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recientes
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/01/27/arrayandlist/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="blob:https://maxiang.io/532d783f-22f2-48b2-9efc-e70181ca9d07" alt="Array Marix GeneralList">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-27T07:07:54.237Z">2019-01-27</time></div>
+                    <a href="/2019/01/27/arrayandlist/" class="has-link-black-ter is-size-6">Array Marix GeneralList</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/DataStructs/">DataStructs</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/27/QueueStack/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1548581470072&amp;di=ee7f02ae4ffa2ccc6257101f77c6b5d9&amp;imgtype=0&amp;src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20170627%2Fa3e6109615584b62a5eb86fe79243270_th.jpg" alt="Queue and Stack">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-27T06:30:48.907Z">2019-01-27</time></div>
+                    <a href="/2019/01/27/QueueStack/" class="has-link-black-ter is-size-6">Queue and Stack</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/DataStructs/">DataStructs</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/27/String/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1548580675099&amp;di=6efdd9be8a2394de553173ab69c0bb70&amp;imgtype=0&amp;src=http%3A%2F%2Fs1.knowsky.com%2F20170206%2Fp3rqnw1kmbl32.png" alt="String">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-27T06:27:40.068Z">2019-01-27</time></div>
+                    <a href="/2019/01/27/String/" class="has-link-black-ter is-size-6">String</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/DataStructs/">DataStructs</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/27/linearList/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1548580411500&amp;di=d3bc8a8fb160d662bf3ef1d14ff4ae37&amp;imgtype=0&amp;src=http%3A%2F%2Fs2.cdn.deahu.com%2Fshow%2Flfile%2F7E73DBAD83122DAF20DFDD33CF1E9C8D.jpg" alt="Linear List">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-27T06:20:02.356Z">2019-01-27</time></div>
+                    <a href="/2019/01/27/linearList/" class="has-link-black-ter is-size-6">Linear List</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/DataStructs/">DataStructs</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/27/BinaryTree/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://maxiang.io/evernote/res/https://app.yinxiang.com/shard/s67/res/f5a9f8e9-28f2-43bd-b130-68ae6fd1ce6e?size=11364&amp;format=image.png" alt="BinaryTree">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-27T04:09:06.265Z">2019-01-27</time></div>
+                    <a href="/2019/01/27/BinaryTree/" class="has-link-black-ter is-size-6">BinaryTree</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/DataStructs/">DataStructs</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archivos
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Etiquetas
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Array/">
+                        <span class="tag">Array</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/List/">
+                        <span class="tag">List</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/String/">
+                        <span class="tag">String</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Tree/">
+                        <span class="tag">Tree</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recientes
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/01/27/arrayandlist/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="blob:https://maxiang.io/532d783f-22f2-48b2-9efc-e70181ca9d07" alt="Array Marix GeneralList">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-27T07:07:54.237Z">2019-01-27</time></div>
+                    <a href="/2019/01/27/arrayandlist/" class="has-link-black-ter is-size-6">Array Marix GeneralList</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/DataStructs/">DataStructs</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/27/QueueStack/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1548581470072&amp;di=ee7f02ae4ffa2ccc6257101f77c6b5d9&amp;imgtype=0&amp;src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20170627%2Fa3e6109615584b62a5eb86fe79243270_th.jpg" alt="Queue and Stack">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-27T06:30:48.907Z">2019-01-27</time></div>
+                    <a href="/2019/01/27/QueueStack/" class="has-link-black-ter is-size-6">Queue and Stack</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/DataStructs/">DataStructs</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/27/String/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1548580675099&amp;di=6efdd9be8a2394de553173ab69c0bb70&amp;imgtype=0&amp;src=http%3A%2F%2Fs1.knowsky.com%2F20170206%2Fp3rqnw1kmbl32.png" alt="String">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-27T06:27:40.068Z">2019-01-27</time></div>
+                    <a href="/2019/01/27/String/" class="has-link-black-ter is-size-6">String</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/DataStructs/">DataStructs</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/27/linearList/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1548580411500&amp;di=d3bc8a8fb160d662bf3ef1d14ff4ae37&amp;imgtype=0&amp;src=http%3A%2F%2Fs2.cdn.deahu.com%2Fshow%2Flfile%2F7E73DBAD83122DAF20DFDD33CF1E9C8D.jpg" alt="Linear List">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-27T06:20:02.356Z">2019-01-27</time></div>
+                    <a href="/2019/01/27/linearList/" class="has-link-black-ter is-size-6">Linear List</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/DataStructs/">DataStructs</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/01/27/BinaryTree/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://maxiang.io/evernote/res/https://app.yinxiang.com/shard/s67/res/f5a9f8e9-28f2-43bd-b130-68ae6fd1ce6e?size=11364&amp;format=image.png" alt="BinaryTree">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-27T04:09:06.265Z">2019-01-27</time></div>
+                    <a href="/2019/01/27/BinaryTree/" class="has-link-black-ter is-size-6">BinaryTree</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/DataStructs/">DataStructs</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archivos
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Etiquetas
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Array/">
+                        <span class="tag">Array</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/List/">
+                        <span class="tag">List</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/String/">
+                        <span class="tag">String</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Tree/">
+                        <span class="tag">Tree</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/gen.svg" alt="Array Marix GeneralList" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 AokiLin&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus">Icarus</a>
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Entradas',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
