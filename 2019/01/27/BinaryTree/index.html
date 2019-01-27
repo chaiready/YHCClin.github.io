@@ -2,18 +2,51 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Aoki&#39;s Blog</title>
+<title>BinaryTree - Aoki&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Aoki&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+    <meta name="description" content="树与二叉树 树的基本概念 树的定义：前面所提到的线性结构的元素是一种一对一的关系，而树是一种一对多的非线性结构，下面将通过一个具体的树的例子讲解到底什么样的结构才是树以 及树的一些相关术语： ![Alt text](## 树与二叉树大纲要求： 树的定义与存储结构 二叉树的定义与性质、存储结构 二叉树遍历算法(三序遍历与按层遍历) 赫夫曼树与赫夫曼编码 二叉树基本算法的实现 森林与二叉树的转换">
+<meta name="keywords" content="Tree">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BinaryTree">
+<meta property="og:url" content="http://yoursite.com/2019/01/27/BinaryTree/index.html">
 <meta property="og:site_name" content="Aoki&#39;s Blog">
+<meta property="og:description" content="树与二叉树 树的基本概念 树的定义：前面所提到的线性结构的元素是一种一对一的关系，而树是一种一对多的非线性结构，下面将通过一个具体的树的例子讲解到底什么样的结构才是树以 及树的一些相关术语： ![Alt text](## 树与二叉树大纲要求： 树的定义与存储结构 二叉树的定义与性质、存储结构 二叉树遍历算法(三序遍历与按层遍历) 赫夫曼树与赫夫曼编码 二叉树基本算法的实现 森林与二叉树的转换">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://maxiang.io/evernote/res/https://app.yinxiang.com/shard/s67/res/f5a9f8e9-28f2-43bd-b130-68ae6fd1ce6e?size=11364&format=image.png">
+<meta property="og:image" content="https://maxiang.io/evernote/res/https://app.yinxiang.com/shard/s67/res/129c6471-292f-45fa-b88b-f9b131a9519b?size=9145&format=image.png">
+<meta property="og:image" content="https://maxiang.io/evernote/res/https://app.yinxiang.com/shard/s67/res/d2feaa54-c857-460c-b488-68b1a22f1b48?size=23837&format=image.png">
+<meta property="og:image" content="https://maxiang.io/evernote/res/https://app.yinxiang.com/shard/s67/res/129c6471-292f-45fa-b88b-f9b131a9519b?size=9145&format=image.png">
+<meta property="og:image" content="https://maxiang.io/evernote/res/https://app.yinxiang.com/shard/s67/res/ae13d363-fcc2-483d-a71e-7d2da008f155?size=23289&format=image.png">
+<meta property="og:image" content="https://maxiang.io/evernote/res/https://app.yinxiang.com/shard/s67/res/d648d949-fe95-4ccc-8907-136e5fd7aceb?size=18144&format=image.png">
+<meta property="og:image" content="https://maxiang.io/evernote/res/https://app.yinxiang.com/shard/s67/res/5fe9fc62-5e0a-42e3-94a6-95592557b418?size=25276&format=image.png">
+<meta property="og:image" content="https://maxiang.io/evernote/res/https://app.yinxiang.com/shard/s67/res/528c734a-926a-4fad-a78c-2ec01046f3bb?size=34684&format=image.png">
+<meta property="og:image" content="https://maxiang.io/evernote/res/https://app.yinxiang.com/shard/s67/res/afd4566a-363f-4871-b428-07fc779d80e8?size=29491&format=image.png">
+<meta property="og:image" content="https://maxiang.io/evernote/res/https://app.yinxiang.com/shard/s67/res/f6ccda15-e512-4a7e-a694-7b088f29ec28?size=2693&format=image.png">
+<meta property="og:image" content="https://maxiang.io/evernote/res/https://app.yinxiang.com/shard/s67/res/593360db-1c5d-4667-b0f8-a3d0b2bed605?size=2741&format=image.png">
+<meta property="og:image" content="https://maxiang.io/evernote/res/https://app.yinxiang.com/shard/s67/res/6f3c291d-0e1e-40d7-8897-ca6daefcc7be?size=13337&format=image.png">
+<meta property="og:image" content="https://maxiang.io/evernote/res/https://app.yinxiang.com/shard/s67/res/185200e4-f98e-4f20-b5bf-693bb3537c49?size=2947&format=image.png">
+<meta property="og:image" content="blob:https://maxiang.io/5b1c5cbf-db46-46e3-9f5c-608a7261a893">
+<meta property="og:image" content="http://yoursite.com/2019/01/27/BinaryTree/深度截图_选择区域_20180802200457.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/27/BinaryTree/深度截图_选择区域_20180804221455.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/27/BinaryTree/深度截图_选择区域_20180802200457.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/27/BinaryTree/深度截图_选择区域_20180804215929.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/27/BinaryTree/深度截图_选择区域_20180804230700.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/27/BinaryTree/深度截图_选择区域_20180804235730.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/27/BinaryTree/深度截图_选择区域_20180807215755.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/27/BinaryTree/深度截图_选择区域_20180809202210.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/27/BinaryTree/深度截图_选择区域_20180809204213.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/27/BinaryTree/深度截图_选择区域_20180809204958.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/27/BinaryTree/深度截图_选择区域_20180809205410.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/27/BinaryTree/深度截图_选择区域_20180809205718.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/27/BinaryTree/深度截图_选择区域_20180809213107.png">
+<meta property="og:updated_time" content="2019-01-27T04:22:13.235Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Aoki&#39;s Blog">
+<meta name="twitter:title" content="BinaryTree">
+<meta name="twitter:description" content="树与二叉树 树的基本概念 树的定义：前面所提到的线性结构的元素是一种一对一的关系，而树是一种一对多的非线性结构，下面将通过一个具体的树的例子讲解到底什么样的结构才是树以 及树的一些相关术语： ![Alt text](## 树与二叉树大纲要求： 树的定义与存储结构 二叉树的定义与性质、存储结构 二叉树遍历算法(三序遍历与按层遍历) 赫夫曼树与赫夫曼编码 二叉树基本算法的实现 森林与二叉树的转换">
+<meta name="twitter:image" content="https://maxiang.io/evernote/res/https://app.yinxiang.com/shard/s67/res/f5a9f8e9-28f2-43bd-b130-68ae6fd1ce6e?size=11364&format=image.png">
 
 
 
@@ -83,7 +116,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Aoki&#39;s Blog" height="28">
+                <img src="/images/logo.svg" alt="BinaryTree" height="28">
             
             </a>
         </div>
@@ -91,7 +124,7 @@
             
             <div class="navbar-start">
                 
-                <a class="navbar-item is-active" href="/">Home</a>
+                <a class="navbar-item" href="/">Home</a>
                 
                 <a class="navbar-item" href="/archives">Archives</a>
                 
@@ -128,8 +161,7 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-    <div class="card">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     
     <div class="card-content article ">
         
@@ -149,7 +181,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/01/27/BinaryTree/">BinaryTree</a>
+                BinaryTree
             
         </h1>
         <div class="content">
@@ -399,66 +431,98 @@
 
         </div>
         
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-01-27T03:36:36.750Z">2019-01-27</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    a minute read (About 121 words)
-                </span>
-                
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Tree/">Tree</a>
+                </div>
             </div>
         </div>
         
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/01/27/hello-world/">Hello World</a>
-            
-        </h1>
-        <div class="content">
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="hljs-string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-        </div>
         
         
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
         
     </div>
 </div>
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+        </div>
+    </div>
+</div>
 
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/01/27/hello-world/">
+                <span class="level-item">Hello World</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: false,
+        app_id: 'oR2IQXqpGEFy4GHNDgdmfSMR-gzGzoHsz',
+        app_key: 'hwYfVGzICBlXGiokUXaNqJsx',
+        placeholder: 'Say something...'
+    });
+</script>
+
+    </div>
+</div>
 </div>
                 
 
@@ -857,7 +921,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Aoki&#39;s Blog" height="28">
+                    <img src="/images/logo.svg" alt="BinaryTree" height="28">
                 
                 </a>
                 <p class="is-size-7">
