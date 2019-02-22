@@ -2,22 +2,28 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>标签: List - 青木の博客</title>
+<title>【底层原理】浮点数在计算机中的表示 - 青木の博客</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="Just share my learning experience.">
-<meta name="keywords" content="AokiLin">
-<meta property="og:type" content="website">
-<meta property="og:title" content="青木の博客">
-<meta property="og:url" content="https://www.ccyh.xyz/tags/List/index.html">
+    <meta name="description" content="一道C语言题：1234567891011121314#include &amp;lt;stdio.h&amp;gt;int main()&amp;#123;    int num = 9;    float *pFloat = &amp;amp;num;    printf(&quot;num 的值为：%d\n&quot;,num);    printf(&quot;*pFloat 的值为：%f\n&quot;,*pFloat);    *pFloat = 9.0;">
+<meta name="keywords" content="C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【底层原理】浮点数在计算机中的表示">
+<meta property="og:url" content="https://www.ccyh.xyz/2019/02/22/【底层原理】浮点数在计算机中的表示/index.html">
 <meta property="og:site_name" content="青木の博客">
-<meta property="og:description" content="Just share my learning experience.">
+<meta property="og:description" content="一道C语言题：1234567891011121314#include &amp;lt;stdio.h&amp;gt;int main()&amp;#123;    int num = 9;    float *pFloat = &amp;amp;num;    printf(&quot;num 的值为：%d\n&quot;,num);    printf(&quot;*pFloat 的值为：%f\n&quot;,*pFloat);    *pFloat = 9.0;">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E3%80%91%E6%B5%AE%E7%82%B9%E6%95%B0%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E8%A1%A8%E7%A4%BA/20190222014746020.png">
+<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E3%80%91%E6%B5%AE%E7%82%B9%E6%95%B0%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E8%A1%A8%E7%A4%BA/20190222022411070.png">
+<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E3%80%91%E6%B5%AE%E7%82%B9%E6%95%B0%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E8%A1%A8%E7%A4%BA/20190222023402771.png">
+<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E3%80%91%E6%B5%AE%E7%82%B9%E6%95%B0%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E8%A1%A8%E7%A4%BA/20190222033629845.png">
+<meta property="og:updated_time" content="2019-02-22T07:42:02.383Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="青木の博客">
-<meta name="twitter:description" content="Just share my learning experience.">
+<meta name="twitter:title" content="【底层原理】浮点数在计算机中的表示">
+<meta name="twitter:description" content="一道C语言题：1234567891011121314#include &amp;lt;stdio.h&amp;gt;int main()&amp;#123;    int num = 9;    float *pFloat = &amp;amp;num;    printf(&quot;num 的值为：%d\n&quot;,num);    printf(&quot;*pFloat 的值为：%f\n&quot;,*pFloat);    *pFloat = 9.0;">
+<meta name="twitter:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E3%80%91%E6%B5%AE%E7%82%B9%E6%95%B0%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E8%A1%A8%E7%A4%BA/20190222014746020.png">
 
 
 
@@ -96,7 +102,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/gen.svg" alt="青木の博客" height="28">
+                <img src="/images/gen.svg" alt="【底层原理】浮点数在计算机中的表示" height="28">
             
             </a>
         </div>
@@ -142,131 +148,175 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="https://images2018.cnblogs.com/blog/1359827/201809/1359827-20180910180514149-139834781.png" alt="【底层原理】浮点数在计算机中的表示">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-02-22T05:26:52.000Z">2019-02-22</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/C-language/">C_language</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    8 分钟 读完 (大约 1203 个字)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                【底层原理】浮点数在计算机中的表示
+            
+        </h1>
+        <div class="content">
+            <h4 id="一道C语言题："><a href="#一道C语言题：" class="headerlink" title="一道C语言题："></a>一道C语言题：</h4><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> num = <span class="hljs-number">9</span>;</span><br><span class="line">    <span class="hljs-keyword">float</span> *pFloat = &amp;num;</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"num 的值为：%d\n"</span>,num);</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"*pFloat 的值为：%f\n"</span>,*pFloat);</span><br><span class="line"></span><br><span class="line">    *pFloat = <span class="hljs-number">9.0</span>;</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"num 的值为：%d\n"</span>,num);</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"*pFloat 的值为：%f\n"</span>,*pFloat);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：<br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E3%80%91%E6%B5%AE%E7%82%B9%E6%95%B0%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E8%A1%A8%E7%A4%BA/20190222014746020.png" alt=""></p>
+<p><strong>产生上述结果的原因：浮点数在计算机中的表示与整数在计算机中的表示存在差异</strong></p>
+<hr>
+<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><h4 id="整数在计算机中的表示："><a href="#整数在计算机中的表示：" class="headerlink" title="整数在计算机中的表示："></a>整数在计算机中的表示：</h4><figure class="highlight c hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">int</span> num = <span class="hljs-number">9</span>;</span><br></pre></td></tr></table></figure>
+<p>上面这条语句声明并定义了一个整型int变量num为9；在普通的32位计算机中，用四个字节表示int，其二进制表示为：</p>
+<blockquote>
+<blockquote>
+<p>00000000 00000000 00000000 00001001</p>
+</blockquote>
+</blockquote>
+<h4 id="浮点数在计算机中的表示："><a href="#浮点数在计算机中的表示：" class="headerlink" title="浮点数在计算机中的表示："></a>浮点数在计算机中的表示：</h4><p>根据国际标准IEEE 754，任意一个二进制浮点数V可以表示为下面这种形式：</p>
+<blockquote>
+<blockquote>
+<p> $ V = (-1)^s <em> M </em> 2^E $</p>
+<ul>
+<li>s表示符号位，s=0为正，s=1为负；</li>
+<li>M为有效数字，$1&lt;= M &lt;2$;</li>
+<li>$2^E$表示指数位； </li>
+</ul>
+</blockquote>
+</blockquote>
+<p>如题例，十进制的 $9.0$ ,写成二进制位$1001.0$,相当于：$1.001 <em> 2^3$,其中$s=0,M=1.001,E=3$;<br>十进制的$-9.0$,写成二进制为$-1001.0$,相当于：$-1.001 </em> 2^3$,其中$s=1,M=1.001,E=3$;</p>
+<p><strong>有效数字M：</strong></p>
+<p>IEEE 745规定，对于32位的浮点数，最高的一位是符号位s，接着的8位是指数E，剩下的23位为有效数字M：<br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E3%80%91%E6%B5%AE%E7%82%B9%E6%95%B0%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E8%A1%A8%E7%A4%BA/20190222022411070.png" alt="32bIt"><br>对于64位的浮点数来说，最高的一位仍为符号位s，接着的11位是指数E，剩下的52位为有效数字M：<br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E3%80%91%E6%B5%AE%E7%82%B9%E6%95%B0%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E8%A1%A8%E7%A4%BA/20190222023402771.png" alt="64bit"><br>另外，前面提到，$1&lt;= M &lt;2$,也就是说M可以写成$1.x_1x_2x_3x_4$的形式，其中$x_1x_2x_3x_4$表示小数部分。IEEE 754规定，在计算机内包存M时， 默认这个数的第一位为 1，因此可以被舍去，这样子就可以节省一位有效数字位，使得32（64）位浮点数可以保存24（53）位的有效数字。</p>
+<p><strong>指数E的情况稍微复杂一些：</strong></p>
+<p>首先，E是一个无符号整数（unsign int ）,着意味着当E为8位时，其取值范围为0到255；若E为11位其取值范围为0到2047。但是我们知道，科学计数法中的E可以是负数，因此，E的真实值必须减去一个中间值。对于8位的E应减去127，对于11位的E应减去1023；</p>
+<p>比如说，$2^9 $ 的E是9，所以保存成32位浮点数时，必须保存为$E = 9+127=136$,即$10001000$。</p>
+<p><strong>还原E的真实值时还可以分成3种情况：</strong></p>
+<ol>
+<li>E不全为0或不全为1:。这时可直接用E减去127（1023）即可得到E的真实值。</li>
+<li>E全为0。这时浮点数的指数E为1-127（1-1023），有效数字M不再加上第一位，而是还原成$0.x_1x_2x_3x_4$的小数。这样做是为了表示$\pm0$,以及接近于0的很小的数字。</li>
+<li>E全为1。这时如果有效数字M全为0，则表示$\pm$无穷大（取决于符号位s）；如果有效数字M不全为0，表示这个数是一个NaN。</li>
+</ol>
+<hr>
+<p>到此，回顾最初的问题。</p>
+<ol>
+<li><p>为什么$00000000 00000000 00000000 00001001$还原成浮点数就变成了$0.000000$ 呢???<br>首先：00000000 00000000 00000000 00001001的符号位s为0表示其为正；<br>再者：00000000 00000000 00000000 00001001的指数位E为00000000（全为0），符合第2种情况，还原后的E的真实值为：$E=1-127=-126$；<br>最后：00000000 00000000 00000000 00001001的有效数字位为：$000 0000 0000 0000 0000 1001$。<br>综上：$V = (-1)^0 <em> 0.00000000000000000001001 </em> 2^{-126} = 1.001 * 2^{-146}$<br>可以看出这是一个很小的数，故用十进制表示为0.000000.</p>
+</li>
+<li><p>浮点数9.0如何用二进制表示，还原成十进制后为何是1092567616 呢？<br>首先：浮点数9.0的二进制表示为1001.0，即为$1.001 * 2^3$；符号位s=0；<br>再者：有效数字M=100 0000 0000 0000 0000 0000（共23位（100后加上20个0）其中最高位1默认被省略）。<br>最后：指数E=3+127=130，即$E = 10000010_{BIN}$。<br>综上：浮点数9.0在计算机内的表示为：$0 10000010 00100000000000000000000$，将其转化为十进制就是：1091567616<br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E3%80%91%E6%B5%AE%E7%82%B9%E6%95%B0%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E8%A1%A8%E7%A4%BA/20190222033629845.png" alt=""></p>
+</li>
+</ol>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/C/">C</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
     <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">标签</a></li>
-            <li class="is-active"><a href="#" aria-current="page">List</a></li>
-        </ul>
-        </nav>
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/honbao.PNG" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechatpay.png" alt="微信"></div>
+</a>
+
+                
+        </div>
     </div>
 </div>
 
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/01/27/QueueStack/" class="image is-7by1">
-            <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1548581470072&amp;di=ee7f02ae4ffa2ccc6257101f77c6b5d9&amp;imgtype=0&amp;src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20170627%2Fa3e6109615584b62a5eb86fe79243270_th.jpg" alt="Queue and Stack">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-01-27T06:30:48.907Z">2019-01-27</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/DataStructs/">DataStructs</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    16 分钟 读完 (大约 2391 个字)
-                </span>
-                
-            </div>
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/01/28/HexoGitHub/">
+                <span class="level-item">Hexo_Github</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/01/27/QueueStack/">Queue and Stack</a>
-            
-        </h1>
-        <div class="content">
-            <hr>
-<h3 id="栈和队列的基本概念"><a href="#栈和队列的基本概念" class="headerlink" title="栈和队列的基本概念"></a>栈和队列的基本概念</h3><hr>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/01/27/QueueStack/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
         
     </div>
 </div>
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'oR2IQXqpGEFy4GHNDgdmfSMR-gzGzoHsz',
+        app_key: 'hwYfVGzICBlXGiokUXaNqJsx',
+        placeholder: 'Say something...'
+    });
+</script>
 
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/01/27/linearList/" class="image is-7by1">
-            <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1548580411500&amp;di=d3bc8a8fb160d662bf3ef1d14ff4ae37&amp;imgtype=0&amp;src=http%3A%2F%2Fs2.cdn.deahu.com%2Fshow%2Flfile%2F7E73DBAD83122DAF20DFDD33CF1E9C8D.jpg" alt="Linear List">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-01-27T06:20:02.356Z">2019-01-27</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/DataStructs/">DataStructs</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    11 分钟 读完 (大约 1598 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/01/27/linearList/">Linear List</a>
-            
-        </h1>
-        <div class="content">
-            <hr>
-<h3 id="线性表的基本概念与实现"><a href="#线性表的基本概念与实现" class="headerlink" title="线性表的基本概念与实现"></a>线性表的基本概念与实现</h3>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/01/27/linearList/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
     </div>
 </div>
-
-
-
-
-
-
-
+<div align="left"><span id="busuanzi_container_page_pv">
+    The total amount of reading is <span id="busuanzi_value_page_pv"></span> times.
+  </span>
+</div>
 
 </div>
                 
@@ -943,7 +993,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/gen.svg" alt="青木の博客" height="28">
+                    <img src="/images/gen.svg" alt="【底层原理】浮点数在计算机中的表示" height="28">
                 
                 </a>
                 <p class="is-size-7">
