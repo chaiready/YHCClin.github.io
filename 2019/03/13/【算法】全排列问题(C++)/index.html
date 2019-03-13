@@ -2,7 +2,7 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>【算法】全排列问题(C++) - 青木の博客</title>
+<title>【算法】全排列问题 - 青木の博客</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
@@ -10,15 +10,15 @@
     <meta name="description" content="算法思想：">
 <meta name="keywords" content="Algorithm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【算法】全排列问题(C++)">
+<meta property="og:title" content="【算法】全排列问题">
 <meta property="og:url" content="https://www.ccyh.xyz/2019/03/13/【算法】全排列问题(C++)/index.html">
 <meta property="og:site_name" content="青木の博客">
 <meta property="og:description" content="算法思想：">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.ccyh.xyz/【算法】全排列问题(C++">
-<meta property="og:updated_time" content="2019-03-13T05:00:28.794Z">
+<meta property="og:updated_time" content="2019-03-13T05:23:35.329Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【算法】全排列问题(C++)">
+<meta name="twitter:title" content="【算法】全排列问题">
 <meta name="twitter:description" content="算法思想：">
 <meta name="twitter:image" content="https://www.ccyh.xyz/【算法】全排列问题(C++">
 
@@ -99,7 +99,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/gen.svg" alt="【算法】全排列问题(C++)" height="28">
+                <img src="/images/gen.svg" alt="【算法】全排列问题" height="28">
             
             </a>
         </div>
@@ -148,7 +148,7 @@
     
     <div class="card-image">
         <span class="image is-7by1">
-            <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSus7oOa3LUuq9BhX7CGsLmIIj5f7Wd6ptHW9n8cVw-Dd0DahYD" alt="【算法】全排列问题(C++)">
+            <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSus7oOa3LUuq9BhX7CGsLmIIj5f7Wd6ptHW9n8cVw-Dd0DahYD" alt="【算法】全排列问题">
         </span>
     </div>
     
@@ -174,7 +174,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                【算法】全排列问题(C++)
+                【算法】全排列问题
             
         </h1>
         <div class="content">
@@ -183,7 +183,7 @@
 <p>设定一个数组p用来存放当前排列，并用一个数组Hash用来标记已填入p中的数字。<br>按顺序将数字填入数组p中的第0位置第Max-1位，现在假设已经填好了p[0]~p[index-1]，正准备将数字填入index位置，若index位置未及Max（数组边界），则枚举0~Max-1；判断是否有数字未填入，若有则将其填入p中，同时在Hash中将该数字置为已填入。其后继续填入下一个位置index+1；当递归完成时，将Hash[i]还原为false（将i置为未填入）。</p>
 </blockquote>
 <h4 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h4><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> Max 10</span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-comment">//列举从0到Max-1的全排列</span></span><br><span class="line"><span class="hljs-keyword">int</span> p[Max];<span class="hljs-comment">//保存当前排列</span></span><br><span class="line"><span class="hljs-keyword">bool</span> Hash[Max] = &#123;<span class="hljs-literal">false</span>&#125;;<span class="hljs-comment">//标记i是否已填入p中，是为真，否为假；</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">generate_x</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(index == Max)<span class="hljs-comment">//递归边界，已生成一种排列可能</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; Max;i++)<span class="hljs-comment">//输出该排列</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-built_in">cout</span> &lt;&lt; p[i] &lt;&lt; <span class="hljs-string">' '</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">		<span class="hljs-keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; Max;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">if</span>(Hash[i] == <span class="hljs-literal">false</span>)<span class="hljs-comment">//判断i是否还未已填入p中</span></span><br><span class="line">		&#123;</span><br><span class="line">			p[index] = i;<span class="hljs-comment">//填入</span></span><br><span class="line">			Hash[i] = <span class="hljs-literal">true</span>;<span class="hljs-comment">//标记已填入</span></span><br><span class="line">			generate_x(index+<span class="hljs-number">1</span>);<span class="hljs-comment">//填写下一个数</span></span><br><span class="line">			Hash[i] = <span class="hljs-literal">false</span>;<span class="hljs-comment">//处理完P[index] = i 的子问题，还原状态</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	generate_x(<span class="hljs-number">0</span>);<span class="hljs-comment">//从0开始填入</span></span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="输出结果："><a href="#输出结果：" class="headerlink" title="输出结果："></a>输出结果：</h4><p><img src="/【算法】全排列问题(C++" alt="">/20190313010008400.png)</p>
+<h4 id="输出结果："><a href="#输出结果：" class="headerlink" title="输出结果："></a>输出结果：</h4><p><img src="/【算法】全排列问题(C++" alt="">/20190313012239824.png)</p>
 
         </div>
         
@@ -320,7 +320,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        12
+                        13
                     </p>
                 </div>
             </div>
@@ -519,7 +519,7 @@
                 <span class="level-item">算法</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li>
             </ul>
@@ -533,7 +533,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/List/" style="font-size: 20px;">List</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/Tree/" style="font-size: 10px;">Tree</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a>
+        <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/List/" style="font-size: 15px;">List</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/Tree/" style="font-size: 10px;">Tree</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a>
     </div>
 </div>
 
@@ -552,14 +552,14 @@
             
             <a href="/2019/03/13/【算法】全排列问题(C++)/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSus7oOa3LUuq9BhX7CGsLmIIj5f7Wd6ptHW9n8cVw-Dd0DahYD" alt="【算法】全排列问题(C++)">
+                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSus7oOa3LUuq9BhX7CGsLmIIj5f7Wd6ptHW9n8cVw-Dd0DahYD" alt="【算法】全排列问题">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-13T04:32:26.000Z">2019-03-13</time></div>
-                    <a href="/2019/03/13/【算法】全排列问题(C++)/" class="has-link-black-ter is-size-6">【算法】全排列问题(C++)</a>
+                    <a href="/2019/03/13/【算法】全排列问题(C++)/" class="has-link-black-ter is-size-6">【算法】全排列问题</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/算法/">算法</a>
                     </p>
@@ -579,6 +579,25 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-13T02:59:40.000Z">2019-03-13</time></div>
                     <a href="/2019/03/13/【算法】数字黑洞/" class="has-link-black-ter is-size-6">【算法】数字黑洞</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/12/【算法】素数筛法/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://pic.baike.soso.com/ugc/baikepic2/29906/cut-20141207123211-1562225095.jpg/0" alt="【算法】素数筛法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-12T05:03:23.000Z">2019-03-12</time></div>
+                    <a href="/2019/03/12/【算法】素数筛法/" class="has-link-black-ter is-size-6">【算法】素数筛法</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/算法/">算法</a>
                     </p>
@@ -624,25 +643,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/01/27/arrayandlist/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1549179243&amp;di=d0595deef1085246079f16279e96f2ba&amp;imgtype=jpg&amp;er=1&amp;src=http%3A%2F%2Fsource.aliog.com%2Fwp-content%2Fuploads%2F2015%2F05%2F20150521_555d7178d1052.png" alt="【数据结构】数组、矩阵、和广义表">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-27T07:07:54.237Z">2019-01-27</time></div>
-                    <a href="/2019/01/27/arrayandlist/" class="has-link-black-ter is-size-6">【数据结构】数组、矩阵、和广义表</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数据结构/">数据结构</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -661,7 +661,7 @@
                     <span class="level-item">三月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -715,7 +715,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Algorithm/">
                         <span class="tag">Algorithm</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -802,14 +802,14 @@
             
             <a href="/2019/03/13/【算法】全排列问题(C++)/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSus7oOa3LUuq9BhX7CGsLmIIj5f7Wd6ptHW9n8cVw-Dd0DahYD" alt="【算法】全排列问题(C++)">
+                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSus7oOa3LUuq9BhX7CGsLmIIj5f7Wd6ptHW9n8cVw-Dd0DahYD" alt="【算法】全排列问题">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-13T04:32:26.000Z">2019-03-13</time></div>
-                    <a href="/2019/03/13/【算法】全排列问题(C++)/" class="has-link-black-ter is-size-6">【算法】全排列问题(C++)</a>
+                    <a href="/2019/03/13/【算法】全排列问题(C++)/" class="has-link-black-ter is-size-6">【算法】全排列问题</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/算法/">算法</a>
                     </p>
@@ -829,6 +829,25 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-13T02:59:40.000Z">2019-03-13</time></div>
                     <a href="/2019/03/13/【算法】数字黑洞/" class="has-link-black-ter is-size-6">【算法】数字黑洞</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/12/【算法】素数筛法/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://pic.baike.soso.com/ugc/baikepic2/29906/cut-20141207123211-1562225095.jpg/0" alt="【算法】素数筛法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-12T05:03:23.000Z">2019-03-12</time></div>
+                    <a href="/2019/03/12/【算法】素数筛法/" class="has-link-black-ter is-size-6">【算法】素数筛法</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/算法/">算法</a>
                     </p>
@@ -874,25 +893,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/01/27/arrayandlist/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1549179243&amp;di=d0595deef1085246079f16279e96f2ba&amp;imgtype=jpg&amp;er=1&amp;src=http%3A%2F%2Fsource.aliog.com%2Fwp-content%2Fuploads%2F2015%2F05%2F20150521_555d7178d1052.png" alt="【数据结构】数组、矩阵、和广义表">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-27T07:07:54.237Z">2019-01-27</time></div>
-                    <a href="/2019/01/27/arrayandlist/" class="has-link-black-ter is-size-6">【数据结构】数组、矩阵、和广义表</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数据结构/">数据结构</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -911,7 +911,7 @@
                     <span class="level-item">三月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -965,7 +965,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Algorithm/">
                         <span class="tag">Algorithm</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -1042,7 +1042,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/gen.svg" alt="【算法】全排列问题(C++)" height="28">
+                    <img src="/images/gen.svg" alt="【算法】全排列问题" height="28">
                 
                 </a>
                 <p class="is-size-7">
