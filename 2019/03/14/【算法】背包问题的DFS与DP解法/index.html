@@ -147,12 +147,25 @@
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     
-    <div class="card-image">
-        <span class="image is-7by1">
-            <img class="thumbnail" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Knapsack.svg/250px-Knapsack.svg.png" alt="【算法】背包问题的DFS与DP解法">
-        </span>
+    <div class="content">
+     
+    <h3 id="Kanapsack-Problem"><a href="#Kanapsack-Problem" class="headerlink" title="Kanapsack Problem"></a>Kanapsack Problem</h3><hr>
+<a id="more"></a>
+<h4 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h4><blockquote>
+<p>有n件物品，每件物品重w[i]，价值为c[i]。现在需要选出若干件物品放入一个容量为V的背包中，使得在选入背包的物品总重量不超过背包限重的情况下，让背包内的物品总价值达到最大。</p>
+</blockquote>
+<h5 id="DFS解法："><a href="#DFS解法：" class="headerlink" title="DFS解法："></a>DFS解法：</h5><h5 id="算法思想："><a href="#算法思想：" class="headerlink" title="算法思想："></a>算法思想：</h5><blockquote>
+<p>对于每件物品，有两种情况（选，或不选）。若选择该物品，则将更新背包内的总重与总价值量，若不选择该物品，则跳过它去判断下一件物品，当处理完n件物品后，此时记录的sumW和sumC就是所选物品的总质量和总价值。如果sumW不超过V且sumC比MaxValue还大，就更新MaxValue。</p>
+</blockquote>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> Maxn 10</span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n,V,MaxValue = <span class="hljs-number">0</span>;<span class="hljs-comment">//n为物品的总件数，V为背包的容量，MaxValue为最大价值</span></span><br><span class="line"><span class="hljs-keyword">int</span> w[Maxn],c[Maxn];<span class="hljs-comment">//w[i]为每件物品的重量,c[i]为每件物品的价值</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">DFS_Kanapsack</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index,<span class="hljs-keyword">int</span> sumW,<span class="hljs-keyword">int</span> sumC)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(index == n)<span class="hljs-comment">//已完成对n件物品的选择</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">if</span>(sumW &lt;= V &amp;&amp; sumC &gt; MaxValue)</span><br><span class="line">		&#123;</span><br><span class="line">			MaxValue = sumC;<span class="hljs-comment">//更新最大价值</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-comment">//</span></span><br><span class="line">	DFS_Kanapsack(index+<span class="hljs-number">1</span>,sumW,sumC);<span class="hljs-comment">//不选择第index件物品</span></span><br><span class="line">	DFS_Kanapsack(index+<span class="hljs-number">1</span>,sumW + w[index],sumC + c[index]);<span class="hljs-comment">//选择第index件物品</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">cin</span> &gt;&gt; n &gt;&gt; V;</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; n;i++)<span class="hljs-comment">//输入每件物品的重量</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-built_in">cin</span> &gt;&gt; w[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; n;i++)<span class="hljs-comment">//输入每件的价值</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-built_in">cin</span> &gt;&gt; c[i];</span><br><span class="line">	&#125;</span><br><span class="line">	DFS_Kanapsack(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>);<span class="hljs-comment">//初始时为第0件物品，重量为0，价值为0;</span></span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; MaxValue &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>由于每种物品有两种选择，因而易得上述算法的时间复杂度为$2^n$;<br>这显然很是糟糕，因为在上述算法中，总是把对n件物品的选择全部确定后才去更新最大价值，但是却忽略了背包容量总是不能超过V这个点，也就是说，我们可以把选择index物品放入对上述条件的判断之中，若选择index后重量不超过V则才选择它。</p>
+</blockquote>
+<h4 id="改进后的算法："><a href="#改进后的算法：" class="headerlink" title="改进后的算法："></a>改进后的算法：</h4><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">DFS_Kanapsack</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index,<span class="hljs-keyword">int</span> sumW,<span class="hljs-keyword">int</span> sumC)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(index == n)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	DFS_Kanapsack(index+<span class="hljs-number">1</span>,sumW,sumC);</span><br><span class="line"></span><br><span class="line">	<span class="hljs-keyword">if</span>(sumW + w[index] &lt;= V)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">if</span>(sumC + c[index] &gt; MaxValue)</span><br><span class="line">		&#123;</span><br><span class="line">			MaxValue = sumC + c[index];</span><br><span class="line">		&#125;</span><br><span class="line">		DFS_Kanapsack(index+<span class="hljs-number">1</span>,sumW+w[index],sumC+c[index]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+
     </div>
-    
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
@@ -562,12 +575,6 @@
         
         <article class="media">
             
-            <a href="/2019/03/17/【算法】DP最大和问题/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuCIrP3gCZEIokdgvSiwxXzepAoutbqgGYgXIvSomi98GBai2W" alt="【算法】DP最大和问题">
-                </p>
-            </a>
-            
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-17T11:55:27.000Z">2019-03-17</time></div>
@@ -580,12 +587,6 @@
         </article>
         
         <article class="media">
-            
-            <a href="/2019/03/14/【算法】背包问题的DFS与DP解法/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Knapsack.svg/250px-Knapsack.svg.png" alt="【算法】背包问题的DFS与DP解法">
-                </p>
-            </a>
             
             <div class="media-content">
                 <div class="content">
@@ -600,12 +601,6 @@
         
         <article class="media">
             
-            <a href="/2019/03/13/【算法】全排列问题(C++)/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSus7oOa3LUuq9BhX7CGsLmIIj5f7Wd6ptHW9n8cVw-Dd0DahYD" alt="【算法】全排列问题">
-                </p>
-            </a>
-            
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-13T04:32:26.000Z">2019-03-13</time></div>
@@ -619,12 +614,6 @@
         
         <article class="media">
             
-            <a href="/2019/03/13/【算法】数字黑洞/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://p3.ifengimg.com/a/2017_49/e70b37a4de6ef7b_size120_w600_h337.jpg" alt="【算法】数字黑洞">
-                </p>
-            </a>
-            
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-13T02:59:40.000Z">2019-03-13</time></div>
@@ -637,12 +626,6 @@
         </article>
         
         <article class="media">
-            
-            <a href="/2019/03/12/【算法】素数筛法/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://pic.baike.soso.com/ugc/baikepic2/29906/cut-20141207123211-1562225095.jpg/0" alt="【算法】素数筛法">
-                </p>
-            </a>
             
             <div class="media-content">
                 <div class="content">
@@ -826,12 +809,6 @@
         
         <article class="media">
             
-            <a href="/2019/03/17/【算法】DP最大和问题/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuCIrP3gCZEIokdgvSiwxXzepAoutbqgGYgXIvSomi98GBai2W" alt="【算法】DP最大和问题">
-                </p>
-            </a>
-            
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-17T11:55:27.000Z">2019-03-17</time></div>
@@ -844,12 +821,6 @@
         </article>
         
         <article class="media">
-            
-            <a href="/2019/03/14/【算法】背包问题的DFS与DP解法/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Knapsack.svg/250px-Knapsack.svg.png" alt="【算法】背包问题的DFS与DP解法">
-                </p>
-            </a>
             
             <div class="media-content">
                 <div class="content">
@@ -864,12 +835,6 @@
         
         <article class="media">
             
-            <a href="/2019/03/13/【算法】全排列问题(C++)/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSus7oOa3LUuq9BhX7CGsLmIIj5f7Wd6ptHW9n8cVw-Dd0DahYD" alt="【算法】全排列问题">
-                </p>
-            </a>
-            
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-13T04:32:26.000Z">2019-03-13</time></div>
@@ -883,12 +848,6 @@
         
         <article class="media">
             
-            <a href="/2019/03/13/【算法】数字黑洞/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="http://p3.ifengimg.com/a/2017_49/e70b37a4de6ef7b_size120_w600_h337.jpg" alt="【算法】数字黑洞">
-                </p>
-            </a>
-            
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-13T02:59:40.000Z">2019-03-13</time></div>
@@ -901,12 +860,6 @@
         </article>
         
         <article class="media">
-            
-            <a href="/2019/03/12/【算法】素数筛法/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://pic.baike.soso.com/ugc/baikepic2/29906/cut-20141207123211-1562225095.jpg/0" alt="【算法】素数筛法">
-                </p>
-            </a>
             
             <div class="media-content">
                 <div class="content">
