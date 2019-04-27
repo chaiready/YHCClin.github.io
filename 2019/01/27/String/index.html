@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>【数据结构】 字符串 - 咸鱼の博客</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="串的定义">
+<meta name="keywords" content="String">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【数据结构】 字符串">
+<meta property="og:url" content="https://www.ccyh.xyz/2019/01/27/String/index.html">
+<meta property="og:site_name" content="咸鱼の博客">
+<meta property="og:description" content="串的定义">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-02-28T13:57:28.608Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【数据结构】 字符串">
+<meta name="twitter:description" content="串的定义">
+
+
+
+
+
+<link rel="icon" href="/images/favicons.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-133326618-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-133326618-2');
+</script>
+
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/gen.svg" alt="【数据结构】 字符串" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">主页</a>
+                
+                <a class="navbar-item" href="/archives">归档</a>
+                
+                <a class="navbar-item" href="/categories">分类</a>
+                
+                <a class="navbar-item" href="/tags">标签</a>
+                
+                <a class="navbar-item" href="/about">关于</a>
+                
+                <a class="navbar-item" href="/thinkings">随想</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="My GitHub" href="https://github.com/YHCClin?tab=repositories">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1548580675099&amp;di=6efdd9be8a2394de553173ab69c0bb70&amp;imgtype=0&amp;src=http%3A%2F%2Fs1.knowsky.com%2F20170206%2Fp3rqnw1kmbl32.png" alt="【数据结构】 字符串">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-01-27T06:27:40.068Z">2019-01-27</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/数据结构/">数据结构</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    23 分钟 读完 (大约 3435 个字)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                【数据结构】 字符串
+            
+        </h1>
+        <div class="content">
+            <h4 id="串的定义"><a href="#串的定义" class="headerlink" title="串的定义"></a>串的定义</h4><a id="more"></a>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 通常用一个字符数组来表示</span></span><br><span class="line"><span class="hljs-keyword">char</span> str[] = <span class="hljs-string">"hello"</span>;</span><br><span class="line"><span class="hljs-comment">// 数组str内存储的字符为&#123;'h','e','l','l','o','\0'&#125; ,故有6个数组元素，其中'\0'是串的结束标志，告知编译器串结束了。</span></span><br><span class="line"><span class="hljs-comment">// 但是串str的长度为5，“hello”，</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>【注】以上定义方式一般不用，因为用该方式单纯以 ‘\0’ 结尾的串如果要得到字符串的长度较为麻烦（需要遍历整个串，时间复杂度为O(n)，故一般情况下我们用自己定义的结构体来定义串，下面会谈到。</li>
+</ul>
+<hr>
+<ul>
+<li>【注】空格也是串中的元素，由一个或多个空格组成的串称为空格串，空格串不是“空串”。</li>
+</ul>
+<hr>
+<ul>
+<li>串的逻辑结构与线性表类似，串是限定了元素为字符的线性表。但从操作对象上来说，串与线性表有着很大的不同：线性表的主要操作对象是单个元素，而串的主要操作对象是该串的一个“<strong>子串</strong>”。</li>
+</ul>
+<hr>
+<h4 id="串的存储结构"><a href="#串的存储结构" class="headerlink" title="串的存储结构"></a>串的存储结构</h4><hr>
+<p><strong>1. 定长顺序存储表示：</strong><br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Str</span>&#123;</span></span><br><span class="line">  <span class="hljs-keyword">char</span> str[maxsize+<span class="hljs-number">1</span>]; <span class="hljs-comment">// 用来存放字串的字符数组，maxsize 为字符串最大长度，maxsize+1为数组最大长度，+1 用于存储 '\0'.</span></span><br><span class="line">  <span class="hljs-keyword">int</span> length; <span class="hljs-comment">// 字符串长度，可用Str.length方法直接访问 length &lt;= maxsize;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>2. 动态分配存储表示：</strong><br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">LStr</span>&#123;</span></span><br><span class="line">  <span class="hljs-keyword">char</span> *ch; <span class="hljs-comment">// 指向malloc();动态分配存储区的首地址的指针</span></span><br><span class="line">  <span class="hljs-keyword">int</span> length; <span class="hljs-comment">// 字符串长度</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h4 id="串的基本操作"><a href="#串的基本操作" class="headerlink" title="串的基本操作"></a>串的基本操作</h4><hr>
+<p><strong>1. 赋值操作：</strong><br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">strassign</span><span class="hljs-params">(LStr&amp; str,<span class="hljs-keyword">char</span>* ch)</span></span>&#123; <span class="hljs-comment">// 需返回的变量带引用符号&amp;</span></span><br><span class="line">  <span class="hljs-keyword">if</span> (str.ch)&#123;</span><br><span class="line">    <span class="hljs-built_in">free</span>(str.ch); <span class="hljs-comment">// 释放原有空间</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">int</span> len = <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-keyword">char</span> *c = ch;</span><br><span class="line">  <span class="hljs-keyword">while</span>(c)&#123; <span class="hljs-comment">// 计算ch的长度</span></span><br><span class="line">    ++len;</span><br><span class="line">    ++c;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">if</span> (len == <span class="hljs-number">0</span> )&#123;</span><br><span class="line">    str.ch = <span class="hljs-literal">NULL</span>; <span class="hljs-comment">// 如果ch为空，则直接返回一个空的串</span></span><br><span class="line">    str.len = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    str.ch = (<span class="hljs-keyword">char</span>*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">char</span>)*(str.len+<span class="hljs-number">1</span>)); <span class="hljs-comment">// 用malloc函数分配一块连续的存储空间，str.len+1是为了容纳'\0'</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (str.ch == <span class="hljs-literal">NULL</span>) &#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; <span class="hljs-comment">//分配失败</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      c = ch;</span><br><span class="line">      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= len;i++)&#123; <span class="hljs-comment">//遍历并赋值</span></span><br><span class="line">        str.ch[i] = *c; <span class="hljs-comment">// *c 表示c指针所指的位置的值</span></span><br><span class="line">        ++c; <span class="hljs-comment">// c指针指向下一个位置</span></span><br><span class="line">      &#125;</span><br><span class="line">      str.len = len; <span class="hljs-comment">// 被赋值的串长度等于ch的串长</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>; <span class="hljs-comment">// successfully</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>2. 取串长度操作：</strong><br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">StrLength</span><span class="hljs-params">(LStr str)</span></span>&#123;</span><br><span class="line">    <span class="hljs-comment">// 有给串长度信息的情况：</span></span><br><span class="line">    <span class="hljs-keyword">return</span> str.len; <span class="hljs-comment">// 返回str串的长度</span></span><br><span class="line">    </span><br><span class="line">    <span class="hljs-comment">//在没有给出串长度信息的情况下：</span></span><br><span class="line">    <span class="hljs-keyword">int</span> len = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">char</span> = *c;</span><br><span class="line">    c = str.ch;</span><br><span class="line">    <span class="hljs-keyword">while</span>(c)&#123;</span><br><span class="line">      ++len;</span><br><span class="line">      ++c;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> len;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li><strong>串的比较操作</strong>：<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">strCompare</span><span class="hljs-params">(LStr str1,LStr str2)</span></span>&#123;</span><br><span class="line">    <span class="hljs-comment">//啰嗦版:</span></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; str1.len &amp;&amp; i &lt; str2.len)&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(str1.ch[i] - str2.ch[i] == <span class="hljs-number">0</span>) i++;</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(str1.ch[i] - str2.ch[i] &gt; <span class="hljs-number">0</span>)&#123;</span><br><span class="line">            <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"str1 &gt; str2"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"str1 &lt; str2"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span> (str1.len - str2.len &gt; <span class="hljs-number">0</span>)&#123;</span><br><span class="line">      <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"str1 &gt; str2"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (str1.len - str2.len &lt; <span class="hljs-number">0</span>)&#123;</span><br><span class="line">      <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"str1 &lt; str2"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">else</span> <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"str1 = str2"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-comment">// 简洁版：</span></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; str1.len &amp;&amp; i &lt; str2.len ;i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (str1.ch[i] != str2.ch[i])&#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> str1.ch[i] - str2.ch[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> str1.len - str2.len;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>4. 串的连接操作：</strong><br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">concat</span><span class="hljs-params">(LStr &amp;str,LStr str1,LStr str2)</span></span>&#123;  <span class="hljs-comment">// 将两个字符串连接并用一个新的字符串str返回</span></span><br><span class="line">    <span class="hljs-keyword">if</span>(str.ch) &#123; <span class="hljs-comment">// 清除原有空间</span></span><br><span class="line">      <span class="hljs-built_in">free</span>(str.ch);</span><br><span class="line">      str.ch = <span class="hljs-literal">NULL</span>;</span><br><span class="line">      str.len = <span class="hljs-number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    str.ch = (<span class="hljs-keyword">char</span>*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">char</span>)*(str1.len+str2.len+<span class="hljs-number">1</span>)); <span class="hljs-comment">// 分配连续空间，+1是为了多分配一个位置空间存放‘\0’</span></span><br><span class="line">    <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">while</span>(i &lt; str1.len)&#123; <span class="hljs-comment">// 插入str1;</span></span><br><span class="line">      str.ch[i] = str1.ch[i];</span><br><span class="line">      ++i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">while</span>(j &lt;= str2.len)&#123; <span class="hljs-comment">// 插入str2，注意这里用"&lt;="是为了吧'\0' 也加到末尾</span></span><br><span class="line">      str.ch[i+j] = str2.ch[j];</span><br><span class="line">      ++j;</span><br><span class="line">    &#125;</span><br><span class="line">    str.len = str1.len + str2.len; <span class="hljs-comment">// 更新字符串长度</span></span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>; <span class="hljs-comment">// 成功连接</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>5. 求子串操作：</strong><br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">subStr</span><span class="hljs-params">(LStr &amp;substr,LStr str,<span class="hljs-keyword">int</span> pos,<span class="hljs-keyword">int</span> len)</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (pos + len &gt; str.len || pos &lt; <span class="hljs-number">0</span> || len &lt; <span class="hljs-number">0</span> || pos &gt;= str.len)&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;  <span class="hljs-comment">//判断输入是否合法</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span> (substr.ch)&#123; <span class="hljs-comment">// 清空原空间</span></span><br><span class="line">      <span class="hljs-built_in">free</span>(substr.ch);</span><br><span class="line">      substr.ch = <span class="hljs-literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span> (len == <span class="hljs-number">0</span>)&#123; <span class="hljs-comment">// 若子串长度为0.直接返回空子串</span></span><br><span class="line">      substr.ch = <span class="hljs-literal">NULL</span>;</span><br><span class="line">      substr.len = <span class="hljs-number">0</span>;</span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">else</span>&#123;</span><br><span class="line">    substr.ch = (<span class="hljs-keyword">char</span>*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">char</span>)*(len+<span class="hljs-number">1</span>)); <span class="hljs-comment">// 分配连续的内存空间</span></span><br><span class="line">    </span><br><span class="line">    <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">int</span> j = pos;</span><br><span class="line">    <span class="hljs-keyword">while</span>(i&lt;len)&#123; <span class="hljs-comment">// 从pos处开始遍历并赋值给子串</span></span><br><span class="line">        substr.ch[i] = str.ch[j];</span><br><span class="line">        ++i;</span><br><span class="line">        ++j;</span><br><span class="line">    &#125;</span><br><span class="line">    substr.ch[i] = <span class="hljs-string">'\0'</span>; <span class="hljs-comment">// 这个千万别忘了加进去</span></span><br><span class="line">    substr.len = len; <span class="hljs-comment">// 更新子串长度</span></span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>; <span class="hljs-comment">// 成功</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ol start="6">
+<li>串的清空操作：<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 串的清空操作在上诉各函数中均有用到</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">clearStr</span><span class="hljs-params">(LStr &amp;str)</span></span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (str.ch)&#123;</span><br><span class="line">      <span class="hljs-built_in">free</span>(str.ch);</span><br><span class="line">      str.ch = <span class="hljs-literal">NULL</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  str.len = <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<h4 id="串的模式匹配算法-重点"><a href="#串的模式匹配算法-重点" class="headerlink" title="串的模式匹配算法(重点)"></a>串的模式匹配算法(重点)</h4><h6 id="何为模式匹配："><a href="#何为模式匹配：" class="headerlink" title="何为模式匹配："></a>何为模式匹配：</h6><ul>
+<li>对一个串中某子串的定位操作称为串的模式匹配，其中待匹配的子串称为“模式串”。<h6 id="串的模式匹配算法分为："><a href="#串的模式匹配算法分为：" class="headerlink" title="串的模式匹配算法分为："></a>串的模式匹配算法分为：</h6></li>
+</ul>
+<ol>
+<li>简单模式匹配算法</li>
+<li>KMP算法</li>
+</ol>
+<hr>
+<p><strong>1. 简单模式匹配算法：</strong></p>
+<ul>
+<li><em>算法思想</em>：</li>
+<li>从主串的第一个位置起开始遍历字符串，若该字符与模式串的第一个字符相同，则继逐一比较后续字符，   否则从主串的下一个位置开始，重复上一步操作，以此类推，直到比较完模式串的所有字符。若匹配成     功，返回模式串在主串中的位置。匹配失败 ……,随便你想咋样。<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">subStr_Match</span><span class="hljs-params">(Lstr str,LStr substr)</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (substr.ch == <span class="hljs-literal">NULL</span> || str.ch == <span class="hljs-literal">NULL</span>)&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">int</span> i ,j , pos = <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span> , j = <span class="hljs-number">0</span>;i &lt; str.len &amp;&amp; i &lt; substr.len; )&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (str.ch[i] == substr.ch[j])&#123;</span><br><span class="line">        ++j;</span><br><span class="line">        ++i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      j = <span class="hljs-number">0</span>; <span class="hljs-comment">// 匹配失败，j 重新指向模式串起始位置</span></span><br><span class="line">      i = ++pos; <span class="hljs-comment">// pos 记录上一次匹配的起始位置，在匹配失败后将i指向上一轮匹配的初始位置pos的后面一个位置++pos开始新一轮匹配</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">if</span> (j &gt;= substr.len)&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> pos; <span class="hljs-comment">// 匹配成功，返回模式串在主串中的位置</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<ol start="2">
+<li><strong><em>KMP算法</em></strong>：</li>
+</ol>
+<ul>
+<li><em>算法思想解析</em> :</li>
+<li>上述的匹配算法称为“简单模式匹配算法（BF）”，其时间复杂度为O(mn),其中m为主串长度，n为模式串长度。由此可知简单模式匹配算法虽然易于理解但是效率很低，无法满足当已知数据异常庞大时的效率要求。所以就诞生了接下来登场的KMP算法。</li>
+<li>我们知道，在BF算法中每次发生不匹配i与j都要回溯到该轮匹配的初始位置，并且在回溯之后的后几次匹配同样有可能导致（不必要的）不匹配状态，这是导致算法效率低下的主要原因，那么如何直接跳过这些不必要的不匹配状态而直接到达可能解决不匹配位置的的状态呢？</li>
+<li>解决办法就是利用匹配失败后的信息，那么如何利用呢？</li>
+<li>为了使问题变得更加直观，我们假想匹配过程就是模式串在主串上的移动(实际上并不会移动，全是指针在变化)，如果在某一次匹配时在模式串的第j位置发生了不匹配（j位置前的所有元素都已匹配成功），如果照着BF算法来做，我们会抛弃掉j位置前的匹配“成果”直接将i与j回溯重新开始下一轮比较。但现在我们不这么做，因为我们完全可以将j之前的匹配成果利用起来</li>
+<li>不不妨假设模式串为“ABABABB”，并且该模式串在与主串的一次匹配流程中第4个元素B与主串发生了不匹配，很显然这个时候主串i位置前的三个元素跟模式串是完全匹配的，为了利用这个成果，就是在模式串向后移动后尽可能地保留这些匹配成果，我们观察这三个元素“ABA”的特点，发现他的前缀与后缀出现了相同的字符序列“A”，这时候我们应该意识到，要时上一次的成果得到最大限度的保留，我们只能将模式串移动到前缀与后缀重合的状态，这样子就保留了一个匹配成果“A“，同时i根本就不需要回溯（原地不动就好），因为i无需从模式串头部重新开始与其匹配，而只需从保留的成果后开始匹配也就是模式串的第二个位置（A的后一个位置）开始匹配。</li>
+<li>但问题又来了，怎么知道模式串该怎么移动呢，从上面的分析我们发现，对于模式串移动的分析完全没有涉及到主串，那我们是怎么做到视主串而不见的呢(它可是”主“串啊给点面子好不好)。事实上，我们用到他了，因为我们的假设是”j位置前的元素与主串完全匹配“，竟然这样那么不就说明j位置前的模式串部分与主串的那一部分完全一样吗，所以我们可以用一个所谓”假模式串“来代替主串，而模式串只要在这个”傀儡身上移动就好了。所以，模式串在哪个位置与主串发生不匹配后模式串应该怎么移动，这个问题就可以脱离主串而背单独拿出来分析了，这就是后面要谈到的next数组（用与存放当j位置发生不匹配时，j指针应该重新调整到那个位置上）。有了next数组，我们就可以知道当模式串在J处与主串发生不匹配之后，为了最大限度地保留之前的匹配成果，模式串该怎么移动（指针该怎么变化）。</li>
+</ul>
+<hr>
+<p><strong>KMP算法代码</strong>：<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">KMP</span> <span class="hljs-params">(LStr str,LStr substr,<span class="hljs-keyword">int</span> next[])</span></span>&#123; <span class="hljs-comment">// 函数接受主串，模式串，next数组</span></span><br><span class="line">  </span><br><span class="line">  <span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span> ,j = <span class="hljs-number">1</span>; <span class="hljs-comment">// i 扫描主串，j 扫描模式串</span></span><br><span class="line">  <span class="hljs-keyword">for</span> (i &lt; str.len &amp;&amp; i &lt; substr.len)&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (j == <span class="hljs-number">0</span> || str.ch[i] == substr.ch[j])&#123;  </span><br><span class="line"><span class="hljs-comment">// j=0;的情况就是模式串中的第一个字符与主串中的第i个字符不匹配，应从</span></span><br><span class="line"><span class="hljs-comment">// 主串的下一个位置与模式串的第一个位置继续比较，故++i(主串的下一个位置);</span></span><br><span class="line"><span class="hljs-comment">// ++j(模式串第一个位置0+1=1(很强))</span></span><br><span class="line">        ++j;</span><br><span class="line">        ++i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      j = next[j]; <span class="hljs-comment">// j 被调整到合适位置，这里的i不需要回朔，这也是KMP算法的一大特点</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">if</span> (j &gt;= substr.len)&#123; <span class="hljs-comment">// j 的长度超过了模式串，显然匹配成功</span></span><br><span class="line">    <span class="hljs-keyword">return</span> i - substr.len; <span class="hljs-comment">// 匹配成功，返回模式串在主串中的位置</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p><strong>next数组的求法</strong>:</p>
+<ul>
+<li>经过前面的分析我们知道，只需要模式串本身我们就可以求出next数组，并不需要主串的参与。所以我们可以定义一个函数将next数组一次性求出，从此一劳永逸……</li>
+<li>这里我们要用到一个算法思想，那就是<strong>递推</strong>,我们知道数列就是一种有着递推关系的数的序列。现在假设等差数列{An},给你一个递推公式(实际上就是前一个元素与后一个元素的关系)：A(n+1) = An + 1;其中n={1,2,3,…}然后告诉你第一个元素A1 = 0(实际上告诉你任何一个位置上的元素值都可以); 有了这两个已知条件你可以知道这个数列的所有元素就是非负整数集{0,1,2,3, …}。</li>
+<li>那我们如何在求解next数组上面应用这个思想呢？ 首先看看我们有什么已知条件？</li>
+<li>显然我们需要知道两个相邻状态Sk与Sk+1之间的关系，假设模式串为p1～pm，问题转化为两个模式串之间的匹配问题。如果在Sk时，已经求得了next[j] = t；若要求得Sk+1状态的next[j+1]，我们需要分两种状态来考虑：</li>
+</ul>
+<ol>
+<li>若Pj = Pt；则next[j+1] = t+1;</li>
+<li>若Pj != pt;这时候就又回到了我们讨论模式串与主串匹配出现匹配失败的经典情形了，不匹配发生在t处，我们应该去查next数组看看t应该怎样调整位置了，显然next[t]我们已经求得了，所以令t = next[t],继续比较pj与pt，若不相等重复第二种情况，直到t = 0;或者pj = pt 满足第一种情况，从而求得next[j+i];</li>
+</ol>
+<hr>
+<p><strong>next求数组代码</strong>:<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">getNext</span><span class="hljs-params">(LStr substr,<span class="hljs-keyword">int</span> next[])</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">int</span> t = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">int</span> next[<span class="hljs-number">1</span>] = <span class="hljs-number">0</span>; <span class="hljs-comment">// 特殊情况，模式串的第一个位置发生不匹配</span></span><br><span class="line">    <span class="hljs-keyword">while</span>(i &lt; substr.len)&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(t==<span class="hljs-number">0</span> || substr.ch[t] == substr.ch[j])&#123; <span class="hljs-comment">// t=0;是因为next数组中可能有0元素,也说明没有重合的前后缀</span></span><br><span class="line">            next[j+<span class="hljs-number">1</span>] = t+<span class="hljs-number">1</span>; </span><br><span class="line">            ++j;</span><br><span class="line">            ++t;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">else</span>&#123;</span><br><span class="line">            t = next[t];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h4 id="KMP-算法的改进"><a href="#KMP-算法的改进" class="headerlink" title="KMP 算法的改进"></a>KMP 算法的改进</h4><hr>
+<ul>
+<li>KMP算法就还有什么地方需要改进的？</li>
+<li>为了回答这个问题我们先来看一种特殊情况：模式串为（A A A A A B）,该模式串所对应的next数组为{0,1,2,3,4,5}。可以遇见的是当在模式串第j=5个位置A处发生不匹配时，next数组指导j指向4；而4处的元素依然不匹配（因为4处元素与5处相等），j来到了3（同样不匹配），紧接着来到了2（不匹配），来到1（依然不匹配），最后j=0(++i,++j)到此才结束了之前陷入的“尴尬”局面。</li>
+<li>由上分析我们不难想到，如何才能让j直接跳到0；而免去从1-4的多余的比较呢？这就是KMP算法需要改进的地方</li>
+<li>也就是说，对KMP算法的改进主要就是对求next数组的方法的改进，于是就有了改进版的next数组，我们称之为 <strong>nextval 数组</strong></li>
+</ul>
+<hr>
+<h5 id="getNextval-算法核心思想："><a href="#getNextval-算法核心思想：" class="headerlink" title="getNextval() 算法核心思想："></a>getNextval() 算法核心思想：</h5><hr>
+<ul>
+<li>通过上面那个特殊情况，我们知道当j处发生不匹配时，若next数组指导的下一个位置的值与j处的值是相等的，那么显然这次比较就是多余的（因为显然还是会不匹配），所以我们应该跳过next数组所指向的那个位置，换一种思路就是我们应该让next[j] 所指向的位置与Pj不相等，就是改变next[j] 的值；改变后的next数组就是nextval数组.</li>
+<li>求解nextval数组的一般步骤：</li>
+</ul>
+<ol>
+<li>当j等于1时，nextval[j]赋值为 0 ，作为特殊标记；</li>
+<li>当j大于1 时：<br>   若Pj不等于P(next[j]),则nextval[j] 等于 next[j];<br>   若Pj等于P(next[j]),则nextval[j] 等于 nextval[next[j]];</li>
+</ol>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">getNextval</span><span class="hljs-params">(LStr substr,<span class="hljs-keyword">int</span> nextval[])</span></span>&#123;</span><br><span class="line">  <span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>;</span><br><span class="line">  <span class="hljs-keyword">int</span> t = <span class="hljs-number">0</span>;</span><br><span class="line">  nextval[<span class="hljs-number">1</span>] = <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-keyword">while</span>(i&lt;substr.len)&#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (j == <span class="hljs-number">0</span> || substr.sh[j] == substr.ch[t])&#123;</span><br><span class="line">          <span class="hljs-keyword">if</span>(substr.ch[j+i] != substr.ch[t+<span class="hljs-number">1</span>])</span><br><span class="line">              nextval[j+<span class="hljs-number">1</span>] = t+<span class="hljs-number">1</span>;</span><br><span class="line">          <span class="hljs-keyword">else</span></span><br><span class="line">              nextval[j+<span class="hljs-number">1</span>] = nextval[t+<span class="hljs-number">1</span>];</span><br><span class="line">              </span><br><span class="line">              ++j;</span><br><span class="line">              ++t;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="hljs-keyword">else</span> </span><br><span class="line">          t = nextval[t];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/String/">String</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/honbao.PNG" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/yjtp.png" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/01/27/QueueStack/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">【数据结构】栈与队列</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/01/27/linearList/">
+                <span class="level-item">【数据结构】线性表</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'oR2IQXqpGEFy4GHNDgdmfSMR-gzGzoHsz',
+        app_key: 'hwYfVGzICBlXGiokUXaNqJsx',
+        placeholder: 'Say something...'
+    });
+</script>
+
+    </div>
+</div>
+<div align="left"><span id="busuanzi_container_page_pv">
+    The total amount of reading is <span id="busuanzi_value_page_pv"></span> times.
+  </span>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <img class="image is-128x128 has-mb-6" src="https://avatars1.githubusercontent.com/u/30885631?s=460&amp;v=4" alt="咸鱼">
+                    
+                    <p class="is-size-4 is-block">
+                        咸鱼
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Student
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>China,Fujian</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        16
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        6
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        11
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://ccyh.xyz/">
+                关注我</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/YHCClin">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Facebook" href="http://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Twitter" href="https://twitter.com/echo_scottlin">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Dribbble" href="http://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://www.google.com" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Google</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.google.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.stackoverflow.com" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Stackoverflow</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.stackoverflow.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://rawpixel.com" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Rawpixel</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">rawpixel.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://gitter.im/FreeCodeCamp/chinese" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">FreecodeCamp</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">gitter.im</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://weavesilk.com" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Weavesilk</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">weavesilk.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/工具/">
+            <span class="level-start">
+                <span class="level-item">工具</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/底层原理/">
+            <span class="level-start">
+                <span class="level-item">底层原理</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/教程/">
+            <span class="level-start">
+                <span class="level-item">教程</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/数据结构/">
+            <span class="level-start">
+                <span class="level-item">数据结构</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/算法/">
+            <span class="level-start">
+                <span class="level-item">算法</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/随笔/">
+            <span class="level-start">
+                <span class="level-item">随笔</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/Knapsack/" style="font-size: 10px;">Knapsack</a> <a href="/tags/List/" style="font-size: 15px;">List</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/Tree/" style="font-size: 10px;">Tree</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/03/17/【算法】DP最大和问题/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuCIrP3gCZEIokdgvSiwxXzepAoutbqgGYgXIvSomi98GBai2W" alt="【算法】DP最大和问题">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-17T11:55:27.000Z">2019-03-17</time></div>
+                    <a href="/2019/03/17/【算法】DP最大和问题/" class="has-link-black-ter is-size-6">【算法】DP最大和问题</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/14/【算法】背包问题的DFS与DP解法/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Knapsack.svg/250px-Knapsack.svg.png" alt="【算法】背包问题的DFS与DP解法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-14T12:03:54.000Z">2019-03-14</time></div>
+                    <a href="/2019/03/14/【算法】背包问题的DFS与DP解法/" class="has-link-black-ter is-size-6">【算法】背包问题的DFS与DP解法</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/13/【算法】全排列问题(C++)/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSus7oOa3LUuq9BhX7CGsLmIIj5f7Wd6ptHW9n8cVw-Dd0DahYD" alt="【算法】全排列问题">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-13T04:32:26.000Z">2019-03-13</time></div>
+                    <a href="/2019/03/13/【算法】全排列问题(C++)/" class="has-link-black-ter is-size-6">【算法】全排列问题</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/13/【算法】数字黑洞/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://p3.ifengimg.com/a/2017_49/e70b37a4de6ef7b_size120_w600_h337.jpg" alt="【算法】数字黑洞">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-13T02:59:40.000Z">2019-03-13</time></div>
+                    <a href="/2019/03/13/【算法】数字黑洞/" class="has-link-black-ter is-size-6">【算法】数字黑洞</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/12/【算法】素数筛法/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://pic.baike.soso.com/ugc/baikepic2/29906/cut-20141207123211-1562225095.jpg/0" alt="【算法】素数筛法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-12T05:03:23.000Z">2019-03-12</time></div>
+                    <a href="/2019/03/12/【算法】素数筛法/" class="has-link-black-ter is-size-6">【算法】素数筛法</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Algorithm/">
+                        <span class="tag">Algorithm</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Array/">
+                        <span class="tag">Array</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Blog/">
+                        <span class="tag">Blog</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Knapsack/">
+                        <span class="tag">Knapsack</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/List/">
+                        <span class="tag">List</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/String/">
+                        <span class="tag">String</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Tools/">
+                        <span class="tag">Tools</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Tree/">
+                        <span class="tag">Tree</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/algorithm/">
+                        <span class="tag">algorithm</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/随笔/">
+                        <span class="tag">随笔</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/03/17/【算法】DP最大和问题/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuCIrP3gCZEIokdgvSiwxXzepAoutbqgGYgXIvSomi98GBai2W" alt="【算法】DP最大和问题">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-17T11:55:27.000Z">2019-03-17</time></div>
+                    <a href="/2019/03/17/【算法】DP最大和问题/" class="has-link-black-ter is-size-6">【算法】DP最大和问题</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/14/【算法】背包问题的DFS与DP解法/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Knapsack.svg/250px-Knapsack.svg.png" alt="【算法】背包问题的DFS与DP解法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-14T12:03:54.000Z">2019-03-14</time></div>
+                    <a href="/2019/03/14/【算法】背包问题的DFS与DP解法/" class="has-link-black-ter is-size-6">【算法】背包问题的DFS与DP解法</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/13/【算法】全排列问题(C++)/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSus7oOa3LUuq9BhX7CGsLmIIj5f7Wd6ptHW9n8cVw-Dd0DahYD" alt="【算法】全排列问题">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-13T04:32:26.000Z">2019-03-13</time></div>
+                    <a href="/2019/03/13/【算法】全排列问题(C++)/" class="has-link-black-ter is-size-6">【算法】全排列问题</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/13/【算法】数字黑洞/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="http://p3.ifengimg.com/a/2017_49/e70b37a4de6ef7b_size120_w600_h337.jpg" alt="【算法】数字黑洞">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-13T02:59:40.000Z">2019-03-13</time></div>
+                    <a href="/2019/03/13/【算法】数字黑洞/" class="has-link-black-ter is-size-6">【算法】数字黑洞</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/12/【算法】素数筛法/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://pic.baike.soso.com/ugc/baikepic2/29906/cut-20141207123211-1562225095.jpg/0" alt="【算法】素数筛法">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-12T05:03:23.000Z">2019-03-12</time></div>
+                    <a href="/2019/03/12/【算法】素数筛法/" class="has-link-black-ter is-size-6">【算法】素数筛法</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Algorithm/">
+                        <span class="tag">Algorithm</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Array/">
+                        <span class="tag">Array</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Blog/">
+                        <span class="tag">Blog</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Knapsack/">
+                        <span class="tag">Knapsack</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/List/">
+                        <span class="tag">List</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/String/">
+                        <span class="tag">String</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Tools/">
+                        <span class="tag">Tools</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Tree/">
+                        <span class="tag">Tree</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/algorithm/">
+                        <span class="tag">algorithm</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/随笔/">
+                        <span class="tag">随笔</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/gen.svg" alt="【数据结构】 字符串" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 AokiLin&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus">Icarus</a>
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+            <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+            </script>
+        <div>
+            <span id="busuanzi_container_page_pv">
+                Total page views: <span id="busuanzi_value_site_pv"></span> times.  
+            </span>
+            <span id="busuanzi_container_site_uv">
+                Number of visitors: <span id="busuanzi_value_site_uv"></span> man-time.
+            </span>
+        </div>
+        
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
