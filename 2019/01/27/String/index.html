@@ -222,7 +222,7 @@
 <hr>
 <p><strong>1. 简单模式匹配算法：</strong></p>
 <ul>
-<li>_算法思想_：</li>
+<li><em>算法思想</em>：</li>
 <li>从主串的第一个位置起开始遍历字符串，若该字符与模式串的第一个字符相同，则继逐一比较后续字符，   否则从主串的下一个位置开始，重复上一步操作，以此类推，直到比较完模式串的所有字符。若匹配成     功，返回模式串在主串中的位置。匹配失败 ……,随便你想咋样。<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">subStr_Match</span><span class="hljs-params">(Lstr str,LStr substr)</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (substr.ch == <span class="hljs-literal">NULL</span> || str.ch == <span class="hljs-literal">NULL</span>)&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">int</span> i ,j , pos = <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span> , j = <span class="hljs-number">0</span>;i &lt; str.len &amp;&amp; i &lt; substr.len; )&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (str.ch[i] == substr.ch[j])&#123;</span><br><span class="line">        ++j;</span><br><span class="line">        ++i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      j = <span class="hljs-number">0</span>; <span class="hljs-comment">// 匹配失败，j 重新指向模式串起始位置</span></span><br><span class="line">      i = ++pos; <span class="hljs-comment">// pos 记录上一次匹配的起始位置，在匹配失败后将i指向上一轮匹配的初始位置pos的后面一个位置++pos开始新一轮匹配</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">if</span> (j &gt;= substr.len)&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> pos; <span class="hljs-comment">// 匹配成功，返回模式串在主串中的位置</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -231,7 +231,7 @@
 <li><strong><em>KMP算法</em></strong>：</li>
 </ol>
 <ul>
-<li>_算法思想解析_ :</li>
+<li><em>算法思想解析</em> :</li>
 <li>上述的匹配算法称为“简单模式匹配算法（BF）”，其时间复杂度为O(mn),其中m为主串长度，n为模式串长度。由此可知简单模式匹配算法虽然易于理解但是效率很低，无法满足当已知数据异常庞大时的效率要求。所以就诞生了接下来登场的KMP算法。</li>
 <li>我们知道，在BF算法中每次发生不匹配i与j都要回溯到该轮匹配的初始位置，并且在回溯之后的后几次匹配同样有可能导致（不必要的）不匹配状态，这是导致算法效率低下的主要原因，那么如何直接跳过这些不必要的不匹配状态而直接到达可能解决不匹配位置的的状态呢？</li>
 <li>解决办法就是利用匹配失败后的信息，那么如何利用呢？</li>
