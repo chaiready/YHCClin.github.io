@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/01/28/5c4e63f57d237.png">
 <meta property="og:image" content="https://i.loli.net/2019/01/28/5c4e63f53c096.png">
 <meta property="og:image" content="https://i.loli.net/2019/01/28/5c4e63f537beb.png">
-<meta property="og:updated_time" content="2019-02-28T13:51:16.410Z">
+<meta property="og:updated_time" content="2019-04-28T11:22:53.615Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【数据结构】数组、矩阵、和广义表">
 <meta name="twitter:description" content="数组：">
@@ -242,7 +242,7 @@
 <ul>
 <li>矩阵中的元素满足A[i][j] = A[j][i] 的矩阵称为对称矩阵<br><img src="https://i.loli.net/2019/01/28/5c4e6390bcb16.png" alt></li>
 <li>如上图所示，只需要存储一半的元素就可以了，要还原出另一半只需根据A[i][j] = A[j][i]这个条件就行了。</li>
-<li>将一个n×n的对称矩阵存储在一维数组中，所需的存储空间为 $ \dfrac{(1+n)*n}{2}$</li>
+<li>将一个n×n的对称矩阵存储在一维数组中，所需的存储空间为 $ \dfrac{(1+n)·n}{2}$</li>
 <li>需要保存的元素为：<br><img src="https://i.loli.net/2019/01/28/5c4e6390c2474.png" alt></li>
 <li>按照行优先来存储，保存在一维数组中，如下图所示：<h2 id><a href="#" class="headerlink" title></a><img src="https://i.loli.net/2019/01/28/5c4e6390a79d5.png" alt></h2>b)三角阵</li>
 <li><em>上三角矩阵</em> 为矩阵下三角部分(不包括对角线)元素全为零</li>
@@ -281,8 +281,8 @@
 </li>
 </ul>
 <hr>
-<ol start="2">
-<li>伪地址表示法：<br>伪地址表示法与三元组表示法在本质上并无差别，只不过是三元组表示法的每一行用两个存储单元来存放原矩阵非零元素的位置标记，而伪地址表示法可以只用一个存储单元来存放位置标记，原因是因为对于一个$ m×n $的矩阵，伪地址表示法将元素位置下标的两个整数用一个公式映射( $ n×(i-1) +j $)到了一个整数上，同样利用该公式也可还原原i和j的值。<br>我们来看一个例子：<br><img src="https://i.loli.net/2019/01/28/5c4e63917d8a6.png" alt></li>
+<ol>
+<li>伪地址表示法：<br>伪地址表示法与三元组表示法在本质上并无差别，只不过是三元组表示法的每一行用两个存储单元来存放原矩阵非零元素的位置标记，而伪地址表示法可以只用一个存储单元来存放位置标记，原因是因为对于一个$ m·n $的矩阵，伪地址表示法将元素位置下标的两个整数用一个公式映射( $ n·(i-1) +j $)到了一个整数上，同样利用该公式也可还原原i和j的值。<br>我们来看一个例子：<br><img src="https://i.loli.net/2019/01/28/5c4e63917d8a6.png" alt></li>
 </ol>
 <hr>
 <ul>
@@ -294,7 +294,7 @@
 </li>
 </ol>
 <p>示意图如下：<br><img src="https://i.loli.net/2019/01/28/5c4e63f53599f.png" alt><br>上图中最左端为一个指针数组，用来存储指向每一行非零元素单链表的头指针，数组下标为表示行标号。</p>
-<ol start="2">
+<ol>
 <li>十字链表表示法：<br>在稀疏矩阵的十字链表存储结构中，矩阵的每一行用一个带头结点的链表表示，每一列也用一个带头结点的链表表示，这种存储结构中的链表结点有 5 个分量：行分量、列分量、数据域、指向下方结点的指针域、指向右方结点的指针域；结构图如下：<br><img src="https://i.loli.net/2019/01/28/5c4e63f53b90a.png" alt><br>普通结点定义：<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">matNode</span>&#123;</span></span><br><span class="line">	<span class="hljs-keyword">int</span> row;</span><br><span class="line">	<span class="hljs-keyword">int</span> col;</span><br><span class="line">	<span class="hljs-keyword">int</span> data;</span><br><span class="line">	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">matNode</span> *<span class="hljs-title">down</span>;</span></span><br><span class="line">	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">matNode</span> *<span class="hljs-title">right</span>;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
