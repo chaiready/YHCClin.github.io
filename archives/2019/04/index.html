@@ -3,31 +3,26 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-<title>【算法】DP最大和问题 - 飞鱼の博客</title>
+<title>归档: 2019/4 - 飞鱼の博客</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="动态规划">
-<meta name="keywords" content="Knapsack">
-<meta property="og:type" content="article">
-<meta property="og:title" content="【算法】DP最大和问题">
-<meta property="og:url" content="https://www.ccyh.xyz/2019/03/17/【算法】DP最大和问题/index.html">
+    <meta name="description" content="越努力 · 越幸运">
+<meta name="keywords" content="AokiLin">
+<meta property="og:type" content="website">
+<meta property="og:title" content="飞鱼の博客">
+<meta property="og:url" content="https://www.ccyh.xyz/archives/2019/04/index.html">
 <meta property="og:site_name" content="飞鱼の博客">
-<meta property="og:description" content="动态规划">
+<meta property="og:description" content="越努力 · 越幸运">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91DP%E6%9C%80%E5%A4%A7%E5%92%8C%E9%97%AE%E9%A2%98/20190317082529638.png">
-<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91DP%E6%9C%80%E5%A4%A7%E5%92%8C%E9%97%AE%E9%A2%98/20190317083401575.png">
-<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91DP%E6%9C%80%E5%A4%A7%E5%92%8C%E9%97%AE%E9%A2%98/20190317084336292.png">
-<meta property="og:updated_time" content="2019-04-28T07:21:22.058Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【算法】DP最大和问题">
-<meta name="twitter:description" content="动态规划">
-<meta name="twitter:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91DP%E6%9C%80%E5%A4%A7%E5%92%8C%E9%97%AE%E9%A2%98/20190317082529638.png">
+<meta name="twitter:title" content="飞鱼の博客">
+<meta name="twitter:description" content="越努力 · 越幸运">
 
 
 
-<link rel="alternative" href="/atom.xml" title="【算法】DP最大和问题" type="application/atom+xml">
+<link rel="alternative" href="/atom.xml" title="飞鱼の博客" type="application/atom+xml">
 
 
 
@@ -104,7 +99,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/gen.svg" alt="【算法】DP最大和问题" height="28">
+                <img src="/images/gen.svg" alt="飞鱼の博客" height="28">
             
             </a>
         </div>
@@ -149,158 +144,38 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-10-tablet is-10-desktop is-8-widescreen has-order-2 column-main"><div class="card">
-    
-    <div class="card-image">
-        <span class="image is-7by1">
-            <img class="thumbnail" src="https://media-cdn.jiuzhang.com/course/dp3_LkMISIN.png" alt="【算法】DP最大和问题">
-        </span>
-    </div>
-    
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-17T11:55:27.000Z">2019-03-17</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 406 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                【算法】DP最大和问题
-            
-        </h1>
-        <div class="content">
-            <h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><hr>
-<a id="more"></a>
-<h4 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h4><blockquote>
-<p>给定一个整数数字序列（用数组表示），在这个数列中选择若干个互不相邻的数，使得这些数的和达到最大值。</p>
-</blockquote>
-<h4 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h4><blockquote>
-<p>属于01背包问题同类问题，对于每一个数，都有两种选择（选或不选）。假设给定数组set[]的长度为n，最终要求OPT(n-1)的结果,也就是从下标0到下标n-1这些数中能组成的最大和，而要求OPT(n-1)就分为两种情况：<br>1.选择set[n-1],因为不能出现相邻选项故OPT[n-1]的结果为set[n-1]与OPT[n-3]的和。<br>2.不选择set[n-1],则OPT[n-1]的结果就与OPT[n-2]相等。<br>判断出口：<br>不难看出，OPT[0] = set[0]，OPT[1] = max(set[0],set[1]);</p>
-</blockquote>
-<p><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91DP%E6%9C%80%E5%A4%A7%E5%92%8C%E9%97%AE%E9%A2%98/20190317082529638.png" alt></p>
-<h4 id="因此其状态转移方程为："><a href="#因此其状态转移方程为：" class="headerlink" title="因此其状态转移方程为："></a>因此其状态转移方程为：</h4><p><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91DP%E6%9C%80%E5%A4%A7%E5%92%8C%E9%97%AE%E9%A2%98/20190317083401575.png" alt></p>
-<hr>
-<h4 id="算法实现："><a href="#算法实现：" class="headerlink" title="算法实现："></a>算法实现：</h4><p><em>递归实现：</em><br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">OPT</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(i == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-built_in">set</span>[<span class="hljs-number">0</span>];</span><br><span class="line">	<span class="hljs-keyword">if</span>(i == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-built_in">set</span>[<span class="hljs-number">0</span>]&gt;<span class="hljs-built_in">set</span>[<span class="hljs-number">1</span>] ? <span class="hljs-built_in">set</span>[<span class="hljs-number">0</span>]:<span class="hljs-built_in">set</span>[<span class="hljs-number">1</span>];</span><br><span class="line">	<span class="hljs-keyword">int</span> a = OPT(i<span class="hljs-number">-1</span>);</span><br><span class="line">	<span class="hljs-keyword">int</span> b = OPT(i<span class="hljs-number">-2</span>)+<span class="hljs-built_in">set</span>[i];</span><br><span class="line">	<span class="hljs-keyword">return</span> a&gt;b?a:b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><em>DP实现：</em><br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">OPT_</span><span class="hljs-params">(<span class="hljs-keyword">int</span> <span class="hljs-built_in">set</span>[],<span class="hljs-keyword">int</span> m)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> *opt = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">100</span>];<span class="hljs-comment">//状态数组</span></span><br><span class="line">    <span class="hljs-comment">//出口</span></span><br><span class="line">	opt[<span class="hljs-number">0</span>] = <span class="hljs-built_in">set</span>[<span class="hljs-number">0</span>];</span><br><span class="line">	opt[<span class="hljs-number">1</span>] = <span class="hljs-built_in">set</span>[<span class="hljs-number">0</span>]&gt;<span class="hljs-built_in">set</span>[<span class="hljs-number">1</span>] ? <span class="hljs-built_in">set</span>[<span class="hljs-number">0</span>]:<span class="hljs-built_in">set</span>[<span class="hljs-number">1</span>];</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>;i &lt; m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">int</span> a = opt[i<span class="hljs-number">-1</span>];</span><br><span class="line">		<span class="hljs-keyword">int</span> b = opt[i<span class="hljs-number">-2</span>] + <span class="hljs-built_in">set</span>[i];</span><br><span class="line">		opt[i] = a&gt;b?a:b;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> opt[m<span class="hljs-number">-1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><em>测试：</em></p>
-<blockquote>
-<p>输入：{1,5,8,9,7,8,2,1,6,3}<br>输出：<br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91DP%E6%9C%80%E5%A4%A7%E5%92%8C%E9%97%AE%E9%A2%98/20190317084336292.png" alt></p>
-</blockquote>
-
-        </div>
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Knapsack/">Knapsack</a>
-                </div>
-            </div>
-        </div>
-        
-        
-        
-        <div class="social-share"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
-<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
-        
-    </div>
-</div>
-
-
-
-<div class="card">
+                <div class="column is-10-tablet is-10-desktop is-8-widescreen has-order-2 column-main">
+<div class="card widget">
     <div class="card-content">
-        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
-        <div class="buttons is-centered">
-            
+        <h3 class="tag is-link">
+        四月 2019
+        </h3>
+        <div class="timeline">
+        
+            <article class="media">
                 
-<a class="button is-info donate">
-    <span class="icon is-small">
-        <i class="fab fa-alipay"></i>
-    </span>
-    <span>支付宝</span>
-    <div class="qrcode"><img src="/images/honbao.PNG" alt="支付宝"></div>
-</a>
-
-                
-                
-<a class="button is-success donate">
-    <span class="icon is-small">
-        <i class="fab fa-weixin"></i>
-    </span>
-    <span>微信</span>
-    <div class="qrcode"><img src="/images/yjtp.png" alt="微信"></div>
-</a>
-
-                
+                <div class="media-content">
+                    <div class="content">
+                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-04-29T09:31:10.000Z">2019-04-29</time>
+                        <a href="/2019/04/29/Hexo+icarus主题配置/" class="has-link-black-ter is-size-6">Hexo+icarus主题配置</a>
+                        <div class="level article-meta is-mobile">
+                            <div class="level-left">
+                                
+                                <div class="level-item is-size-7 is-uppercase">
+                                <a class="has-link-grey -link" href="/categories/教程/">教程</a>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        
         </div>
     </div>
 </div>
 
 
-
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/04/29/Hexo+icarus主题配置/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Hexo+icarus主题配置</span>
-            </a>
-        </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/14/【算法】背包问题的DFS与DP解法/">
-                <span class="level-item">【算法】背包问题的DFS与DP解法</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
-    </div>
-</div>
-
-
-
-<div class="card">
-    <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">评论</h3>
-        
-<script>
-    var disqus_config = function () {
-        this.page.url = 'https://www.ccyh.xyz/2019/03/17/【算法】DP最大和问题/';
-        this.page.identifier = '2019/03/17/【算法】DP最大和问题/';
-    };
-    (function() {
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'ccyhweb' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-
-<div id="disqus_thread">
-    
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-    </div>
-</div>
 
 </div>
                 
@@ -987,7 +862,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/gen.svg" alt="【算法】DP最大和问题" height="28">
+                    <img src="/images/gen.svg" alt="飞鱼の博客" height="28">
                 
                 </a>
                 <p class="is-size-7">
