@@ -3,27 +3,27 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-<title>【随笔】2018年终总结 - 飞鱼の博客</title>
+<title>Hexo用MathJax渲染数学公式 - 飞鱼の博客</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="我的2018">
-<meta name="keywords" content="随笔">
+    <meta name="description" content="更改默认Markdown渲染引擎">
+<meta name="keywords" content="Hexo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【随笔】2018年终总结">
-<meta property="og:url" content="https://www.ccyh.xyz/2018/12/30/【随笔】2018年终总结/index.html">
+<meta property="og:title" content="Hexo用MathJax渲染数学公式">
+<meta property="og:url" content="https://www.ccyh.xyz/2019/04/30/Hexo用MathJax渲染数学公式/index.html">
 <meta property="og:site_name" content="飞鱼の博客">
-<meta property="og:description" content="我的2018">
+<meta property="og:description" content="更改默认Markdown渲染引擎">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-27T11:21:36.870Z">
+<meta property="og:updated_time" content="2019-04-30T10:00:24.982Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【随笔】2018年终总结">
-<meta name="twitter:description" content="我的2018">
+<meta name="twitter:title" content="Hexo用MathJax渲染数学公式">
+<meta name="twitter:description" content="更改默认Markdown渲染引擎">
 
 
 
-<link rel="alternative" href="/atom.xml" title="【随笔】2018年终总结" type="application/atom+xml">
+<link rel="alternative" href="/atom.xml" title="Hexo用MathJax渲染数学公式" type="application/atom+xml">
 
 
 
@@ -100,7 +100,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/gen.svg" alt="【随笔】2018年终总结" height="28">
+                <img src="/images/gen.svg" alt="Hexo用MathJax渲染数学公式" height="28">
             
             </a>
         </div>
@@ -147,28 +147,22 @@
             <div class="columns">
                 <div class="column is-10-tablet is-10-desktop is-8-widescreen has-order-2 column-main"><div class="card">
     
-    <div class="card-image">
-        <span class="image is-7by1">
-            <img class="thumbnail" src="https://www.kettlemag.co.uk/wp-content/uploads/2019/01/2018.jpg" alt="【随笔】2018年终总结">
-        </span>
-    </div>
-    
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-12-30T08:49:57.000Z">2018-12-30</time>
+                <time class="level-item has-text-grey" datetime="2019-04-30T09:24:31.000Z">2019-04-30</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/随笔/">随笔</a>
+                <a class="has-link-grey -link" href="/categories/教程/">教程</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 29 个字)
+                    3 分钟 读完 (大约 398 个字)
                 </span>
                 
             </div>
@@ -176,13 +170,27 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                【随笔】2018年终总结
+                Hexo用MathJax渲染数学公式
             
         </h1>
         <div class="content">
-            <h1 id="我的2018"><a href="#我的2018" class="headerlink" title="我的2018"></a>我的2018</h1><hr>
-<a id="more"></a>
-<p>9102年已经过去快一半了，一直能坐下来好好的对2018做一个总结。</p>
+            <h2 id="更改默认Markdown渲染引擎"><a href="#更改默认Markdown渲染引擎" class="headerlink" title="更改默认Markdown渲染引擎"></a>更改默认Markdown渲染引擎</h2><a id="more"></a>
+<p>Hexo的默认Markdown渲染引擎为hexo-renderer-marked，将其替换为hexo-renderer-kramed,对于这一步，网上的大部分教程是这么干的：<br><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-kramed --save</span><br></pre></td></tr></table></figure></p>
+<p>也就是先卸载掉默认引擎，再安装新引擎。但是我的npm出了问题，而且我个人觉得npm实在是不好用，因此我下载了yarn，并执行：<br><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">yarn remove hexo-renderer-marked</span><br><span class="line">yarn add hexo-renderer-kramed</span><br></pre></td></tr></table></figure></p>
+<p>但当我执行hexo clean时却出现了类似下面的错误：<br><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">Error: hexo-renderer-marked is not installed , please install ....</span><br></pre></td></tr></table></figure></p>
+<p>所以一直无法成功。<br>后来我想干脆不卸载marked渲染引擎，直接安装kramed：<br><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">yarn add hexo-renderer-kramed</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="安装MathJax"><a href="#安装MathJax" class="headerlink" title="安装MathJax"></a>安装MathJax</h2><p>卸载hexo-math：<br><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">yarn remove hexo-math</span><br></pre></td></tr></table></figure></p>
+<p>再安装hexo-renderer-mathjax：<br><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">yarn add hexo-renderer-mathjax -S</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="解决行内公式语义冲突"><a href="#解决行内公式语义冲突" class="headerlink" title="解决行内公式语义冲突"></a>解决行内公式语义冲突</h2><p>在博客的根目录下找到$\color{red}{node_modules/kramed/lib/rules/inline.js}$<br>做如下两处更改：<br><figure class="highlight js hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> inline = &#123;</span><br><span class="line">  <span class="hljs-comment">//escape: /^\\([\\`*&#123;&#125;\[\]()#$+\-.!_&gt;])/,   第一处</span></span><br><span class="line">  <span class="hljs-built_in">escape</span>: <span class="hljs-regexp">/^\\([`*\[\]()#$+\-.!_&gt;])/</span>,</span><br><span class="line">  autolink: <span class="hljs-regexp">/^&lt;([^ &gt;]+(@|:\/)[^ &gt;]+)&gt;/</span>,</span><br><span class="line">  url: noop,</span><br><span class="line">  html: <span class="hljs-regexp">/^&lt;!--[\s\S]*?--&gt;|^&lt;(\w+(?!:\/|[^\w\s@]*@)\b)*?(?:"[^"]*"|'[^']*'|[^'"&gt;])*?&gt;([\s\S]*?)?&lt;\/\1&gt;|^&lt;(\w+(?!:\/|[^\w\s@]*@)\b)(?:"[^"]*"|'[^']*'|[^'"&gt;])*?&gt;/</span>,</span><br><span class="line">  link: <span class="hljs-regexp">/^!?\[(inside)\]\(href\)/</span>,</span><br><span class="line">  reflink: <span class="hljs-regexp">/^!?\[(inside)\]\s*\[([^\]]*)\]/</span>,</span><br><span class="line">  nolink: <span class="hljs-regexp">/^!?\[((?:\[[^\]]*\]|[^\[\]])*)\]/</span>,</span><br><span class="line">  reffn: <span class="hljs-regexp">/^!?\[\^(inside)\]/</span>,</span><br><span class="line">  strong: <span class="hljs-regexp">/^__([\s\S]+?)__(?!_)|^\*\*([\s\S]+?)\*\*(?!\*)/</span>,</span><br><span class="line">  <span class="hljs-comment">//em: /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,  第二处</span></span><br><span class="line">  em: <span class="hljs-regexp">/^\*((?:\*\*|[\s\S])+?)\*(?!\*)/</span>,</span><br><span class="line">  code: <span class="hljs-regexp">/^(`+)\s*([\s\S]*?[^`])\s*\1(?!`)/</span>,</span><br><span class="line">  br: <span class="hljs-regexp">/^ &#123;2,&#125;\n(?!\s*$)/</span>,</span><br><span class="line">  del: noop,</span><br><span class="line">  text: <span class="hljs-regexp">/^[\s\S]+?(?=[\\&lt;!\[_*`$]| &#123;2,&#125;\n|$)/</span>,</span><br><span class="line">  math: <span class="hljs-regexp">/^\$\$\s*([\s\S]*?[^\$])\s*\$\$(?!\$)/</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="更改Mathjax加载脚本"><a href="#更改Mathjax加载脚本" class="headerlink" title="更改Mathjax加载脚本"></a>更改Mathjax加载脚本</h2><p>找到$\color{red}{node_modules/hexo-renderer-mathjax/mathjax.html}$将最后一句改为：<br><figure class="highlight html hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML'</span> <span class="hljs-attr">async</span>&gt;</span><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>$e\left ( x^{<em>} \right ) = x - x^{</em>}x = a_0 + \frac{1}{a_1 +\sqrt{a^2+b^2} \frac{1}{a_2 + \frac{1}{a_3 + a_4}}}\sqrt{a^2+b^2}$</p>
+<hr>
+<h2 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a>大功告成</h2><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+<p>将改动部署到博客</p>
+<hr>
 
         </div>
         
@@ -190,7 +198,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/随笔/">随笔</a>
+                    <a class="has-link-grey -link" href="/tags/Hexo/">Hexo</a>
                 </div>
             </div>
         </div>
@@ -240,17 +248,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/01/27/hello-world/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Hello Friend</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2018/12/27/HexoEditor/">
-                <span class="level-item">【工具】HexoEditor编辑器的安装配置及使用</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/04/29/Hexo+icarus主题配置/">
+                <span class="level-item">Hexo+icarus主题配置</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -266,8 +267,8 @@
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'https://www.ccyh.xyz/2018/12/30/【随笔】2018年终总结/';
-        this.page.identifier = '2018/12/30/【随笔】2018年终总结/';
+        this.page.url = 'https://www.ccyh.xyz/2019/04/30/Hexo用MathJax渲染数学公式/';
+        this.page.identifier = 'ccyhweb';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -983,7 +984,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/gen.svg" alt="【随笔】2018年终总结" height="28">
+                    <img src="/images/gen.svg" alt="Hexo用MathJax渲染数学公式" height="28">
                 
                 </a>
                 <p class="is-size-7">
