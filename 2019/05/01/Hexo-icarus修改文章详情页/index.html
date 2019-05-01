@@ -3,26 +3,27 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-<title>归档 - 飞鱼の博客</title>
+<title>Hexo-icarus修改文章详情页 - 飞鱼の博客</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="越努力 · 越幸运">
-<meta name="keywords" content="AokiLin">
-<meta property="og:type" content="website">
-<meta property="og:title" content="飞鱼の博客">
-<meta property="og:url" content="https://www.ccyh.xyz/archives/index.html">
+    <meta name="description" content="为什么修改？由于Hexo-icarus主题的文章详情页默认与主页布局一致，皆为三栏布局。但是三栏布局限制了文章内容的展示，因此试图将其改为两栏布局。  通过修改源代码来达成目标打开/themes/icarus/layout/layout.ejs文件，添加col()函数到文件中：&amp;lt;% function col()&amp;#123;    if(!is_post())&amp;#123;        ret">
+<meta name="keywords" content="Hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo-icarus修改文章详情页">
+<meta property="og:url" content="https://www.ccyh.xyz/2019/05/01/Hexo-icarus修改文章详情页/index.html">
 <meta property="og:site_name" content="飞鱼の博客">
-<meta property="og:description" content="越努力 · 越幸运">
+<meta property="og:description" content="为什么修改？由于Hexo-icarus主题的文章详情页默认与主页布局一致，皆为三栏布局。但是三栏布局限制了文章内容的展示，因此试图将其改为两栏布局。  通过修改源代码来达成目标打开/themes/icarus/layout/layout.ejs文件，添加col()函数到文件中：&amp;lt;% function col()&amp;#123;    if(!is_post())&amp;#123;        ret">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-01T11:21:45.425Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="飞鱼の博客">
-<meta name="twitter:description" content="越努力 · 越幸运">
+<meta name="twitter:title" content="Hexo-icarus修改文章详情页">
+<meta name="twitter:description" content="为什么修改？由于Hexo-icarus主题的文章详情页默认与主页布局一致，皆为三栏布局。但是三栏布局限制了文章内容的展示，因此试图将其改为两栏布局。  通过修改源代码来达成目标打开/themes/icarus/layout/layout.ejs文件，添加col()函数到文件中：&amp;lt;% function col()&amp;#123;    if(!is_post())&amp;#123;        ret">
 
 
 
-<link rel="alternative" href="/atom.xml" title="飞鱼の博客" type="application/atom+xml">
+<link rel="alternative" href="/atom.xml" title="Hexo-icarus修改文章详情页" type="application/atom+xml">
 
 
 
@@ -99,7 +100,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/gen.svg" alt="飞鱼の博客" height="28">
+                <img src="/images/gen.svg" alt="Hexo-icarus修改文章详情页" height="28">
             
             </a>
         </div>
@@ -109,7 +110,7 @@
                 
                 <a class="navbar-item" href="/">主页</a>
                 
-                <a class="navbar-item is-active" href="/archives">归档</a>
+                <a class="navbar-item" href="/archives">归档</a>
                 
                 <a class="navbar-item" href="/categories">分类</a>
                 
@@ -131,6 +132,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -146,284 +151,176 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-<div class="card widget">
+                <div class="column is-6-tablet is-6-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="https://camo.githubusercontent.com/10c034a879aaaa88ea3669f0992cd28743d8ca07/687474703a2f2f70706f66666963652e6769746875622e696f2f6865786f2d7468656d652d6963617275732f67616c6c6572792f707265766965772e706e673f31" alt="Hexo-icarus修改文章详情页">
+        </span>
+    </div>
+    
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-05-01T10:46:04.000Z">2019-05-01</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/教程/">教程</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分钟 读完 (大约 586 个字)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Hexo-icarus修改文章详情页
+            
+        </h1>
+        <div class="content">
+            <h2 id="为什么修改？"><a href="#为什么修改？" class="headerlink" title="为什么修改？"></a>为什么修改？</h2><p>由于Hexo-icarus主题的文章详情页默认与主页布局一致，皆为三栏布局。但是三栏布局限制了文章内容的展示，因此试图将其改为两栏布局。</p>
+<hr>
+<h2 id="通过修改源代码来达成目标"><a href="#通过修改源代码来达成目标" class="headerlink" title="通过修改源代码来达成目标"></a>通过修改源代码来达成目标</h2><p>打开/themes/icarus/layout/layout.ejs文件，添加col()函数到文件中：<br><figure class="highlight js hljs"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">col</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(!is_post())&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> main_column_class();</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="hljs-keyword">else</span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">'is-6-tablet is-6-desktop is-9-widescreen'</span>;</span><br><span class="line">        &#125; </span><br><span class="line">    &#125; %&gt;</span><br></pre></td></tr></table></figure></p>
+<p>再section标签中做如下改动：<br><figure class="highlight html hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"section"</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container"</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"columns"</span>&gt;</span></span><br><span class="line">                <span class="hljs-comment">&lt;!-- 将main_column_class() 改为 col() --&gt;</span></span><br><span class="line">                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"column &lt;%= col() %&gt; has-order-2 column-main"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">%-</span> <span class="hljs-attr">body</span> %&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">                <span class="hljs-tag">&lt;<span class="hljs-name">%-</span> <span class="hljs-attr">partial</span>('<span class="hljs-attr">common</span>/<span class="hljs-attr">widget</span>', &#123; <span class="hljs-attr">position:</span> '<span class="hljs-attr">left</span>' &#125;) %&gt;</span></span><br><span class="line">                <span class="hljs-tag">&lt;<span class="hljs-name">%-</span> <span class="hljs-attr">partial</span>('<span class="hljs-attr">common</span>/<span class="hljs-attr">widget</span>', &#123; <span class="hljs-attr">position:</span> '<span class="hljs-attr">right</span>' &#125;) %&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>不难看出，上述改动的目的是将直接判断栏数改为：若当前页面不是文章页面则直接采用原始设置，否则将文章栏放大。<br>通过上面的修改，hexo server查看效果，发现文章详情页的文章栏确实放大了，但是右侧的部件栏并未消失，而是被挤出了屏幕外一部分，极不美观。</p>
+<p>为了解决上述问题，还需修改/themes/icarus/layout/common/widget.ejs文件。<br>将代码全选复制，再粘贴于末尾，做如下修改3处代码：<br><figure class="highlight js hljs"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="hljs-keyword">if</span> (get_widgets(position).length &amp;&amp; !is_post()) &#123; %&gt;        <span class="hljs-xml"><span class="hljs-comment">&lt;!-- 修改 --&gt;</span></span></span><br><span class="line"><span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">%</span> <span class="hljs-attr">function</span> <span class="hljs-attr">side_column_class</span>() &#123;</span></span></span><br><span class="line"><span class="hljs-xml">    switch (column_count()) &#123;</span></span><br><span class="line"><span class="hljs-xml">        case 2:</span></span><br><span class="line"><span class="hljs-xml">            return 'is-4-tablet is-4-desktop is-4-widescreen';</span></span><br><span class="line"><span class="hljs-xml">        case 3:</span></span><br><span class="line"><span class="hljs-xml">            return 'is-4-tablet is-4-desktop is-3-widescreen';</span></span><br><span class="line"><span class="hljs-xml">    &#125;</span></span><br><span class="line"><span class="hljs-xml">    return '';</span></span><br><span class="line"><span class="hljs-xml">&#125; %&gt;</span></span><br><span class="line"><span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">%</span> <span class="hljs-attr">function</span> <span class="hljs-attr">visibility_class</span>() &#123;</span></span></span><br><span class="line"><span class="hljs-xml">    if (column_count() === 3 &amp;&amp; position === 'right') &#123;</span></span><br><span class="line"><span class="hljs-xml">        return 'is-hidden-touch is-hidden-desktop-only';</span></span><br><span class="line"><span class="hljs-xml">    &#125;</span></span><br><span class="line"><span class="hljs-xml">    return '';</span></span><br><span class="line"><span class="hljs-xml">&#125; %&gt;</span></span><br><span class="line"><span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">%</span> <span class="hljs-attr">function</span> <span class="hljs-attr">order_class</span>() &#123;</span></span></span><br><span class="line"><span class="hljs-xml">    return position === 'left' ? 'has-order-1' : 'has-order-3';</span></span><br><span class="line"><span class="hljs-xml">&#125; %&gt;</span></span><br><span class="line"><span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">%</span> <span class="hljs-attr">function</span> <span class="hljs-attr">sticky_class</span>(<span class="hljs-attr">position</span>) &#123;</span></span></span><br><span class="line"><span class="hljs-xml">    return get_config('sidebar.' + position + '.sticky', false) ? 'is-sticky' : '';</span></span><br><span class="line"><span class="hljs-xml">&#125; %&gt;</span></span><br><span class="line">&lt;div class="column &lt;%= side_column_class() %&gt; &lt;%= visibility_class() %&gt; &lt;%= order_class() %&gt; column-&lt;%= position %&gt; &lt;%= sticky_class(position) %&gt;"&gt;</span><br><span class="line">    &lt;% get_widgets(position).forEach(widget =&gt; &#123;%&gt;</span><br><span class="line">        &lt;%- partial('widget/' + widget.type, &#123; widget, post: page &#125;) %&gt;</span><br><span class="line">    &lt;% &#125;) %&gt;</span><br><span class="line">    &lt;% if (position === 'left') &#123; %&gt;</span><br><span class="line">        &lt;div class="column-right-shadow is-hidden-widescreen &lt;%= sticky_class('right') %&gt;"&gt;</span><br><span class="line">        &lt;% get_widgets('right').forEach(widget =&gt; &#123;%&gt;</span><br><span class="line">            &lt;%- partial('widget/' + widget.type, &#123; widget, post: page &#125;) %&gt;</span><br><span class="line">        &lt;% &#125;) %&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;% &#125; %&gt;</span><br><span class="line"><span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span><br><span class="line"><span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">%</span> &#125; %&gt;</span></span></span><br><span class="line"><span class="hljs-xml"></span></span><br><span class="line"><span class="hljs-xml"><span class="hljs-comment">&lt;!-- 粘贴的部分 --&gt;</span></span></span><br><span class="line"><span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">%</span> <span class="hljs-attr">if</span> (<span class="hljs-attr">position</span> === <span class="hljs-string">'left'</span> &amp;&amp; <span class="hljs-attr">is_post</span>()) &#123; %&gt;</span>                          <span class="hljs-comment">&lt;!-- 修改，可选保留的栏 --&gt;</span></span></span><br><span class="line"><span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">%</span> <span class="hljs-attr">function</span> <span class="hljs-attr">side_column_class</span>() &#123;</span></span></span><br><span class="line"><span class="hljs-xml">    switch (column_count()) &#123;</span></span><br><span class="line"><span class="hljs-xml">        case 2:</span></span><br><span class="line"><span class="hljs-xml">            return 'is-4-tablet is-4-desktop is-4-widescreen';</span></span><br><span class="line"><span class="hljs-xml">        case 3:</span></span><br><span class="line"><span class="hljs-xml">            return 'is-4-tablet is-4-desktop is-3-widescreen';</span></span><br><span class="line"><span class="hljs-xml">    &#125;</span></span><br><span class="line"><span class="hljs-xml">    return '';</span></span><br><span class="line"><span class="hljs-xml">&#125; %&gt;</span></span><br><span class="line"><span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">%</span> <span class="hljs-attr">function</span> <span class="hljs-attr">visibility_class</span>() &#123;</span></span></span><br><span class="line"><span class="hljs-xml">    if (column_count() === 3 &amp;&amp; position === 'right') &#123;</span></span><br><span class="line"><span class="hljs-xml">        return 'is-hidden-touch is-hidden-desktop-only';</span></span><br><span class="line"><span class="hljs-xml">    &#125;</span></span><br><span class="line"><span class="hljs-xml">    return '';</span></span><br><span class="line"><span class="hljs-xml">&#125; %&gt;</span></span><br><span class="line"><span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">%</span> <span class="hljs-attr">function</span> <span class="hljs-attr">order_class</span>() &#123;</span></span></span><br><span class="line"><span class="hljs-xml">    return position === 'left' ? 'has-order-3' : 'has-order-1';       <span class="hljs-comment">&lt;!-- 修改 --&gt;</span></span></span><br><span class="line"><span class="hljs-xml">&#125; %&gt;</span></span><br><span class="line"><span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">%</span> <span class="hljs-attr">function</span> <span class="hljs-attr">sticky_class</span>(<span class="hljs-attr">position</span>) &#123;</span></span></span><br><span class="line"><span class="hljs-xml">    return get_config('sidebar.' + position + '.sticky', false) ? 'is-sticky' : '';</span></span><br><span class="line"><span class="hljs-xml">&#125; %&gt;</span></span><br><span class="line">&lt;div class="column &lt;%= side_column_class() %&gt; &lt;%= visibility_class() %&gt; &lt;%= order_class() %&gt; column-&lt;%= position %&gt; &lt;%= sticky_class(position) %&gt;"&gt;</span><br><span class="line">    &lt;% get_widgets(position).forEach(widget =&gt; &#123;%&gt;</span><br><span class="line">        &lt;%- partial('widget/' + widget.type, &#123; widget, post: page &#125;) %&gt;</span><br><span class="line">    &lt;% &#125;) %&gt;</span><br><span class="line">    &lt;% if (position === 'left') &#123; %&gt;</span><br><span class="line">        &lt;div class="column-right-shadow is-hidden-widescreen &lt;%= sticky_class('right') %&gt;"&gt;</span><br><span class="line">        &lt;% get_widgets('right').forEach(widget =&gt; &#123;%&gt;</span><br><span class="line">            &lt;%- partial('widget/' + widget.type, &#123; widget, post: page &#125;) %&gt;</span><br><span class="line">        &lt;% &#125;) %&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;% &#125; %&gt;</span><br><span class="line"><span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span><br><span class="line"><span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">%</span> &#125; %&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a>大功告成</h2><p>我这里保存的是左边栏，若要保存右边栏可以在 widget.ejs 文件中更改（已标识）。</p>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>见本站！</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Hexo/">Hexo</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+  <div>
+    <ul class="post-copyright">
+      <li class="post-copyright-author">
+      <strong>本文作者：</strong>林宇航
+      </li>
+      <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href title="{{ page.title }}">Hexo-icarus修改文章详情页</a>
+      </li>
+      <li class="post-copyright-link">
+      <strong>发布时间：</strong>
+      <a href title="{{ page.title }}">2019年5月1日 - 18时05分</a>
+      </li>
+      <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！
+      </li>
+    </ul>
+  <div>
+    
+
+        
+    </div>
+</div>
+
+
+
+<div class="card">
     <div class="card-content">
-        <h3 class="tag is-link">
-        2019
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
                 
-                <a href="/2019/05/01/Hexo-icarus修改文章详情页/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="https://camo.githubusercontent.com/10c034a879aaaa88ea3669f0992cd28743d8ca07/687474703a2f2f70706f66666963652e6769746875622e696f2f6865786f2d7468656d652d6963617275732f67616c6c6572792f707265766965772e706e673f31" alt="Hexo-icarus修改文章详情页">
-                    </p>
-                </a>
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/honbao.PNG" alt="支付宝"></div>
+</a>
+
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-05-01T10:46:04.000Z">2019-05-01</time>
-                        <a href="/2019/05/01/Hexo-icarus修改文章详情页/" class="has-link-black-ter is-size-6">Hexo-icarus修改文章详情页</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/教程/">教程</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-04-30T09:24:31.000Z">2019-04-30</time>
-                        <a href="/2019/04/30/Hexo用MathJax渲染数学公式/" class="has-link-black-ter is-size-6">Hexo用MathJax渲染数学公式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/教程/">教程</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/yjtp.png" alt="微信"></div>
+</a>
+
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-04-29T09:31:10.000Z">2019-04-29</time>
-                        <a href="/2019/04/29/Hexo+icarus主题配置/" class="has-link-black-ter is-size-6">Hexo+icarus主题配置</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/教程/">教程</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <a href="/2019/03/17/【算法】DP最大和问题/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="https://media-cdn.jiuzhang.com/course/dp3_LkMISIN.png" alt="【算法】DP最大和问题">
-                    </p>
-                </a>
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-03-17T11:55:27.000Z">2019-03-17</time>
-                        <a href="/2019/03/17/【算法】DP最大和问题/" class="has-link-black-ter is-size-6">【算法】DP最大和问题</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <a href="/2019/03/14/【算法】背包问题的DFS与DP解法/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Knapsack.svg/250px-Knapsack.svg.png" alt="【算法】背包问题的DFS与DP解法">
-                    </p>
-                </a>
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-03-14T12:03:54.000Z">2019-03-14</time>
-                        <a href="/2019/03/14/【算法】背包问题的DFS与DP解法/" class="has-link-black-ter is-size-6">【算法】背包问题的DFS与DP解法</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <a href="/2019/03/13/【算法】全排列问题(C++)/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="http://pic.5577.com/up/2014-8/20148148468.jpg" alt="【算法】全排列问题">
-                    </p>
-                </a>
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-03-13T04:32:26.000Z">2019-03-13</time>
-                        <a href="/2019/03/13/【算法】全排列问题(C++)/" class="has-link-black-ter is-size-6">【算法】全排列问题</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <a href="/2019/03/13/【算法】数字黑洞/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="http://p3.ifengimg.com/a/2017_49/e70b37a4de6ef7b_size120_w600_h337.jpg" alt="【算法】数字黑洞">
-                    </p>
-                </a>
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-03-13T02:59:40.000Z">2019-03-13</time>
-                        <a href="/2019/03/13/【算法】数字黑洞/" class="has-link-black-ter is-size-6">【算法】数字黑洞</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <a href="/2019/03/12/【算法】素数筛法/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="https://pic.baike.soso.com/ugc/baikepic2/29906/cut-20141207123211-1562225095.jpg/0" alt="【算法】素数筛法">
-                    </p>
-                </a>
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-03-12T05:03:23.000Z">2019-03-12</time>
-                        <a href="/2019/03/12/【算法】素数筛法/" class="has-link-black-ter is-size-6">【算法】素数筛法</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <a href="/2019/02/28/【算法】大数运算算法汇总/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHj0E_cCNBTUvAESwCFUlIjAbWWwsIJyCPI3XvNVFtSaFZPFfz" alt="【算法】String实现大数运算算法汇总">
-                    </p>
-                </a>
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-02-28T13:19:31.000Z">2019-02-28</time>
-                        <a href="/2019/02/28/【算法】大数运算算法汇总/" class="has-link-black-ter is-size-6">【算法】String实现大数运算算法汇总</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <a href="/2019/02/22/【底层原理】浮点数在计算机中的表示/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike116%2C5%2C5%2C116%2C38/sign=56b6ed04f8dcd100d991f07313e22c75/5366d0160924ab18fa5aa63e35fae6cd7b890b6e.jpg" alt="【底层原理】浮点数在计算机中的表示">
-                    </p>
-                </a>
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-02-22T05:26:52.000Z">2019-02-22</time>
-                        <a href="/2019/02/22/【底层原理】浮点数在计算机中的表示/" class="has-link-black-ter is-size-6">【底层原理】浮点数在计算机中的表示</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/底层原理/">底层原理</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
         </div>
     </div>
 </div>
 
-        
-    
 
-    
+
 <div class="card card-transparent">
-    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <div class="pagination-previous is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/page/0/">上一页</a>
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/04/30/Hexo用MathJax渲染数学公式/">
+                <span class="level-item">Hexo用MathJax渲染数学公式</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/page/2/">下一页</a>
-        </div>
-        <ul class="pagination-list is-hidden-mobile">
-            
-            <li><a class="pagination-link is-current" href="/archives/">1</a></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/archives/page/2/">2</a></li>
-            
-        </ul>
-    </nav>
+        
+    </div>
 </div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://www.ccyh.xyz/2019/05/01/Hexo-icarus修改文章详情页/';
+        this.page.identifier = 'ccyhweb';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'ccyhweb' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div></div>
 </div>
                 
 
 
 
 
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-left ">
     
         
 <div class="card widget">
@@ -521,6 +418,33 @@
 </div>
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#为什么修改？">
+        <span class="has-mr-6">1</span>
+        <span>为什么修改？</span>
+        </a></li><li>
+        <a class="is-flex" href="#通过修改源代码来达成目标">
+        <span class="has-mr-6">2</span>
+        <span>通过修改源代码来达成目标</span>
+        </a></li><li>
+        <a class="is-flex" href="#大功告成">
+        <span class="has-mr-6">3</span>
+        <span>大功告成</span>
+        </a></li><li>
+        <a class="is-flex" href="#效果">
+        <span class="has-mr-6">4</span>
+        <span>效果</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
     
         
 <div class="card widget">
@@ -923,217 +847,7 @@ WIDGET = {ID: 'p9o28AEk1m'};
     
 </div>
 
-
-
-
                 
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            标签云
-        </h3>
-        <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/Boring/" style="font-size: 10px;">Boring</a> <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/Hexo/" style="font-size: 16.67px;">Hexo</a> <a href="/tags/Knapsack/" style="font-size: 10px;">Knapsack</a> <a href="/tags/List/" style="font-size: 13.33px;">List</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/Tree/" style="font-size: 10px;">Tree</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
-        
-    </div>
-    <div align="center">
-    <script type="text/javascript" src="//rf.revolvermaps.com/0/0/1.js?i=0xetp0d4rdh&amp;s=226&amp;m=7&amp;v=true&amp;r=false&amp;b=ffffff&amp;n=false&amp;c=00fff6" async="async"></script>
-    </div>
-</div>
-
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            归档
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/05/">
-                <span class="level-start">
-                    <span class="level-item">五月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/04/">
-                <span class="level-start">
-                    <span class="level-item">四月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/03/">
-                <span class="level-start">
-                    <span class="level-item">三月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">5</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/02/">
-                <span class="level-start">
-                    <span class="level-item">二月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/01/">
-                <span class="level-start">
-                    <span class="level-item">一月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">7</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/12/">
-                <span class="level-start">
-                    <span class="level-item">十二月 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">3</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Algorithm/">
-                        <span class="tag">Algorithm</span>
-                        <span class="tag is-grey">4</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Array/">
-                        <span class="tag">Array</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Blog/">
-                        <span class="tag">Blog</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Boring/">
-                        <span class="tag">Boring</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/C/">
-                        <span class="tag">C</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Hexo/">
-                        <span class="tag">Hexo</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Knapsack/">
-                        <span class="tag">Knapsack</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/List/">
-                        <span class="tag">List</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/String/">
-                        <span class="tag">String</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Tools/">
-                        <span class="tag">Tools</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Tree/">
-                        <span class="tag">Tree</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/algorithm/">
-                        <span class="tag">algorithm</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/随笔/">
-                        <span class="tag">随笔</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-    
-    
-</div>
-
 
 
 
@@ -1147,7 +861,7 @@ WIDGET = {ID: 'p9o28AEk1m'};
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/gen.svg" alt="飞鱼の博客" height="28">
+                    <img src="/images/gen.svg" alt="Hexo-icarus修改文章详情页" height="28">
                 
                 </a>
                 <p class="is-size-7">
