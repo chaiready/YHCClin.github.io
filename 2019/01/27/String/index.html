@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="飞鱼の博客">
 <meta property="og:description" content="串的定义">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-28T13:57:28.608Z">
+<meta property="og:updated_time" content="2019-05-01T10:39:49.692Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【数据结构】 字符串">
 <meta name="twitter:description" content="串的定义">
@@ -132,6 +132,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -141,12 +145,13 @@
         </div>
     </div>
 </nav>
+
     
     
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+                <div class="column is-6-tablet is-6-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     
     <div class="card-image">
         <span class="image is-7by1">
@@ -208,7 +213,7 @@
 </ol>
 <p><strong>4. 串的连接操作：</strong><br><figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">concat</span><span class="hljs-params">(LStr &amp;str,LStr str1,LStr str2)</span></span>&#123;  <span class="hljs-comment">// 将两个字符串连接并用一个新的字符串str返回</span></span><br><span class="line">    <span class="hljs-keyword">if</span>(str.ch) &#123; <span class="hljs-comment">// 清除原有空间</span></span><br><span class="line">      <span class="hljs-built_in">free</span>(str.ch);</span><br><span class="line">      str.ch = <span class="hljs-literal">NULL</span>;</span><br><span class="line">      str.len = <span class="hljs-number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    str.ch = (<span class="hljs-keyword">char</span>*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">char</span>)*(str1.len+str2.len+<span class="hljs-number">1</span>)); <span class="hljs-comment">// 分配连续空间，+1是为了多分配一个位置空间存放‘\0’</span></span><br><span class="line">    <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">while</span>(i &lt; str1.len)&#123; <span class="hljs-comment">// 插入str1;</span></span><br><span class="line">      str.ch[i] = str1.ch[i];</span><br><span class="line">      ++i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">while</span>(j &lt;= str2.len)&#123; <span class="hljs-comment">// 插入str2，注意这里用"&lt;="是为了吧'\0' 也加到末尾</span></span><br><span class="line">      str.ch[i+j] = str2.ch[j];</span><br><span class="line">      ++j;</span><br><span class="line">    &#125;</span><br><span class="line">    str.len = str1.len + str2.len; <span class="hljs-comment">// 更新字符串长度</span></span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>; <span class="hljs-comment">// 成功连接</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><strong>5. 求子串操作：</strong><br><figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">subStr</span><span class="hljs-params">(LStr &amp;substr,LStr str,<span class="hljs-keyword">int</span> pos,<span class="hljs-keyword">int</span> len)</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (pos + len &gt; str.len || pos &lt; <span class="hljs-number">0</span> || len &lt; <span class="hljs-number">0</span> || pos &gt;= str.len)&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;  <span class="hljs-comment">//判断输入是否合法</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span> (substr.ch)&#123; <span class="hljs-comment">// 清空原空间</span></span><br><span class="line">      <span class="hljs-built_in">free</span>(substr.ch);</span><br><span class="line">      substr.ch = <span class="hljs-literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span> (len == <span class="hljs-number">0</span>)&#123; <span class="hljs-comment">// 若子串长度为0.直接返回空子串</span></span><br><span class="line">      substr.ch = <span class="hljs-literal">NULL</span>;</span><br><span class="line">      substr.len = <span class="hljs-number">0</span>;</span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">else</span>&#123;</span><br><span class="line">    substr.ch = (<span class="hljs-keyword">char</span>*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">char</span>)*(len+<span class="hljs-number">1</span>)); <span class="hljs-comment">// 分配连续的内存空间</span></span><br><span class="line">    </span><br><span class="line">    <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">int</span> j = pos;</span><br><span class="line">    <span class="hljs-keyword">while</span>(i&lt;len)&#123; <span class="hljs-comment">// 从pos处开始遍历并赋值给子串</span></span><br><span class="line">        substr.ch[i] = str.ch[j];</span><br><span class="line">        ++i;</span><br><span class="line">        ++j;</span><br><span class="line">    &#125;</span><br><span class="line">    substr.ch[i] = <span class="hljs-string">'\0'</span>; <span class="hljs-comment">// 这个千万别忘了加进去</span></span><br><span class="line">    substr.len = len; <span class="hljs-comment">// 更新子串长度</span></span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>; <span class="hljs-comment">// 成功</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<ol>
+<ol start="6">
 <li>串的清空操作：<figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 串的清空操作在上诉各函数中均有用到</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">clearStr</span><span class="hljs-params">(LStr &amp;str)</span></span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (str.ch)&#123;</span><br><span class="line">      <span class="hljs-built_in">free</span>(str.ch);</span><br><span class="line">      str.ch = <span class="hljs-literal">NULL</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  str.len = <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
@@ -228,7 +233,7 @@
 </li>
 </ul>
 <hr>
-<ol>
+<ol start="2">
 <li><strong><em>KMP算法</em></strong>：</li>
 </ol>
 <ul>
@@ -405,7 +410,10 @@
 
 
 
-<div class="column is-2-tablet is-2-desktop is-3-widescreen  has-order-1 column-left ">
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-left ">
     
         
 <div class="card widget">
@@ -503,6 +511,49 @@
 </div>
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#串的定义">
+        <span class="has-mr-6">1</span>
+        <span>串的定义</span>
+        </a></li><li>
+        <a class="is-flex" href="#串的存储结构">
+        <span class="has-mr-6">2</span>
+        <span>串的存储结构</span>
+        </a></li><li>
+        <a class="is-flex" href="#串的基本操作">
+        <span class="has-mr-6">3</span>
+        <span>串的基本操作</span>
+        </a></li><li>
+        <a class="is-flex" href="#串的模式匹配算法-重点">
+        <span class="has-mr-6">4</span>
+        <span>串的模式匹配算法(重点)</span>
+        </a><ul class="menu-list"><ul class="menu-list"><li>
+        <a class="is-flex" href="#何为模式匹配：">
+        <span class="has-mr-6">4.1.1</span>
+        <span>何为模式匹配：</span>
+        </a></li><li>
+        <a class="is-flex" href="#串的模式匹配算法分为：">
+        <span class="has-mr-6">4.1.2</span>
+        <span>串的模式匹配算法分为：</span>
+        </a></li></ul></ul></li><li>
+        <a class="is-flex" href="#KMP-算法的改进">
+        <span class="has-mr-6">5</span>
+        <span>KMP 算法的改进</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#getNextval-算法核心思想：">
+        <span class="has-mr-6">5.1</span>
+        <span>getNextval() 算法核心思想：</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
     
         
 <div class="card widget">
@@ -897,199 +948,6 @@ WIDGET = {ID: 'p9o28AEk1m'};
                 
 
 
-
-
-<div class="column is-2-tablet is-2-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            标签云
-        </h3>
-        <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/Boring/" style="font-size: 10px;">Boring</a> <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Knapsack/" style="font-size: 10px;">Knapsack</a> <a href="/tags/List/" style="font-size: 15px;">List</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/Tree/" style="font-size: 10px;">Tree</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
-        
-    </div>
-    <div align="center">
-    <script type="text/javascript" src="//rf.revolvermaps.com/0/0/1.js?i=0xetp0d4rdh&amp;s=226&amp;m=7&amp;v=true&amp;r=false&amp;b=ffffff&amp;n=false&amp;c=00fff6" async="async"></script>
-    </div>
-</div>
-
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            归档
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/04/">
-                <span class="level-start">
-                    <span class="level-item">四月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/03/">
-                <span class="level-start">
-                    <span class="level-item">三月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">5</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/02/">
-                <span class="level-start">
-                    <span class="level-item">二月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/01/">
-                <span class="level-start">
-                    <span class="level-item">一月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">7</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/12/">
-                <span class="level-start">
-                    <span class="level-item">十二月 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">3</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Algorithm/">
-                        <span class="tag">Algorithm</span>
-                        <span class="tag is-grey">4</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Array/">
-                        <span class="tag">Array</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Blog/">
-                        <span class="tag">Blog</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Boring/">
-                        <span class="tag">Boring</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/C/">
-                        <span class="tag">C</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Hexo/">
-                        <span class="tag">Hexo</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Knapsack/">
-                        <span class="tag">Knapsack</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/List/">
-                        <span class="tag">List</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/String/">
-                        <span class="tag">String</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Tools/">
-                        <span class="tag">Tools</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Tree/">
-                        <span class="tag">Tree</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/algorithm/">
-                        <span class="tag">algorithm</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/随笔/">
-                        <span class="tag">随笔</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-    
-    
-</div>
 
             </div>
         </div>

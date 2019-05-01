@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="飞鱼の博客">
 <meta property="og:description" content="Kanapsack Problem">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-14T12:45:45.200Z">
+<meta property="og:updated_time" content="2019-05-01T10:36:31.685Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【算法】背包问题的DFS与DP解法">
 <meta name="twitter:description" content="Kanapsack Problem">
@@ -132,6 +132,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -141,12 +145,13 @@
         </div>
     </div>
 </nav>
+
     
     
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+                <div class="column is-6-tablet is-6-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     
     <div class="card-image">
         <span class="image is-7by1">
@@ -188,13 +193,13 @@
 </blockquote>
 <h5 id="DFS解法："><a href="#DFS解法：" class="headerlink" title="DFS解法："></a>DFS解法：</h5><h5 id="算法思想："><a href="#算法思想：" class="headerlink" title="算法思想："></a>算法思想：</h5><blockquote>
 <p>对于每件物品，有两种情况（选，或不选）。若选择该物品，则将更新背包内的总重与总价值量，若不选择该物品，则跳过它去判断下一件物品，当处理完n件物品后，此时记录的sumW和sumC就是所选物品的总质量和总价值。如果sumW不超过V且sumC比MaxValue还大，就更新MaxValue。</p>
-<figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> Maxn 10</span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n,V,MaxValue = <span class="hljs-number">0</span>;<span class="hljs-comment">//n为物品的总件数，V为背包的容量，MaxValue为最大价值</span></span><br><span class="line"><span class="hljs-keyword">int</span> w[Maxn],c[Maxn];<span class="hljs-comment">//w[i]为每件物品的重量,c[i]为每件物品的价值</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">DFS_Kanapsack</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index,<span class="hljs-keyword">int</span> sumW,<span class="hljs-keyword">int</span> sumC)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(index == n)<span class="hljs-comment">//已完成对n件物品的选择</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">if</span>(sumW &lt;= V &amp;&amp; sumC &gt; MaxValue)</span><br><span class="line">		&#123;</span><br><span class="line">			MaxValue = sumC;<span class="hljs-comment">//更新最大价值</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-comment">//</span></span><br><span class="line">	DFS_Kanapsack(index+<span class="hljs-number">1</span>,sumW,sumC);<span class="hljs-comment">//不选择第index件物品</span></span><br><span class="line">	DFS_Kanapsack(index+<span class="hljs-number">1</span>,sumW + w[index],sumC + c[index]);<span class="hljs-comment">//选择第index件物品</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">cin</span> &gt;&gt; n &gt;&gt; V;</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; n;i++)<span class="hljs-comment">//输入每件物品的重量</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-built_in">cin</span> &gt;&gt; w[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; n;i++)<span class="hljs-comment">//输入每件的价值</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-built_in">cin</span> &gt;&gt; c[i];</span><br><span class="line">	&#125;</span><br><span class="line">	DFS_Kanapsack(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>);<span class="hljs-comment">//初始时为第0件物品，重量为0，价值为0;</span></span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; MaxValue &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </blockquote>
+<figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> Maxn 10</span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n,V,MaxValue = <span class="hljs-number">0</span>;<span class="hljs-comment">//n为物品的总件数，V为背包的容量，MaxValue为最大价值</span></span><br><span class="line"><span class="hljs-keyword">int</span> w[Maxn],c[Maxn];<span class="hljs-comment">//w[i]为每件物品的重量,c[i]为每件物品的价值</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">DFS_Kanapsack</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index,<span class="hljs-keyword">int</span> sumW,<span class="hljs-keyword">int</span> sumC)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(index == n)<span class="hljs-comment">//已完成对n件物品的选择</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">if</span>(sumW &lt;= V &amp;&amp; sumC &gt; MaxValue)</span><br><span class="line">		&#123;</span><br><span class="line">			MaxValue = sumC;<span class="hljs-comment">//更新最大价值</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-comment">//</span></span><br><span class="line">	DFS_Kanapsack(index+<span class="hljs-number">1</span>,sumW,sumC);<span class="hljs-comment">//不选择第index件物品</span></span><br><span class="line">	DFS_Kanapsack(index+<span class="hljs-number">1</span>,sumW + w[index],sumC + c[index]);<span class="hljs-comment">//选择第index件物品</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">cin</span> &gt;&gt; n &gt;&gt; V;</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; n;i++)<span class="hljs-comment">//输入每件物品的重量</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-built_in">cin</span> &gt;&gt; w[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; n;i++)<span class="hljs-comment">//输入每件的价值</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-built_in">cin</span> &gt;&gt; c[i];</span><br><span class="line">	&#125;</span><br><span class="line">	DFS_Kanapsack(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>);<span class="hljs-comment">//初始时为第0件物品，重量为0，价值为0;</span></span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; MaxValue &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
 <blockquote>
 <p>由于每种物品有两种选择，因而易得上述算法的时间复杂度为$2^n$;<br>这显然很是糟糕，因为在上述算法中，总是把对n件物品的选择全部确定后才去更新最大价值，但是却忽略了背包容量总是不能超过V这个点，也就是说，我们可以把选择index物品放入对上述条件的判断之中，若选择index后重量不超过V则才选择它。</p>
-<h4 id="改进后的算法："><a href="#改进后的算法：" class="headerlink" title="改进后的算法："></a>改进后的算法：</h4><figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">DFS_Kanapsack</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index,<span class="hljs-keyword">int</span> sumW,<span class="hljs-keyword">int</span> sumC)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(index == n)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	DFS_Kanapsack(index+<span class="hljs-number">1</span>,sumW,sumC);</span><br><span class="line"></span><br><span class="line">	<span class="hljs-keyword">if</span>(sumW + w[index] &lt;= V)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">if</span>(sumC + c[index] &gt; MaxValue)</span><br><span class="line">		&#123;</span><br><span class="line">			MaxValue = sumC + c[index];</span><br><span class="line">		&#125;</span><br><span class="line">		DFS_Kanapsack(index+<span class="hljs-number">1</span>,sumW+w[index],sumC+c[index]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </blockquote>
+<h4 id="改进后的算法："><a href="#改进后的算法：" class="headerlink" title="改进后的算法："></a>改进后的算法：</h4><figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">DFS_Kanapsack</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index,<span class="hljs-keyword">int</span> sumW,<span class="hljs-keyword">int</span> sumC)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(index == n)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	DFS_Kanapsack(index+<span class="hljs-number">1</span>,sumW,sumC);</span><br><span class="line"></span><br><span class="line">	<span class="hljs-keyword">if</span>(sumW + w[index] &lt;= V)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">if</span>(sumC + c[index] &gt; MaxValue)</span><br><span class="line">		&#123;</span><br><span class="line">			MaxValue = sumC + c[index];</span><br><span class="line">		&#125;</span><br><span class="line">		DFS_Kanapsack(index+<span class="hljs-number">1</span>,sumW+w[index],sumC+c[index]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
 
         </div>
@@ -325,7 +330,10 @@
 
 
 
-<div class="column is-2-tablet is-2-desktop is-3-widescreen  has-order-1 column-left ">
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-left ">
     
         
 <div class="card widget">
@@ -423,6 +431,37 @@
 </div>
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#Kanapsack-Problem">
+        <span class="has-mr-6">1</span>
+        <span>Kanapsack Problem</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#问题描述：">
+        <span class="has-mr-6">1.1</span>
+        <span>问题描述：</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#DFS解法：">
+        <span class="has-mr-6">1.1.1</span>
+        <span>DFS解法：</span>
+        </a></li><li>
+        <a class="is-flex" href="#算法思想：">
+        <span class="has-mr-6">1.1.2</span>
+        <span>算法思想：</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#改进后的算法：">
+        <span class="has-mr-6">1.2</span>
+        <span>改进后的算法：</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
     
         
 <div class="card widget">
@@ -817,199 +856,6 @@ WIDGET = {ID: 'p9o28AEk1m'};
                 
 
 
-
-
-<div class="column is-2-tablet is-2-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            标签云
-        </h3>
-        <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/Boring/" style="font-size: 10px;">Boring</a> <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Knapsack/" style="font-size: 10px;">Knapsack</a> <a href="/tags/List/" style="font-size: 15px;">List</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/Tree/" style="font-size: 10px;">Tree</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
-        
-    </div>
-    <div align="center">
-    <script type="text/javascript" src="//rf.revolvermaps.com/0/0/1.js?i=0xetp0d4rdh&amp;s=226&amp;m=7&amp;v=true&amp;r=false&amp;b=ffffff&amp;n=false&amp;c=00fff6" async="async"></script>
-    </div>
-</div>
-
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            归档
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/04/">
-                <span class="level-start">
-                    <span class="level-item">四月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/03/">
-                <span class="level-start">
-                    <span class="level-item">三月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">5</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/02/">
-                <span class="level-start">
-                    <span class="level-item">二月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/01/">
-                <span class="level-start">
-                    <span class="level-item">一月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">7</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/12/">
-                <span class="level-start">
-                    <span class="level-item">十二月 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">3</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Algorithm/">
-                        <span class="tag">Algorithm</span>
-                        <span class="tag is-grey">4</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Array/">
-                        <span class="tag">Array</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Blog/">
-                        <span class="tag">Blog</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Boring/">
-                        <span class="tag">Boring</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/C/">
-                        <span class="tag">C</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Hexo/">
-                        <span class="tag">Hexo</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Knapsack/">
-                        <span class="tag">Knapsack</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/List/">
-                        <span class="tag">List</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/String/">
-                        <span class="tag">String</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Tools/">
-                        <span class="tag">Tools</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Tree/">
-                        <span class="tag">Tree</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/algorithm/">
-                        <span class="tag">algorithm</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/随笔/">
-                        <span class="tag">随笔</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-    
-    
-</div>
 
             </div>
         </div>

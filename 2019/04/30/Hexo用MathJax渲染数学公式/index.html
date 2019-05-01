@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="飞鱼の博客">
 <meta property="og:description" content="更改默认Markdown渲染引擎">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-30T14:15:18.392Z">
+<meta property="og:updated_time" content="2019-05-01T10:39:07.717Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo用MathJax渲染数学公式">
 <meta name="twitter:description" content="更改默认Markdown渲染引擎">
@@ -132,6 +132,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -141,12 +145,13 @@
         </div>
     </div>
 </nav>
+
     
     
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+                <div class="column is-6-tablet is-6-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     
     
     <div class="card-content article ">
@@ -187,8 +192,8 @@
 <h2 id="解决行内公式语义冲突"><a href="#解决行内公式语义冲突" class="headerlink" title="解决行内公式语义冲突"></a>解决行内公式语义冲突</h2><p>在博客的根目录下找到$\color{red}{node_modules/kramed/lib/rules/inline.js}$<br>做如下两处更改：<br><figure class="highlight js hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> inline = &#123;</span><br><span class="line">  <span class="hljs-comment">//escape: /^\\([\\`*&#123;&#125;\[\]()#$+\-.!_&gt;])/,   第一处</span></span><br><span class="line">  <span class="hljs-built_in">escape</span>: <span class="hljs-regexp">/^\\([`*\[\]()#$+\-.!_&gt;])/</span>,</span><br><span class="line">  autolink: <span class="hljs-regexp">/^&lt;([^ &gt;]+(@|:\/)[^ &gt;]+)&gt;/</span>,</span><br><span class="line">  url: noop,</span><br><span class="line">  html: <span class="hljs-regexp">/^&lt;!--[\s\S]*?--&gt;|^&lt;(\w+(?!:\/|[^\w\s@]*@)\b)*?(?:"[^"]*"|'[^']*'|[^'"&gt;])*?&gt;([\s\S]*?)?&lt;\/\1&gt;|^&lt;(\w+(?!:\/|[^\w\s@]*@)\b)(?:"[^"]*"|'[^']*'|[^'"&gt;])*?&gt;/</span>,</span><br><span class="line">  link: <span class="hljs-regexp">/^!?\[(inside)\]\(href\)/</span>,</span><br><span class="line">  reflink: <span class="hljs-regexp">/^!?\[(inside)\]\s*\[([^\]]*)\]/</span>,</span><br><span class="line">  nolink: <span class="hljs-regexp">/^!?\[((?:\[[^\]]*\]|[^\[\]])*)\]/</span>,</span><br><span class="line">  reffn: <span class="hljs-regexp">/^!?\[\^(inside)\]/</span>,</span><br><span class="line">  strong: <span class="hljs-regexp">/^__([\s\S]+?)__(?!_)|^\*\*([\s\S]+?)\*\*(?!\*)/</span>,</span><br><span class="line">  <span class="hljs-comment">//em: /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,  第二处</span></span><br><span class="line">  em: <span class="hljs-regexp">/^\*((?:\*\*|[\s\S])+?)\*(?!\*)/</span>,</span><br><span class="line">  code: <span class="hljs-regexp">/^(`+)\s*([\s\S]*?[^`])\s*\1(?!`)/</span>,</span><br><span class="line">  br: <span class="hljs-regexp">/^ &#123;2,&#125;\n(?!\s*$)/</span>,</span><br><span class="line">  del: noop,</span><br><span class="line">  text: <span class="hljs-regexp">/^[\s\S]+?(?=[\\&lt;!\[_*`$]| &#123;2,&#125;\n|$)/</span>,</span><br><span class="line">  math: <span class="hljs-regexp">/^\$\$\s*([\s\S]*?[^\$])\s*\$\$(?!\$)/</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <h2 id="更改Mathjax加载脚本"><a href="#更改Mathjax加载脚本" class="headerlink" title="更改Mathjax加载脚本"></a>更改Mathjax加载脚本</h2><p>找到$\color{red}{node_modules/hexo-renderer-mathjax/mathjax.html}$将最后一句改为：<br><figure class="highlight html hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML'</span> <span class="hljs-attr">async</span>&gt;</span><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <hr>
-<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><script type="math/tex; mode=display">
-e\left ( x^{ * } \right ) = x - x^ { * }x = a_0 + \frac{1}{a_1 +\sqrt{a^2+b^2} \frac{1}{a_2 + \frac{1}{a_3 + a_4}}}\sqrt{a^2+b^2}</script><hr>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>$$<br>e\left ( x^{ <em> } \right ) = x - x^ { </em> }x = a_0 + \frac{1}{a_1 +\sqrt{a^2+b^2} \frac{1}{a_2 + \frac{1}{a_3 + a_4}}}\sqrt{a^2+b^2}<br>$$</p>
+<hr>
 <h2 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a>大功告成</h2><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
 <p>将改动部署到博客</p>
 <hr>
@@ -314,7 +319,10 @@ e\left ( x^{ * } \right ) = x - x^ { * }x = a_0 + \frac{1}{a_1 +\sqrt{a^2+b^2} \
 
 
 
-<div class="column is-2-tablet is-2-desktop is-3-widescreen  has-order-1 column-left ">
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-left ">
     
         
 <div class="card widget">
@@ -412,6 +420,41 @@ e\left ( x^{ * } \right ) = x - x^ { * }x = a_0 + \frac{1}{a_1 +\sqrt{a^2+b^2} \
 </div>
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#更改默认Markdown渲染引擎">
+        <span class="has-mr-6">1</span>
+        <span>更改默认Markdown渲染引擎</span>
+        </a></li><li>
+        <a class="is-flex" href="#安装MathJax">
+        <span class="has-mr-6">2</span>
+        <span>安装MathJax</span>
+        </a></li><li>
+        <a class="is-flex" href="#解决行内公式语义冲突">
+        <span class="has-mr-6">3</span>
+        <span>解决行内公式语义冲突</span>
+        </a></li><li>
+        <a class="is-flex" href="#更改Mathjax加载脚本">
+        <span class="has-mr-6">4</span>
+        <span>更改Mathjax加载脚本</span>
+        </a></li><li>
+        <a class="is-flex" href="#效果">
+        <span class="has-mr-6">5</span>
+        <span>效果</span>
+        </a></li><li>
+        <a class="is-flex" href="#大功告成">
+        <span class="has-mr-6">6</span>
+        <span>大功告成</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
     
         
 <div class="card widget">
@@ -806,199 +849,6 @@ WIDGET = {ID: 'p9o28AEk1m'};
                 
 
 
-
-
-<div class="column is-2-tablet is-2-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            标签云
-        </h3>
-        <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/Boring/" style="font-size: 10px;">Boring</a> <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Knapsack/" style="font-size: 10px;">Knapsack</a> <a href="/tags/List/" style="font-size: 15px;">List</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/Tree/" style="font-size: 10px;">Tree</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
-        
-    </div>
-    <div align="center">
-    <script type="text/javascript" src="//rf.revolvermaps.com/0/0/1.js?i=0xetp0d4rdh&amp;s=226&amp;m=7&amp;v=true&amp;r=false&amp;b=ffffff&amp;n=false&amp;c=00fff6" async="async"></script>
-    </div>
-</div>
-
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            归档
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/04/">
-                <span class="level-start">
-                    <span class="level-item">四月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/03/">
-                <span class="level-start">
-                    <span class="level-item">三月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">5</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/02/">
-                <span class="level-start">
-                    <span class="level-item">二月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/01/">
-                <span class="level-start">
-                    <span class="level-item">一月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">7</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/12/">
-                <span class="level-start">
-                    <span class="level-item">十二月 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">3</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Algorithm/">
-                        <span class="tag">Algorithm</span>
-                        <span class="tag is-grey">4</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Array/">
-                        <span class="tag">Array</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Blog/">
-                        <span class="tag">Blog</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Boring/">
-                        <span class="tag">Boring</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/C/">
-                        <span class="tag">C</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Hexo/">
-                        <span class="tag">Hexo</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Knapsack/">
-                        <span class="tag">Knapsack</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/List/">
-                        <span class="tag">List</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/String/">
-                        <span class="tag">String</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Tools/">
-                        <span class="tag">Tools</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Tree/">
-                        <span class="tag">Tree</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/algorithm/">
-                        <span class="tag">algorithm</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/随笔/">
-                        <span class="tag">随笔</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-    
-    
-</div>
 
             </div>
         </div>
