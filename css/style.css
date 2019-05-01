@@ -2,10 +2,10 @@
  *       Override CSS Framework
  * --------------------------------- */
 html {
-  font-size: 14px;
+  font-size: 12px;
 }
 body {
-  background-color: #f7f7f7;
+  background-color: #1c1c1c;
 }
 body,
 button,
@@ -55,7 +55,7 @@ textarea {
 }
 .card {
   border-radius: 4px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05), 0 0 1px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px #a2b5cd, 0 0 1px #a2b5cd;
 }
 .card + .card,
 .card + .column-right-shadow {
@@ -80,7 +80,7 @@ img.thumbnail {
   max-height: 1.75rem;
 }
 .navbar-main {
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 10px #a2b5cd;
 }
 .navbar-main .navbar-menu,
 .navbar-main .navbar-start,
@@ -201,7 +201,7 @@ img.thumbnail {
 }
 .article .content blockquote.pullquote {
   float: right;
-  max-width: 60%;
+  max-width: 80%;
   font-size: 1.15rem;
   position: relative;
 }
