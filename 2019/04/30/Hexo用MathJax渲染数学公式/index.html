@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="飞鱼の博客">
 <meta property="og:description" content="更改默认Markdown渲染引擎">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-01T10:39:07.717Z">
+<meta property="og:updated_time" content="2019-05-02T02:16:52.924Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo用MathJax渲染数学公式">
 <meta name="twitter:description" content="更改默认Markdown渲染引擎">
@@ -153,6 +153,12 @@
             <div class="columns">
                 <div class="column is-6-tablet is-6-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="https://cdn-images-1.medium.com/max/1200/1*oGKSLAyukkOr-1bZbMY0Cg.png" alt="Hexo用MathJax渲染数学公式">
+        </span>
+    </div>
+    
     
     <div class="card-content article ">
         
@@ -168,7 +174,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 398 个字)
+                    3 分钟 读完 (大约 375 个字)
                 </span>
                 
             </div>
@@ -190,9 +196,7 @@
 <p>再安装hexo-renderer-mathjax：<br><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">yarn add hexo-renderer-mathjax -S</span><br></pre></td></tr></table></figure></p>
 <hr>
 <h2 id="解决行内公式语义冲突"><a href="#解决行内公式语义冲突" class="headerlink" title="解决行内公式语义冲突"></a>解决行内公式语义冲突</h2><p>在博客的根目录下找到$\color{red}{node_modules/kramed/lib/rules/inline.js}$<br>做如下两处更改：<br><figure class="highlight js hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> inline = &#123;</span><br><span class="line">  <span class="hljs-comment">//escape: /^\\([\\`*&#123;&#125;\[\]()#$+\-.!_&gt;])/,   第一处</span></span><br><span class="line">  <span class="hljs-built_in">escape</span>: <span class="hljs-regexp">/^\\([`*\[\]()#$+\-.!_&gt;])/</span>,</span><br><span class="line">  autolink: <span class="hljs-regexp">/^&lt;([^ &gt;]+(@|:\/)[^ &gt;]+)&gt;/</span>,</span><br><span class="line">  url: noop,</span><br><span class="line">  html: <span class="hljs-regexp">/^&lt;!--[\s\S]*?--&gt;|^&lt;(\w+(?!:\/|[^\w\s@]*@)\b)*?(?:"[^"]*"|'[^']*'|[^'"&gt;])*?&gt;([\s\S]*?)?&lt;\/\1&gt;|^&lt;(\w+(?!:\/|[^\w\s@]*@)\b)(?:"[^"]*"|'[^']*'|[^'"&gt;])*?&gt;/</span>,</span><br><span class="line">  link: <span class="hljs-regexp">/^!?\[(inside)\]\(href\)/</span>,</span><br><span class="line">  reflink: <span class="hljs-regexp">/^!?\[(inside)\]\s*\[([^\]]*)\]/</span>,</span><br><span class="line">  nolink: <span class="hljs-regexp">/^!?\[((?:\[[^\]]*\]|[^\[\]])*)\]/</span>,</span><br><span class="line">  reffn: <span class="hljs-regexp">/^!?\[\^(inside)\]/</span>,</span><br><span class="line">  strong: <span class="hljs-regexp">/^__([\s\S]+?)__(?!_)|^\*\*([\s\S]+?)\*\*(?!\*)/</span>,</span><br><span class="line">  <span class="hljs-comment">//em: /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,  第二处</span></span><br><span class="line">  em: <span class="hljs-regexp">/^\*((?:\*\*|[\s\S])+?)\*(?!\*)/</span>,</span><br><span class="line">  code: <span class="hljs-regexp">/^(`+)\s*([\s\S]*?[^`])\s*\1(?!`)/</span>,</span><br><span class="line">  br: <span class="hljs-regexp">/^ &#123;2,&#125;\n(?!\s*$)/</span>,</span><br><span class="line">  del: noop,</span><br><span class="line">  text: <span class="hljs-regexp">/^[\s\S]+?(?=[\\&lt;!\[_*`$]| &#123;2,&#125;\n|$)/</span>,</span><br><span class="line">  math: <span class="hljs-regexp">/^\$\$\s*([\s\S]*?[^\$])\s*\$\$(?!\$)/</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h2 id="更改Mathjax加载脚本"><a href="#更改Mathjax加载脚本" class="headerlink" title="更改Mathjax加载脚本"></a>更改Mathjax加载脚本</h2><p>找到$\color{red}{node_modules/hexo-renderer-mathjax/mathjax.html}$将最后一句改为：<br><figure class="highlight html hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML'</span> <span class="hljs-attr">async</span>&gt;</span><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<hr>
-<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>$$<br>e\left ( x^{ <em> } \right ) = x - x^ { </em> }x = a_0 + \frac{1}{a_1 +\sqrt{a^2+b^2} \frac{1}{a_2 + \frac{1}{a_3 + a_4}}}\sqrt{a^2+b^2}<br>$$</p>
+<h2 id="更改Mathjax加载脚本"><a href="#更改Mathjax加载脚本" class="headerlink" title="更改Mathjax加载脚本"></a>更改Mathjax加载脚本</h2><p>找到$\color{red}{node-modules/hexo-renderer-mathjax/mathjax.html}$将最后一句改为：<br><figure class="highlight html hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML'</span> <span class="hljs-attr">async</span>&gt;</span><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <hr>
 <h2 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a>大功告成</h2><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
 <p>将改动部署到博客</p>
@@ -450,12 +454,8 @@
         <span class="has-mr-6">4</span>
         <span>更改Mathjax加载脚本</span>
         </a></li><li>
-        <a class="is-flex" href="#效果">
-        <span class="has-mr-6">5</span>
-        <span>效果</span>
-        </a></li><li>
         <a class="is-flex" href="#大功告成">
-        <span class="has-mr-6">6</span>
+        <span class="has-mr-6">5</span>
         <span>大功告成</span>
         </a></li></ul>
         </div>
@@ -555,7 +555,7 @@
             
             <a href="/2019/04/30/Hexo用MathJax渲染数学公式/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hexo用MathJax渲染数学公式">
+                    <img class="thumbnail" src="https://cdn-images-1.medium.com/max/1200/1*oGKSLAyukkOr-1bZbMY0Cg.png" alt="Hexo用MathJax渲染数学公式">
                 </p>
             </a>
             

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.ccyh.xyz/2019/04/30/Hexo%E7%94%A8MathJax%E6%B8%B2%E6%9F%93%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/</loc>
+    <lastmod>2019-05-02</lastmod>
+  </url>  <url>
     <loc>https://www.ccyh.xyz/2019/05/01/Hexo-icarus%E4%BF%AE%E6%94%B9%E6%96%87%E7%AB%A0%E8%AF%A6%E6%83%85%E9%A1%B5/</loc>
     <lastmod>2019-05-01</lastmod>
   </url>  <url>
@@ -11,9 +14,6 @@
     <lastmod>2019-05-01</lastmod>
   </url>  <url>
     <loc>https://www.ccyh.xyz/2019/01/27/linearList/</loc>
-    <lastmod>2019-05-01</lastmod>
-  </url>  <url>
-    <loc>https://www.ccyh.xyz/2019/04/30/Hexo%E7%94%A8MathJax%E6%B8%B2%E6%9F%93%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/</loc>
     <lastmod>2019-05-01</lastmod>
   </url>  <url>
     <loc>https://www.ccyh.xyz/2018/12/26/HexoGitHub/</loc>
