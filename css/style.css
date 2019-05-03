@@ -58,6 +58,7 @@ textarea {
   background: #e7e7e7;
 }
 .card {
+  background-color: rgba(235,238,242,0);
   border-radius: 4px;
   box-shadow: 0 4px 10px #a2b5cd, 0 0 1px #a2b5cd;
 }
@@ -84,6 +85,7 @@ img.thumbnail {
   max-height: 1.75rem;
 }
 .navbar-main {
+  background-color: rgba(235,238,242,0);
   box-shadow: 0 4px 10px #a2b5cd;
 }
 .navbar-main .navbar-menu,
@@ -128,7 +130,7 @@ img.thumbnail {
   }
 }
 .footer {
-  background: #fff;
+  background: url("/images/leaves.png");
 }
 .footer .field .button {
   background: transparent;
@@ -212,8 +214,8 @@ img.thumbnail {
 .article .post-copyright {
   margin: 2em 0 0;
   padding: 0.5em 1em;
-  border-left: 3px solid #ff7f00;
-  background-color: #f9f9f9;
+  border-left: 3px solid rgba(255,147,87,0);
+  background-color: rgba(255,147,87,0);
   list-style: none;
 }
 .rtl {
