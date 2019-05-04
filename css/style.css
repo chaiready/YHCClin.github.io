@@ -1,6 +1,7 @@
 body {
   background: url("/images/leaves.png");
   font-size: 12px;
+  font-weight: bold;
 }
 /* ---------------------------------
  *       Override CSS Framework
@@ -58,7 +59,7 @@ textarea {
   background: #e7e7e7;
 }
 .card {
-  background-color: rgba(235,238,242,0);
+  background-color: #fff;
   border-radius: 4px;
   box-shadow: 0 4px 10px #a2b5cd, 0 0 1px #a2b5cd;
 }
@@ -85,7 +86,7 @@ img.thumbnail {
   max-height: 1.75rem;
 }
 .navbar-main {
-  background-color: rgba(235,238,242,0);
+  background-color: #fff;
   box-shadow: 0 4px 10px #a2b5cd;
 }
 .navbar-main .navbar-menu,
@@ -130,7 +131,8 @@ img.thumbnail {
   }
 }
 .footer {
-  background: url("/images/leaves.png");
+  background: #fff;
+  box-shadow: 0 4px 10px #a2b5cd;
 }
 .footer .field .button {
   background: transparent;
@@ -368,6 +370,7 @@ img.thumbnail {
 .far,
 .fas {
   line-height: inherit;
+  background-color: rgba(235,238,242,0);
 }
 /* ---------------------------------
  *        Fix content elements
