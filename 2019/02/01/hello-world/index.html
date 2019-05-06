@@ -4,7 +4,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-<title>【算法】素数筛法 - 飞鱼の博客</title>
+<title>Hello Friend - 飞鱼の博客</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
@@ -12,24 +12,22 @@
 <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
 
 
-    <meta name="description" content="Eratosthenes筛法">
-<meta name="keywords" content="Algorithm">
+    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="keywords" content="飞鱼的博客">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【算法】素数筛法">
-<meta property="og:url" content="https://www.ccyh.xyz/2019/03/12/【算法】素数筛法/index.html">
+<meta property="og:title" content="Hello Friend">
+<meta property="og:url" content="https://www.ccyh.xyz/2019/02/01/hello-world/index.html">
 <meta property="og:site_name" content="飞鱼の博客">
-<meta property="og:description" content="Eratosthenes筛法">
+<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E7%B4%A0%E6%95%B0%E7%AD%9B%E6%B3%95/20190313041655376.png">
 <meta property="og:updated_time" content="2019-05-06T16:10:20.182Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【算法】素数筛法">
-<meta name="twitter:description" content="Eratosthenes筛法">
-<meta name="twitter:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E7%B4%A0%E6%95%B0%E7%AD%9B%E6%B3%95/20190313041655376.png">
+<meta name="twitter:title" content="Hello Friend">
+<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
 
 
 
-<link rel="alternative" href="/atom.xml" title="【算法】素数筛法" type="application/atom+xml">
+<link rel="alternative" href="/atom.xml" title="Hello Friend" type="application/atom+xml">
 
 
 
@@ -117,7 +115,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/gen.svg" alt="【算法】素数筛法" height="28">
+                <img src="/images/gen.svg" alt="Hello Friend" height="28">
             
             </a>
         </div>
@@ -149,10 +147,6 @@
                     
                 
                 
-                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
-                    <i class="fas fa-list-ul"></i>
-                </a>
-                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -170,28 +164,18 @@
             <div class="columns">
                 <div class="column is-6-tablet is-6-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     
-    <div class="card-image">
-        <span class="image is-7by1">
-            <img class="thumbnail" src="https://pic.baike.soso.com/ugc/baikepic2/29906/cut-20141207123211-1562225095.jpg/0" alt="【算法】素数筛法">
-        </span>
-    </div>
-    
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-12T13:03:23.000Z">2019-03-12</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
-                </div>
+                <time class="level-item has-text-grey" datetime="2019-02-01T18:46:04.000Z">2019-02-01</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 241 个字)
+                    1 分钟 读完 (大约 122 个字)
                 </span>
                 
             </div>
@@ -199,27 +183,21 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                【算法】素数筛法
+                Hello Friend
             
         </h1>
         <div class="content">
-            <h3 id="Eratosthenes筛法"><a href="#Eratosthenes筛法" class="headerlink" title="Eratosthenes筛法"></a>Eratosthenes筛法</h3><hr>
-<a id="more"></a>
-<h4 id="算法思想："><a href="#算法思想：" class="headerlink" title="算法思想："></a>算法思想：</h4><blockquote>
-<p>从小到大枚举所有数，对每一个素数，筛去其所有的倍数，剩下的就都是素数了。<br>比如：<br>已知2为素数，筛去2的倍数4,6,8,10……<br>继续枚举到3，筛去3的倍数6,9,12,15……<br>由于4已被筛去，故其不是素数，来到5，筛去5的倍数10,15…..<br>如此下去，即可得到一个素数表</p>
-</blockquote>
-<h4 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h4><figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-comment">//素数筛法</span></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> Max = <span class="hljs-number">101</span>;</span><br><span class="line"><span class="hljs-keyword">int</span> prime[Max],pNum = <span class="hljs-number">0</span>;<span class="hljs-comment">//pNum存放素数个数</span></span><br><span class="line"><span class="hljs-keyword">bool</span> p[Max] = &#123;<span class="hljs-literal">false</span>&#125;;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">findPrime</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt; Max;i++)<span class="hljs-comment">//遍历从2到100的数</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">if</span>(p[i] == <span class="hljs-literal">false</span>)<span class="hljs-comment">//若i为素数</span></span><br><span class="line">		&#123;</span><br><span class="line">			prime[pNum++] = i;<span class="hljs-comment">//将i添加到prime数组中</span></span><br><span class="line">			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = i+i;j &lt; Max;j+=i)<span class="hljs-comment">//筛掉i的倍数</span></span><br><span class="line">			&#123;</span><br><span class="line">				p[j] = <span class="hljs-literal">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	findPrime();</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; pNum;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,prime[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="输出结果："><a href="#输出结果：" class="headerlink" title="输出结果："></a>输出结果：</h4><p><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E7%B4%A0%E6%95%B0%E7%AD%9B%E6%B3%95/20190313041655376.png" alt=""></p>
+            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><a id="more"></a>
+<h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="hljs-string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
-        </div>
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Algorithm/">Algorithm</a>
-                </div>
-            </div>
         </div>
         
         
@@ -235,11 +213,11 @@
       </li>
       <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="" title="{{ page.title }}">【算法】素数筛法</a>
+      <a href="" title="{{ page.title }}">Hello Friend</a>
       </li>
       <li class="post-copyright-link">
       <strong>发布时间：</strong>
-      <a href="" title="{{ page.title }}">2019年3月12日 - 13时03分</a>
+      <a href="" title="{{ page.title }}">2019年2月1日 - 18时02分</a>
       </li>
       <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -290,16 +268,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/03/13/【算法】数字黑洞/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/02/22/【底层原理】浮点数在计算机中的表示/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">【算法】数字黑洞</span>
+                <span class="level-item">【底层原理】浮点数在计算机中的表示</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/11/String/">
-                <span class="level-item">【数据结构】 字符串</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/01/30/90后的他月薪4000，存款百万！，为什么？/">
+                <span class="level-item">90后的他月薪4000，存款百万！，为什么？</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -315,8 +293,8 @@
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'https://www.ccyh.xyz/2019/03/12/【算法】素数筛法/';
-        this.page.identifier = '2019/03/12/【算法】素数筛法/';
+        this.page.url = 'https://www.ccyh.xyz/2019/02/01/hello-world/';
+        this.page.identifier = '2019/02/01/hello-world/';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -440,33 +418,6 @@
 </div>
     
         
-<div class="card widget" id="toc">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                目录
-            </h3>
-            <ul class="menu-list"><li>
-        <a class="is-flex" href="#Eratosthenes筛法">
-        <span class="has-mr-6">1</span>
-        <span>Eratosthenes筛法</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#算法思想：">
-        <span class="has-mr-6">1.1</span>
-        <span>算法思想：</span>
-        </a></li><li>
-        <a class="is-flex" href="#代码实现：">
-        <span class="has-mr-6">1.2</span>
-        <span>代码实现：</span>
-        </a></li><li>
-        <a class="is-flex" href="#输出结果：">
-        <span class="has-mr-6">1.3</span>
-        <span>输出结果：</span>
-        </a></li></ul></li></ul>
-        </div>
-    </div>
-</div>
-
     
         
 <div class="card widget">
@@ -885,7 +836,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/gen.svg" alt="【算法】素数筛法" height="28">
+                    <img src="/images/gen.svg" alt="Hello Friend" height="28">
                 
                 </a>
                 <p class="is-size-7">
