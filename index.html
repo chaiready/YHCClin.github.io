@@ -164,6 +164,89 @@
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
     <div class="card">
     
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-06-03T14:25:33.000Z">2019-06-03</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/机器学习/">机器学习</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    13 分钟 读完 (大约 1954 个字)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/06/03/人工神经网络学习笔记（0）/">人工神经网络学习笔记（0）</a>
+            
+        </h1>
+        <div class="content">
+            <hr>
+<h2 id="何为人工神经网络"><a href="#何为人工神经网络" class="headerlink" title="何为人工神经网络"></a>何为人工神经网络</h2><p>人工神经网络是模拟人脑的神经网络，用以实现人工智能的机器学习技术。我们知道，人脑可以说是世界上最复杂最精妙的系统之一，它由千亿计的神经元细胞组成。各个神经细胞相互链接，彼此之间传递电信号。从而造就了人类高于其他物种的思维能力。科学家受到人脑神经元的启发从而提出了人工神经网络的设想，使得人工智能的实现不再遥不可及。</p>
+<h2 id="生物神经元"><a href="#生物神经元" class="headerlink" title="生物神经元"></a>生物神经元</h2><p><img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2877951112,4239204535&amp;fm=26&amp;gp=0.jpg" alt=""><br><strong>关键部件：</strong> 树突 &amp; 胞体 &amp; 轴突</p>
+<ul>
+<li>单个神经元的工作机制可以简单地描述为：树突接受其他神经元的神经末梢传来的电信号，信号传送到胞体并由某种机制决定是否激发下一次电信号的传递，若激发则电信号由轴突传递至神经末梢，再由神经末梢传递给其他神经元。其中，判断是否激发的机制有一大好处是可以减小神经元间微弱电信号（噪声）的干扰，使得自由足够强的电信号才能激发下一次传递。</li>
+</ul>
+<h2 id="人工神经元"><a href="#人工神经元" class="headerlink" title="人工神经元"></a>人工神经元</h2><h3 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h3><p><img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1784596280,2741805283&amp;fm=26&amp;gp=0.jpg" alt="人工神经元"></p>
+<ul>
+<li>由生物神经元得到的启发，人工神经元与其大同小异。上图中： $x_1,x_2,x_3,x_4$ 为该神经元树突所接受到的其他神经元传来的电信号。中间的圆圈为胞体，在胞体中将会由处理信号的机制，以决定输出信号y。<h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3></li>
+<li>在之前的生物神经元中已经说道，神经元对是否激发信号传递有一个判断机制，这是因为神经元不希望传递微小的噪声信号，而只传递有意识的明显信号。只有信号强度达到了某一个阙值，才会激发电信号的传递。<br><strong>那么在人工神经元中我们如何来实现这个机制呢？</strong></li>
+<li>这样的一个函数也许能够满足我们的需要：<br>$$Function(x) = \begin{cases}<br>0 &amp; x \leq T \<br>1 &amp; x&gt;T<br>\end{cases}$$<br>显而易见，这个简单的阶跃函数在输入信号大于T（阙值）时才会产生输出信号1（被激发），而较小的输入时输出为0（被抑制）；我们称这样的函数为激活函数。当然，激活函数不会就只有这么一种。常用的还有sigmoid函数：<br>$$Sigmoid(x) = \frac{1}{1+e^{-x}}$$<br>函数图像：<br><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2160826125,3899173269&amp;fm=26&amp;gp=0.jpg" alt=""><br>可以发现，sigmoid函数相对于阶跃函数而言更加平滑，自然，接近现实。我们的神经网络也将采用它。<br>如此一来，我们的单个神经元模型就成型了：<br><img src="https://images2015.cnblogs.com/blog/764050/201606/764050-20160619112701960-1012598812.png" alt="人工神经元模型"><br>参数含义：</li>
+<li>$x_1 ,x_2… x_m$为输入信号</li>
+<li>$w_1 ,w_2… w_m$为权重值，表示各个输入信号对输出结果的影响力大小。对于为何引入权值可以做如下思考：你去相亲，你对未来对象的考量主要有身高，长相，身材，文化程度等，但遇到样样都好的概率实在是太底了，所以你决定适当放宽某些要求。比如如果学历高就可以降低身材长相的要求。这表示你比较注重伴侣的文化程度。因此，对方的文化程度对你的择偶有着重要的影响，其所占权重就会比较高。</li>
+<li>求和函数将计算$x=\sum_{m}{x_iw_i},i=1,2,…m$后将所得的值传给激活函数Sigmoid即：<br>$$Output=Sig(x)=\frac{1}{1+e^{-(\sum_{m}{x_iw_i})}}$$<br>观察函数图不难发现，Sigmoid函数将加权求和的输入映射到0~1的值域内输出。<h2 id="人工神经网络"><a href="#人工神经网络" class="headerlink" title="人工神经网络"></a>人工神经网络</h2><img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=266571296,2744303426&amp;fm=26&amp;gp=0.jpg" alt=""><br>介绍完单个神经元的功能，如果把这些小部件组合起来，就成了所谓的人工神经网络。<br><strong>层次结构：</strong></li>
+<li>输入层：接受外部输入信息，可以是图片等。</li>
+<li>隐藏层：隐藏层层数不一，可根据需求来定。</li>
+<li>输出层：将结果输出到外部。</li>
+</ul>
+<p><strong>链接方式：</strong></p>
+<ul>
+<li>除输入层外，每一层的每个神经元都接受其上一层所有神经元传来的信号的加权值。</li>
+<li>神经元的链接方式并不唯一，你可以创造自己的链接方式，但为了便于抽象计算编码，规则的链接方式能帮我们大忙。</li>
+</ul>
+<h3 id="一个三层神经网络示例"><a href="#一个三层神经网络示例" class="headerlink" title="一个三层神经网络示例"></a>一个三层神经网络示例</h3><p><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%880%EF%BC%89/20190603023656961.png" alt=""></p>
+<hr>
+<p><strong>参数释义：</strong></p>
+<ul>
+<li>$i_1,i_2,i_3$为输入信号。</li>
+<li>$w_{j,k}$表示后层结点$j$与前一层节点$k$之间链接的权重值。</li>
+<li>$o_1,o_2,o_3$为该网络输出的结果信号。</li>
+</ul>
+<hr>
+<p><strong>信号的前向传播：</strong><br>前面我们介绍了单个人工神经元对信号的处理。但是现在网络中有多个神经元，我们当然不愿意对每一个神经元节点都进行编码计算，因此我们将其简化为矩阵运算。<br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%880%EF%BC%89/20190603023612835.png" alt=""></p>
+<ol>
+<li>将输入看成一个多维列向量：<br>$$<br>I=<br>\left[<br>\begin{matrix}<br>i_1 \<br>i_2 \<br>i_3<br>\end{matrix} \right]<br>$$</li>
+<li>链接权重为一个$3\times3$的矩阵：<br>$$<br>W_{input\rightarrow hidden}=<br>\left[<br>\begin{matrix}<br>w_{1,1} &amp; w_{2,1} &amp; w_{3,1} \<br>w_{1,2} &amp; w_{2,2} &amp; w_{3,2} \<br>w_{1,3} &amp; w_{2,3} &amp; w_{3,3}<br>\end{matrix} \right]<br>$$</li>
+<li>将两者相乘得到隐藏层的输入信号：<br>$$<br>I_{hidden}=W_{input\rightarrow hidden}\cdot I=<br>\left[<br>\begin{matrix}<br>w_{1,1}\cdot i_1 + w_{2,1}\cdot i_2 + w_{3,1}\cdot i_3 \<br>w_{1,2}\cdot i_1 + w_{2,2}\cdot i_2 + w_{3,2}\cdot i_3 \<br>w_{1,3}\cdot i_1 + w_{2,3}\cdot i_2 + w_{3,3}\cdot i_3<br>\end{matrix} \right]<br>$$<br>也即：<br>$$<br>I_{hidden}=<br>\left[<br>\begin{matrix}<br>\sum_{j=1}^{3}{w_{j,1}\cdot i_j} \<br>\sum_{j=1}^{3}{w_{j,2}\cdot i_j} \<br>\sum_{j=1}^{3}{w_{j,3}\cdot i_j}<br>\end{matrix}\right]=[i_{h1},i_{h2},i_{h3}]^T<br>$$</li>
+<li>再将加权求和的信号值经过Sigmoid激活函数处理我们可以得到最终的输出向量：<br>$$<br>O_{hidden}=W_{hidden\rightarrow output}\cdot I_{hidden}=<br>\left[<br>\begin{matrix}<br>Sig(\sum_{j=1}^{3}{w_{j,1}\cdot o_{hj}}) \<br>Sig(\sum_{j=1}^{3}{w_{j,2}\cdot o_{hj}}) \<br>Sig(\sum_{j=1}^{3}{w_{j,3}\cdot o_{hj}}) \<br>\end{matrix}<br>\right]=[o_{h1},o_{h2},o_{h3}]^T<br>$$<br>这里需要注意的是，输入层到隐藏层的链接权重矩阵与隐藏层到输出成的链接权重矩阵是不同的矩阵。但是计算过程是一致的，因此同理可得：<br>$$<br>I_{output}=W_{hidden\rightarrow output}\cdot O_{hidden}<br>$$<br>网络的最终输出为：<br>$$<br>O_{output}=<br>\left[<br>\begin{matrix}<br>Sig(\sum_{j=1}^{3}{w_{j,1}\cdot i_{oj}}) \<br>Sig(\sum_{j=1}^{3}{w_{j,2}\cdot i_{oj}}) \<br>Sig(\sum_{j=1}^{3}{w_{j,3}\cdot i_{oj}}) \<br>\end{matrix}<br>\right]=[o_1,o_2,o_3]^T<br>$$<br>到此，我们已经了解了神经网络中信号的前向传播机制，但是目前这个网络模型远远达不到我们的要求，它除了单纯的传播信号什么事情也做不了。显然后续我们得为其添加反馈机制，使其能够具有学习能力。</li>
+</ol>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
     <div class="card-image">
         <a href="/2019/05/01/Hexo-icarus修改文章详情页/" class="image is-7by1">
             <img class="thumbnail" src="https://camo.githubusercontent.com/10c034a879aaaa88ea3669f0992cd28743d8ca07/687474703a2f2f70706f66666963652e6769746875622e696f2f6865786f2d7468656d652d6963617275732f67616c6c6572792f707265766965772e706e673f31" alt="Hexo-icarus修改文章详情页">
@@ -448,64 +531,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/03/13/【算法】全排列问题(C++)/" class="image is-7by1">
-            <img class="thumbnail" src="http://pic.5577.com/up/2014-8/20148148468.jpg" alt="【算法】全排列问题">
-        </a>
-    </div>
-    
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-13T12:32:26.000Z">2019-03-13</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 分钟 读完 (大约 361 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/03/13/【算法】全排列问题(C++)/">【算法】全排列问题</a>
-            
-        </h1>
-        <div class="content">
-            <h4 id="算法思想："><a href="#算法思想：" class="headerlink" title="算法思想："></a>算法思想：</h4>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/03/13/【算法】全排列问题(C++)/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -570,7 +595,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        21
+                        22
                     </p>
                 </div>
             </div>
@@ -580,7 +605,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        6
+                        7
                     </p>
                 </div>
             </div>
@@ -590,7 +615,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        13
+                        14
                     </p>
                 </div>
             </div>
@@ -675,6 +700,14 @@
                 <span class="level-item tag">5</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/机器学习/">
+            <span class="level-start">
+                <span class="level-item">机器学习</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/算法/">
             <span class="level-start">
                 <span class="level-item">算法</span>
@@ -702,6 +735,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/06/03/人工神经网络学习笔记（0）/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="人工神经网络学习笔记（0）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-03T14:25:33.000Z">2019-06-03</time></div>
+                    <a href="/2019/06/03/人工神经网络学习笔记（0）/" class="has-link-black-ter is-size-6">人工神经网络学习笔记（0）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/机器学习/">机器学习</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -779,25 +831,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/03/14/【算法】背包问题的DFS与DP解法/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Knapsack.svg/250px-Knapsack.svg.png" alt="【算法】背包问题的DFS与DP解法">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-14T20:03:54.000Z">2019-03-14</time></div>
-                    <a href="/2019/03/14/【算法】背包问题的DFS与DP解法/" class="has-link-black-ter is-size-6">【算法】背包问题的DFS与DP解法</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/算法/">算法</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -841,7 +874,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/Boring/" style="font-size: 10px;">Boring</a> <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/Hexo/" style="font-size: 16.67px;">Hexo</a> <a href="/tags/Knapsack/" style="font-size: 10px;">Knapsack</a> <a href="/tags/List/" style="font-size: 13.33px;">List</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/Tree/" style="font-size: 10px;">Tree</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+        <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/Boring/" style="font-size: 10px;">Boring</a> <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/Hexo/" style="font-size: 16.67px;">Hexo</a> <a href="/tags/Knapsack/" style="font-size: 10px;">Knapsack</a> <a href="/tags/List/" style="font-size: 13.33px;">List</a> <a href="/tags/ML/" style="font-size: 10px;">ML</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/Tree/" style="font-size: 10px;">Tree</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
         
     </div>
     <div align="center">
@@ -857,6 +890,17 @@
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/05/">
@@ -990,6 +1034,13 @@
                     <a class="tags has-addons" href="/tags/List/">
                         <span class="tag">List</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ML/">
+                        <span class="tag">ML</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1053,7 +1104,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/Boring/" style="font-size: 10px;">Boring</a> <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/Hexo/" style="font-size: 16.67px;">Hexo</a> <a href="/tags/Knapsack/" style="font-size: 10px;">Knapsack</a> <a href="/tags/List/" style="font-size: 13.33px;">List</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/Tree/" style="font-size: 10px;">Tree</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+        <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/Boring/" style="font-size: 10px;">Boring</a> <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/Hexo/" style="font-size: 16.67px;">Hexo</a> <a href="/tags/Knapsack/" style="font-size: 10px;">Knapsack</a> <a href="/tags/List/" style="font-size: 13.33px;">List</a> <a href="/tags/ML/" style="font-size: 10px;">ML</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/Tree/" style="font-size: 10px;">Tree</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
         
     </div>
     <div align="center">
@@ -1069,6 +1120,17 @@
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/05/">
@@ -1202,6 +1264,13 @@
                     <a class="tags has-addons" href="/tags/List/">
                         <span class="tag">List</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ML/">
+                        <span class="tag">ML</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
