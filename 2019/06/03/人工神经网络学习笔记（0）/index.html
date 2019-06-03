@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=266571296,2744303426&fm=26&gp=0.jpg">
 <meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%880%EF%BC%89/20190603023656961.png">
 <meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%880%EF%BC%89/20190603023612835.png">
-<meta property="og:updated_time" content="2019-06-03T16:40:18.214Z">
+<meta property="og:updated_time" content="2019-06-03T17:10:19.244Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="人工神经网络学习笔记（0）">
 <meta name="twitter:description" content="何为人工神经网络人工神经网络是模拟人脑的神经网络，用以实现人工智能的机器学习技术。我们知道，人脑可以说是世界上最复杂最精妙的系统之一，它由千亿计的神经元细胞组成。各个神经细胞相互链接，彼此之间传递电信号。从而造就了人类高于其他物种的思维能力。科学家受到人脑神经元的启发从而提出了人工神经网络的设想，使得人工智能的实现不再遥不可及。">
@@ -191,7 +191,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    13 分钟 读完 (大约 1955 个字)
+                    13 分钟 读完 (大约 1957 个字)
                 </span>
                 
             </div>
@@ -240,7 +240,7 @@
 <li>将输入看成一个多维列向量：<br>$$<br>I=<br>\left[<br>\begin{matrix}<br>i_1 \<br>i_2 \<br>i_3<br>\end{matrix} \right]<br>$$</li>
 <li>链接权重为一个$3\times3$的矩阵：<br>$$<br>W_{input\rightarrow hidden}=<br>\left[<br>\begin{matrix}<br>w_{1,1} &amp; w_{2,1} &amp; w_{3,1} \<br>w_{1,2} &amp; w_{2,2} &amp; w_{3,2} \<br>w_{1,3} &amp; w_{2,3} &amp; w_{3,3}<br>\end{matrix} \right]<br>$$</li>
 <li>将两者相乘得到隐藏层的输入信号：<br>$$<br>I_{hidden}=W_{input\rightarrow hidden}\cdot I=<br>\left[<br>\begin{matrix}<br>w_{1,1}\cdot i_1 + w_{2,1}\cdot i_2 + w_{3,1}\cdot i_3 \<br>w_{1,2}\cdot i_1 + w_{2,2}\cdot i_2 + w_{3,2}\cdot i_3 \<br>w_{1,3}\cdot i_1 + w_{2,3}\cdot i_2 + w_{3,3}\cdot i_3<br>\end{matrix} \right]<br>$$<br>也即：<br>$$<br>I_{hidden}=<br>\left[<br>\begin{matrix}<br>\sum_{j=1}^{3}{w_{j,1}\cdot i_j} \<br>\sum_{j=1}^{3}{w_{j,2}\cdot i_j} \<br>\sum_{j=1}^{3}{w_{j,3}\cdot i_j}<br>\end{matrix}\right]=[i_{h1},i_{h2},i_{h3}]^T<br>$$</li>
-<li>再将加权求和的信号值经过Sigmoid激活函数处理我们可以得到最终的输出向量：<br>$$<br>O_{hidden}=W_{hidden\rightarrow output}\cdot I_{hidden}=<br>\left[<br>\begin{matrix}<br>Sig(\sum_{j=1}^{3}{w_{j,1}\cdot o_{hj}}) \<br>Sig(\sum_{j=1}^{3}{w_{j,2}\cdot o_{hj}}) \<br>Sig(\sum_{j=1}^{3}{w_{j,3}\cdot o_{hj}}) \<br>\end{matrix}<br>\right]=[o_{h1},o_{h2},o_{h3}]^T<br>$$<br>这里需要注意的是，输入层到隐藏层的链接权重矩阵与隐藏层到输出成的链接权重矩阵是不同的矩阵。但是计算过程是一致的，因此同理可得：<br>$$<br>I_{output}=W_{hidden\rightarrow output}\cdot O_{hidden}<br>$$<br>网络的最终输出为：<br>$$<br>O_{output}=<br>\left[<br>\begin{matrix}<br>Sig(\sum_{j=1}^{3}{w_{j,1}\cdot i_{oj}}) \<br>Sig(\sum_{j=1}^{3}{w_{j,2}\cdot i_{oj}}) \<br>Sig(\sum_{j=1}^{3}{w_{j,3}\cdot i_{oj}}) \<br>\end{matrix}<br>\right]=[o_1,o_2,o_3]^T<br>$$<br>到此，我们已经了解了神经网络中信号的前向传播机制，但是目前这个网络模型远远达不到我们的要求，它除了单纯的传播信号什么事情也做不了。显然后续我们得为其添加反馈机制，使其能够具有学习能力。</li>
+<li>再将加权求和的信号值经过Sigmoid激活函数处理我们可以得到最终的输出向量：<br>$$<br>O_{hidden}=Sig(W_{hidden\rightarrow output}\cdot I_{hidden})=<br>\left[<br>\begin{matrix}<br>Sig(\sum_{j=1}^{3}{w_{j,1}\cdot o_{hj}}) \<br>Sig(\sum_{j=1}^{3}{w_{j,2}\cdot o_{hj}}) \<br>Sig(\sum_{j=1}^{3}{w_{j,3}\cdot o_{hj}}) \<br>\end{matrix}<br>\right]=[o_{h1},o_{h2},o_{h3}]^T<br>$$<br>这里需要注意的是，输入层到隐藏层的链接权重矩阵与隐藏层到输出成的链接权重矩阵是不同的矩阵。但是计算过程是一致的，因此同理可得：<br>$$<br>I_{output}=Sig(W_{hidden\rightarrow output}\cdot O_{hidden})<br>$$<br>网络的最终输出为：<br>$$<br>O_{output}=<br>\left[<br>\begin{matrix}<br>Sig(\sum_{j=1}^{3}{w_{j,1}\cdot i_{oj}}) \<br>Sig(\sum_{j=1}^{3}{w_{j,2}\cdot i_{oj}}) \<br>Sig(\sum_{j=1}^{3}{w_{j,3}\cdot i_{oj}}) \<br>\end{matrix}<br>\right]=[o_1,o_2,o_3]^T<br>$$<br>到此，我们已经了解了神经网络中信号的前向传播机制，但是目前这个网络模型远远达不到我们的要求，它除了单纯的传播信号什么事情也做不了。显然后续我们得为其添加反馈机制，使其能够具有学习能力。</li>
 </ol>
 
         </div>
