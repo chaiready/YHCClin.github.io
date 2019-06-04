@@ -4,7 +4,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-<title>【算法】素数筛法 - 飞鱼の博客</title>
+<title>人工神经网络学习笔记（2） - 飞鱼の博客</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
@@ -12,24 +12,29 @@
 <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
 
 
-    <meta name="description" content="Eratosthenes筛法">
-<meta name="keywords" content="Algorithm">
+    <meta name="description" content="如何更新权重在上一篇文章中我们算出了各个层的误差，现在是时候利用这些误差来指导链接权重的修改了。那么该如何修改？  暴力枚举：对于一个三层的神经网络，每层有3个神经元结点，有两个$3\times 3$的链接权重矩阵，共有18个权重值。假设每个权重在1和-1之间共有1000种取值，那么我们有$1000^{18}$种权重组合，这个数字已经很大了。但是，如果是每层有500个结点呢？那么权重数将达到$2\">
+<meta name="keywords" content="ML">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【算法】素数筛法">
-<meta property="og:url" content="https://www.ccyh.xyz/2019/03/12/【算法】素数筛法/index.html">
+<meta property="og:title" content="人工神经网络学习笔记（2）">
+<meta property="og:url" content="https://www.ccyh.xyz/2019/06/04/人工神经网络学习笔记（2）/index.html">
 <meta property="og:site_name" content="飞鱼の博客">
-<meta property="og:description" content="Eratosthenes筛法">
+<meta property="og:description" content="如何更新权重在上一篇文章中我们算出了各个层的误差，现在是时候利用这些误差来指导链接权重的修改了。那么该如何修改？  暴力枚举：对于一个三层的神经网络，每层有3个神经元结点，有两个$3\times 3$的链接权重矩阵，共有18个权重值。假设每个权重在1和-1之间共有1000种取值，那么我们有$1000^{18}$种权重组合，这个数字已经很大了。但是，如果是每层有500个结点呢？那么权重数将达到$2\">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E7%B4%A0%E6%95%B0%E7%AD%9B%E6%B3%95/20190313041655376.png">
+<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/20190604110727225.png">
+<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/20190604112226207.png">
+<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/20190604114310137.png">
+<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/20190604012324203.png">
+<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1559636048297&di=a69a0ac50c0c4c39c6290d14fe697429&imgtype=0&src=http%3A%2F%2Fimg.ph.126.net%2FwdlmGd6Cl2EyG0Bp-xEihQ%3D%3D%2F1016406140918957318.jpg">
+<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/20190604014334436.png">
 <meta property="og:updated_time" content="2019-06-04T07:20:05.404Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【算法】素数筛法">
-<meta name="twitter:description" content="Eratosthenes筛法">
-<meta name="twitter:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E7%B4%A0%E6%95%B0%E7%AD%9B%E6%B3%95/20190313041655376.png">
+<meta name="twitter:title" content="人工神经网络学习笔记（2）">
+<meta name="twitter:description" content="如何更新权重在上一篇文章中我们算出了各个层的误差，现在是时候利用这些误差来指导链接权重的修改了。那么该如何修改？  暴力枚举：对于一个三层的神经网络，每层有3个神经元结点，有两个$3\times 3$的链接权重矩阵，共有18个权重值。假设每个权重在1和-1之间共有1000种取值，那么我们有$1000^{18}$种权重组合，这个数字已经很大了。但是，如果是每层有500个结点呢？那么权重数将达到$2\">
+<meta name="twitter:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/20190604110727225.png">
 
 
 
-<link rel="alternative" href="/atom.xml" title="【算法】素数筛法" type="application/atom+xml">
+<link rel="alternative" href="/atom.xml" title="人工神经网络学习笔记（2）" type="application/atom+xml">
 
 
 
@@ -117,7 +122,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/gen.svg" alt="【算法】素数筛法" height="28">
+                <img src="/images/gen.svg" alt="人工神经网络学习笔记（2）" height="28">
             
             </a>
         </div>
@@ -170,28 +175,22 @@
             <div class="columns">
                 <div class="column is-6-tablet is-6-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     
-    <div class="card-image">
-        <span class="image is-7by1">
-            <img class="thumbnail" src="https://pic.baike.soso.com/ugc/baikepic2/29906/cut-20141207123211-1562225095.jpg/0" alt="【算法】素数筛法">
-        </span>
-    </div>
-    
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-12T13:03:23.000Z">2019-03-12</time>
+                <time class="level-item has-text-grey" datetime="2019-06-04T10:02:53.000Z">2019-06-04</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                <a class="has-link-grey -link" href="/categories/机器学习/">机器学习</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 241 个字)
+                    12 分钟 读完 (大约 1799 个字)
                 </span>
                 
             </div>
@@ -199,17 +198,45 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                【算法】素数筛法
+                人工神经网络学习笔记（2）
             
         </h1>
         <div class="content">
-            <h3 id="Eratosthenes筛法"><a href="#Eratosthenes筛法" class="headerlink" title="Eratosthenes筛法"></a>Eratosthenes筛法</h3><hr>
-<a id="more"></a>
-<h4 id="算法思想："><a href="#算法思想：" class="headerlink" title="算法思想："></a>算法思想：</h4><blockquote>
-<p>从小到大枚举所有数，对每一个素数，筛去其所有的倍数，剩下的就都是素数了。<br>比如：<br>已知2为素数，筛去2的倍数4,6,8,10……<br>继续枚举到3，筛去3的倍数6,9,12,15……<br>由于4已被筛去，故其不是素数，来到5，筛去5的倍数10,15…..<br>如此下去，即可得到一个素数表</p>
-</blockquote>
-<h4 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h4><figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-comment">//素数筛法</span></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> Max = <span class="hljs-number">101</span>;</span><br><span class="line"><span class="hljs-keyword">int</span> prime[Max],pNum = <span class="hljs-number">0</span>;<span class="hljs-comment">//pNum存放素数个数</span></span><br><span class="line"><span class="hljs-keyword">bool</span> p[Max] = &#123;<span class="hljs-literal">false</span>&#125;;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">findPrime</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt; Max;i++)<span class="hljs-comment">//遍历从2到100的数</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">if</span>(p[i] == <span class="hljs-literal">false</span>)<span class="hljs-comment">//若i为素数</span></span><br><span class="line">		&#123;</span><br><span class="line">			prime[pNum++] = i;<span class="hljs-comment">//将i添加到prime数组中</span></span><br><span class="line">			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = i+i;j &lt; Max;j+=i)<span class="hljs-comment">//筛掉i的倍数</span></span><br><span class="line">			&#123;</span><br><span class="line">				p[j] = <span class="hljs-literal">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	findPrime();</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; pNum;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,prime[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="输出结果："><a href="#输出结果：" class="headerlink" title="输出结果："></a>输出结果：</h4><p><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E7%B4%A0%E6%95%B0%E7%AD%9B%E6%B3%95/20190313041655376.png" alt=""></p>
+            <h3 id="如何更新权重"><a href="#如何更新权重" class="headerlink" title="如何更新权重"></a>如何更新权重</h3><p>在上一篇文章中我们算出了各个层的误差，现在是时候利用这些误差来指导链接权重的修改了。那么该如何修改？</p>
+<ul>
+<li><strong>暴力枚举：</strong>对于一个三层的神经网络，每层有3个神经元结点，有两个$3\times 3$的链接权重矩阵，共有18个权重值。假设每个权重在1和-1之间共有1000种取值，那么我们有$1000^{18}$种权重组合，这个数字已经很大了。但是，如果是每层有500个结点呢？那么权重数将达到$2\times 500\times 500 = 500000$个，将会有$1000^{500000}$种组合。想要遍历这么些种可能得等到人类灭绝…<a id="more"></a>
+可见，暴力枚举并不能实际地解决我们的问题。</li>
+<li><strong>新的思路：</strong>让我们再次明确下我们的最终目的，让误差值降到最小。试着将其转化成数学上的求函数最小值问题。先前我们知道，误差是所有链接权重的函数:<br>$$<br>Error = F_{error}(w_{1,1},w_{2,1},……,w_{j,k})<br>$$<br>现在我们需要额就是找出该函数的最小值。但由于真正的误差函数的自变量太多，先举个简单的例子：<br>假设误差函数只有一个自变量（链接权重）：<br>$$<br>E_{simple}=F_e(x)<br>$$<br>其图像为：<br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/20190604110727225.png" alt=""><br>可以将其想象成一个连绵的山脉，有山峰也有山谷。设想将一个小球至于山腰，那么在重力的作用下它必定沿着所在位置的斜率方向向下滚动直到山谷。但是很明显，我们并没有重力帮忙，因此必须人为指定“滚动方向”。<br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/20190604112226207.png" alt=""><br>不难发现，当斜率为正时应向左滚动（x–），斜率为负时应向右滚动（x++）。这种方法在数学上被称为梯度下降（gradient descent）。<br><strong>可能的意外情况：</strong><br>我们可能会碰到这种情况：当小球的起始位置为左侧山腰时，其很有可能最终会在局部最小值（左侧的山谷）停下，这可不是我们所希望的结果。因为我们的目的是把误差降到最小，那里显然不是最小的地方。<br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/20190604114310137.png" alt=""><br>为了避免上述情况，我们应从选择不同的其实位置对神经网络进行多次训练，以确保其并不总是终止于错误的地方。而不同的其实位置意味着不同的链接权重。</li>
+</ul>
+<hr>
+<h3 id="选择误差函数的形式"><a href="#选择误差函数的形式" class="headerlink" title="选择误差函数的形式"></a>选择误差函数的形式</h3><p>可选项：</p>
+<ol>
+<li>$E=t_n-o_n$  (目标值 - 期望值)</li>
+<li>$E=(t_n-o_n)^2$  方差形式</li>
+</ol>
+<p>我们选用方差形式，因为其具有很多优点：</p>
+<ol>
+<li>可以很容易地使用代数方法（链式法则求解偏导数）计算出梯度下降的斜率</li>
+<li>误差函数平滑连续，这使得梯度下降算法可以很好地发挥作用</li>
+<li>越接近最小值梯度（斜率）越小，按照斜率调整步长可以减少越过最佳位置的风险</li>
+</ol>
+<hr>
+<h3 id="计算梯度值（斜率）"><a href="#计算梯度值（斜率）" class="headerlink" title="计算梯度值（斜率）"></a>计算梯度值（斜率）</h3><ul>
+<li>当只有一个链接权重时，误差函数为二维曲线：<br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/20190604012324203.png" alt=""><br>$$<br>k=\frac{\partial{E}}{\partial{x}}<br>$$</li>
+<li>当有两个链接权重时，误差函数为一个三维曲面：<br><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1559636048297&amp;di=a69a0ac50c0c4c39c6290d14fe697429&amp;imgtype=0&amp;src=http%3A%2F%2Fimg.ph.126.net%2FwdlmGd6Cl2EyG0Bp-xEihQ%3D%3D%2F1016406140918957318.jpg" alt=""><br>$$<br>k=\frac{\partial{E}}{\partial{w_{j,k}}}<br>$$<br>上述表达式表示了当权重$w_{j,k}$改变时，误差$E$是如何改变的。这是误差函数的斜率，也就是我们希望使用梯度下降的方法达到最小值的方向。</li>
+</ul>
+<p><strong>计算梯度：</strong></p>
+<ol>
+<li>在开始计算前我们回顾一下网络中各个参数的意义：<br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/20190604014334436.png" alt=""></li>
+<li>展开误差函数：<br>由于一个结点的误差只与与其相连的链接权重有关，因此误差函数可以简单地表示为：<br>$$<br>E=(t_k-o_k)^2<br>$$<br>其中：$o_k=Sig(\sum_{j=1}^{n}{w_{j,k}\cdot o_{hj}})$所以：<br>$$<br>E=(t_k-Sig(\sum_{j=1}^{n}{w_{j,k}\cdot o_{hj}}))^2<br>$$<br>所以：<br>$$<br>\frac{\partial{E}}{\partial{w_{j,k}}}=\frac{\partial{(t_k-o_k)^2}}{\partial{w_{j,k}}}<br>$$<br>$$<br>=\frac{\partial{E}}{\partial{o_k}}\cdot \frac{\partial{o_k}}{\partial{w_{j,k}}}=-2(t_k-o_k)\cdot \frac{\partial{o_k}}{\partial{w_{j,k}}}<br>$$<br>其中：令$x=\sum_{j=1}^{n}{w_{j,k}\cdot o_{hj}}$<br>$$<br>\frac{\partial{o_k}}{\partial{w_{j,k}}}=\frac{\partial{Sig(x)}}{\partial{w_{j,k}}}=\frac{\partial{Sig(x)}}{\partial{x}}\cdot \frac{\partial{x}}{\partial{w_{j,k}}}<br>$$<br>且：<br>$$<br>\frac{\partial{Sig(x)}}{\partial{x}}=Sig(x)\cdot (1-Sig(x))<br>$$<br>因此，我们得到了以下表达式：<br>$$<br>\frac{\partial{E}}{\partial{w_{j,k}}}=-2(t_k-o_k)\cdot Sig(\sum_{j=1}^{n}{w_{j,k}\cdot o_{hj}})\cdot (1-Sig(\sum_{j=1}^{n}{w_{j,k}\cdot o_{hj}}))\cdot \frac{\partial{(\sum_{j=1}^{n}{w_{j,k}\cdot o_{hj}}})}{\partial{w_{j,k}}}<br>$$<br>$$<br>=-2(t_k-o_k)\cdot Sig(\sum_{j=1}^{n}{w_{j,k}\cdot o_{hj}})\cdot (1-Sig(\sum_{j=1}^{n}{w_{j,k}\cdot o_{hj}}))\cdot o_{hj}<br>$$<br>又由于我们只关心误差函数斜率的方向，因此可以将公式中的常数2省略，并不影响正负号：<br>$$<br>\frac{\partial{E}}{\partial{w_{j,k}}}=-(t_k-o_k)\cdot Sig(\sum_{j=1}^{n}{w_{j,k}\cdot o_{hj}})\cdot (1-Sig(\sum_{j=1}^{n}{w_{j,k}\cdot o_{hj}}))\cdot o_{hj}<br>$$<br>$$<br>=-(e_j)\cdot Sig(\sum_{j=1}^{n}{w_{j,k}\cdot o_{hj}})\cdot (1-Sig(\sum_{j=1}^{n}{w_{j,k}\cdot o_{hj}}))\cdot o_{hj}<br>$$</li>
+</ol>
+<h3 id="改变链接权重"><a href="#改变链接权重" class="headerlink" title="改变链接权重"></a>改变链接权重</h3><p>之前提到过，权重的改变方向与梯度的方向相反。因此我们规定权重的改变方式为：<br>$$<br>w_{j,k}^{new}=w_{j,k}^{old}-\alpha \cdot \frac{\partial{E}}{\partial{w_{j,k}}}<br>$$<br>参数释义：</p>
+<ul>
+<li>$\alpha$为学习因子，可以调节这些权重变化的强度</li>
+</ul>
+<p><strong>用矩阵来简化运算：</strong><br>$$<br>\left(<br>\begin{matrix}<br>\vartriangle w_{1,1} &amp; \vartriangle w_{2,1} &amp; \vartriangle w_{3,1} &amp; …\<br>\vartriangle w_{1,2} &amp; \vartriangle w_{2,2} &amp; \vartriangle w_{3,2} &amp; …\<br>\vartriangle w_{1,3} &amp; \vartriangle w_{2,3} &amp; \vartriangle w_{3,3} &amp; …\<br>… &amp; … &amp; … &amp; …<br>\end{matrix}<br>\right)=\alpha\cdot \left(\begin{matrix}e_1\cdot S_1\cdot (1-S_1)\ e_2\cdot S_2\cdot (1-S_2)\ e_k\cdot S_k\cdot (1-S_k)\ …\end{matrix}\right) \cdot (o_1,o_2,o_3,…)<br>$$<br>将Sig函数简化为输出：<br>$$<br>\vartriangle w_{j,k} = \alpha\cdot E_k \cdot O_k \cdot (1-O_k) \cdot O_j^T<br>$$</p>
+<hr>
+<p>到此，所有的前期工作都已完成。</p>
 
         </div>
         
@@ -217,7 +244,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Algorithm/">Algorithm</a>
+                    <a class="has-link-grey -link" href="/tags/ML/">ML</a>
                 </div>
             </div>
         </div>
@@ -235,11 +262,11 @@
       </li>
       <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="" title="{{ page.title }}">【算法】素数筛法</a>
+      <a href="" title="{{ page.title }}">人工神经网络学习笔记（2）</a>
       </li>
       <li class="post-copyright-link">
       <strong>发布时间：</strong>
-      <a href="" title="{{ page.title }}">2019年3月12日 - 13时03分</a>
+      <a href="" title="{{ page.title }}">2019年6月4日 - 10时06分</a>
       </li>
       <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -289,17 +316,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/03/13/【算法】数字黑洞/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">【算法】数字黑洞</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/11/String/">
-                <span class="level-item">【数据结构】 字符串</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/06/03/人工神经网络学习比记（1）/">
+                <span class="level-item">人工神经网络学习比记（1）</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -315,8 +335,8 @@
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'https://www.ccyh.xyz/2019/03/12/【算法】素数筛法/';
-        this.page.identifier = '2019/03/12/【算法】素数筛法/';
+        this.page.url = 'https://www.ccyh.xyz/2019/06/04/人工神经网络学习笔记（2）/';
+        this.page.identifier = 'ccyhweb';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -447,22 +467,22 @@
                 目录
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#Eratosthenes筛法">
+        <a class="is-flex" href="#如何更新权重">
         <span class="has-mr-6">1</span>
-        <span>Eratosthenes筛法</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#算法思想：">
-        <span class="has-mr-6">1.1</span>
-        <span>算法思想：</span>
+        <span>如何更新权重</span>
         </a></li><li>
-        <a class="is-flex" href="#代码实现：">
-        <span class="has-mr-6">1.2</span>
-        <span>代码实现：</span>
+        <a class="is-flex" href="#选择误差函数的形式">
+        <span class="has-mr-6">2</span>
+        <span>选择误差函数的形式</span>
         </a></li><li>
-        <a class="is-flex" href="#输出结果：">
-        <span class="has-mr-6">1.3</span>
-        <span>输出结果：</span>
-        </a></li></ul></li></ul>
+        <a class="is-flex" href="#计算梯度值（斜率）">
+        <span class="has-mr-6">3</span>
+        <span>计算梯度值（斜率）</span>
+        </a></li><li>
+        <a class="is-flex" href="#改变链接权重">
+        <span class="has-mr-6">4</span>
+        <span>改变链接权重</span>
+        </a></li></ul>
         </div>
     </div>
 </div>
@@ -911,7 +931,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/gen.svg" alt="【算法】素数筛法" height="28">
+                    <img src="/images/gen.svg" alt="人工神经网络学习笔记（2）" height="28">
                 
                 </a>
                 <p class="is-size-7">
