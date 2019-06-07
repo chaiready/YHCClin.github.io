@@ -21,7 +21,9 @@
 <meta property="og:description" content="下载icarus主题 进入博客主目录，点击鼠标右键Git Bash Here,进入命令行界面">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Hexo+icarus主题配置/20190429082811950.png">
-<meta property="og:updated_time" content="2019-06-04T07:40:56.941Z">
+<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Hexo+icarus主题配置/20190429093801600.png">
+<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Hexo+icarus主题配置/20190429094726470.png">
+<meta property="og:updated_time" content="2019-06-07T05:44:02.149Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo+icarus主题配置">
 <meta name="twitter:description" content="下载icarus主题 进入博客主目录，点击鼠标右键Git Bash Here,进入命令行界面">
@@ -246,18 +248,14 @@
 <li><p>在$\color{DarkTurquoise}{/themes/icarus/_config.yml}$中添加：</p>
 <figure class="highlight yml hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-attr">busuanzi:</span></span><br><span class="line"><span class="hljs-attr">    enable:</span> <span class="hljs-literal">true</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>最终效果：<br><div align="center">
-![](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Hexo+icarus主题配置/20190429093801600.png)
-</div></p>
+<li><p>最终效果：<br><div align="center"><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Hexo+icarus主题配置/20190429093801600.png" alt=""><br></div></p>
 <h3 id="网站运行时间统计"><a href="#网站运行时间统计" class="headerlink" title="网站运行时间统计"></a>网站运行时间统计</h3></li>
 <li><p>在$\color{DarkTurquoise}{/themes/icarus/layout/common/footer.ejs}$中添加：</p>
 <figure class="highlight html hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"timeDate"</span>&gt;</span>载入天数...<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"times"</span>&gt;</span>载入时分秒...<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="hljs-undefined"></span></span><br><span class="line"><span class="hljs-javascript">                <span class="hljs-keyword">var</span> now = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(); </span></span><br><span class="line"><span class="hljs-javascript">                <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createtime</span>(<span class="hljs-params"></span>) </span>&#123; </span></span><br><span class="line"><span class="hljs-javascript">                    <span class="hljs-keyword">var</span> grt= <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">"12/28/2018 12:49:00"</span>);<span class="hljs-comment">//此处修改你的建站时间或者网站上线时间 </span></span></span><br><span class="line"><span class="hljs-undefined">                    now.setTime(now.getTime()+250); </span></span><br><span class="line"><span class="hljs-javascript">                    days = (now - grt ) / <span class="hljs-number">1000</span> / <span class="hljs-number">60</span> / <span class="hljs-number">60</span> / <span class="hljs-number">24</span>; dnum = <span class="hljs-built_in">Math</span>.floor(days); </span></span><br><span class="line"><span class="hljs-javascript">                    hours = (now - grt ) / <span class="hljs-number">1000</span> / <span class="hljs-number">60</span> / <span class="hljs-number">60</span> - (<span class="hljs-number">24</span> * dnum); hnum = <span class="hljs-built_in">Math</span>.floor(hours); </span></span><br><span class="line"><span class="hljs-javascript">                    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>(hnum).length ==<span class="hljs-number">1</span> )&#123;hnum = <span class="hljs-string">"0"</span> + hnum;&#125; minutes = (now - grt ) / <span class="hljs-number">1000</span> /<span class="hljs-number">60</span> - (<span class="hljs-number">24</span> * <span class="hljs-number">60</span> * dnum) - (<span class="hljs-number">60</span> * hnum); </span></span><br><span class="line"><span class="hljs-javascript">                    mnum = <span class="hljs-built_in">Math</span>.floor(minutes); <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>(mnum).length ==<span class="hljs-number">1</span> )&#123;mnum = <span class="hljs-string">"0"</span> + mnum;&#125; </span></span><br><span class="line"><span class="hljs-undefined">                    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); </span></span><br><span class="line"><span class="hljs-javascript">                    snum = <span class="hljs-built_in">Math</span>.round(seconds); <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>(snum).length ==<span class="hljs-number">1</span> )&#123;snum = <span class="hljs-string">"0"</span> + snum;&#125; </span></span><br><span class="line"><span class="hljs-javascript">                    <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"timeDate"</span>).innerHTML = <span class="hljs-string">"本站已安全运行 "</span>+dnum+<span class="hljs-string">" 天 "</span>; </span></span><br><span class="line"><span class="hljs-javascript">                    <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"times"</span>).innerHTML = hnum + <span class="hljs-string">" 小时 "</span> + mnum + <span class="hljs-string">" 分 "</span> + snum + <span class="hljs-string">" 秒"</span>; </span></span><br><span class="line"><span class="hljs-undefined">                &#125; </span></span><br><span class="line"><span class="hljs-javascript">            setInterval(<span class="hljs-string">"createtime()"</span>,<span class="hljs-number">250</span>);</span></span><br><span class="line"><span class="hljs-undefined">            </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>修改自己的建站时间</p>
 </li>
-<li>最终效果：<div align="center">
-![](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Hexo+icarus主题配置/20190429094726470.png)
-</div>
+<li>最终效果：<div align="center"><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Hexo+icarus主题配置/20190429094726470.png" alt=""><br></div>
 
 </li>
 </ul>
@@ -291,9 +289,7 @@
 <h3 id="遇到的坑及解决方法"><a href="#遇到的坑及解决方法" class="headerlink" title="遇到的坑及解决方法"></a>遇到的坑及解决方法</h3><ul>
 <li>..公式渲染问题</li>
 <li>..</li>
-<li>..<div align="center">
-$\color{green}{Waiting....for....update....}$
-</div>
+<li>..<div align="center"><br>$\color{green}{Waiting….for….update….}$<br></div>
 
 </li>
 </ul>
@@ -465,7 +461,7 @@ $\color{green}{Waiting....for....update....}$
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        24
+                        25
                     </p>
                 </div>
             </div>
@@ -622,7 +618,7 @@ $\color{green}{Waiting....for....update....}$
                 <span class="level-item">机器学习</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/算法/">
@@ -652,6 +648,25 @@ $\color{green}{Waiting....for....update....}$
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/06/07/人工神经网络学习笔记（3）/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="人工神经网络学习笔记（3）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-07T12:02:15.000Z">2019-06-07</time></div>
+                    <a href="/2019/06/07/人工神经网络学习笔记（3）/" class="has-link-black-ter is-size-6">人工神经网络学习笔记（3）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/机器学习/">机器学习</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -729,25 +744,6 @@ $\color{green}{Waiting....for....update....}$
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/04/30/Hexo用MathJax渲染数学公式/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hexo用MathJax渲染数学公式">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-30T17:24:31.000Z">2019-04-30</time></div>
-                    <a href="/2019/04/30/Hexo用MathJax渲染数学公式/" class="has-link-black-ter is-size-6">Hexo用MathJax渲染数学公式</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/教程/">教程</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -791,7 +787,7 @@ $\color{green}{Waiting....for....update....}$
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/Boring/" style="font-size: 10px;">Boring</a> <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/Hexo/" style="font-size: 16.67px;">Hexo</a> <a href="/tags/Knapsack/" style="font-size: 10px;">Knapsack</a> <a href="/tags/List/" style="font-size: 13.33px;">List</a> <a href="/tags/ML/" style="font-size: 16.67px;">ML</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/Tree/" style="font-size: 10px;">Tree</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+        <a href="/tags/Algorithm/" style="font-size: 20px;">Algorithm</a> <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/Boring/" style="font-size: 10px;">Boring</a> <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/Hexo/" style="font-size: 16.67px;">Hexo</a> <a href="/tags/Knapsack/" style="font-size: 10px;">Knapsack</a> <a href="/tags/List/" style="font-size: 13.33px;">List</a> <a href="/tags/ML/" style="font-size: 20px;">ML</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/Tree/" style="font-size: 10px;">Tree</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
         
     </div>
     <div align="center">
@@ -814,7 +810,7 @@ $\color{green}{Waiting....for....update....}$
                     <span class="level-item">六月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -957,7 +953,7 @@ $\color{green}{Waiting....for....update....}$
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ML/">
                         <span class="tag">ML</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
