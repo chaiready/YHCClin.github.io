@@ -55,8 +55,8 @@ textarea {
 }
 .card {
   background: transparent;
-  border-radius: 0px;
-  box-shadow: 0 4px 10px #a2b5cd, 0 0 1px #a2b5cd;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px #fff, 0 0 1px #fff;
 }
 .card + .card,
 .card + .column-right-shadow {
