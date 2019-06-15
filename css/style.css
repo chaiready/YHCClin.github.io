@@ -5,7 +5,7 @@ html {
   font-size: 12px;
 }
 body {
-  background-color: #fff;
+  background-color: #f7f7f7;
 }
 body,
 button,
@@ -54,7 +54,7 @@ textarea {
   background: #e7e7e7;
 }
 .card {
-  background: transparent;
+  background-color: #fff;
   border-radius: 4px;
   box-shadow: 0 4px 10px #fff, 0 0 1px #fff;
 }
