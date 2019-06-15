@@ -12,8 +12,8 @@ button,
 input,
 select,
 textarea {
-  font-family: "黑体", "Ubuntu", "Roboto", "Open Sans", "Microsoft YaHei", sans-serif;
-  font-weight: bold;
+  font-family: "Microsoft YaHei";
+  font-weight: 200;
 }
 @media screen and (min-width: 1280px) {
   .is-1-column .container,
