@@ -12,7 +12,7 @@ button,
 input,
 select,
 textarea {
-  font-family: "Ubuntu", "Roboto", "Open Sans", "Microsoft YaHei", sans-serif;
+  font-family: "黑体", "Ubuntu", "Roboto", "Open Sans", "Microsoft YaHei", sans-serif;
 }
 @media screen and (min-width: 1280px) {
   .is-1-column .container,
@@ -51,7 +51,7 @@ textarea {
   }
 }
 .tag.is-grey {
-  background: #e7e7e7;
+  background: #00a99d;
 }
 .card {
   background-color: #fff;
