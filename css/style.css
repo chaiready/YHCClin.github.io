@@ -54,7 +54,7 @@ textarea {
   background: #e7e7e7;
 }
 .card {
-  background-color: #fff;
+  background-color: transparent;
   border-radius: 4px;
   box-shadow: 0 4px 10px #a2b5cd, 0 0 1px #a2b5cd;
 }
@@ -78,7 +78,7 @@ img.thumbnail {
 }
 .navbar-logo img,
 .footer-logo img {
-  max-height: 1.75rem;
+  max-height: 2rem;
 }
 .navbar-main {
   background-color: #fff;
