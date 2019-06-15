@@ -377,9 +377,11 @@ img.thumbnail {
 .content h5,
 .content h6 {
   font-weight: 400;
+  font-family: "黑体";
 }
 .content h1 {
   font-size: 1.75em;
+  color: #00a99c;
 }
 .content h2 {
   font-size: 1.5em;
