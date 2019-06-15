@@ -78,7 +78,7 @@ img.thumbnail {
 }
 .navbar-logo img,
 .footer-logo img {
-  max-height: 2.5rem;
+  max-height: 4rem;
 }
 .navbar-main {
   background-color: #fff;
@@ -110,7 +110,7 @@ img.thumbnail {
   padding: 1.25rem 0.75rem;
 }
 .navbar-main .navbar-item.is-active {
-  color: #3273dc;
+  color: #00a99d;
   background-color: transparent;
 }
 @media screen and (max-width: 1087px) {
@@ -191,7 +191,7 @@ img.thumbnail {
   top: calc(1.3rem + 9px);
   width: 9px;
   bottom: 0;
-  background: #fff;
+  background: #00a99d;
 }
 .timeline .media:first-child:last-child:after {
   top: calc(0.3rem + 9px);
