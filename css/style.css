@@ -181,7 +181,7 @@ img.thumbnail {
   width: 9px;
   height: 9px;
   top: 1.3rem;
-  background: #dbdbdb;
+  background: #00a99d;
   border-radius: 50%;
 }
 .timeline .media:first-child:before {
@@ -467,6 +467,7 @@ figure.highlight .section {
   vertical-align: inherit;
   min-width: inherit;
   border-radius: inherit;
+  color: #00a99d;
 }
 figure.highlight .copy {
   display: none;
