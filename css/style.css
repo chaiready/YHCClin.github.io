@@ -379,7 +379,7 @@ img.thumbnail {
 .far,
 .fas {
   line-height: inherit;
-  background-color: rgba(235,238,242,0);
+  background-color: #00a99d;
 }
 /* ---------------------------------
  *        Fix content elements
