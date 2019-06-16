@@ -379,7 +379,7 @@ img.thumbnail {
 .far,
 .fas {
   line-height: inherit;
-  background-color: #00a99d;
+  background: transparent;
 }
 /* ---------------------------------
  *        Fix content elements
