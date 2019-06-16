@@ -153,13 +153,20 @@ img.thumbnail {
 .pagination .pagination-link:not(.is-current),
 .pagination .pagination-previous,
 .pagination .pagination-next {
-  background: #fff;
+  background-color: #00a99d;
   border: none;
 }
 .pagination .pagination-link,
 .pagination .pagination-previous,
 .pagination .pagination-next {
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 10px rgba(0,169,157,0.05);
+}
+.pagination .pagination-link .is-current,
+.pagination .pagination-previous .is-current,
+.pagination .pagination-next .is-current {
+  background-color: #00a99d;
+  border-color: #00a99d;
+  color: #fff;
 }
 .post-navigation {
   justify-content: space-around;
