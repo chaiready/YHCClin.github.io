@@ -61,7 +61,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/01/28/5c4e63f57d237.png">
 <meta property="og:image" content="https://i.loli.net/2019/01/28/5c4e63f53c096.png">
 <meta property="og:image" content="https://i.loli.net/2019/01/28/5c4e63f537beb.png">
-<meta property="og:updated_time" content="2019-06-18T01:29:18.787Z">
+<meta property="og:updated_time" content="2019-06-18T03:26:56.776Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【数据结构】数组、矩阵、和广义表">
 <meta name="twitter:description" content="数组：">
@@ -181,7 +181,7 @@
                 
                 <a class="navbar-item" href="https://blog.csdn.net/Marvine">CSDN</a>
                 
-                <a class="navbar-item" href="http://www.tripwiremagazine.com/wp-content/uploads/images/stories/Articles/9_Funniest_JavaScript_effects/Unclosable%20Window.html">别点我·有毒</a>
+                <a class="navbar-item" href="http://www.tripwiremagazine.com/wp-content/uploads/images/stories/Articles/9_Funniest_JavaScript_effects/Unclosable%20Window.html">别点·有毒</a>
                 
             </div>
             
@@ -330,7 +330,7 @@
 </li>
 </ul>
 <hr>
-<ol>
+<ol start="2">
 <li>伪地址表示法：<br>伪地址表示法与三元组表示法在本质上并无差别，只不过是三元组表示法的每一行用两个存储单元来存放原矩阵非零元素的位置标记，而伪地址表示法可以只用一个存储单元来存放位置标记，原因是因为对于一个$ m·n $的矩阵，伪地址表示法将元素位置下标的两个整数用一个公式映射( $ n·(i-1) +j $)到了一个整数上，同样利用该公式也可还原原i和j的值。<br>我们来看一个例子：<br><img src="https://i.loli.net/2019/01/28/5c4e63917d8a6.png" alt=""></li>
 </ol>
 <hr>
@@ -343,7 +343,7 @@
 </li>
 </ol>
 <p>示意图如下：<br><img src="https://i.loli.net/2019/01/28/5c4e63f53599f.png" alt=""><br>上图中最左端为一个指针数组，用来存储指向每一行非零元素单链表的头指针，数组下标为表示行标号。</p>
-<ol>
+<ol start="2">
 <li>十字链表表示法：<br>在稀疏矩阵的十字链表存储结构中，矩阵的每一行用一个带头结点的链表表示，每一列也用一个带头结点的链表表示，这种存储结构中的链表结点有 5 个分量：行分量、列分量、数据域、指向下方结点的指针域、指向右方结点的指针域；结构图如下：<br><img src="https://i.loli.net/2019/01/28/5c4e63f53b90a.png" alt=""><br>普通结点定义：<figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">matNode</span>&#123;</span></span><br><span class="line">	<span class="hljs-keyword">int</span> row;</span><br><span class="line">	<span class="hljs-keyword">int</span> col;</span><br><span class="line">	<span class="hljs-keyword">int</span> data;</span><br><span class="line">	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">matNode</span> *<span class="hljs-title">down</span>;</span></span><br><span class="line">	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">matNode</span> *<span class="hljs-title">right</span>;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
@@ -509,6 +509,55 @@
 <div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-left ">
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><ul class="menu-list"><li>
+        <a class="is-flex" href="#数组：">
+        <span class="has-mr-6">1.1</span>
+        <span>数组：</span>
+        </a></li><li>
+        <a class="is-flex" href="#矩阵的压缩存储：">
+        <span class="has-mr-6">1.2</span>
+        <span>矩阵的压缩存储：</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#矩阵的定义">
+        <span class="has-mr-6">1.2.1</span>
+        <span>矩阵的定义</span>
+        </a></li><li>
+        <a class="is-flex" href="#矩阵的一般操作与实现">
+        <span class="has-mr-6">1.2.2</span>
+        <span>矩阵的一般操作与实现</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#特殊矩阵和稀疏矩阵">
+        <span class="has-mr-6">1.3</span>
+        <span>特殊矩阵和稀疏矩阵</span>
+        </a></li></ul><li>
+        <a class="is-flex" href="#">
+        <span class="has-mr-6">2</span>
+        <span></span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#广义表">
+        <span class="has-mr-6">2.1</span>
+        <span>广义表</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#三个重要概念：">
+        <span class="has-mr-6">2.1.1</span>
+        <span>三个重要概念：</span>
+        </a></li><li>
+        <a class="is-flex" href="#两种存储结构：">
+        <span class="has-mr-6">2.1.2</span>
+        <span>两种存储结构：</span>
+        </a></li></ul></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+        
 <div class="card widget">
     <div class="card-content">
         <nav class="level">
@@ -602,55 +651,6 @@
         
     </div>
 </div>
-    
-        
-<div class="card widget" id="toc">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                目录
-            </h3>
-            <ul class="menu-list"><ul class="menu-list"><li>
-        <a class="is-flex" href="#数组：">
-        <span class="has-mr-6">1.1</span>
-        <span>数组：</span>
-        </a></li><li>
-        <a class="is-flex" href="#矩阵的压缩存储：">
-        <span class="has-mr-6">1.2</span>
-        <span>矩阵的压缩存储：</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#矩阵的定义">
-        <span class="has-mr-6">1.2.1</span>
-        <span>矩阵的定义</span>
-        </a></li><li>
-        <a class="is-flex" href="#矩阵的一般操作与实现">
-        <span class="has-mr-6">1.2.2</span>
-        <span>矩阵的一般操作与实现</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#特殊矩阵和稀疏矩阵">
-        <span class="has-mr-6">1.3</span>
-        <span>特殊矩阵和稀疏矩阵</span>
-        </a></li></ul><li>
-        <a class="is-flex" href="#">
-        <span class="has-mr-6">2</span>
-        <span></span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#广义表">
-        <span class="has-mr-6">2.1</span>
-        <span>广义表</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#三个重要概念：">
-        <span class="has-mr-6">2.1.1</span>
-        <span>三个重要概念：</span>
-        </a></li><li>
-        <a class="is-flex" href="#两种存储结构：">
-        <span class="has-mr-6">2.1.2</span>
-        <span>两种存储结构：</span>
-        </a></li></ul></li></ul></li></ul>
-        </div>
-    </div>
-</div>
-
     
         
 <div class="card widget">
