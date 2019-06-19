@@ -354,7 +354,9 @@
             
         </h1>
         <div class="content">
-            <h4 id="算法思想："><a href="#算法思想：" class="headerlink" title="算法思想："></a>算法思想：</h4>
+            <h4 id="算法思想："><a href="#算法思想：" class="headerlink" title="算法思想："></a>算法思想：</h4><blockquote>
+<p>设定一个数组p用来存放当前排列，并用一个数组Hash用来标记已填入p中的数字。<br>按顺序将数字填入数组p中的第0位置第Max-1位，现在假设已经填好了p[0]~p[index-1]，正准备将数字填入index位置，若index位置未及Max（数组边界），则枚举0~Max-1；判断是否有数字未填入，若有则将其填入p中，同时在Hash中将该数字置为已填入。其后继续填入下一个位置index+1；当递归完成时，将Hash[i]还原为false（将i置为未填入）。</p>
+</blockquote>
         </div>
         
         
