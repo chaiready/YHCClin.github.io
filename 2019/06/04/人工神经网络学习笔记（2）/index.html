@@ -38,13 +38,13 @@
 
 
 
-    <meta name="description" content="如何更新权重在上一篇文章中我们算出了各个层的误差，现在是时候利用这些误差来指导链接权重的修改了。那么该如何修改？  暴力枚举：对于一个三层的神经网络，每层有3个神经元结点，有两个$3\times 3$的链接权重矩阵，共有18个权重值。假设每个权重在1和-1之间共有1000种取值，那么我们有$1000^{18}$种权重组合，这个数字已经很大了。但是，如果是每层有500个结点呢？那么权重数将达到$2\">
+    <meta name="description" content="如何更新权重在上一篇文章中我们算出了各个层的误差，现在是时候利用这些误差来指导链接权重的修改了。那么该如何修改？">
 <meta name="keywords" content="ML">
 <meta property="og:type" content="article">
 <meta property="og:title" content="人工神经网络学习笔记（2）">
 <meta property="og:url" content="https://www.ccyh.xyz/2019/06/04/人工神经网络学习笔记（2）/index.html">
 <meta property="og:site_name" content="飞鱼の博客">
-<meta property="og:description" content="如何更新权重在上一篇文章中我们算出了各个层的误差，现在是时候利用这些误差来指导链接权重的修改了。那么该如何修改？  暴力枚举：对于一个三层的神经网络，每层有3个神经元结点，有两个$3\times 3$的链接权重矩阵，共有18个权重值。假设每个权重在1和-1之间共有1000种取值，那么我们有$1000^{18}$种权重组合，这个数字已经很大了。但是，如果是每层有500个结点呢？那么权重数将达到$2\">
+<meta property="og:description" content="如何更新权重在上一篇文章中我们算出了各个层的误差，现在是时候利用这些误差来指导链接权重的修改了。那么该如何修改？">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/20190604110727225.png">
 <meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/20190604112226207.png">
@@ -52,10 +52,10 @@
 <meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/20190604012324203.png">
 <meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1559636048297&di=a69a0ac50c0c4c39c6290d14fe697429&imgtype=0&src=http%3A%2F%2Fimg.ph.126.net%2FwdlmGd6Cl2EyG0Bp-xEihQ%3D%3D%2F1016406140918957318.jpg">
 <meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/20190604014334436.png">
-<meta property="og:updated_time" content="2019-06-19T13:17:50.800Z">
+<meta property="og:updated_time" content="2019-06-19T13:25:21.859Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="人工神经网络学习笔记（2）">
-<meta name="twitter:description" content="如何更新权重在上一篇文章中我们算出了各个层的误差，现在是时候利用这些误差来指导链接权重的修改了。那么该如何修改？  暴力枚举：对于一个三层的神经网络，每层有3个神经元结点，有两个$3\times 3$的链接权重矩阵，共有18个权重值。假设每个权重在1和-1之间共有1000种取值，那么我们有$1000^{18}$种权重组合，这个数字已经很大了。但是，如果是每层有500个结点呢？那么权重数将达到$2\">
+<meta name="twitter:description" content="如何更新权重在上一篇文章中我们算出了各个层的误差，现在是时候利用这些误差来指导链接权重的修改了。那么该如何修改？">
 <meta name="twitter:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/20190604110727225.png">
 
 
@@ -242,10 +242,12 @@
             
         </h1>
         <div class="content">
-            <h3 id="如何更新权重"><a href="#如何更新权重" class="headerlink" title="如何更新权重"></a>如何更新权重</h3><p>在上一篇文章中我们算出了各个层的误差，现在是时候利用这些误差来指导链接权重的修改了。那么该如何修改？</p>
+            <h3 id="如何更新权重"><a href="#如何更新权重" class="headerlink" title="如何更新权重"></a>如何更新权重</h3><p>在上一篇文章中我们算出了各个层的误差，现在是时候利用这些误差来指导链接权重的修改了。那么该如何修改？<br><a id="more"></a></p>
 <ul>
-<li><strong>暴力枚举：</strong>对于一个三层的神经网络，每层有3个神经元结点，有两个$3\times 3$的链接权重矩阵，共有18个权重值。假设每个权重在1和-1之间共有1000种取值，那么我们有$1000^{18}$种权重组合，这个数字已经很大了。但是，如果是每层有500个结点呢？那么权重数将达到$2\times 500\times 500 = 500000$个，将会有$1000^{500000}$种组合。想要遍历这么些种可能得等到人类灭绝…<a id="more"></a>
-可见，暴力枚举并不能实际地解决我们的问题。</li>
+<li><strong>暴力枚举：</strong>对于一个三层的神经网络，每层有3个神经元结点，有两个$3\times 3$的链接权重矩阵，共有18个权重值。假设每个权重在1和-1之间共有1000种取值，那么我们有$1000^{18}$种权重组合，这个数字已经很大了。但是，如果是每层有500个结点呢？那么权重数将达到$2\times 500\times 500 = 500000$个，将会有$1000^{500000}$种组合。想要遍历这么些种可能得等到人类灭绝…</li>
+</ul>
+<p>可见，暴力枚举并不能实际地解决我们的问题。</p>
+<ul>
 <li><strong>新的思路：</strong>让我们再次明确下我们的最终目的，让误差值降到最小。试着将其转化成数学上的求函数最小值问题。先前我们知道，误差是所有链接权重的函数:<br>$$<br>Error = F_{error}(w_{1,1},w_{2,1},……,w_{j,k})<br>$$<br>现在我们需要额就是找出该函数的最小值。但由于真正的误差函数的自变量太多，先举个简单的例子：<br>假设误差函数只有一个自变量（链接权重）：<br>$$<br>E_{simple}=F_e(x)<br>$$<br>其图像为：<br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/20190604110727225.png" alt=""><br>可以将其想象成一个连绵的山脉，有山峰也有山谷。设想将一个小球至于山腰，那么在重力的作用下它必定沿着所在位置的斜率方向向下滚动直到山谷。但是很明显，我们并没有重力帮忙，因此必须人为指定“滚动方向”。<br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/20190604112226207.png" alt=""><br>不难发现，当斜率为正时应向左滚动（x–），斜率为负时应向右滚动（x++）。这种方法在数学上被称为梯度下降（gradient descent）。<br><strong>可能的意外情况：</strong><br>我们可能会碰到这种情况：当小球的起始位置为左侧山腰时，其很有可能最终会在局部最小值（左侧的山谷）停下，这可不是我们所希望的结果。因为我们的目的是把误差降到最小，那里显然不是最小的地方。<br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/20190604114310137.png" alt=""><br>为了避免上述情况，我们应从选择不同的其实位置对神经网络进行多次训练，以确保其并不总是终止于错误的地方。而不同的其实位置意味着不同的链接权重。</li>
 </ul>
 <hr>
