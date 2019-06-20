@@ -52,7 +52,7 @@
 <meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/20190604012324203.png">
 <meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1559636048297&di=a69a0ac50c0c4c39c6290d14fe697429&imgtype=0&src=http%3A%2F%2Fimg.ph.126.net%2FwdlmGd6Cl2EyG0Bp-xEihQ%3D%3D%2F1016406140918957318.jpg">
 <meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/20190604014334436.png">
-<meta property="og:updated_time" content="2019-06-20T16:29:48.611Z">
+<meta property="og:updated_time" content="2019-06-20T16:37:26.493Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="人工神经网络学习笔记（2）">
 <meta name="twitter:description" content="如何更新权重在上一篇文章中我们算出了各个层的误差，现在是时候利用这些误差来指导链接权重的修改了。那么该如何修改？">
@@ -276,7 +276,7 @@
 <ul>
 <li>$\alpha$为学习因子，可以调节这些权重变化的强度</li>
 </ul>
-<p><strong>用矩阵来简化运算：</strong><br>$$<br>\left(<br>\begin{matrix}<br>\vartriangle w_{1,1} &amp; \vartriangle w_{2,1} &amp; \vartriangle w_{3,1} &amp; …\<br>\vartriangle w_{1,2} &amp; \vartriangle w_{2,2} &amp; \vartriangle w_{3,2} &amp; …\<br>\vartriangle w_{1,3} &amp; \vartriangle w_{2,3} &amp; \vartriangle w_{3,3} &amp; …\<br>… &amp; … &amp; … &amp; …<br>\end{matrix}<br>\right)=\alpha\cdot \left(\begin{matrix}e_1\cdot S_1\cdot (1-S_1)\ e_2\cdot S_2\cdot (1-S_2)\ e_k\cdot S_k\cdot (1-S_k)\ …\end{matrix}\right) \cdot (o_1,o_2,o_3,…)<br>$$<br>将Sig函数简化为输出：<br>$$<br>\vartriangle w_{j,k} = \alpha\times E_k \times O_k \times (1-O_k) \cdot O_j^T<br>$$</p>
+<p><strong>用矩阵来简化运算：</strong><br>$$<br>\left(<br>\begin{matrix}<br>\vartriangle w_{1,1} &amp; \vartriangle w_{2,1} &amp; \vartriangle w_{3,1} &amp; …\\<br>\vartriangle w_{1,2} &amp; \vartriangle w_{2,2} &amp; \vartriangle w_{3,2} &amp; …\\<br>\vartriangle w_{1,3} &amp; \vartriangle w_{2,3} &amp; \vartriangle w_{3,3} &amp; …\\<br>… &amp; … &amp; … &amp; …<br>\end{matrix}<br>\right)=\alpha\cdot \left(\begin{matrix}e_1\cdot S_1\cdot (1-S_1)\\ e_2\cdot S_2\cdot (1-S_2)\\ e_k\cdot S_k\cdot (1-S_k)\\ …\end{matrix}\right) \cdot (o_1,o_2,o_3,…)<br>$$<br>将Sig函数简化为输出：<br>$$<br>\vartriangle w_{j,k} = \alpha\times E_k \times O_k \times (1-O_k) \cdot O_j^T<br>$$</p>
 <hr>
 <p>到此，所有的前期工作都已完成。</p>
 
