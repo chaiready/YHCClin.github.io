@@ -46,7 +46,7 @@
 <meta property="og:site_name" content="飞鱼の博客">
 <meta property="og:description" content="栈和队列的基本概念">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-21T12:08:48.647Z">
+<meta property="og:updated_time" content="2019-06-21T12:17:51.687Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【数据结构】栈与队列">
 <meta name="twitter:description" content="栈和队列的基本概念">
@@ -253,19 +253,19 @@
 <li>先进先出（ＦＩＬＯ）</li>
 <li>栈就如同一个狭窄的死胡同，最先进去的人（元素）只能够最后出来</li>
 </ul>
-<ol>
+<ol start="3">
 <li><em>栈的存储结构</em></li>
 </ol>
 <ul>
 <li>可以用顺序表或者链表来存储栈：<br>  a) 顺序栈<br>  b) 链式栈</li>
 </ul>
-<ol>
+<ol start="4">
 <li><em>栈的数学性质</em></li>
 </ol>
 <ul>
-<li>当ｎ个元素以某种顺序进栈，并且可以在任何时候出栈（在满足先进后出的前提下）时，所获得的元素排列的数目Ｎ恰好满足函数 Catalan() 的计算，即：<pre><code>                              $$
-                              N = { \dfrac{1} {n+1} }×C\binom{n} {2n}
-                              $$ 
+<li>当ｎ个元素以某种顺序进栈，并且可以在任何时候出栈（在满足先进后出的前提下）时，所获得的元素排列的数目Ｎ恰好满足函数 Catalan() 的计算，即：<pre><code>$$
+N = { \dfrac{1} {n+1} }×C\binom{n} {2n}
+$$ 
 </code></pre></li>
 </ul>
 <hr>
@@ -278,13 +278,13 @@
 <li>可以插入的一端称为队尾（ｒｅａｒ），可以删除的一端称为队头（ｆｒｏｎｔ）</li>
 <li>插入元素称为进队，删除元素称为出队</li>
 </ul>
-<ol>
+<ol start="2">
 <li><em>队列的特点</em></li>
 </ol>
 <ul>
 <li>先进先出（ＦＩＦＯ），就像食堂打饭要排队一样，先来的人先有饭吃</li>
 </ul>
-<ol>
+<ol start="3">
 <li><em>队列的存储结构</em></li>
 </ol>
 <ul>
@@ -318,7 +318,7 @@
 </li>
 <li><strong>两个操作</strong><ul>
 <li>元素进栈：++(st.top); st.data[st.top]=x;</li>
-<li>元素出栈：x=st.data[st.top]; —(st.top);</li>
+<li>元素出栈：x=st.data[st.top]; –(st.top);</li>
 </ul>
 </li>
 </ol>
@@ -333,7 +333,7 @@
 <h6 id="以下链栈都由带头结点的链表表示"><a href="#以下链栈都由带头结点的链表表示" class="headerlink" title="以下链栈都由带头结点的链表表示"></a>以下链栈都由带头结点的链表表示</h6><hr>
 <h5 id="顺序栈的几个关键要素：-1"><a href="#顺序栈的几个关键要素：-1" class="headerlink" title="顺序栈的几个关键要素："></a>顺序栈的几个关键要素：</h5><ol>
 <li>两个状态<ul>
-<li>栈空状态：lst —&gt; next = NULL;</li>
+<li>栈空状态：lst –&gt; next = NULL;</li>
 <li>栈满状态：不存在栈满状态，因为单链表的内存空间是动态分配的</li>
 </ul>
 </li>
@@ -426,10 +426,10 @@
 </ul>
 </li>
 <li>两个操作：<ul>
-<li>元素q进队操作：　分两种情况<pre><code>     1. 当前队为空：que --&gt; rear = que --&gt; front = q;
-     2. 当前队不空：que --&gt; rear --&gt; next = p;que --&gt; rear = p;
+<li>元素q进队操作：　分两种情况<pre><code>1. 当前队为空：que --&gt; rear = que --&gt; front = q;
+2. 当前队不空：que --&gt; rear --&gt; next = p;que --&gt; rear = p;
 </code></pre></li>
-<li>元素出队操作： s = que —&gt; front;  que —&gt; front = s —&gt; next;elem = s —&gt;                      data; free(s);</li>
+<li>元素出队操作： s = que –&gt; front;  que –&gt; front = s –&gt; next;elem = s –&gt;                      data; free(s);</li>
 </ul>
 </li>
 </ol>
@@ -755,7 +755,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        8
+                        7
                     </p>
                 </div>
             </div>
@@ -853,15 +853,7 @@
                 <span class="level-item">机器学习</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/机器学习-外文翻译/">
-            <span class="level-start">
-                <span class="level-item">机器学习/外文翻译</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">6</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/算法/">
@@ -896,7 +888,7 @@
             
             <a href="/2019/06/21/机器学习真有趣-第3部分-深度学习与卷积神经网络/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="机器学习原来这么有趣-Part3-深度学习与卷积神经网络">
+                    <img class="thumbnail" src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9C%9F%E6%9C%89%E8%B6%A3-%E7%AC%AC3%E9%83%A8%E5%88%86-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8E%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/MachineLearning.png" alt="机器学习原来这么有趣-Part3-深度学习与卷积神经网络">
                 </p>
             </a>
             
@@ -905,7 +897,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-21T12:21:08.000Z">2019-06-21</time></div>
                     <a href="/2019/06/21/机器学习真有趣-第3部分-深度学习与卷积神经网络/" class="has-link-black-ter is-size-6">机器学习原来这么有趣-Part3-深度学习与卷积神经网络</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/机器学习-外文翻译/">机器学习/外文翻译</a>
+                        <a class="has-link-grey -link" href="/categories/机器学习/">机器学习</a>
                     </p>
                 </div>
             </div>
