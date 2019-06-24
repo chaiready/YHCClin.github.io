@@ -4,7 +4,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-<title>人工神经网络学习笔记（3） - 飞鱼の博客</title>
+<title>感知机与逻辑门的实现 - 飞鱼の博客</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
@@ -38,27 +38,25 @@
 
 
 
-    <meta name="description" content="Python-numpy编码实现人工神经网络 前面的几篇文章我们熟悉了人工神经网络的数学原理及其推导过程，但有道是‘纸上得来终觉浅’，是时候将理论变为现实了。现在我们将应用Python语言以及其强大的扩充程序库Numpy来编写一个简单的神经网络。">
+    <meta name="description" content="感知机 &amp;emsp;感知机（Perceptron）由两层神经元组成，输入层接收外界信号后传递给输出层，输出层是M-P神经元（如下图），亦称” 阙值逻辑单元（threshold logic unit）“。">
 <meta name="keywords" content="ML">
 <meta property="og:type" content="article">
-<meta property="og:title" content="人工神经网络学习笔记（3）">
-<meta property="og:url" content="https://www.ccyh.xyz/2019/06/07/人工神经网络学习笔记（3）/index.html">
+<meta property="og:title" content="感知机与逻辑门的实现">
+<meta property="og:url" content="https://www.ccyh.xyz/2019/06/01/感知机与逻辑门的实现/index.html">
 <meta property="og:site_name" content="飞鱼の博客">
-<meta property="og:description" content="Python-numpy编码实现人工神经网络 前面的几篇文章我们熟悉了人工神经网络的数学原理及其推导过程，但有道是‘纸上得来终觉浅’，是时候将理论变为现实了。现在我们将应用Python语言以及其强大的扩充程序库Numpy来编写一个简单的神经网络。">
+<meta property="og:description" content="感知机 &amp;emsp;感知机（Perceptron）由两层神经元组成，输入层接收外界信号后传递给输出层，输出层是M-P神经元（如下图），亦称” 阙值逻辑单元（threshold logic unit）“。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89/20190607010119916.png">
-<meta property="og:image" content="https://www.ccyh.xyz/人工神经网络学习笔记（3）/20190607015526334.png">
-<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89/20190607011216578.png">
-<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89/20190607011510082.png">
+<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%84%9F%E7%9F%A5%E6%9C%BA%E4%B8%8E%E9%80%BB%E8%BE%91%E9%97%A8%E7%9A%84%E5%AE%9E%E7%8E%B0/20190624050228397.png">
+<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%84%9F%E7%9F%A5%E6%9C%BA%E4%B8%8E%E9%80%BB%E8%BE%91%E9%97%A8%E7%9A%84%E5%AE%9E%E7%8E%B0/20190624055322320.png">
 <meta property="og:updated_time" content="2019-06-24T09:59:19.127Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="人工神经网络学习笔记（3）">
-<meta name="twitter:description" content="Python-numpy编码实现人工神经网络 前面的几篇文章我们熟悉了人工神经网络的数学原理及其推导过程，但有道是‘纸上得来终觉浅’，是时候将理论变为现实了。现在我们将应用Python语言以及其强大的扩充程序库Numpy来编写一个简单的神经网络。">
-<meta name="twitter:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89/20190607010119916.png">
+<meta name="twitter:title" content="感知机与逻辑门的实现">
+<meta name="twitter:description" content="感知机 &amp;emsp;感知机（Perceptron）由两层神经元组成，输入层接收外界信号后传递给输出层，输出层是M-P神经元（如下图），亦称” 阙值逻辑单元（threshold logic unit）“。">
+<meta name="twitter:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%84%9F%E7%9F%A5%E6%9C%BA%E4%B8%8E%E9%80%BB%E8%BE%91%E9%97%A8%E7%9A%84%E5%AE%9E%E7%8E%B0/20190624050228397.png">
 
 
 
-<link rel="alternative" href="/atom.xml" title="人工神经网络学习笔记（3）" type="application/atom+xml">
+<link rel="alternative" href="/atom.xml" title="感知机与逻辑门的实现" type="application/atom+xml">
 
 
 
@@ -146,7 +144,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/flyingfish.ico" alt="人工神经网络学习笔记（3）" height="28">
+                <img src="/images/flyingfish.ico" alt="感知机与逻辑门的实现" height="28">
             
             </a>
         </div>
@@ -209,7 +207,7 @@
     
     <div class="card-image">
         <span class="image is-7by1">
-            <img class="thumbnail" src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89/ml_2.png" alt="人工神经网络学习笔记（3）">
+            <img class="thumbnail" src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%84%9F%E7%9F%A5%E6%9C%BA%E4%B8%8E%E9%80%BB%E8%BE%91%E9%97%A8%E7%9A%84%E5%AE%9E%E7%8E%B0/20190624055636774.png" alt="感知机与逻辑门的实现">
         </span>
     </div>
     
@@ -218,7 +216,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-06-07T12:02:15.000Z">2019-06-07</time>
+                <time class="level-item has-text-grey" datetime="2019-06-01T14:49:16.000Z">2019-06-01</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/机器学习/">机器学习</a>
@@ -228,7 +226,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    16 分钟 读完 (大约 2365 个字)
+                    3 分钟 读完 (大约 434 个字)
                 </span>
                 
             </div>
@@ -236,46 +234,38 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                人工神经网络学习笔记（3）
+                感知机与逻辑门的实现
             
         </h1>
         <div class="content">
-            <h3 id="Python-numpy编码实现人工神经网络"><a href="#Python-numpy编码实现人工神经网络" class="headerlink" title="Python-numpy编码实现人工神经网络"></a>Python-numpy编码实现人工神经网络</h3><hr>
-<p>前面的几篇文章我们熟悉了人工神经网络的数学原理及其推导过程，但有道是‘纸上得来终觉浅’，是时候将理论变为现实了。现在我们将应用Python语言以及其强大的扩充程序库<a href="https://www.runoob.com/numpy/numpy-tutorial.html" target="_blank" rel="noopener">Numpy</a>来编写一个简单的神经网络。<br><a id="more"></a></p>
-<hr>
-<h4 id="准备数据："><a href="#准备数据：" class="headerlink" title="准备数据："></a>准备数据：</h4><ul>
-<li><strong>训练集and测试集：</strong><a href="git@github.com:makeyourownneuralnetwork/makeyourownneuralnetwork.git">Mnist手写数字数据集(复制git链接克隆)</a>MINST数据库是由米国机器学习大佬Yann提供的手写数字数据库文件，其官方下载地址<a href="http://yann.lecun.com/exdb/mnist/" target="_blank" rel="noopener">Download Mnist</a>。该数据集将会是神经网络的输入信号。</li>
-</ul>
-<p>每一张图片像素都为$28\times 28$,因此可作为一个$784\times 1$的向量传入神经网络。</p>
-<div align="center"><br><br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89/20190607010119916.png" alt="单个图片"><br><img src="/人工神经网络学习笔记（3）/20190607015526334.png" alt=""><br><br></div>
+            <h1 id="感知机"><a href="#感知机" class="headerlink" title="感知机"></a>感知机</h1><hr>
+<p>&emsp;感知机（Perceptron）由两层神经元组成，输入层接收外界信号后传递给输出层，输出层是M-P神经元（如下图），亦称<strong>” 阙值逻辑单元（threshold logic unit）“</strong>。</p>
+<a id="more"></a>
+<center><br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%84%9F%E7%9F%A5%E6%9C%BA%E4%B8%8E%E9%80%BB%E8%BE%91%E9%97%A8%E7%9A%84%E5%AE%9E%E7%8E%B0/20190624050228397.png" alt="M-P神经元简图"><br></center>
 
+<h1 id="逻辑门的实现"><a href="#逻辑门的实现" class="headerlink" title="逻辑门的实现"></a>逻辑门的实现</h1><hr>
+<p>&emsp;感知机能容易地实现逻辑与、或、非、异或运算。注意到$y=f(\sum_{i}{w_ix_i-\theta})$,假定$f$为阶跃函数:<br>$$<br>sgn(x) = \begin{cases}<br>1, &amp; x&gt;= 0 \\<br>0, &amp; x&lt;0<br>\end{cases}<br>$$<br>则有：</p>
 <ul>
-<li>初始花链接权重矩阵：使用正态概率分布采样权重，平均值为0，标准方差为结点传入链接数目的开方，即$\frac{1}{\sqrt{inputconnects}}$</li>
+<li>与门（$ x_1\land x_2 $）：令$w_1=w_2=1,\theta=1.5$,则$y=f(1\cdot x_1+1\cdot x_2-2)$,仅当$x_1=x_2=1$时，$y=1$</li>
 </ul>
-<hr>
-<h4 id="编码实现"><a href="#编码实现" class="headerlink" title="编码实现"></a>编码实现</h4><p>下面的代码实现了一个双隐层的神经网络，但是它的表现并不好（最起码在Mnist数据集的表现上差强人意），我训练了5个小时（5世代）也只能达到%96.54的准确率。相比而言当隐层的神经网络在Mnist数据集上的表现更好，三个小时（5世代）可以达到%97.34的准确率。你可以注释掉下面的部分代码将其退回到单隐层结构甚至加到三隐层结构。虽然代码写的很乱但代码中每一句都有详细的注释，别介意哈哈哈。<br>包含两个源代码文件：</p>
+<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># python实现与门</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">AND</span><span class="hljs-params">(x1,x2)</span>:</span></span><br><span class="line">    </span><br><span class="line">    w1,w2,theta = <span class="hljs-number">1.0</span>,<span class="hljs-number">1.0</span>,<span class="hljs-number">1.5</span></span><br><span class="line">    result = w1*x1 + w2*x2 - theta</span><br><span class="line">    <span class="hljs-keyword">if</span> result &gt;= <span class="hljs-number">0</span>:</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span></span><br><span class="line">    <span class="hljs-keyword">else</span>:</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>neural_network.py 包含神经网络主类用于训练神经网络</li>
-<li>network_test.py 用于测试神经网络</li>
+<li><p>或门（$x_1\lor x_2$）：令$w_1=w_2=1,\theta=0.5$,则$y=f(1\cdot x_1+1\cdot x_2-0.5)$,仅当$x_1=1$或$x_2=1$时，$y=1$。</p>
+<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># python实现或门</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">OR</span><span class="hljs-params">(x1,x2)</span>:</span></span><br><span class="line">    w1,w2,theta = <span class="hljs-number">1.0</span>,<span class="hljs-number">1.0</span>,<span class="hljs-number">0.5</span></span><br><span class="line">    result = w1*x1 + w2*x2 - theta</span><br><span class="line">    <span class="hljs-keyword">if</span> result &gt;= <span class="hljs-number">0</span>:</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span></span><br><span class="line">    <span class="hljs-keyword">else</span>:</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>非门（$\lnot x_1$）：令$w_1=-0.6$,$w_2=0,\theta=-0.5$,则$y=f(-0.6\cdot x_1+0\cdot x_2+0.5)$,仅当$x_1=1$时，$y=0$；当$x_1=0$时，$y=1$。</p>
+<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># python 实现非门</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">NOT</span><span class="hljs-params">(x1)</span>:</span></span><br><span class="line">    w1, theta = <span class="hljs-number">-0.6</span>, <span class="hljs-number">-0.5</span></span><br><span class="line">    result = w1*x1 - theta</span><br><span class="line">    <span class="hljs-keyword">if</span> result &gt;= <span class="hljs-number">0</span>:</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span></span><br><span class="line">    <span class="hljs-keyword">else</span>:</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>与非门：令$w_1=w_2=-1,\theta=-1.5$,则$y=f(1\cdot x_1+1\cdot x_2+1.5)$,仅当$x_1=x_2=1$时，$y=0$</p>
+<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># python 实现与非门</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">NAND</span><span class="hljs-params">(x1,x2)</span>:</span></span><br><span class="line">    w1,w2,theta = <span class="hljs-number">-1.0</span>,<span class="hljs-number">-1.0</span>,<span class="hljs-number">-1.5</span></span><br><span class="line">    result = w1*x1 + w2*x2 - theta</span><br><span class="line">    <span class="hljs-keyword">if</span> result &gt;= <span class="hljs-number">0</span>:</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span></span><br><span class="line">    <span class="hljs-keyword">else</span>:</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>异或门（$x_1\oplus x_2$）：逻辑电路简图</p>
+</li>
 </ul>
-<hr>
- <font size="3px" face="黑体" color="green"> neural_network.py </font>
+<center><br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%84%9F%E7%9F%A5%E6%9C%BA%E4%B8%8E%E9%80%BB%E8%BE%91%E9%97%A8%E7%9A%84%E5%AE%9E%E7%8E%B0/20190624055322320.png" alt=""><br></center>
 
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> numpy</span><br><span class="line"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt</span><br><span class="line"><span class="hljs-keyword">import</span> scipy.special</span><br><span class="line"><span class="hljs-keyword">import</span> scipy.ndimage.interpolation</span><br><span class="line"><span class="hljs-keyword">import</span> time</span><br><span class="line"><span class="hljs-keyword">import</span> progressbar</span><br><span class="line"><span class="hljs-keyword">import</span> matplotlib.animation <span class="hljs-keyword">as</span> anim</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 神经网络类定义</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">neuralNetwork</span>:</span></span><br><span class="line">	<span class="hljs-comment"># 初始化神经网络</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self,inputnodes,hiddennodes,hiddennodes_2,outputnodes,learningrate)</span>:</span></span><br><span class="line">		<span class="hljs-comment"># 设置神经网络的输入层、隐藏层、输出层、的结点数和学习率</span></span><br><span class="line">		self.inodes = inputnodes</span><br><span class="line">		self.hnodes = hiddennodes                <span class="hljs-comment"># 第一隐藏层结点数</span></span><br><span class="line">		self.hnodes_2 = hiddennodes_2            <span class="hljs-comment"># 第二隐藏层结点数</span></span><br><span class="line">		<span class="hljs-comment">#self.hnodes_3 = hiddennodes_3            # 第三隐藏层结点数</span></span><br><span class="line">		self.onodes = outputnodes</span><br><span class="line">		<span class="hljs-comment"># 学习率</span></span><br><span class="line">		self.lr = learningrate</span><br><span class="line">		</span><br><span class="line">		<span class="hljs-comment"># （常规版）链接权重矩阵,随机权重在-0.5至0.5之间（三层神经网络）</span></span><br><span class="line">		self.wih = (numpy.random.rand(hiddennodes,inputnodes)<span class="hljs-number">-0.5</span>)            </span><br><span class="line">		self.who = (numpy.random.rand(outputnodes,hiddennodes)<span class="hljs-number">-0.5</span>)           </span><br><span class="line">		<span class="hljs-comment"># （进阶版）链接权重矩阵,随机权重在-0.5至0.5之间（三层神经网络）</span></span><br><span class="line">		self.wih_ = numpy.random.normal(<span class="hljs-number">0.0</span>,pow(self.hnodes,<span class="hljs-number">-0.5</span>),(hiddennodes,inputnodes))          <span class="hljs-comment"># 输入层到第一隐藏层权重矩阵</span></span><br><span class="line">		self.wh12_ = numpy.random.normal(<span class="hljs-number">0.0</span>,pow(self.hnodes_2,<span class="hljs-number">0.5</span>),(hiddennodes_2,hiddennodes))     <span class="hljs-comment"># 第一隐藏层到第二隐藏层权重矩阵</span></span><br><span class="line">		<span class="hljs-comment">#self.wh23_ = numpy.random.normal(0.0,pow(self.hnodes_3,0.5),(hiddennodes_3,hiddennodes_2))   # 第二隐藏层到第三隐藏层权重矩阵</span></span><br><span class="line">		self.who_ = numpy.random.normal(<span class="hljs-number">0.0</span>,pow(self.onodes,<span class="hljs-number">-0.5</span>),(outputnodes,hiddennodes_2))         <span class="hljs-comment"># 第三隐藏层到输出层权重矩阵</span></span><br><span class="line"></span><br><span class="line">		<span class="hljs-comment">#定义激活函数，由scipy库提供</span></span><br><span class="line">		self.activation_function = <span class="hljs-keyword">lambda</span> x : scipy.special.expit(x)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="hljs-comment"># 训练神经网络</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">train</span><span class="hljs-params">(self,inputs_list,targets_list)</span>:</span></span><br><span class="line">		<span class="hljs-comment"># 将输入信号列表和目标信号列表转换成列向量</span></span><br><span class="line">		inputs = numpy.array(inputs_list,ndmin=<span class="hljs-number">2</span>).T</span><br><span class="line">		targets = numpy.array(targets_list,ndmin=<span class="hljs-number">2</span>).T</span><br><span class="line"></span><br><span class="line">		<span class="hljs-comment"># 第一隐藏层的输入信号：</span></span><br><span class="line">		hidden_inputs = numpy.dot(self.wih_,inputs)</span><br><span class="line">		<span class="hljs-comment"># 第一隐藏层的输出信号（激活函数作用）：</span></span><br><span class="line">		hidden_outputs = self.activation_function(hidden_inputs)</span><br><span class="line"></span><br><span class="line">		<span class="hljs-comment"># 第二隐藏层的输入信号:</span></span><br><span class="line">		hidden_inputs_2 = numpy.dot(self.wh12_,hidden_outputs)</span><br><span class="line">		<span class="hljs-comment"># 第二层隐藏层的输出信号：</span></span><br><span class="line">		hidden_outputs_2 = self.activation_function(hidden_inputs_2)</span><br><span class="line">		<span class="hljs-string">'''</span></span><br><span class="line"><span class="hljs-string">		# 第三隐藏层的输入信号：</span></span><br><span class="line"><span class="hljs-string">		hidden_inputs_3 = numpy.dot(self.wh23_,hidden_outputs_2)</span></span><br><span class="line"><span class="hljs-string">		# 第三隐藏层的输出信号：</span></span><br><span class="line"><span class="hljs-string">		hidden_outputs_3 = self.activation_function(hidden_inputs_3)</span></span><br><span class="line"><span class="hljs-string">		'''</span></span><br><span class="line">		<span class="hljs-comment"># 输出层的输入信号：</span></span><br><span class="line">		final_inputs = numpy.dot(self.who_,hidden_outputs_2)</span><br><span class="line">		<span class="hljs-comment"># 输出层的输出信号：</span></span><br><span class="line">		final_outputs = self.activation_function(final_inputs)</span><br><span class="line"></span><br><span class="line">		<span class="hljs-comment"># 计算输出层误差向量</span></span><br><span class="line">		output_errors = targets - final_outputs</span><br><span class="line">		<span class="hljs-comment"># 计算第三隐藏层误差向量</span></span><br><span class="line">		<span class="hljs-comment">#hidden_errors_3 = numpy.dot(self.who_.T,output_errors)</span></span><br><span class="line">		<span class="hljs-comment"># 计算第二隐藏层的误差向量</span></span><br><span class="line">		hidden_errors_2 = numpy.dot(self.who_.T,output_errors)</span><br><span class="line">		<span class="hljs-comment"># 计算第一隐藏层的误差向量</span></span><br><span class="line">		hidden_errors = numpy.dot(self.wh12_.T,hidden_errors_2)</span><br><span class="line"></span><br><span class="line">		<span class="hljs-string">''' 优化链接权重值 '''</span></span><br><span class="line">		<span class="hljs-comment"># 第三隐藏层与输出层间的链接权重优化</span></span><br><span class="line">		<span class="hljs-comment">#self.who_ += self.lr * numpy.dot((output_errors * final_outputs * (1.0 - final_outputs)),numpy.transpose(hidden_outputs_3))</span></span><br><span class="line">		<span class="hljs-comment"># 第二隐藏层与第三隐藏层间的链接权重优化</span></span><br><span class="line">		self.who_ += self.lr * numpy.dot((output_errors * final_outputs * (<span class="hljs-number">1.0</span> - final_outputs)),numpy.transpose(hidden_outputs_2))</span><br><span class="line">		<span class="hljs-comment"># 第一隐藏层与第二隐藏层间的链接权重优化</span></span><br><span class="line">		self.wh12_ += self.lr * numpy.dot((hidden_errors_2 * hidden_outputs_2 * (<span class="hljs-number">1.0</span> - hidden_outputs_2)),numpy.transpose(hidden_outputs))</span><br><span class="line">		<span class="hljs-comment"># 输入层与第一隐藏层间的链接权重优化</span></span><br><span class="line">		self.wih_ += self.lr * numpy.dot((hidden_errors * hidden_outputs * (<span class="hljs-number">1.0</span> - hidden_outputs)),numpy.transpose(inputs))</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		<span class="hljs-comment">#return self.query(inputs_list)</span></span><br><span class="line"></span><br><span class="line">	<span class="hljs-comment"># 查询</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">query</span><span class="hljs-params">(self,inputs_list)</span>:</span></span><br><span class="line">		<span class="hljs-comment"># 将输入列表转成numpy向量对象并转置为列向量</span></span><br><span class="line">		inputs = numpy.array(inputs_list,ndmin=<span class="hljs-number">2</span>).T</span><br><span class="line">		<span class="hljs-comment"># 第一隐藏层结点的输入信号：权重矩阵与输入信号向量的乘积</span></span><br><span class="line">		self.hidden_inputs = numpy.dot(self.wih_,inputs)</span><br><span class="line">		<span class="hljs-comment"># 第一隐藏层结点的输出信号：经过S函数的加权求和值</span></span><br><span class="line">		self.hidden_outputs = self.activation_function(self.hidden_inputs)</span><br><span class="line"></span><br><span class="line">		<span class="hljs-comment"># 第二隐藏层的输入信号:</span></span><br><span class="line">		self.hidden_inputs_2 = numpy.dot(self.wh12_,self.hidden_outputs)</span><br><span class="line">		<span class="hljs-comment"># 第二层隐藏层的输出信号：</span></span><br><span class="line">		self.hidden_outputs_2 = self.activation_function(self.hidden_inputs_2)</span><br><span class="line">		<span class="hljs-string">'''</span></span><br><span class="line"><span class="hljs-string">		# 第三隐藏层的输入信号：</span></span><br><span class="line"><span class="hljs-string">		self.hidden_inputs_3 = numpy.dot(self.wh23_,self.hidden_outputs_2)</span></span><br><span class="line"><span class="hljs-string">		# 第三隐藏层的输出信号：</span></span><br><span class="line"><span class="hljs-string">		self.hidden_outputs_3 = self.activation_function(self.hidden_inputs_3)</span></span><br><span class="line"><span class="hljs-string">		'''</span></span><br><span class="line">		<span class="hljs-comment"># 输出层结点的输入信号：</span></span><br><span class="line">		self.final_inputs = numpy.dot(self.who_,self.hidden_outputs_2)</span><br><span class="line">		<span class="hljs-comment"># 输出层结点的最终输出信号：</span></span><br><span class="line">		self.final_outputs = self.activation_function(self.final_inputs)</span><br><span class="line"></span><br><span class="line">		<span class="hljs-comment"># 返回最终输出信号</span></span><br><span class="line">		<span class="hljs-keyword">return</span> self.final_outputs</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">test</span><span class="hljs-params">(Network,test_dataset_name)</span>:</span></span><br><span class="line">	Network.wih_ = numpy.loadtxt(<span class="hljs-string">'wih_file.csv'</span>)</span><br><span class="line">	Network.wh12_ = numpy.loadtxt(<span class="hljs-string">'wh12_file.csv'</span>)</span><br><span class="line">	<span class="hljs-comment">#Network.wh23_ = numpy.loadtxt('wh23_file.csv')</span></span><br><span class="line">	Network.who_ = numpy.loadtxt(<span class="hljs-string">'who_file.csv'</span>)</span><br><span class="line"></span><br><span class="line">	<span class="hljs-comment"># 准备测试数据</span></span><br><span class="line">	test_data_file = open(test_dataset_name,<span class="hljs-string">'r'</span>)</span><br><span class="line">	test_data_list = test_data_file.readlines()</span><br><span class="line">	test_data_file.close()</span><br><span class="line"></span><br><span class="line">	print(<span class="hljs-string">'\n'</span>)</span><br><span class="line">	print(<span class="hljs-string">"Testing...\n"</span>)</span><br><span class="line">	<span class="hljs-comment"># 统计</span></span><br><span class="line">	correct_test = <span class="hljs-number">0</span></span><br><span class="line">	all_test = <span class="hljs-number">0</span></span><br><span class="line">	correct = [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>]</span><br><span class="line">	num_counter = [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>]</span><br><span class="line"></span><br><span class="line">	<span class="hljs-comment">#测试进度条</span></span><br><span class="line">	p_test = progressbar.ProgressBar()</span><br><span class="line">	p_test.start(len(test_data_list))</span><br><span class="line"></span><br><span class="line">	<span class="hljs-comment"># 动画显示</span></span><br><span class="line">	<span class="hljs-comment">#plt.figure(1)</span></span><br><span class="line"></span><br><span class="line">	<span class="hljs-keyword">for</span> imag_list <span class="hljs-keyword">in</span> test_data_list:</span><br><span class="line">		all_values = imag_list.split(<span class="hljs-string">','</span>)</span><br><span class="line">		lable = int(all_values[<span class="hljs-number">0</span>])</span><br><span class="line">		scaled_input = (numpy.asfarray(all_values[<span class="hljs-number">1</span>:]) / <span class="hljs-number">255.0</span> * <span class="hljs-number">0.99</span>) + <span class="hljs-number">0.01</span></span><br><span class="line">		imag_array = numpy.asfarray(scaled_input).reshape((<span class="hljs-number">28</span>,<span class="hljs-number">28</span>))</span><br><span class="line">		<span class="hljs-string">'''</span></span><br><span class="line"><span class="hljs-string">		plt.imshow(imag_array,cmap='Greys',animated=True)</span></span><br><span class="line"><span class="hljs-string">		plt.draw()</span></span><br><span class="line"><span class="hljs-string">		plt.pause(0.00001)</span></span><br><span class="line"><span class="hljs-string">		'''</span></span><br><span class="line">		net_answer = Network.query(scaled_input).tolist().index(max(Network.final_outputs))</span><br><span class="line">		num_counter[lable] += <span class="hljs-number">1</span></span><br><span class="line">		</span><br><span class="line">		<span class="hljs-keyword">if</span> lable == int(net_answer):</span><br><span class="line">			correct_test += <span class="hljs-number">1</span></span><br><span class="line">			correct[lable] += <span class="hljs-number">1</span></span><br><span class="line">		p_test.update(all_test + <span class="hljs-number">1</span>)</span><br><span class="line">		all_test += <span class="hljs-number">1</span></span><br><span class="line"></span><br><span class="line">	p_test.finish()</span><br><span class="line">	print(<span class="hljs-string">"Finish Test.\n"</span>)</span><br><span class="line"></span><br><span class="line">	<span class="hljs-comment"># 网络性能</span></span><br><span class="line">	performance = correct_test/all_test</span><br><span class="line">	Per_num_performance = []</span><br><span class="line">	<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">10</span>):</span><br><span class="line">		<span class="hljs-comment"># 测试集可能不包含某些数字，故捕捉除以0异常</span></span><br><span class="line">		<span class="hljs-keyword">try</span>:</span><br><span class="line">			Per_num_performance.append(correct[i]/num_counter[i])</span><br><span class="line">		<span class="hljs-keyword">except</span> ZeroDivisionError:</span><br><span class="line">			Per_num_performance.append(<span class="hljs-number">0</span>)</span><br><span class="line"></span><br><span class="line">	print(<span class="hljs-string">"The correctRate of per number： "</span>,Per_num_performance)</span><br><span class="line">	print(<span class="hljs-string">"Performance of the NeuralNetwork： "</span>,performance*<span class="hljs-number">100</span>)</span><br><span class="line">	<span class="hljs-keyword">return</span> performance</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 定义网络规模与学习率</span></span><br><span class="line">input_nodes = <span class="hljs-number">784</span></span><br><span class="line">hidden_nodes = <span class="hljs-number">700</span></span><br><span class="line">hidden_nodes_2 = <span class="hljs-number">700</span></span><br><span class="line"><span class="hljs-comment">#hidden_nodes_3 = 100</span></span><br><span class="line">output_nodes = <span class="hljs-number">10</span></span><br><span class="line">learningrate = <span class="hljs-number">0.0001</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:</span><br><span class="line"></span><br><span class="line">	<span class="hljs-comment"># 定义训练世代数</span></span><br><span class="line">	epochs = <span class="hljs-number">5</span></span><br><span class="line"></span><br><span class="line">	<span class="hljs-comment">#创建神经网络实例</span></span><br><span class="line">	Net = neuralNetwork(input_nodes,hidden_nodes,hidden_nodes_2,output_nodes,learningrate)</span><br><span class="line"></span><br><span class="line">	<span class="hljs-comment">#plt.imshow(final_outputs,interpolation="nearest")</span></span><br><span class="line"></span><br><span class="line">	<span class="hljs-comment"># 准备训练数据</span></span><br><span class="line">	data_file = open(<span class="hljs-string">"mnist_train.csv"</span>,<span class="hljs-string">'r'</span>)</span><br><span class="line">	data_list = data_file.readlines()</span><br><span class="line">	N_train = len(data_list)</span><br><span class="line">	data_file.close()</span><br><span class="line">	<span class="hljs-comment"># 动画显示</span></span><br><span class="line">	<span class="hljs-comment">#plt.figure(1)</span></span><br><span class="line"></span><br><span class="line">	print(<span class="hljs-string">"Training："</span>, epochs, <span class="hljs-string">"epochs..."</span>)</span><br><span class="line">	<span class="hljs-keyword">for</span> e <span class="hljs-keyword">in</span> range(epochs):</span><br><span class="line">		<span class="hljs-comment"># 训练进度条</span></span><br><span class="line">		print(<span class="hljs-string">'\nThe '</span>+str(e+<span class="hljs-number">1</span>)+<span class="hljs-string">'th epoch trainning:\n'</span>)</span><br><span class="line">		p_train = progressbar.ProgressBar()</span><br><span class="line">		p_train.start(N_train)</span><br><span class="line">		i = <span class="hljs-number">0</span></span><br><span class="line"></span><br><span class="line">		<span class="hljs-keyword">for</span> img_list <span class="hljs-keyword">in</span> data_list:</span><br><span class="line">			<span class="hljs-comment"># 以逗号分割记录</span></span><br><span class="line">			all_values = img_list.split(<span class="hljs-string">','</span>)</span><br><span class="line">			<span class="hljs-comment"># 将0-255映射到0.01-0.99</span></span><br><span class="line">			scaled_input = (numpy.asfarray(all_values[<span class="hljs-number">1</span>:]) / <span class="hljs-number">255.0</span> * <span class="hljs-number">0.99</span>) + <span class="hljs-number">0.01</span></span><br><span class="line">			imag_array = numpy.asfarray(scaled_input).reshape((<span class="hljs-number">28</span>,<span class="hljs-number">28</span>))</span><br><span class="line">			<span class="hljs-comment">#plt.imshow(imag_array,cmap='Greys',animated=True)</span></span><br><span class="line">			<span class="hljs-comment">#plt.draw()</span></span><br><span class="line">			<span class="hljs-comment">#plt.pause(0.00001)</span></span><br><span class="line"></span><br><span class="line">			<span class="hljs-comment">#旋转图像生成新的训练集</span></span><br><span class="line">			input_plus_10imag = scipy.ndimage.interpolation.rotate(imag_array,<span class="hljs-number">10</span>,cval=<span class="hljs-number">0.01</span>,reshape=<span class="hljs-keyword">False</span>)</span><br><span class="line">			input_minus_10imag = scipy.ndimage.interpolation.rotate(imag_array,<span class="hljs-number">-10</span>,cval=<span class="hljs-number">0.01</span>,reshape=<span class="hljs-keyword">False</span>)</span><br><span class="line">			input_plus10 = input_plus_10imag.reshape((<span class="hljs-number">1</span>,<span class="hljs-number">784</span>))</span><br><span class="line">			input_minus10 = input_minus_10imag.reshape((<span class="hljs-number">1</span>, <span class="hljs-number">784</span>))</span><br><span class="line">			<span class="hljs-comment"># 根据标签创建目标值向量</span></span><br><span class="line">			targets = numpy.zeros(output_nodes) + <span class="hljs-number">0.01</span></span><br><span class="line">			targets[int(all_values[<span class="hljs-number">0</span>])] = <span class="hljs-number">0.99</span></span><br><span class="line"></span><br><span class="line">			<span class="hljs-comment"># 用三个训练集训练神经网络</span></span><br><span class="line">			Net.train(scaled_input,targets)</span><br><span class="line">			Net.train(input_plus10,targets)</span><br><span class="line">			Net.train(input_minus10,targets)</span><br><span class="line"></span><br><span class="line">			<span class="hljs-comment">#time.sleep(0.01)</span></span><br><span class="line">			p_train.update(i+<span class="hljs-number">1</span>)</span><br><span class="line">			i+=<span class="hljs-number">1</span></span><br><span class="line">		p_train.finish()</span><br><span class="line">		</span><br><span class="line">	print(<span class="hljs-string">"\nTrainning finish.\n"</span>)</span><br><span class="line"></span><br><span class="line">	<span class="hljs-comment"># 将训练好的神经网络链接权重输出到csv文件中</span></span><br><span class="line">	numpy.savetxt(<span class="hljs-string">'wih_file.csv'</span>,Net.wih_,fmt=<span class="hljs-string">'%f'</span>)</span><br><span class="line">	numpy.savetxt(<span class="hljs-string">'wh12_file.csv'</span>,Net.wh12_,fmt=<span class="hljs-string">'%f'</span>)</span><br><span class="line">	<span class="hljs-comment">#numpy.savetxt('wh23_file.csv',Net.wh23_,fmt='%f')</span></span><br><span class="line">	numpy.savetxt(<span class="hljs-string">'who_file.csv'</span>,Net.who_,fmt=<span class="hljs-string">'%f'</span>)</span><br></pre></td></tr></table></figure>
- <font face="黑体" size="3px" color="green"> network_test.py </font>
+<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># python 实现异或门</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">ExOR</span><span class="hljs-params">(x1,x2)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">return</span> AND(OR(x1,x2),NAND(x1,x2))</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> neural_network <span class="hljs-keyword">as</span> nk</span><br><span class="line"><span class="hljs-keyword">import</span> numpy</span><br><span class="line"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> pl</span><br><span class="line"><span class="hljs-keyword">import</span> scipy.special</span><br><span class="line"><span class="hljs-keyword">import</span> scipy.ndimage.interpolation</span><br><span class="line"><span class="hljs-keyword">import</span> json</span><br><span class="line"><span class="hljs-keyword">import</span> time</span><br><span class="line"><span class="hljs-keyword">import</span> progressbar</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 测试神经网络</span></span><br><span class="line"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">"__main__"</span>:</span><br><span class="line">	input_nodes = nk.input_nodes</span><br><span class="line">	hidden_nodes = nk.hidden_nodes</span><br><span class="line">	hidden_nodes_2 = nk.hidden_nodes_2</span><br><span class="line">	<span class="hljs-comment">#hidden_nodes_3 = nk.hidden_nodes_3</span></span><br><span class="line">	output_nodes = nk.output_nodes</span><br><span class="line">	learningrate = nk.learningrate</span><br><span class="line">	Network = nk.neuralNetwork(input_nodes,hidden_nodes,hidden_nodes_2,output_nodes,learningrate)</span><br><span class="line">	nk.test(Network,<span class="hljs-string">"mnist_test.csv"</span>)</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># hidden_nodes = 200 lr = 0.01 performance = 97.34</span></span><br></pre></td></tr></table></figure>
-<hr>
-<h4 id="运行程序"><a href="#运行程序" class="headerlink" title="运行程序"></a>运行程序</h4><ol>
-<li>cd进入代码所在文件夹</li>
-<li>(训练神经网络)输入命令：<font color="green" face="黑体">python</font> <font color="blue" face="黑体">neural_network.py</font></li>
-</ol>
-<p><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89/20190607011216578.png" alt="Training"></p>
-<ol start="3">
-<li>（测试神经网络）输入命令：<font color="green" face="黑体">python</font> <font color="blue" face="黑体">network_test.py</font></li>
-</ol>
-<p><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89/20190607011510082.png" alt="Testing"></p>
-<font size="1px" color="red">[Warning] 运行时请确保训练集和测试集数据的.csv文件与源代码文件在同一个目录下，否则请修改源码中的文件路径</font>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -309,11 +299,11 @@
       </li>
       <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="" title="{{ page.title }}">人工神经网络学习笔记（3）</a>
+      <a href="" title="{{ page.title }}">感知机与逻辑门的实现</a>
       </li>
       <li class="post-copyright-link">
       <strong>发布时间：</strong>
-      <a href="" title="{{ page.title }}">2019年6月7日 - 12时06分</a>
+      <a href="" title="{{ page.title }}">2019年6月1日 - 14时06分</a>
       </li>
       <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -364,16 +354,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/06/19/机器学习-卷积神经网络介绍(0)/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/06/03/人工神经网络学习笔记（0）/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">深度学习-卷积神经网络(0)</span>
+                <span class="level-item">人工神经网络学习笔记（0）</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/06/04/人工神经网络学习笔记（2）/">
-                <span class="level-item">人工神经网络学习笔记（2）</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/05/01/Hexo-icarus修改文章详情页/">
+                <span class="level-item">Hexo-icarus修改文章详情页</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -423,22 +413,14 @@
                 目录
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#Python-numpy编码实现人工神经网络">
+        <a class="is-flex" href="#感知机">
         <span class="has-mr-6">1</span>
-        <span>Python-numpy编码实现人工神经网络</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#准备数据：">
-        <span class="has-mr-6">1.1</span>
-        <span>准备数据：</span>
+        <span>感知机</span>
         </a></li><li>
-        <a class="is-flex" href="#编码实现">
-        <span class="has-mr-6">1.2</span>
-        <span>编码实现</span>
-        </a></li><li>
-        <a class="is-flex" href="#运行程序">
-        <span class="has-mr-6">1.3</span>
-        <span>运行程序</span>
-        </a></li></ul></li></ul>
+        <a class="is-flex" href="#逻辑门的实现">
+        <span class="has-mr-6">2</span>
+        <span>逻辑门的实现</span>
+        </a></li></ul>
         </div>
     </div>
 </div>
@@ -992,7 +974,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/flyingfish.ico" alt="人工神经网络学习笔记（3）" height="28">
+                    <img src="/images/flyingfish.ico" alt="感知机与逻辑门的实现" height="28">
                 
                 </a>
                 <p class="is-size-7">
