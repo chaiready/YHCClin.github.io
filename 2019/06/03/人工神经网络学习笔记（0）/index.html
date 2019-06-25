@@ -49,11 +49,11 @@
 <meta property="og:image" content="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2877951112,4239204535&fm=26&gp=0.jpg">
 <meta property="og:image" content="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1784596280,2741805283&fm=26&gp=0.jpg">
 <meta property="og:image" content="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2160826125,3899173269&fm=26&gp=0.jpg">
-<meta property="og:image" content="https://images2015.cnblogs.com/blog/764050/201606/764050-20160619112701960-1012598812.png">
+<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%880%EF%BC%89/model.jpeg">
 <meta property="og:image" content="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=266571296,2744303426&fm=26&gp=0.jpg">
 <meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%880%EF%BC%89/20190603023656961.png">
 <meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%880%EF%BC%89/20190603023612835.png">
-<meta property="og:updated_time" content="2019-06-25T13:48:40.389Z">
+<meta property="og:updated_time" content="2019-06-25T14:17:06.687Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="人工神经网络学习笔记（0）">
 <meta name="twitter:description" content="何为人工神经网络人工神经网络是模拟人脑的神经网络，用以实现人工智能的机器学习技术。我们知道，人脑可以说是世界上最复杂最精妙的系统之一，它由千亿计的神经元细胞组成。各个神经细胞相互链接，彼此之间传递电信号。从而造就了人类高于其他物种的思维能力。科学家受到人脑神经元的启发从而提出了人工神经网络的设想，使得人工智能的实现不再遥不可及。">
@@ -231,7 +231,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    13 分钟 读完 (大约 1957 个字)
+                    13 分钟 读完 (大约 1992 个字)
                 </span>
                 
             </div>
@@ -253,7 +253,7 @@
 <ul>
 <li>由生物神经元得到的启发，人工神经元与其大同小异。上图中： $x_1,x_2,x_3,x_4$ 为该神经元树突所接受到的其他神经元传来的电信号。中间的圆圈为胞体，在胞体中将会由处理信号的机制，以决定输出信号y。<h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3></li>
 <li>在之前的生物神经元中已经说道，神经元对是否激发信号传递有一个判断机制，这是因为神经元不希望传递微小的噪声信号，而只传递有意识的明显信号。只有信号强度达到了某一个阙值，才会激发电信号的传递。<br><strong>那么在人工神经元中我们如何来实现这个机制呢？</strong></li>
-<li>这样的一个函数也许能够满足我们的需要：<br>$$Function(x) = \begin{cases}<br>0 &amp; x \leq T \\<br>1 &amp; x&gt;T<br>\end{cases}$$<br>显而易见，这个简单的阶跃函数在输入信号大于T（阙值）时才会产生输出信号1（被激发），而较小的输入时输出为0（被抑制）；我们称这样的函数为激活函数。当然，激活函数不会就只有这么一种。常用的还有sigmoid函数：<br>$$Sigmoid(x) = \frac{1}{1+e^{-x}}$$<br>函数图像：<br><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2160826125,3899173269&amp;fm=26&amp;gp=0.jpg" alt=""><br>可以发现，sigmoid函数相对于阶跃函数而言更加平滑，自然，接近现实。我们的神经网络也将采用它。<br>如此一来，我们的单个神经元模型就成型了：<br><img src="https://images2015.cnblogs.com/blog/764050/201606/764050-20160619112701960-1012598812.png" alt="人工神经元模型"><br>参数含义：</li>
+<li>这样的一个函数也许能够满足我们的需要：<br>$$Function(x) = \begin{cases}<br>0 &amp; x \leq T \\<br>1 &amp; x&gt;T<br>\end{cases}$$<br>显而易见，这个简单的阶跃函数在输入信号大于T（阙值）时才会产生输出信号1（被激发），而较小的输入时输出为0（被抑制）；我们称这样的函数为激活函数。当然，激活函数不会就只有这么一种。常用的还有sigmoid函数：<br>$$Sigmoid(x) = \frac{1}{1+e^{-x}}$$<br>函数图像：<br><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2160826125,3899173269&amp;fm=26&amp;gp=0.jpg" alt=""><br>可以发现，sigmoid函数相对于阶跃函数而言更加平滑，自然，接近现实。我们的神经网络也将采用它。<br>如此一来，我们的单个神经元模型就成型了：<br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%880%EF%BC%89/model.jpeg" alt="人工神经元模型"><br>参数含义：</li>
 <li>$x_1 ,x_2… x_m$为输入信号</li>
 <li>$w_1 ,w_2… w_m$为权重值，表示各个输入信号对输出结果的影响力大小。对于为何引入权值可以做如下思考：你去相亲，你对未来对象的考量主要有身高，长相，身材，文化程度等，但遇到样样都好的概率实在是太底了，所以你决定适当放宽某些要求。比如如果学历高就可以降低身材长相的要求。这表示你比较注重伴侣的文化程度。因此，对方的文化程度对你的择偶有着重要的影响，其所占权重就会比较高。</li>
 <li>求和函数将计算$x=\sum_{m}{x_iw_i},i=1,2,…m$后将所得的值传给激活函数Sigmoid即：<br>$$Output=Sig(x)=\frac{1}{1+e^{-(\sum_{m}{x_iw_i})}}$$<br>观察函数图不难发现，Sigmoid函数将加权求和的输入映射到0~1的值域内输出。<h2 id="人工神经网络"><a href="#人工神经网络" class="headerlink" title="人工神经网络"></a>人工神经网络</h2><img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=266571296,2744303426&amp;fm=26&amp;gp=0.jpg" alt=""><br>介绍完单个神经元的功能，如果把这些小部件组合起来，就成了所谓的人工神经网络。<br><strong>层次结构：</strong></li>
