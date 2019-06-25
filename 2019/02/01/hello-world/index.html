@@ -46,7 +46,7 @@
 <meta property="og:site_name" content="飞鱼の博客">
 <meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-24T09:59:19.127Z">
+<meta property="og:updated_time" content="2019-06-25T10:35:41.032Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hello Friend">
 <meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
@@ -326,20 +326,23 @@
     <div class="card-content">
         <h3 class="title is-5 has-text-weight-normal">评论</h3>
         
-<div id="valine-thread"></div>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 <script>
-    new Valine({
-        el: '#valine-thread' ,
-        notify: true,
-        verify: true,
-        app_id: 'oR2IQXqpGEFy4GHNDgdmfSMR-gzGzoHsz',
-        app_key: 'hwYfVGzICBlXGiokUXaNqJsx',
-        placeholder: 'Type something slowly...'
-    });
+    var disqus_config = function () {
+        this.page.url = 'https://www.ccyh.xyz/2019/02/01/hello-world/';
+        this.page.identifier = '2019/02/01/hello-world/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'ccyhweb' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
 </script>
 
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
     </div>
 </div>
 </div></div>
