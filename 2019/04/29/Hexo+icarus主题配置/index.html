@@ -47,9 +47,7 @@
 <meta property="og:description" content="下载icarus主题 进入博客主目录，点击鼠标右键Git Bash Here,进入命令行界面">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Hexo+icarus主题配置/20190429082811950.png">
-<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Hexo+icarus主题配置/20190429093801600.png">
-<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Hexo+icarus主题配置/20190429094726470.png">
-<meta property="og:updated_time" content="2019-08-29T04:26:44.919Z">
+<meta property="og:updated_time" content="2019-08-29T04:44:09.867Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo+icarus主题配置">
 <meta name="twitter:description" content="下载icarus主题 进入博客主目录，点击鼠标右键Git Bash Here,进入命令行界面">
@@ -282,14 +280,18 @@
 <li><p>在$\color{DarkTurquoise}{/themes/icarus/_config.yml}$中添加：</p>
 <figure class="highlight yml hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-attr">busuanzi:</span></span><br><span class="line"><span class="hljs-attr">    enable:</span> <span class="hljs-literal">true</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>最终效果：<br><div align="center"><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Hexo+icarus主题配置/20190429093801600.png" alt=""><br></div></p>
+<li><p>最终效果：<br><div align="center">
+![](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Hexo+icarus主题配置/20190429093801600.png)
+</div></p>
 <h3 id="网站运行时间统计"><a href="#网站运行时间统计" class="headerlink" title="网站运行时间统计"></a>网站运行时间统计</h3></li>
 <li><p>在$\color{DarkTurquoise}{/themes/icarus/layout/common/footer.ejs}$中添加：</p>
 <figure class="highlight html hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"timeDate"</span>&gt;</span>载入天数...<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"times"</span>&gt;</span>载入时分秒...<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="hljs-undefined"></span></span><br><span class="line"><span class="hljs-javascript">                <span class="hljs-keyword">var</span> now = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(); </span></span><br><span class="line"><span class="hljs-javascript">                <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createtime</span>(<span class="hljs-params"></span>) </span>&#123; </span></span><br><span class="line"><span class="hljs-javascript">                    <span class="hljs-keyword">var</span> grt= <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">"12/28/2018 12:49:00"</span>);<span class="hljs-comment">//此处修改你的建站时间或者网站上线时间 </span></span></span><br><span class="line"><span class="hljs-undefined">                    now.setTime(now.getTime()+250); </span></span><br><span class="line"><span class="hljs-javascript">                    days = (now - grt ) / <span class="hljs-number">1000</span> / <span class="hljs-number">60</span> / <span class="hljs-number">60</span> / <span class="hljs-number">24</span>; dnum = <span class="hljs-built_in">Math</span>.floor(days); </span></span><br><span class="line"><span class="hljs-javascript">                    hours = (now - grt ) / <span class="hljs-number">1000</span> / <span class="hljs-number">60</span> / <span class="hljs-number">60</span> - (<span class="hljs-number">24</span> * dnum); hnum = <span class="hljs-built_in">Math</span>.floor(hours); </span></span><br><span class="line"><span class="hljs-javascript">                    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>(hnum).length ==<span class="hljs-number">1</span> )&#123;hnum = <span class="hljs-string">"0"</span> + hnum;&#125; minutes = (now - grt ) / <span class="hljs-number">1000</span> /<span class="hljs-number">60</span> - (<span class="hljs-number">24</span> * <span class="hljs-number">60</span> * dnum) - (<span class="hljs-number">60</span> * hnum); </span></span><br><span class="line"><span class="hljs-javascript">                    mnum = <span class="hljs-built_in">Math</span>.floor(minutes); <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>(mnum).length ==<span class="hljs-number">1</span> )&#123;mnum = <span class="hljs-string">"0"</span> + mnum;&#125; </span></span><br><span class="line"><span class="hljs-undefined">                    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); </span></span><br><span class="line"><span class="hljs-javascript">                    snum = <span class="hljs-built_in">Math</span>.round(seconds); <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>(snum).length ==<span class="hljs-number">1</span> )&#123;snum = <span class="hljs-string">"0"</span> + snum;&#125; </span></span><br><span class="line"><span class="hljs-javascript">                    <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"timeDate"</span>).innerHTML = <span class="hljs-string">"本站已安全运行 "</span>+dnum+<span class="hljs-string">" 天 "</span>; </span></span><br><span class="line"><span class="hljs-javascript">                    <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"times"</span>).innerHTML = hnum + <span class="hljs-string">" 小时 "</span> + mnum + <span class="hljs-string">" 分 "</span> + snum + <span class="hljs-string">" 秒"</span>; </span></span><br><span class="line"><span class="hljs-undefined">                &#125; </span></span><br><span class="line"><span class="hljs-javascript">            setInterval(<span class="hljs-string">"createtime()"</span>,<span class="hljs-number">250</span>);</span></span><br><span class="line"><span class="hljs-undefined">            </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>修改自己的建站时间</p>
 </li>
-<li>最终效果：<div align="center"><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Hexo+icarus主题配置/20190429094726470.png" alt=""><br></div>
+<li>最终效果：<div align="center">
+![](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Hexo+icarus主题配置/20190429094726470.png)
+</div>
 
 </li>
 </ul>
@@ -323,7 +325,9 @@
 <h3 id="遇到的坑及解决方法"><a href="#遇到的坑及解决方法" class="headerlink" title="遇到的坑及解决方法"></a>遇到的坑及解决方法</h3><ul>
 <li>..公式渲染问题</li>
 <li>..</li>
-<li>..<div align="center"><br>$\color{green}{Waiting….for….update….}$<br></div>
+<li>..<div align="center">
+$\color{green}{Waiting....for....update....}$
+</div>
 
 </li>
 </ul>
