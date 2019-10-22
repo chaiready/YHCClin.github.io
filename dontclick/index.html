@@ -46,7 +46,7 @@
 <meta property="og:site_name" content="飞鱼の博客">
 <meta property="og:description" content="Unclosable Window/Source of MainPart: Stefan MÃ¼nz, Selfhtml 7.0, tecb.htm /activ = window.setInterval(“Farbe()”,100);i = 0, farbe = 1;function Farbe() {if(farbe==1) {document.bgColor=”FFFF00”; farbe=">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-07T14:00:34.854Z">
+<meta property="og:updated_time" content="2019-10-22T09:44:10.313Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dont Do It">
 <meta name="twitter:description" content="Unclosable Window/Source of MainPart: Stefan MÃ¼nz, Selfhtml 7.0, tecb.htm /activ = window.setInterval(“Farbe()”,100);i = 0, farbe = 1;function Farbe() {if(farbe==1) {document.bgColor=”FFFF00”; farbe=">
@@ -281,23 +281,20 @@
     <div class="card-content">
         <h3 class="title is-5 has-text-weight-normal">评论</h3>
         
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 <script>
-    var disqus_config = function () {
-        this.page.url = 'https://www.ccyh.xyz/dontclick/index.html';
-        this.page.identifier = 'dontclick/index.html';
-    };
-    (function() {
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'ccyhweb' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'oR2IQXqpGEFy4GHNDgdmfSMR-gzGzoHsz',
+        app_key: 'hwYfVGzICBlXGiokUXaNqJsx',
+        placeholder: 'Type something slowly...'
+    });
 </script>
 
-<div id="disqus_thread">
-    
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
     </div>
 </div>
 </div>
