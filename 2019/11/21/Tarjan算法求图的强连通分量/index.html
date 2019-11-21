@@ -38,13 +38,13 @@
 
 
 
-    <meta name="description" content="强连通分量简介&amp;emsp;&amp;emsp;有向图强连通分量：在有向图G中，如果两个顶点$V_i, V_j$ 间（vi&amp;gt;vj）有一条从$V_i$到$V_j$的有向路径，同时还有一条从$V_j$到$V_i$的有向路径，则称两个顶点强连通(strongly connected)。如果有向图G的每两个顶点都强连通，称G是一个强连通图。有向图的极大强连通子图，称为强连通分量(strongly conne">
+    <meta name="description" content="强连通分量简介&amp;emsp;&amp;emsp;有向图强连通分量：在有向图G中，如果两个顶点$V_i, V_j$ 间（vi&amp;gt;vj）有一条从$V_i$到$V_j$的有向路径，同时还有一条从$V_j$到$V_i$的有向路径，则称两个顶点强连通(strongly connected)。如果有向图G的每两个顶点都强连通，称G是一个强连通图。有向图的极大强连通子图，称为强连通分量(strongly connec">
 <meta name="keywords" content="Algorithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tarjan算法求图的强连通分量">
 <meta property="og:url" content="https://www.ccyh.xyz/2019/11/21/Tarjan算法求图的强连通分量/index.html">
 <meta property="og:site_name" content="飞鱼の博客">
-<meta property="og:description" content="强连通分量简介&amp;emsp;&amp;emsp;有向图强连通分量：在有向图G中，如果两个顶点$V_i, V_j$ 间（vi&amp;gt;vj）有一条从$V_i$到$V_j$的有向路径，同时还有一条从$V_j$到$V_i$的有向路径，则称两个顶点强连通(strongly connected)。如果有向图G的每两个顶点都强连通，称G是一个强连通图。有向图的极大强连通子图，称为强连通分量(strongly conne">
+<meta property="og:description" content="强连通分量简介&amp;emsp;&amp;emsp;有向图强连通分量：在有向图G中，如果两个顶点$V_i, V_j$ 间（vi&amp;gt;vj）有一条从$V_i$到$V_j$的有向路径，同时还有一条从$V_j$到$V_i$的有向路径，则称两个顶点强连通(strongly connected)。如果有向图G的每两个顶点都强连通，称G是一个强连通图。有向图的极大强连通子图，称为强连通分量(strongly connec">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Tarjan/%E8%BF%9E%E9%80%9A%E5%9B%BE.PNG">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Tarjan/1.PNG">
@@ -54,10 +54,10 @@
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Tarjan/5.PNG">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Tarjan/6.PNG">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Tarjan/Tarjan.PNG">
-<meta property="og:updated_time" content="2019-11-21T15:41:53.069Z">
+<meta property="og:updated_time" content="2019-11-21T23:07:20.241Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tarjan算法求图的强连通分量">
-<meta name="twitter:description" content="强连通分量简介&amp;emsp;&amp;emsp;有向图强连通分量：在有向图G中，如果两个顶点$V_i, V_j$ 间（vi&amp;gt;vj）有一条从$V_i$到$V_j$的有向路径，同时还有一条从$V_j$到$V_i$的有向路径，则称两个顶点强连通(strongly connected)。如果有向图G的每两个顶点都强连通，称G是一个强连通图。有向图的极大强连通子图，称为强连通分量(strongly conne">
+<meta name="twitter:description" content="强连通分量简介&amp;emsp;&amp;emsp;有向图强连通分量：在有向图G中，如果两个顶点$V_i, V_j$ 间（vi&amp;gt;vj）有一条从$V_i$到$V_j$的有向路径，同时还有一条从$V_j$到$V_i$的有向路径，则称两个顶点强连通(strongly connected)。如果有向图G的每两个顶点都强连通，称G是一个强连通图。有向图的极大强连通子图，称为强连通分量(strongly connec">
 <meta name="twitter:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Tarjan/%E8%BF%9E%E9%80%9A%E5%9B%BE.PNG">
 
 
@@ -234,8 +234,8 @@
             
         </h1>
         <div class="content">
-            <a id="more"></a>
-<h2 id="强连通分量简介"><a href="#强连通分量简介" class="headerlink" title="强连通分量简介"></a>强连通分量简介</h2><p>&emsp;&emsp;有向图强连通分量：在有向图G中，如果两个顶点$V_i, V_j$ 间（vi&gt;vj）有一条从$V_i$到$V_j$的有向路径，同时还有一条从$V_j$到$V_i$的有向路径，则称两个顶点强连通(strongly connected)。如果有向图G的每两个顶点都强连通，称G是一个强连通图。有向图的极大强连通子图，称为强连通分量(strongly connected components)。</p>
+            <h2 id="强连通分量简介"><a href="#强连通分量简介" class="headerlink" title="强连通分量简介"></a>强连通分量简介</h2><p>&emsp;&emsp;有向图强连通分量：在有向图G中，如果两个顶点$V_i, V_j$ 间（vi&gt;vj）有一条从$V_i$到$V_j$的有向路径，同时还有一条从$V_j$到$V_i$的有向路径，则称两个顶点强连通(strongly connected)。如果有向图G的每两个顶点都强连通，称G是一个强连通图。有向图的极大强连通子图，称为强连通分量(strongly connected components)。</p>
+<a id="more"></a>
 <p>&emsp;&emsp;比如下图：<br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Tarjan/%E8%BF%9E%E9%80%9A%E5%9B%BE.PNG" alt=""></p>
 <hr>
 <h2 id="Tarjan-算法"><a href="#Tarjan-算法" class="headerlink" title="Tarjan 算法"></a>Tarjan 算法</h2><p>&emsp;Tarjan算法是用来求强连通分量的，它是一种基于DFS（深度优先搜索）的算法，每个强连通分量为搜索树中的一棵子树。并且运用了数据结构栈。<br><strong>算法思路：</strong><br>&emsp;首先引入两个数组 dfn[maxn] 和 low[maxn], 其中 dfn[i] 表示编号为 i 的节点被访问时的时间戳；low[i] 表示从编号为 i 的节点可追溯到（到达）的最早被访问到的节点的时间戳。下面通过上述例子跑一遍算法，描绘出每个时刻的DFS树状态和栈中的内容。</p>
