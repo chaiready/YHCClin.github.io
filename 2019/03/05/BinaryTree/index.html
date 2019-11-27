@@ -60,7 +60,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/01/28/5c4e5bf2d25e8.png">
 <meta property="og:image" content="https://i.loli.net/2019/01/28/5c4e5bf2c9721.png">
 <meta property="og:image" content="https://i.loli.net/2019/01/28/5c4e5bf2d661c.png">
-<meta property="og:updated_time" content="2019-11-26T05:13:18.272Z">
+<meta property="og:updated_time" content="2019-11-27T15:10:49.698Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【数据结构】树">
 <meta name="twitter:description" content="树的基本概念">
@@ -246,9 +246,11 @@
             
         </h1>
         <div class="content">
-            <h4 id="树的基本概念"><a href="#树的基本概念" class="headerlink" title="树的基本概念"></a>树的基本概念</h4><h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p><strong>树的定义：</strong><br>前面所提到的线性结构的元素是一种一对一的关系，而树是一种一对多的非线性结构，下面将通过一个具体的树的例子讲解到底什么样的结构才是树以 及树的一些相关术语：</p>
+            <h4 id="树的基本概念"><a href="#树的基本概念" class="headerlink" title="树的基本概念"></a>树的基本概念</h4><a id="more"></a>
+<hr>
+<p><strong>树的定义：</strong><br>前面所提到的线性结构的元素是一种一对一的关系，而树是一种一对多的非线性结构，下面将通过一个具体的树的例子讲解到底什么样的结构才是树以 及树的一些相关术语：</p>
 <p><img src="https://i.loli.net/2019/01/28/5c4e5b7679982.png" alt=""></p>
-<p>上图就是个树结构的概图了，我们可以看到它是由唯一的一个根节点和若干棵互不相交的子树组成的，由此可知树的定义是地柜的，即在树的定义中又用到了树的定义。这里需要注意的是，树的结点数可以是零，若为零时，称为一棵<strong>空树</strong>。<br><strong>结点：</strong>上图中的每一个橙色圆圈都是结点，结点中不仅有数据域，还存在几个或零个指向其子树的指针；<br><strong>结点的度：</strong>该节点所引申出的分支数目，如上图中的B结点，向下引申出了E和F，故其度为2；<br><strong>树的度：</strong>树的度为树中所有结点的度的最大值，如上图树的度为A结点的度为3；<br><strong>叶子结点：</strong>又称为<em>终端结点</em>，指的是度为零的结点<br><strong>非终端结点：</strong>又称为分支结点，指的是度不为零的结点，上图中的ABCDEG都是非终端结点。另外，非终端结点除去根节点A之外的所有结点又称为<em>内部结点</em>。<br><strong>祖先：</strong>从树的根节点到某一节点的路径上的所有结点都成为该结点的祖先结点，如E的祖先节点为：<br>A和B，因为路径为：A—B—E；<br><strong>层次：</strong>根处为第一层，以此类推……，如上图树的层次为4层；<br><strong>结点的深度和高度：</strong>联系实际，只需记住，高度是从底往上数；而深度是从上往下数；比如结点B的高度为3；而深度为2。根节点A的高度为树的高度为4；<br><strong>有序树：</strong>树中结点的子树从左到右都是有次序的不能交换<br><strong>无序树：</strong>树中结点的子树没有次序，可以任意交换<br><strong>丰满树：</strong>理想的平衡树，要求除了最底层外，其他层都是满的<br><strong>森林：</strong>若干棵互不相交的树的集合，若吧上图中的根节点A去掉，就成了一个森林</p>
+<p>上图就是个树结构的概图了，我们可以看到它是由唯一的一个根节点和若干棵互不相交的子树组成的，由此可知树的定义是地柜的，即在树的定义中又用到了树的定义。这里需要注意的是，树的结点数可以是零，若为零时，称为一棵<strong>空树</strong>。<br><strong>结点：</strong>上图中的每一个橙色圆圈都是结点，结点中不仅有数据域，还存在几个或零个指向其子树的指针；<br><strong>结点的度：</strong>该节点所引申出的分支数目，如上图中的B结点，向下引申出了E和F，故其度为2；<br><strong>树的度：</strong>树的度为树中所有结点的度的最大值，如上图树的度为A结点的度为3；<br><strong>叶子结点：</strong>又称为<em>终端结点</em>，指的是度为零的结点<br><strong>非终端结点：</strong>又称为分支结点，指的是度不为零的结点，上图中的ABCDEG都是非终端结点。另外，非终端结点除去根节点A之外的所有结点又称为<em>内部结点</em>。<br><strong>祖先：</strong>从树的根节点到某一节点的路径上的所有结点都成为该结点的祖先结点，如E的祖先节点为：<br>A和B，因为路径为：A–B–E；<br><strong>层次：</strong>根处为第一层，以此类推……，如上图树的层次为4层；<br><strong>结点的深度和高度：</strong>联系实际，只需记住，高度是从底往上数；而深度是从上往下数；比如结点B的高度为3；而深度为2。根节点A的高度为树的高度为4；<br><strong>有序树：</strong>树中结点的子树从左到右都是有次序的不能交换<br><strong>无序树：</strong>树中结点的子树没有次序，可以任意交换<br><strong>丰满树：</strong>理想的平衡树，要求除了最底层外，其他层都是满的<br><strong>森林：</strong>若干棵互不相交的树的集合，若吧上图中的根节点A去掉，就成了一个森林</p>
 <hr>
 <h4 id="树的存储结构"><a href="#树的存储结构" class="headerlink" title="树的存储结构"></a>树的存储结构</h4><ul>
 <li>顺序存储：<br>双亲存储结构，亦称双亲表示法(克鲁斯卡尔算法)</li>
@@ -506,67 +508,71 @@
             <h3 class="menu-label">
                 目录
             </h3>
-            <ul class="menu-list"><ul class="menu-list"><li>
+            <ul class="menu-list"><li>
         <a class="is-flex" href="#树的基本概念">
-        <span class="has-mr-6">1.1</span>
+        <span class="has-mr-6">1</span>
         <span>树的基本概念</span>
-        </a></li></ul><li>
-        <a class="is-flex" href="#">
-        <span class="has-mr-6">2</span>
-        <span></span>
-        </a><ul class="menu-list"><li>
+        </a></li><li>
         <a class="is-flex" href="#树的存储结构">
-        <span class="has-mr-6">2.1</span>
+        <span class="has-mr-6">2</span>
         <span>树的存储结构</span>
         </a></li><li>
         <a class="is-flex" href="#二叉树">
-        <span class="has-mr-6">2.2</span>
+        <span class="has-mr-6">3</span>
         <span>二叉树</span>
         </a></li><li>
         <a class="is-flex" href="#二叉树的几个重要性质">
-        <span class="has-mr-6">2.3</span>
+        <span class="has-mr-6">4</span>
         <span>二叉树的几个重要性质</span>
         </a></li><li>
         <a class="is-flex" href="#二叉树的存储结构">
-        <span class="has-mr-6">2.4</span>
+        <span class="has-mr-6">5</span>
         <span>二叉树的存储结构</span>
         </a></li><li>
         <a class="is-flex" href="#二叉树的遍历算法-递归实现-：">
-        <span class="has-mr-6">2.5</span>
+        <span class="has-mr-6">6</span>
         <span>二叉树的遍历算法(递归实现)：</span>
         </a></li><li>
         <a class="is-flex" href="#二叉树的遍历算法-非递归实现">
-        <span class="has-mr-6">2.6</span>
+        <span class="has-mr-6">7</span>
         <span>二叉树的遍历算法(非递归实现)</span>
-        </a></li><li>
+        </a><ul class="menu-list"><ul class="menu-list"><li>
+        <a class="is-flex" href="#上图而查处将作为例子方便讲解下面的算法">
+        <span class="has-mr-6">7.1.1</span>
+        <span>上图而查处将作为例子方便讲解下面的算法</span>
+        </a></li></ul></ul></li><li>
         <a class="is-flex" href="#线索二叉树">
-        <span class="has-mr-6">2.7</span>
+        <span class="has-mr-6">8</span>
         <span>线索二叉树</span>
         </a></li><li>
         <a class="is-flex" href="#树与森林的互相转换">
-        <span class="has-mr-6">2.8</span>
+        <span class="has-mr-6">9</span>
         <span>树与森林的互相转换</span>
         </a></li><li>
         <a class="is-flex" href="#树与二叉树的应用">
-        <span class="has-mr-6">2.9</span>
+        <span class="has-mr-6">10</span>
         <span>树与二叉树的应用</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#二叉排序树与二叉平衡树">
-        <span class="has-mr-6">2.9.1</span>
+        <span class="has-mr-6">10.1</span>
         <span>二叉排序树与二叉平衡树</span>
         </a></li><li>
         <a class="is-flex" href="#赫夫曼树与赫夫曼编码">
-        <span class="has-mr-6">2.9.2</span>
+        <span class="has-mr-6">10.2</span>
         <span>赫夫曼树与赫夫曼编码</span>
         </a></li><li>
         <a class="is-flex" href="#赫夫曼编码：">
-        <span class="has-mr-6">2.9.3</span>
+        <span class="has-mr-6">10.3</span>
         <span>赫夫曼编码：</span>
-        </a></li><li>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#利用赫夫曼树的特点来对文件进行压缩存储">
+        <span class="has-mr-6">10.3.1</span>
+        <span>* 利用赫夫曼树的特点来对文件进行压缩存储</span>
+        </a></li></ul></li><li>
         <a class="is-flex" href="#霍夫曼-n-叉树">
-        <span class="has-mr-6">2.9.4</span>
+        <span class="has-mr-6">10.4</span>
         <span>霍夫曼$n$叉树</span>
-        </a></li></ul></li></ul></li></ul>
+        </a></li></ul></li></ul>
         </div>
     </div>
 </div>
