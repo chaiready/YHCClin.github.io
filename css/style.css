@@ -18,7 +18,7 @@ button {
   background-color: #00a99d;
 }
 a {
-  color: #00a99d;
+  color: #808080;
 }
 @media screen and (min-width: 1280px) {
   .is-1-column .container,
@@ -57,7 +57,7 @@ a {
   }
 }
 .tag.is-grey {
-  background: #00a99d;
+  background: #e8e8e8;
 }
 .card {
   background-color: #fff;
@@ -116,7 +116,7 @@ img.thumbnail {
   padding: 1.25rem 0.75rem;
 }
 .navbar-main .navbar-item.is-active {
-  color: #00a99d;
+  color: #b5b5b5;
   background-color: transparent;
 }
 @media screen and (max-width: 1087px) {
@@ -153,7 +153,7 @@ img.thumbnail {
 .pagination .pagination-link:not(.is-current),
 .pagination .pagination-previous,
 .pagination .pagination-next {
-  background-color: #00a99d;
+  background-color: #fff;
   border: none;
 }
 .pagination .pagination-link,
@@ -164,8 +164,8 @@ img.thumbnail {
 .pagination .pagination-link .is-current,
 .pagination .pagination-previous .is-current,
 .pagination .pagination-next .is-current {
-  background-color: #00a99d;
-  border-color: #00a99d;
+  background-color: #aaa;
+  border-color: #dbdbdb;
   color: #fff;
 }
 .post-navigation {
@@ -173,7 +173,7 @@ img.thumbnail {
 }
 .post-navigation .level-item {
   margin-bottom: 0;
-  color: #00a99d;
+  color: #808080;
 }
 .timeline {
   margin-left: 1rem;
@@ -195,7 +195,7 @@ img.thumbnail {
   width: 9px;
   height: 9px;
   top: 1.3rem;
-  background: #00a99d;
+  background: #808080;
   border-radius: 50%;
 }
 .timeline .media:first-child:before {
@@ -205,7 +205,7 @@ img.thumbnail {
   top: calc(1.3rem + 9px);
   width: 9px;
   bottom: 0;
-  background: #00a99d;
+  background: #fafafa;
 }
 .timeline .media:first-child:last-child:after {
   top: calc(0.3rem + 9px);
@@ -225,7 +225,7 @@ img.thumbnail {
 .article .post-copyright {
   margin: 2em 0 0;
   padding: 0.5em 1em;
-  border-left: 3px solid #00a99d;
+  border-left: 3px solid #808080;
   background-color: rgba(255,147,87,0);
   list-style: none;
 }
@@ -283,7 +283,7 @@ img.thumbnail {
     right: 0;
     bottom: 0;
     z-index: 99;
-    background: #00a99d;
+    background: #808080;
   }
   #toc.is-active,
   #toc-mask.is-active {
@@ -351,13 +351,13 @@ img.thumbnail {
 }
 .has-link-grey:hover,
 .has-link-black-ter:hover {
-  color: #00a99d !important;
+  color: #808080 !important;
 }
 .has-link-grey {
-  color: #00a99d !important;
+  color: #b5b5b5 !important;
 }
 .has-link-black-ter {
-  color: #00a99d !important;
+  color: #363636 !important;
 }
 @media screen and (max-width: 768px) {
   .has-text-centered-mobile {
@@ -395,7 +395,7 @@ img.thumbnail {
 }
 .content h1 {
   font-size: 1.75em;
-  color: #00a99c;
+  color: #aaa;
 }
 .content h2 {
   font-size: 1.5em;
@@ -462,7 +462,7 @@ figure.highlight figcaption span {
 }
 figure.highlight figcaption a {
   float: right;
-  color: #00a99d;
+  color: #808080;
 }
 figure.highlight .gutter {
   text-align: right;
