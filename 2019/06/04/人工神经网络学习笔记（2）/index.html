@@ -52,7 +52,7 @@
 <meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/20190604012324203.png">
 <meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1559636048297&di=a69a0ac50c0c4c39c6290d14fe697429&imgtype=0&src=http%3A%2F%2Fimg.ph.126.net%2FwdlmGd6Cl2EyG0Bp-xEihQ%3D%3D%2F1016406140918957318.jpg">
 <meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/20190604014334436.png">
-<meta property="og:updated_time" content="2020-01-08T05:21:11.001Z">
+<meta property="og:updated_time" content="2020-01-10T06:34:31.233Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="人工神经网络学习笔记（2）">
 <meta name="twitter:description" content="如何更新权重在上一篇文章中我们算出了各个层的误差，现在是时候利用这些误差来指导链接权重的修改了。那么该如何修改？">
@@ -386,20 +386,23 @@
     <div class="card-content">
         <h3 class="title is-5 has-text-weight-normal">评论</h3>
         
-<div id="valine-thread"></div>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 <script>
-    new Valine({
-        el: '#valine-thread' ,
-        notify: true,
-        verify: true,
-        app_id: 'oR2IQXqpGEFy4GHNDgdmfSMR-gzGzoHsz',
-        app_key: 'hwYfVGzICBlXGiokUXaNqJsx',
-        placeholder: 'Type something slowly...'
-    });
+    var disqus_config = function () {
+        this.page.url = 'https://www.ccyh.xyz/2019/06/04/人工神经网络学习笔记（2）/';
+        this.page.identifier = 'ccyhweb';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'ccyhweb' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
 </script>
 
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
     </div>
 </div>
 </div></div>

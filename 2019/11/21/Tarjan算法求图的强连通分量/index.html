@@ -54,7 +54,7 @@
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Tarjan/5.PNG#pic_center">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Tarjan/6.PNG#pic_center">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Tarjan/Tarjan.PNG#pic_center">
-<meta property="og:updated_time" content="2020-01-08T05:21:11.001Z">
+<meta property="og:updated_time" content="2020-01-10T06:34:31.233Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tarjan算法求图的强连通分量">
 <meta name="twitter:description" content="强连通分量简介&amp;emsp;&amp;emsp;有向图强连通分量：在有向图G中，如果两个顶点$V_i, V_j$ 间（vi&amp;gt;vj）有一条从$V_i$到$V_j$的有向路径，同时还有一条从$V_j$到$V_i$的有向路径，则称两个顶点强连通(strongly connected)。如果有向图G的每两个顶点都强连通，称G是一个强连通图。有向图的极大强连通子图，称为强连通分量(strongly connec">
@@ -361,20 +361,23 @@
     <div class="card-content">
         <h3 class="title is-5 has-text-weight-normal">评论</h3>
         
-<div id="valine-thread"></div>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 <script>
-    new Valine({
-        el: '#valine-thread' ,
-        notify: true,
-        verify: true,
-        app_id: 'oR2IQXqpGEFy4GHNDgdmfSMR-gzGzoHsz',
-        app_key: 'hwYfVGzICBlXGiokUXaNqJsx',
-        placeholder: 'Type something slowly...'
-    });
+    var disqus_config = function () {
+        this.page.url = 'https://www.ccyh.xyz/2019/11/21/Tarjan算法求图的强连通分量/';
+        this.page.identifier = 'ccyhweb';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'ccyhweb' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
 </script>
 
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
     </div>
 </div>
 </div></div>
