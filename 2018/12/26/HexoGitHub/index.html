@@ -61,7 +61,7 @@
 <meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Hexo+Github博客搭建简明教程（Windows）/20190128121726691.png">
 <meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Hexo+Github博客搭建简明教程（Windows）/20190128122048305.png">
 <meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Hexo+Github博客搭建简明教程（Windows）/20190128122615866.png">
-<meta property="og:updated_time" content="2020-01-22T08:17:56.386Z">
+<meta property="og:updated_time" content="2020-01-22T08:24:50.165Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【教程】Hexo+Github博客搭建">
 <meta name="twitter:description" content="开始">
@@ -436,23 +436,20 @@
     <div class="card-content">
         <h3 class="title is-5 has-text-weight-normal">评论</h3>
         
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 <script>
-    var disqus_config = function () {
-        this.page.url = 'https://www.ccyh.xyz/2018/12/26/HexoGitHub/';
-        this.page.identifier = '2018/12/26/HexoGitHub/';
-    };
-    (function() {
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'ccyhweb' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'oR2IQXqpGEFy4GHNDgdmfSMR-gzGzoHsz',
+        app_key: 'hwYfVGzICBlXGiokUXaNqJsx',
+        placeholder: 'Type something slowly...'
+    });
 </script>
 
-<div id="disqus_thread">
-    
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
     </div>
 </div>
 </div></div>

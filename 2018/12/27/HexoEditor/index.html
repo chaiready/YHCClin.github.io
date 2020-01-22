@@ -52,7 +52,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/01/27/5c4db8d201aba.png">
 <meta property="og:image" content="https://i.loli.net/2019/01/27/5c4dbb2b8a0ce.png">
 <meta property="og:image" content="https://i.loli.net/2019/01/27/5c4dbb2b8e9d0.png">
-<meta property="og:updated_time" content="2020-01-22T08:17:56.386Z">
+<meta property="og:updated_time" content="2020-01-22T08:24:50.165Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【工具】HexoEditor编辑器的安装配置及使用">
 <meta name="twitter:description" content="HexoEditor 是一款多平台Markdown开源写作神器，在搭建完Hexo博客之后苦于发布博文的过程过于繁琐，而HexoEditor完美地解决了这一大痛点。其让写作与发布实现无缝衔接。GitHub：HexoEditor">
@@ -391,23 +391,20 @@
     <div class="card-content">
         <h3 class="title is-5 has-text-weight-normal">评论</h3>
         
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 <script>
-    var disqus_config = function () {
-        this.page.url = 'https://www.ccyh.xyz/2018/12/27/HexoEditor/';
-        this.page.identifier = '2018/12/27/HexoEditor/';
-    };
-    (function() {
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'ccyhweb' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'oR2IQXqpGEFy4GHNDgdmfSMR-gzGzoHsz',
+        app_key: 'hwYfVGzICBlXGiokUXaNqJsx',
+        placeholder: 'Type something slowly...'
+    });
 </script>
 
-<div id="disqus_thread">
-    
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
     </div>
 </div>
 </div></div>
