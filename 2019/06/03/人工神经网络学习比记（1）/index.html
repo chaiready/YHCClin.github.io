@@ -49,7 +49,7 @@
 <meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%880%EF%BC%89/20190603023656961.png">
 <meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E6%AF%94%E8%AE%B0%EF%BC%881%EF%BC%89/20190603111024704.png">
 <meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E6%AF%94%E8%AE%B0%EF%BC%881%EF%BC%89/20190603113735974.png">
-<meta property="og:updated_time" content="2020-01-22T12:39:57.470Z">
+<meta property="og:updated_time" content="2020-01-22T12:46:39.242Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="人工神经网络学习笔记（1）">
 <meta name="twitter:description" content="如何让网络可以学习上一篇文章中的神经网络还没有学习能力，这好比如说该网络只接收外部输入并输出结果，却没有反馈机制没有对结果进行正确性分析，让我们以小明与老师之间的对话来比喻这种情况：">
@@ -251,16 +251,7 @@
 <li>小明：6</li>
 <li>老师：正确，你真棒！</li>
 </ul>
-<p>这样子，小明学会了1+5=6.<br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%880%EF%BC%89/20190603023656961.png" alt="三层神经网络"><br>我们的神经网络也需要具备这样的学习能力。<br>也就是说，当网络输出错误的结果时要有一个改变下一次输出的机制。想要改变输出，可以改变哪些量呢？<br>观察输出函数：</p>
-<script type="math/tex; mode=display">
-O_{output}=
-\left[
-\begin{matrix}
-Sig(\sum_{j=1}^{3}{w_{j,1}\cdot i_{oj}}) \\\\
-Sig(\sum_{j=1}^{3}{w_{j,2}\cdot i_{oj}}) \\\\
-Sig(\sum_{j=1}^{3}{w_{j,3}\cdot i_{oj}}) \\\\
-\end{matrix}
-\right]=\left[\begin{matrix}o_1\\\\o_2\\\\o_3\end{matrix}\right]</script><p>不难发现，输出值与以下参数有关：</p>
+<p>这样子，小明学会了1+5=6.<br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%880%EF%BC%89/20190603023656961.png" alt="三层神经网络"><br>我们的神经网络也需要具备这样的学习能力。<br>也就是说，当网络输出错误的结果时要有一个改变下一次输出的机制。想要改变输出，可以改变哪些量呢？<br>观察输出函数：<br>$$<br>O_{output}=<br>\left[<br>\begin{matrix}<br>Sig(\sum_{j=1}^{3}{w_{j,1}\cdot i_{oj}}) \\<br>Sig(\sum_{j=1}^{3}{w_{j,2}\cdot i_{oj}}) \\<br>Sig(\sum_{j=1}^{3}{w_{j,3}\cdot i_{oj}}) \\<br>\end{matrix}<br>\right]=\left[\begin{matrix}o_1\\o_2\\o_3\end{matrix}\right]<br>$$<br>不难发现，输出值与以下参数有关：</p>
 <ol>
 <li>SigMoid函数</li>
 <li>链接权重</li>
@@ -275,62 +266,14 @@ Sig(\sum_{j=1}^{3}{w_{j,3}\cdot i_{oj}}) \\\\
 <li>改变的幅度多大合适？</li>
 </ol>
 <hr>
-<h4 id="改变的依据"><a href="#改变的依据" class="headerlink" title="改变的依据"></a>改变的依据</h4><p>改变权重的目的是让输出值与期望值越接近越好（误差值越小越好），因此误差就是依据。所谓误差就是期望值与网络输出值的差：</p>
-<script type="math/tex; mode=display">
-E=t-o</script><p>我们知道输出层的误差为：$E_o=t_n-o_n$，但是其他层结点的误差是不知道的，因为其他层并没有一个输出期望值$t_n$。<br>不难发现，最终输出层造成的误差是所有层共同作用的结果，所以可以将总误差分摊给其他层。</p>
+<h4 id="改变的依据"><a href="#改变的依据" class="headerlink" title="改变的依据"></a>改变的依据</h4><p>改变权重的目的是让输出值与期望值越接近越好（误差值越小越好），因此误差就是依据。所谓误差就是期望值与网络输出值的差：<br>$$<br>E=t-o<br>$$<br>我们知道输出层的误差为：$E_o=t_n-o_n$，但是其他层结点的误差是不知道的，因为其他层并没有一个输出期望值$t_n$。<br>不难发现，最终输出层造成的误差是所有层共同作用的结果，所以可以将总误差分摊给其他层。</p>
 <h5 id="误差的反向传播"><a href="#误差的反向传播" class="headerlink" title="误差的反向传播"></a>误差的反向传播</h5><p><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E6%AF%94%E8%AE%B0%EF%BC%881%EF%BC%89/20190603111024704.png" alt="单个神经元的误差分配"></p>
 <hr>
-<p>如上图误差为$e_1$，因为链接权重越大说明对该误差的影响越大，因此以链接权重来决定每条链路所分摊误差的大小：</p>
-<script type="math/tex; mode=display">
-e_{w_{1,1}}=\frac{w_{1,1}}{w_{1,1}+w_{2,1}}\cdot e_1</script><script type="math/tex; mode=display">
-e_{w_{2,1}}=\frac{w_{2,1}}{w_{1,1}+w_{2,1}}\cdot e_1</script><p><strong>反向传播误差到更多层中：</strong><br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E6%AF%94%E8%AE%B0%EF%BC%881%EF%BC%89/20190603113735974.png" alt="误差的反向传播"><br>隐藏层结点的误差值：</p>
-<script type="math/tex; mode=display">
-e_{h1}=\frac{w_{1,1}}{w_{1,1}+w_{2,1}}\cdot e_{o1}+\frac{w_{1,2}}{w_{1,2}+w_{2,2}}\cdot e_{o2}</script><hr>
+<p>如上图误差为$e_1$，因为链接权重越大说明对该误差的影响越大，因此以链接权重来决定每条链路所分摊误差的大小：<br>$$<br>e_{w_{1,1}}=\frac{w_{1,1}}{w_{1,1}+w_{2,1}}\cdot e_1<br>$$<br>$$<br>e_{w_{2,1}}=\frac{w_{2,1}}{w_{1,1}+w_{2,1}}\cdot e_1<br>$$<br><strong>反向传播误差到更多层中：</strong><br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E6%AF%94%E8%AE%B0%EF%BC%881%EF%BC%89/20190603113735974.png" alt="误差的反向传播"><br>隐藏层结点的误差值：<br>$$<br>e_{h1}=\frac{w_{1,1}}{w_{1,1}+w_{2,1}}\cdot e_{o1}+\frac{w_{1,2}}{w_{1,2}+w_{2,2}}\cdot e_{o2}<br>$$</p>
+<hr>
 <h5 id="使用矩阵乘法简化误差反向传播"><a href="#使用矩阵乘法简化误差反向传播" class="headerlink" title="使用矩阵乘法简化误差反向传播"></a>使用矩阵乘法简化误差反向传播</h5><ol>
-<li>误差向量：<script type="math/tex; mode=display">
-error_{output}=
-\left(
-\begin{matrix}
-e_1 \\\\
-e_2
-\end{matrix}
-\right)</script></li>
-<li>隐藏层误差：<script type="math/tex; mode=display">
-error_{hidden}=
-\left(
-\begin{matrix}
-\frac{w_{1,1}}{w_{1,1}+w_{2,1}} & \frac{w_{1,2}}{w_{1,2}+w_{2,2}} \\\\
-\\\\
-\frac{w_{2,1}}{w_{1,1}+w_{2,1}} & \frac{w_{2,2}}{w_{1,2}+w_{2,2}}
-\end{matrix}
-\right) \cdot \left(\begin{matrix}e_1 \\\\ e_2 \end{matrix} \right)=\left(\begin{matrix}e_{h1}\\\\e_{h2}\end{matrix}\right)</script>上述矩阵乘法太过复杂，无法通过简单的矩阵运算求解。观察上式可知，最重要的事情是输出误差链接权重$w_{j,k}$的乘法。较大的权重携带较大的误差给隐藏层，这些分数的分母是一种归一化因子。如果我们忽略掉这个因子，我们仅仅只是失去了后馈误差的真实值大小，但并没有失去其表示的真正含义（影响力）,也就是说反馈误差始终是以链接权重的强度来分配的。因此上式可以简化为：<script type="math/tex; mode=display">
-error_{hidden}=
-\left(
-\begin{matrix}
-w_{1,1} & w_{1,2} \\\\
-w_{2,1} & w_{2,2}
-\end{matrix} 
-\right)\cdot \left(\begin{matrix}e_1\\\\ e_2\end{matrix}\right)=\left(\begin{matrix}e_{h1}\\\\e_{h2}\end{matrix}\right)</script>不难发现，隐藏层至输出层的链接权重矩阵$W_{hidden\rightarrow output}$为:<script type="math/tex; mode=display">
-W_{hidden\rightarrow output}=
-\left(
-\begin{matrix}
-w_{1,1} & w_{2,1} \\\\
-w_{1,2} & w_{2,2}
-\end{matrix}
-\right)=\left(
-\begin{matrix}
-w_{1,1} & w_{1,2} \\\\
-w_{2,1} & w_{2,2}
-\end{matrix} 
-\right)^T</script>因此：<script type="math/tex; mode=display">
-error_{hidden}=W_{hidden\rightarrow output}^T\cdot error_{output}=
-\left(
-\begin{matrix}
-w_{1,1} & w_{2,1} \\\\
-w_{1,2} & w_{2,2}
-\end{matrix} 
-\right)^T\cdot \left(\begin{matrix}e_1\\\\ e_2\end{matrix}\right)=\left(\begin{matrix}e_{h1}\\\\e_{h2}\end{matrix}\right)</script>到此我们得到了用矩阵来传播误差的算法：<script type="math/tex; mode=display">
-error_{hidden}=W_{hidden\rightarrow output}^T\cdot error_{output}</script></li>
+<li>误差向量：<br>$$<br>error_{output}=<br>\left(<br>\begin{matrix}<br>e_1 \\<br>e_2<br>\end{matrix}<br>\right)<br>$$</li>
+<li>隐藏层误差：<br>$$<br>error_{hidden}=<br>\left(<br>\begin{matrix}<br>\frac{w_{1,1}}{w_{1,1}+w_{2,1}} &amp; \frac{w_{1,2}}{w_{1,2}+w_{2,2}} \\<br>\\<br>\frac{w_{2,1}}{w_{1,1}+w_{2,1}} &amp; \frac{w_{2,2}}{w_{1,2}+w_{2,2}}<br>\end{matrix}<br>\right) \cdot \left(\begin{matrix}e_1 \\ e_2 \end{matrix} \right)=\left(\begin{matrix}e_{h1}\\e_{h2}\end{matrix}\right)<br>$$<br>上述矩阵乘法太过复杂，无法通过简单的矩阵运算求解。观察上式可知，最重要的事情是输出误差链接权重$w_{j,k}$的乘法。较大的权重携带较大的误差给隐藏层，这些分数的分母是一种归一化因子。如果我们忽略掉这个因子，我们仅仅只是失去了后馈误差的真实值大小，但并没有失去其表示的真正含义（影响力）,也就是说反馈误差始终是以链接权重的强度来分配的。因此上式可以简化为：<br>$$<br>error_{hidden}=<br>\left(<br>\begin{matrix}<br>w_{1,1} &amp; w_{1,2} \\<br>w_{2,1} &amp; w_{2,2}<br>\end{matrix}<br>\right)\cdot \left(\begin{matrix}e_1\\ e_2\end{matrix}\right)=\left(\begin{matrix}e_{h1}\\e_{h2}\end{matrix}\right)<br>$$<br>不难发现，隐藏层至输出层的链接权重矩阵$W_{hidden\rightarrow output}$为:<br>$$<br>W_{hidden\rightarrow output}=<br>\left(<br>\begin{matrix}<br>w_{1,1} &amp; w_{2,1} \\<br>w_{1,2} &amp; w_{2,2}<br>\end{matrix}<br>\right)=\left(<br>\begin{matrix}<br>w_{1,1} &amp; w_{1,2} \\<br>w_{2,1} &amp; w_{2,2}<br>\end{matrix}<br>\right)^T<br>$$<br>因此：<br>$$<br>error_{hidden}=W_{hidden\rightarrow output}^T\cdot error_{output}=<br>\left(<br>\begin{matrix}<br>w_{1,1} &amp; w_{2,1} \\<br>w_{1,2} &amp; w_{2,2}<br>\end{matrix}<br>\right)^T\cdot \left(\begin{matrix}e_1\\ e_2\end{matrix}\right)=\left(\begin{matrix}e_{h1}\\e_{h2}\end{matrix}\right)<br>$$<br>到此我们得到了用矩阵来传播误差的算法：<br>$$<br>error_{hidden}=W_{hidden\rightarrow output}^T\cdot error_{output}<br>$$</li>
 </ol>
 <hr>
 <p>到此，我们已经做了大量的工作了。我们计算出了所有层的误差，接下来的工作就是根据误差来调整链接权重了。</p>
@@ -818,6 +761,17 @@ error_{hidden}=W_{hidden\rightarrow output}^T\cdot error_{output}</script></li>
             
 <div class="card widget">
     <div class="card-content">
+        <div>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="250" height="86" src="http://music.163.com/outchain/player?type=2&id=1993765&auto=1&height=66">
+</iframe>
+	</div>
+    </div>
+</div>
+
+        
+            
+<div class="card widget">
+    <div class="card-content">
         <h3 class="menu-label">
             标签云
         </h3>
@@ -846,11 +800,6 @@ error_{hidden}=W_{hidden\rightarrow output}^T\cdot error_{output}</script></li>
         
             <div class="card widget">
     <div class="card-content">
-        <div class="card-content">
-        <!-- weather -->
-            <canvas id="canvas" style="width:100%;" width="820" height="250">
-            <script type="text/javascript" src="/js/clock.js"></script>
-        </canvas></div>
         <div class="menu">
         <h3 class="menu-label">
             归档
@@ -1347,6 +1296,6 @@ document.addEventListener('DOMContentLoaded', function () {
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"admin":{"username":"aokilin","password_hash":"$2a$10$Ftok/UgFv5olradmR40PM.w57gZ.QOp2uXQlpSZevsU.pMi0KPHla","secret":"my super secret phrase"},"kramed":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true},"feed":{"type":"atom","path":"atom.xml","limit":20}});</script></body>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"admin":{"username":"aokilin","password_hash":"$2a$10$Ftok/UgFv5olradmR40PM.w57gZ.QOp2uXQlpSZevsU.pMi0KPHla","secret":"my super secret phrase"},"kramed":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true},"feed":{"type":"atom","path":"atom.xml","limit":20}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>
