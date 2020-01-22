@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<script src="/js/src/clicklove.js"></script>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<title>人工神经网络学习笔记（0） - Code·Hub</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-7097707906527513",
+    enable_page_level_ads: true
+  });
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> <script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-7097707906527513", enable_page_level_ads: true }); </script>
+<script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+</script>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+    <meta name="description" content="何为人工神经网络人工神经网络是模拟人脑的神经网络，用以实现人工智能的机器学习技术。我们知道，人脑可以说是世界上最复杂最精妙的系统之一，它由千亿计的神经元细胞组成。各个神经细胞相互链接，彼此之间传递电信号。从而造就了人类高于其他物种的思维能力。科学家受到人脑神经元的启发从而提出了人工神经网络的设想，使得人工智能的实现不再遥不可及。">
+<meta name="keywords" content="ML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人工神经网络学习笔记（0）">
+<meta property="og:url" content="https://www.ccyh.xyz/2019/06/03/人工神经网络学习笔记（0）/index.html">
+<meta property="og:site_name" content="Code·Hub">
+<meta property="og:description" content="何为人工神经网络人工神经网络是模拟人脑的神经网络，用以实现人工智能的机器学习技术。我们知道，人脑可以说是世界上最复杂最精妙的系统之一，它由千亿计的神经元细胞组成。各个神经细胞相互链接，彼此之间传递电信号。从而造就了人类高于其他物种的思维能力。科学家受到人脑神经元的启发从而提出了人工神经网络的设想，使得人工智能的实现不再遥不可及。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2877951112,4239204535&fm=26&gp=0.jpg">
+<meta property="og:image" content="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1784596280,2741805283&fm=26&gp=0.jpg">
+<meta property="og:image" content="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2160826125,3899173269&fm=26&gp=0.jpg">
+<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%880%EF%BC%89/model.jpeg">
+<meta property="og:image" content="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=266571296,2744303426&fm=26&gp=0.jpg">
+<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%880%EF%BC%89/20190603023656961.png">
+<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%880%EF%BC%89/20190603023612835.png">
+<meta property="og:updated_time" content="2020-01-22T12:39:57.470Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="人工神经网络学习笔记（0）">
+<meta name="twitter:description" content="何为人工神经网络人工神经网络是模拟人脑的神经网络，用以实现人工智能的机器学习技术。我们知道，人脑可以说是世界上最复杂最精妙的系统之一，它由千亿计的神经元细胞组成。各个神经细胞相互链接，彼此之间传递电信号。从而造就了人类高于其他物种的思维能力。科学家受到人脑神经元的启发从而提出了人工神经网络的设想，使得人工智能的实现不再遥不可及。">
+<meta name="twitter:image" content="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2877951112,4239204535&fm=26&gp=0.jpg">
+
+
+
+<link rel="alternative" href="/atom.xml" title="人工神经网络学习笔记（0）" type="application/atom+xml">
+
+
+
+<link rel="icon" href="/images/logo.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/railscasts.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-133326618-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-133326618-2');
+</script>
+
+
+    
+    
+    
+    
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1304349,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+<body class="is-3-column">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/codehub.ico" alt="人工神经网络学习笔记（0）" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">主页</a>
+                
+                <a class="navbar-item" href="/archives">归档</a>
+                
+                <a class="navbar-item" href="/categories">分类</a>
+                
+                <a class="navbar-item" href="/tags">标签</a>
+                
+                <a class="navbar-item" href="/links">友链</a>
+                
+                <a class="navbar-item" href="https://blog.csdn.net/Marvine">CSDN</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="My GitHub" href="https://github.com/YHCClin?tab=repositories">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+
+    
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-6-tablet is-6-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%880%EF%BC%89/ml_1.jpg" alt="人工神经网络学习笔记（0）">
+        </span>
+    </div>
+    
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-06-03T14:25:33.000Z">2019-06-03</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/机器学习/">机器学习</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    13 分钟 读完 (大约 1992 个字)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                人工神经网络学习笔记（0）
+            
+        </h1>
+        <div class="content">
+            <hr>
+<h2 id="何为人工神经网络"><a href="#何为人工神经网络" class="headerlink" title="何为人工神经网络"></a>何为人工神经网络</h2><p>人工神经网络是模拟人脑的神经网络，用以实现人工智能的机器学习技术。我们知道，人脑可以说是世界上最复杂最精妙的系统之一，它由千亿计的神经元细胞组成。各个神经细胞相互链接，彼此之间传递电信号。从而造就了人类高于其他物种的思维能力。科学家受到人脑神经元的启发从而提出了人工神经网络的设想，使得人工智能的实现不再遥不可及。<br><a id="more"></a></p>
+<h2 id="生物神经元"><a href="#生物神经元" class="headerlink" title="生物神经元"></a>生物神经元</h2><p><img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2877951112,4239204535&amp;fm=26&amp;gp=0.jpg" alt=""><br><strong>关键部件：</strong> 树突 &amp; 胞体 &amp; 轴突</p>
+<ul>
+<li>单个神经元的工作机制可以简单地描述为：树突接受其他神经元的神经末梢传来的电信号，信号传送到胞体并由某种机制决定是否激发下一次电信号的传递，若激发则电信号由轴突传递至神经末梢，再由神经末梢传递给其他神经元。其中，判断是否激发的机制有一大好处是可以减小神经元间微弱电信号（噪声）的干扰，使得自由足够强的电信号才能激发下一次传递。</li>
+</ul>
+<h2 id="人工神经元"><a href="#人工神经元" class="headerlink" title="人工神经元"></a>人工神经元</h2><h3 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h3><p><img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1784596280,2741805283&amp;fm=26&amp;gp=0.jpg" alt="人工神经元"></p>
+<ul>
+<li>由生物神经元得到的启发，人工神经元与其大同小异。上图中： $x_1,x_2,x_3,x_4$ 为该神经元树突所接受到的其他神经元传来的电信号。中间的圆圈为胞体，在胞体中将会由处理信号的机制，以决定输出信号y。<h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3></li>
+<li>在之前的生物神经元中已经说道，神经元对是否激发信号传递有一个判断机制，这是因为神经元不希望传递微小的噪声信号，而只传递有意识的明显信号。只有信号强度达到了某一个阙值，才会激发电信号的传递。<br><strong>那么在人工神经元中我们如何来实现这个机制呢？</strong></li>
+<li>这样的一个函数也许能够满足我们的需要：<script type="math/tex; mode=display">Function(x) = \begin{cases}  
+0 & x \leq T \\\\
+1 & x>T
+\end{cases}</script>显而易见，这个简单的阶跃函数在输入信号大于T（阙值）时才会产生输出信号1（被激发），而较小的输入时输出为0（被抑制）；我们称这样的函数为激活函数。当然，激活函数不会就只有这么一种。常用的还有sigmoid函数：<script type="math/tex; mode=display">Sigmoid(x) = \frac{1}{1+e^{-x}}</script>函数图像：<br><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2160826125,3899173269&amp;fm=26&amp;gp=0.jpg" alt=""><br>可以发现，sigmoid函数相对于阶跃函数而言更加平滑，自然，接近现实。我们的神经网络也将采用它。<br>如此一来，我们的单个神经元模型就成型了：<br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%880%EF%BC%89/model.jpeg" alt="人工神经元模型"><br>参数含义：</li>
+<li>$x_1 ,x_2… x_m$为输入信号</li>
+<li>$w_1 ,w_2… w_m$为权重值，表示各个输入信号对输出结果的影响力大小。对于为何引入权值可以做如下思考：你去相亲，你对未来对象的考量主要有身高，长相，身材，文化程度等，但遇到样样都好的概率实在是太底了，所以你决定适当放宽某些要求。比如如果学历高就可以降低身材长相的要求。这表示你比较注重伴侣的文化程度。因此，对方的文化程度对你的择偶有着重要的影响，其所占权重就会比较高。</li>
+<li>求和函数将计算$x=\sum_{m}{x_iw_i},i=1,2,…m$后将所得的值传给激活函数Sigmoid即：<script type="math/tex; mode=display">Output=Sig(x)=\frac{1}{1+e^{-(\sum_{m}{x_iw_i})}}</script>观察函数图不难发现，Sigmoid函数将加权求和的输入映射到0~1的值域内输出。<h2 id="人工神经网络"><a href="#人工神经网络" class="headerlink" title="人工神经网络"></a>人工神经网络</h2><img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=266571296,2744303426&amp;fm=26&amp;gp=0.jpg" alt=""><br>介绍完单个神经元的功能，如果把这些小部件组合起来，就成了所谓的人工神经网络。<br><strong>层次结构：</strong></li>
+<li>输入层：接受外部输入信息，可以是图片等。</li>
+<li>隐藏层：隐藏层层数不一，可根据需求来定。</li>
+<li>输出层：将结果输出到外部。</li>
+</ul>
+<p><strong>链接方式：</strong></p>
+<ul>
+<li>除输入层外，每一层的每个神经元都接受其上一层所有神经元传来的信号的加权值。</li>
+<li>神经元的链接方式并不唯一，你可以创造自己的链接方式，但为了便于抽象计算编码，规则的链接方式能帮我们大忙。</li>
+</ul>
+<h3 id="一个三层神经网络示例"><a href="#一个三层神经网络示例" class="headerlink" title="一个三层神经网络示例"></a>一个三层神经网络示例</h3><p><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%880%EF%BC%89/20190603023656961.png" alt=""></p>
+<hr>
+<p><strong>参数释义：</strong></p>
+<ul>
+<li>$i_1,i_2,i_3$为输入信号。</li>
+<li>$w_{j,k}$表示后层结点$j$与前一层节点$k$之间链接的权重值。</li>
+<li>$o_1,o_2,o_3$为该网络输出的结果信号。</li>
+</ul>
+<hr>
+<p><strong>信号的前向传播：</strong><br>前面我们介绍了单个人工神经元对信号的处理。但是现在网络中有多个神经元，我们当然不愿意对每一个神经元节点都进行编码计算，因此我们将其简化为矩阵运算。<br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%880%EF%BC%89/20190603023612835.png" alt=""></p>
+<ol>
+<li>将输入看成一个多维列向量：<script type="math/tex; mode=display">
+I=
+\left[
+\begin{matrix}
+i_1 \\\\
+i_2 \\\\
+i_3 
+\end{matrix} \right]</script></li>
+<li>链接权重为一个$3\times3$的矩阵：<script type="math/tex; mode=display">
+W_{input\rightarrow hidden}=
+\left[
+\begin{matrix}
+w_{1,1} & w_{2,1} & w_{3,1} \\\\
+w_{1,2} & w_{2,2} & w_{3,2} \\\\
+w_{1,3} & w_{2,3} & w_{3,3} 
+\end{matrix} \right]</script></li>
+<li>将两者相乘得到隐藏层的输入信号：<script type="math/tex; mode=display">
+I_{hidden}=W_{input\rightarrow hidden}\cdot I=
+\left[
+\begin{matrix}
+w_{1,1}\cdot i_1 + w_{2,1}\cdot i_2 + w_{3,1}\cdot i_3 \\\\
+w_{1,2}\cdot i_1 + w_{2,2}\cdot i_2 + w_{3,2}\cdot i_3 \\\\
+w_{1,3}\cdot i_1 + w_{2,3}\cdot i_2 + w_{3,3}\cdot i_3 
+\end{matrix} \right]</script>也即：<script type="math/tex; mode=display">
+I_{hidden}=
+\left[
+\begin{matrix}
+\sum_{j=1}^{3}{w_{j,1}\cdot i_j} \\\\
+\sum_{j=1}^{3}{w_{j,2}\cdot i_j} \\\\
+\sum_{j=1}^{3}{w_{j,3}\cdot i_j} 
+\end{matrix}\right]=[i_{h1},i_{h2},i_{h3}]^T</script></li>
+<li>再将加权求和的信号值经过Sigmoid激活函数处理我们可以得到最终的输出向量：<script type="math/tex; mode=display">
+O_{hidden}=Sig(W_{hidden\rightarrow output}\cdot I_{hidden})=
+\left[
+\begin{matrix}
+Sig(\sum_{j=1}^{3}{w_{j,1}\cdot o_{hj}}) \\\\
+Sig(\sum_{j=1}^{3}{w_{j,2}\cdot o_{hj}}) \\\\
+Sig(\sum_{j=1}^{3}{w_{j,3}\cdot o_{hj}}) \\\\
+\end{matrix}
+\right]=[o_{h1},o_{h2},o_{h3}]^T</script>这里需要注意的是，输入层到隐藏层的链接权重矩阵与隐藏层到输出成的链接权重矩阵是不同的矩阵。但是计算过程是一致的，因此同理可得：<script type="math/tex; mode=display">
+I_{output}=Sig(W_{hidden\rightarrow output}\cdot O_{hidden})</script>网络的最终输出为：<script type="math/tex; mode=display">
+O_{output}=
+\left[
+\begin{matrix}
+Sig(\sum_{j=1}^{3}{w_{j,1}\cdot i_{oj}}) \\\\
+Sig(\sum_{j=1}^{3}{w_{j,2}\cdot i_{oj}}) \\\\
+Sig(\sum_{j=1}^{3}{w_{j,3}\cdot i_{oj}}) \\\\
+\end{matrix}
+\right]=[o_1,o_2,o_3]^T</script>到此，我们已经了解了神经网络中信号的前向传播机制，但是目前这个网络模型远远达不到我们的要求，它除了单纯的传播信号什么事情也做不了。显然后续我们得为其添加反馈机制，使其能够具有学习能力。</li>
+</ol>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/ML/">ML</a>
+                </div>
+            </div>
+            <div align="center">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- article -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7097707906527513" data-ad-slot="2635009920" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+        </div>
+        
+        
+
+        
+        
+<div class="sharethis-inline-share-buttons"></div>
+<script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5d123718ccac450012baa1b1&amp;product=social-ab" async="async"></script>
+
+        
+  <div>
+    <ul class="post-copyright">
+      <li class="post-copyright-author">
+      <strong>本文作者：</strong>lyh
+      </li>
+      <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="" title="{{ page.title }}">人工神经网络学习笔记（0）</a>
+      </li>
+      <li class="post-copyright-link">
+      <strong>发布时间：</strong>
+      <a href="" title="{{ page.title }}">2019年6月3日 - 14时06分</a>
+      </li>
+      <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！
+      </li>
+    </ul>
+  <div>
+    
+
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？点个赞再走吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="/images/wechatpay.png" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>WeChatPay</span>
+    <div class="qrcode"><img src="/images/wechatpay.png" alt="WeChatPay"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/06/03/人工神经网络学习比记（1）/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">人工神经网络学习笔记（1）</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/06/01/感知机与逻辑门的实现/">
+                <span class="level-item">感知机与逻辑门的实现</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'oR2IQXqpGEFy4GHNDgdmfSMR-gzGzoHsz',
+        app_key: 'hwYfVGzICBlXGiokUXaNqJsx',
+        placeholder: 'Type something slowly...'
+    });
+</script>
+
+    </div>
+</div>
+</div></div>
+</div>
+                
+
+
+
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-left is-sticky">
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#何为人工神经网络">
+        <span class="has-mr-6">1</span>
+        <span>何为人工神经网络</span>
+        </a></li><li>
+        <a class="is-flex" href="#生物神经元">
+        <span class="has-mr-6">2</span>
+        <span>生物神经元</span>
+        </a></li><li>
+        <a class="is-flex" href="#人工神经元">
+        <span class="has-mr-6">3</span>
+        <span>人工神经元</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#概览">
+        <span class="has-mr-6">3.1</span>
+        <span>概览</span>
+        </a></li><li>
+        <a class="is-flex" href="#功能">
+        <span class="has-mr-6">3.2</span>
+        <span>功能</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#人工神经网络">
+        <span class="has-mr-6">4</span>
+        <span>人工神经网络</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#一个三层神经网络示例">
+        <span class="has-mr-6">4.1</span>
+        <span>一个三层神经网络示例</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <img class="image is-128x128 has-mb-6" src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/github.jpg" alt="lyh">
+                    
+                    <p class="is-size-4 is-block">
+                        lyh
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        人在蒙古·刚下航母
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Fujian·China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        32
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        7
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        16
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://blog.csdn.net/Marvine">
+                关注我</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/YHCClin">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Twitter" href="https://twitter.com/echo_scottlin">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/C/">
+            <span class="level-start">
+                <span class="level-item">C++</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/工具/">
+            <span class="level-start">
+                <span class="level-item">工具</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/底层原理/">
+            <span class="level-start">
+                <span class="level-item">底层原理</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/教程/">
+            <span class="level-start">
+                <span class="level-item">教程</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/数据结构/">
+            <span class="level-start">
+                <span class="level-item">数据结构</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/机器学习/">
+            <span class="level-start">
+                <span class="level-item">机器学习</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/算法/">
+            <span class="level-start">
+                <span class="level-item">算法</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">12</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/25/二分图最大匹配问题(匈牙利算法)/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="二分图最大匹配问题(匈牙利算法)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-25T20:33:10.000Z">2019-11-25</time></div>
+                    <a href="/2019/11/25/二分图最大匹配问题(匈牙利算法)/" class="has-link-black-ter is-size-6">二分图最大匹配问题(匈牙利算法)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        
+        <article class="media">
+            
+            <a href="/2019/11/21/Tarjan算法求图的强连通分量/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Tarjan算法求图的强连通分量">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-21T21:58:23.000Z">2019-11-21</time></div>
+                    <a href="/2019/11/21/Tarjan算法求图的强连通分量/" class="has-link-black-ter is-size-6">Tarjan算法求图的强连通分量</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        
+        <article class="media">
+            
+            <a href="/2019/11/19/快速排序及其改进/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/QuickSort/quicksort.jpg" alt="快速排序及其改进">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-19T22:37:51.000Z">2019-11-19</time></div>
+                    <a href="/2019/11/19/快速排序及其改进/" class="has-link-black-ter is-size-6">快速排序及其改进</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        
+        <article class="media">
+            
+            <a href="/2019/11/13/侯捷C++学习笔记[未整理版]/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="侯捷C++学习笔记[未整理版]">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-13T22:13:59.000Z">2019-11-13</time></div>
+                    <a href="/2019/11/13/侯捷C++学习笔记[未整理版]/" class="has-link-black-ter is-size-6">侯捷C++学习笔记[未整理版]</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        
+        <article class="media">
+            
+            <a href="/2019/09/10/LeetCode23合并-K-个排序链表(Hard)/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="LeetCode23 合并 K 个排序链表(Hard)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-10T13:43:26.000Z">2019-09-10</time></div>
+                    <a href="/2019/09/10/LeetCode23合并-K-个排序链表(Hard)/" class="has-link-black-ter is-size-6">LeetCode23 合并 K 个排序链表(Hard)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        
+    </div>
+</div>
+
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            音乐
+        </h3>
+        <ul class="menu-list">
+        
+        </ul>
+        </div>
+    </div>
+    <div class="card-content">
+        <!-- weather -->
+        <canvas id="canvas" style="width:100%;" width="820" height="250">
+        <script type="text/javascript" src="/js/clock.js"></script>
+    </canvas></div>
+    <div>
+    <h4 align="center"> &#10084;星爵的古董磁带专辑&#10084; </h4>
+    <div class="aplayer" data-id="2251151354" data-server="netease" data-type="playlist" data-mode="single"></div>
+    </div>
+    <div align="center" bacground-color="#ebeef200">
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/Algorithm/" style="font-size: 17.5px;">Algorithm</a> <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Graph/" style="font-size: 10px;">Graph</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Knapsack/" style="font-size: 10px;">Knapsack</a> <a href="/tags/LeetCode/" style="font-size: 15px;">LeetCode</a> <a href="/tags/List/" style="font-size: 12.5px;">List</a> <a href="/tags/ML/" style="font-size: 20px;">ML</a> <a href="/tags/QuickSort/" style="font-size: 10px;">QuickSort</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/Tree/" style="font-size: 10px;">Tree</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a>
+    </div>
+    <div align="center">
+    
+    </div>
+    <div align="center">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-7097707906527513",
+          enable_page_level_ads: true
+     });
+</script>
+	</div>
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- link -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7097707906527513" data-ad-slot="9954084985" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="card-content">
+        <!-- weather -->
+            <canvas id="canvas" style="width:100%;" width="820" height="250">
+            <script type="text/javascript" src="/js/clock.js"></script>
+        </canvas></div>
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">11</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Algorithm/">
+                        <span class="tag">Algorithm</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Array/">
+                        <span class="tag">Array</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Blog/">
+                        <span class="tag">Blog</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Graph/">
+                        <span class="tag">Graph</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Hexo/">
+                        <span class="tag">Hexo</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Knapsack/">
+                        <span class="tag">Knapsack</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/LeetCode/">
+                        <span class="tag">LeetCode</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/List/">
+                        <span class="tag">List</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ML/">
+                        <span class="tag">ML</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/QuickSort/">
+                        <span class="tag">QuickSort</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/String/">
+                        <span class="tag">String</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Tools/">
+                        <span class="tag">Tools</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Tree/">
+                        <span class="tag">Tree</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/algorithm/">
+                        <span class="tag">algorithm</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/codehub.ico" alt="人工神经网络学习笔记（0）" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 lyh&nbsp;
+                Powered &#10084; YH · Lin
+                </p>
+            </div>
+            
+            <script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+            
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        <div align="center">
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date(); 
+                function createtime() { 
+                    var grt= new Date("4/1/2019 12:49:00");//此处修改你的建站时间或者网站上线时间 
+                    now.setTime(now.getTime()+250); 
+                    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+                } 
+            setInterval("createtime()",250);
+            </script>
+            <div align="center">
+            <span id="busuanzi_container_site_pv" class="theme-info">本站总访问量-<span id="busuanzi_value_site_pv"></span>-次|
+              </span>
+              <span id="busuanzi_container_site_uv" class="theme-info">您是第-<span id="busuanzi_value_site_uv"></span>-位小伙伴</span>
+
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            </div>
+        </div>
+        <span>
+        <script type="text/javascript" src="//rf.revolvermaps.com/0/0/2.js?i=0xetp0d4rdh&amp;m=7&amp;s=130&amp;c=00fff6&amp;t=1" async="async"></script>
+        </span>
+        </div>
+
+    </div>
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            bp.src = '//push.zhanzhang.baidu.com/push.js';
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {matchFontHeight: true},
+        SVG: {matchFontHeight: true},
+        CommonHTML: {matchFontHeight: true}
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
+<script src="/js/src/firework.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+    <!-- 雪花特效 -->
+    <script type="text/javascript">
+      var windowWidth = $(window).width();
+      if (windowWidth > 480) {
+        document.write('<script type="text/javascript" src="/js/src/snow.js"><\/script>');
+      }
+    </script>
+    <!-- tidio -->
+    
+    <script src="//code.tidio.co/ui3pfxbwv0bfvkvxwibyaejafrndrrqm.js"></script>
+    <amp-auto-ads type="adsense" data-ad-client="ca-pub-7097707906527513">
+</amp-auto-ads>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"admin":{"username":"aokilin","password_hash":"$2a$10$Ftok/UgFv5olradmR40PM.w57gZ.QOp2uXQlpSZevsU.pMi0KPHla","secret":"my super secret phrase"},"kramed":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true},"feed":{"type":"atom","path":"atom.xml","limit":20}});</script></body>
+</html>
