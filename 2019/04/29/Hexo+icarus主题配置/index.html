@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<script src="/js/src/clicklove.js"></script>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<title>Hexo+icarus主题配置 - Code·Hub</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-7097707906527513",
+    enable_page_level_ads: true
+  });
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> <script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-7097707906527513", enable_page_level_ads: true }); </script>
+<script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+</script>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+    <meta name="description" content="下载icarus主题 进入博客主目录，点击鼠标右键Git Bash Here,进入命令行界面">
+<meta name="keywords" content="Hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo+icarus主题配置">
+<meta property="og:url" content="https://www.ccyh.xyz/2019/04/29/Hexo+icarus主题配置/index.html">
+<meta property="og:site_name" content="Code·Hub">
+<meta property="og:description" content="下载icarus主题 进入博客主目录，点击鼠标右键Git Bash Here,进入命令行界面">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Hexo+icarus主题配置/20190429082811950.png">
+<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Hexo+icarus主题配置/20190429093801600.png">
+<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Hexo+icarus主题配置/20190429094726470.png">
+<meta property="og:updated_time" content="2020-01-22T13:55:08.946Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo+icarus主题配置">
+<meta name="twitter:description" content="下载icarus主题 进入博客主目录，点击鼠标右键Git Bash Here,进入命令行界面">
+<meta name="twitter:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Hexo+icarus主题配置/20190429082811950.png">
+
+
+
+<link rel="alternative" href="/atom.xml" title="Hexo+icarus主题配置" type="application/atom+xml">
+
+
+
+<link rel="icon" href="/images/logo.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/railscasts.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-133326618-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-133326618-2');
+</script>
+
+
+    
+    
+    
+    
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1304349,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+<body class="is-3-column">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/codehub.ico" alt="Hexo+icarus主题配置" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">主页</a>
+                
+                <a class="navbar-item" href="/archives">归档</a>
+                
+                <a class="navbar-item" href="/categories">分类</a>
+                
+                <a class="navbar-item" href="/tags">标签</a>
+                
+                <a class="navbar-item" href="/links">友链</a>
+                
+                <a class="navbar-item" href="https://blog.csdn.net/Marvine">CSDN</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="My GitHub" href="https://github.com/YHCClin?tab=repositories">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+
+    
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-6-tablet is-6-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-04-29T17:31:10.000Z">2019-04-29</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/教程/">教程</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    16 分钟 读完 (大约 2421 个字)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Hexo+icarus主题配置
+            
+        </h1>
+        <div class="content">
+            <hr>
+<h2 id="下载icarus主题"><a href="#下载icarus主题" class="headerlink" title="下载icarus主题"></a>下载icarus主题</h2><ol>
+<li>进入博客主目录，点击鼠标右键Git Bash Here,进入命令行界面<a id="more"></a></li>
+<li><p>输入：</p>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">git <span class="hljs-built_in">clone</span> https://github.com/ppoffice/hexo-theme-icarus themes/icarus</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开themes文件夹，就会发现多了一个icarus文件夹，这就是主题的所有文件</p>
+</li>
+</ol>
+<hr>
+<h2 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h2><ol>
+<li><p>更改站点配置文件_config.yml,将主题改为icarus</p>
+<figure class="highlight yml hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-attr">theme:</span> <span class="hljs-string">icarus</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Icarus文件目录概览：<br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Hexo+icarus主题配置/20190429082811950.png" alt=""></p>
+<blockquote>
+<ul>
+<li>$config.yml$是主题的配置文件</li>
+<li>$/layout$ 文件夹中是主题各种模板文件</li>
+<li>我们主要的超作就是在这两个文件中了</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<hr>
+<h3 id="主题配置文件（部分）"><a href="#主题配置文件（部分）" class="headerlink" title="主题配置文件（部分）"></a>主题配置文件（部分）</h3><figure class="highlight yml hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># Version of the Icarus theme that is currently used</span></span><br><span class="line"><span class="hljs-attr">version:</span> <span class="hljs-number">2.3</span><span class="hljs-number">.0</span></span><br><span class="line"><span class="hljs-comment"># 你的网站图标，可以搜索在线图标制作，并将其放在images文件夹中</span></span><br><span class="line"><span class="hljs-attr">favicon:</span> <span class="hljs-string">/images/favicons.ico</span></span><br><span class="line"><span class="hljs-comment"># Path or URL to RSS atom.xml</span></span><br><span class="line"><span class="hljs-attr">rss:</span> <span class="hljs-string">/atom.xml</span></span><br><span class="line"><span class="hljs-comment"># 显示在导航栏左侧的网站logo，同样可以自己制作</span></span><br><span class="line"><span class="hljs-attr">logo:</span> <span class="hljs-string">/images/gen.svg</span></span><br><span class="line"><span class="hljs-comment"># Open Graph metadata</span></span><br><span class="line"><span class="hljs-comment"># https://hexo.io/docs/helpers.html#open-graph</span></span><br><span class="line"><span class="hljs-attr">open_graph:</span></span><br><span class="line">    <span class="hljs-comment"># Facebook App ID</span></span><br><span class="line"><span class="hljs-attr">    fb_app_id:</span> </span><br><span class="line">    <span class="hljs-comment"># Facebook Admin ID</span></span><br><span class="line"><span class="hljs-attr">    fb_admins:</span> </span><br><span class="line">    <span class="hljs-comment"># Twitter ID</span></span><br><span class="line"><span class="hljs-attr">    twitter_id:</span> </span><br><span class="line">    <span class="hljs-comment"># Twitter site</span></span><br><span class="line"><span class="hljs-attr">    twitter_site:</span> </span><br><span class="line">    <span class="hljs-comment"># Google+ profile link</span></span><br><span class="line"><span class="hljs-attr">    google_plus:</span> </span><br><span class="line"><span class="hljs-comment">#  导航栏</span></span><br><span class="line"><span class="hljs-attr">navbar:</span></span><br><span class="line">    <span class="hljs-comment">#菜单（显示名称：对应文件夹）</span></span><br><span class="line"><span class="hljs-attr">    menu:</span></span><br><span class="line">        <span class="hljs-string">主页:</span> <span class="hljs-string">/</span></span><br><span class="line">        <span class="hljs-string">归档:</span> <span class="hljs-string">/archives</span></span><br><span class="line">        <span class="hljs-string">分类:</span> <span class="hljs-string">/categories</span></span><br><span class="line">        <span class="hljs-string">标签:</span> <span class="hljs-string">/tags</span></span><br><span class="line">        <span class="hljs-string">关于:</span> <span class="hljs-string">/about</span>   </span><br><span class="line">    <span class="hljs-comment"># 导航栏右侧图标链接</span></span><br><span class="line"><span class="hljs-attr">    links:</span></span><br><span class="line">        <span class="hljs-string">My</span> <span class="hljs-attr">GitHub:</span></span><br><span class="line"><span class="hljs-attr">            icon:</span> <span class="hljs-string">fab</span> <span class="hljs-string">fa-github</span></span><br><span class="line"><span class="hljs-attr">            url:</span> <span class="hljs-string">'你的gityhub地址'</span></span><br><span class="line"><span class="hljs-comment"># Footer section link settings</span></span><br><span class="line"><span class="hljs-attr">footer:</span></span><br><span class="line">    <span class="hljs-comment"># 页脚图标链接</span></span><br><span class="line"><span class="hljs-attr">    links:</span></span><br><span class="line">        <span class="hljs-string">Creative</span> <span class="hljs-attr">Commons:</span></span><br><span class="line"><span class="hljs-attr">            icon:</span> <span class="hljs-string">fab</span> <span class="hljs-string">fa-creative-commons</span></span><br><span class="line"><span class="hljs-attr">            url:</span> <span class="hljs-string">'https://creativecommons.org/'</span></span><br><span class="line">        <span class="hljs-string">Attribution</span> <span class="hljs-number">4.0</span> <span class="hljs-attr">International:</span></span><br><span class="line"><span class="hljs-attr">            icon:</span> <span class="hljs-string">fab</span> <span class="hljs-string">fa-creative-commons-by</span></span><br><span class="line"><span class="hljs-attr">            url:</span> <span class="hljs-string">'https://creativecommons.org/licenses/by/4.0/'</span></span><br><span class="line">        <span class="hljs-string">Download</span> <span class="hljs-string">on</span> <span class="hljs-attr">GitHub:</span></span><br><span class="line"><span class="hljs-attr">            icon:</span> <span class="hljs-string">fab</span> <span class="hljs-string">fa-github</span></span><br><span class="line"><span class="hljs-attr">            url:</span> <span class="hljs-string">'http://github.com/ppoffice/hexo-theme-icarus'</span></span><br><span class="line"><span class="hljs-comment"># 文章显示设置</span></span><br><span class="line"><span class="hljs-attr">article:</span></span><br><span class="line">    <span class="hljs-comment"># Code highlight theme</span></span><br><span class="line">    <span class="hljs-comment"># https://github.com/highlightjs/highlight.js/tree/master/src/styles</span></span><br><span class="line">    <span class="hljs-comment">#代码主题atom-one-light亮色，atom-one-dark暗色</span></span><br><span class="line"><span class="hljs-attr">    highlight:</span> <span class="hljs-string">atom-one-dark</span></span><br><span class="line">    <span class="hljs-comment"># 是否显示文章主图</span></span><br><span class="line"><span class="hljs-attr">    thumbnail:</span> <span class="hljs-literal">true</span></span><br><span class="line">    <span class="hljs-comment"># 是否显示估算阅读时间</span></span><br><span class="line"><span class="hljs-attr">    readtime:</span> <span class="hljs-literal">true</span></span><br><span class="line"><span class="hljs-comment"># 搜索插件设置</span></span><br><span class="line"><span class="hljs-comment"># http://ppoffice.github.io/hexo-theme-icarus/categories/Configuration/Search-Plugins</span></span><br><span class="line"><span class="hljs-attr">search:</span></span><br><span class="line">    <span class="hljs-comment"># Name of the search plugin</span></span><br><span class="line"><span class="hljs-attr">    type:</span> <span class="hljs-string">insight</span></span><br><span class="line"><span class="hljs-comment"># 评论插件设置</span></span><br><span class="line"><span class="hljs-comment"># http://ppoffice.github.io/hexo-theme-icarus/categories/Configuration/Comment-Plugins</span></span><br><span class="line"><span class="hljs-attr">comment:</span></span><br><span class="line">    <span class="hljs-comment">#可选valine，disqus（科学上网）等</span></span><br><span class="line">    <span class="hljs-comment"># Name of the comment plugin</span></span><br><span class="line">    <span class="hljs-comment">#type: valine</span></span><br><span class="line">    <span class="hljs-comment">#app_id: 不为空</span></span><br><span class="line">    <span class="hljs-comment">#app_key: 不为空</span></span><br><span class="line">    <span class="hljs-comment">#notify: true</span></span><br><span class="line">    <span class="hljs-comment">#verify: true</span></span><br><span class="line">    <span class="hljs-comment">#placeholder:</span></span><br><span class="line"><span class="hljs-attr">    type:</span> <span class="hljs-string">disqus</span></span><br><span class="line"><span class="hljs-attr">    shortname:</span> <span class="hljs-string">不能为空</span></span><br><span class="line"><span class="hljs-comment"># 打赏功能</span></span><br><span class="line"><span class="hljs-comment"># http://ppoffice.github.io/hexo-theme-icarus/categories/Donation/</span></span><br><span class="line"><span class="hljs-attr">donate:</span></span><br><span class="line"><span class="hljs-bullet">    -</span></span><br><span class="line">        <span class="hljs-comment"># 阿里巴巴支付宝</span></span><br><span class="line"><span class="hljs-attr">        type:</span> <span class="hljs-string">alipay</span></span><br><span class="line">        <span class="hljs-comment"># 二维码图片</span></span><br><span class="line"><span class="hljs-attr">        qrcode:</span> <span class="hljs-string">'/images/honbao.PNG'</span></span><br><span class="line"><span class="hljs-bullet">    -</span></span><br><span class="line">        <span class="hljs-comment"># 微信</span></span><br><span class="line"><span class="hljs-attr">        type:</span> <span class="hljs-string">wechat</span></span><br><span class="line">        <span class="hljs-comment"># 二维码图片</span></span><br><span class="line"><span class="hljs-attr">        qrcode:</span> <span class="hljs-string">'/images/yjtp.png'</span></span><br><span class="line"><span class="hljs-bullet">    -</span></span><br><span class="line"><span class="hljs-comment"># 分享插件设置</span></span><br><span class="line"><span class="hljs-comment"># http://ppoffice.github.io/hexo-theme-icarus/categories/Configuration/Share-Plugins</span></span><br><span class="line"><span class="hljs-attr">share:</span></span><br><span class="line">    <span class="hljs-comment"># 插件类型，有多种，可选，自行百度</span></span><br><span class="line"><span class="hljs-attr">    type:</span> <span class="hljs-string">sharejs</span></span><br><span class="line"><span class="hljs-comment"># Sidebar settings.</span></span><br><span class="line"><span class="hljs-comment"># Please be noted that a sidebar is only visible when it has at least one widget</span></span><br><span class="line"><span class="hljs-attr">sidebar:</span></span><br><span class="line">    <span class="hljs-comment"># 左侧边栏设置</span></span><br><span class="line"><span class="hljs-attr">    left:</span></span><br><span class="line">        <span class="hljs-comment"># 是否不随页面滚动</span></span><br><span class="line">        <span class="hljs-comment"># http://ppoffice.github.io/hexo-theme-icarus/Configuration/Theme/make-a-sidebar-sticky-when-page-scrolls/</span></span><br><span class="line"><span class="hljs-attr">        sticky:</span> <span class="hljs-literal">false</span></span><br><span class="line">    <span class="hljs-comment"># 右侧边栏设置</span></span><br><span class="line"><span class="hljs-attr">    right:</span></span><br><span class="line">        <span class="hljs-comment"># 是否不随页面滚动</span></span><br><span class="line">        <span class="hljs-comment"># http://ppoffice.github.io/hexo-theme-icarus/Configuration/Theme/make-a-sidebar-sticky-when-page-scrolls/</span></span><br><span class="line"><span class="hljs-attr">        sticky:</span> <span class="hljs-literal">false</span></span><br><span class="line"><span class="hljs-comment"># 边栏小部件设置</span></span><br><span class="line"><span class="hljs-comment"># http://ppoffice.github.io/hexo-theme-icarus/categories/Widgets/</span></span><br><span class="line"><span class="hljs-attr">widgets:</span></span><br><span class="line"><span class="hljs-bullet">    -</span></span><br><span class="line">        <span class="hljs-comment"># 个人信息</span></span><br><span class="line"><span class="hljs-attr">        type:</span> <span class="hljs-string">profile</span></span><br><span class="line">        <span class="hljs-comment"># 部件位置（左）</span></span><br><span class="line"><span class="hljs-attr">        position:</span> <span class="hljs-string">left</span></span><br><span class="line">        <span class="hljs-comment"># 作者名（字符串）</span></span><br><span class="line"><span class="hljs-attr">        author:</span> <span class="hljs-string">飞鱼</span></span><br><span class="line">        <span class="hljs-comment"># 作者身份描述（字符串）</span></span><br><span class="line"><span class="hljs-attr">        author_title:</span> <span class="hljs-string">Student</span></span><br><span class="line">        <span class="hljs-comment"># 作者当前居住地</span></span><br><span class="line"><span class="hljs-attr">        location:</span> <span class="hljs-string">China,Fujian</span></span><br><span class="line">        <span class="hljs-comment"># 头像（可用本地图片或网络图片链接）</span></span><br><span class="line"><span class="hljs-attr">        avatar:</span> <span class="hljs-string">'/images/ava.png'</span></span><br><span class="line">        <span class="hljs-comment"># Email address for the Gravatar to be shown in the profile widget</span></span><br><span class="line"><span class="hljs-attr">        gravatar:</span> </span><br><span class="line">        <span class="hljs-comment"># 关注我的链接，可设为你的GitHub主页</span></span><br><span class="line"><span class="hljs-attr">        follow_link:</span> <span class="hljs-string">'https://github.com/yourname'</span></span><br><span class="line">        <span class="hljs-comment"># 个人介绍部件底部图标社交链接</span></span><br><span class="line"><span class="hljs-attr">        social_links:</span></span><br><span class="line"><span class="hljs-attr">            Github:</span></span><br><span class="line"><span class="hljs-attr">                icon:</span> <span class="hljs-string">fab</span> <span class="hljs-string">fa-github</span></span><br><span class="line"><span class="hljs-attr">                url:</span> <span class="hljs-string">'https://github.com/yourname'</span></span><br><span class="line"><span class="hljs-attr">            Facebook:</span></span><br><span class="line"><span class="hljs-attr">                icon:</span> <span class="hljs-string">fab</span> <span class="hljs-string">fa-facebook</span></span><br><span class="line"><span class="hljs-attr">                url:</span> <span class="hljs-string">'https://facebook.com'</span></span><br><span class="line"><span class="hljs-attr">            Twitter:</span></span><br><span class="line"><span class="hljs-attr">                icon:</span> <span class="hljs-string">fab</span> <span class="hljs-string">fa-twitter</span></span><br><span class="line"><span class="hljs-attr">                url:</span> <span class="hljs-string">'https://twitter.com/yourname'</span></span><br><span class="line"><span class="hljs-attr">            RSS:</span></span><br><span class="line"><span class="hljs-attr">                icon:</span> <span class="hljs-string">fas</span> <span class="hljs-string">fa-rss</span></span><br><span class="line"><span class="hljs-attr">                url:</span> <span class="hljs-string">/</span></span><br><span class="line"><span class="hljs-bullet">    -</span></span><br><span class="line">        <span class="hljs-comment"># Widget name</span></span><br><span class="line"><span class="hljs-attr">        type:</span> <span class="hljs-string">toc</span></span><br><span class="line">        <span class="hljs-comment"># Where should the widget be placed, left or right</span></span><br><span class="line"><span class="hljs-attr">        position:</span> <span class="hljs-string">left</span></span><br><span class="line"><span class="hljs-bullet">    -</span></span><br><span class="line">        <span class="hljs-comment"># 分类</span></span><br><span class="line"><span class="hljs-attr">        type:</span> <span class="hljs-string">category</span></span><br><span class="line">        <span class="hljs-comment"># 位置指定</span></span><br><span class="line"><span class="hljs-attr">        position:</span> <span class="hljs-string">left</span></span><br><span class="line"><span class="hljs-bullet">    -</span></span><br><span class="line">        <span class="hljs-comment"># 标签云</span></span><br><span class="line"><span class="hljs-attr">        type:</span> <span class="hljs-string">tagcloud</span></span><br><span class="line">        <span class="hljs-comment"># 位置</span></span><br><span class="line"><span class="hljs-attr">        position:</span> <span class="hljs-string">right</span></span><br><span class="line"><span class="hljs-bullet">    -</span></span><br><span class="line">        <span class="hljs-comment"># 近期文章</span></span><br><span class="line"><span class="hljs-attr">        type:</span> <span class="hljs-string">recent_posts</span></span><br><span class="line">        <span class="hljs-comment"># 位置</span></span><br><span class="line"><span class="hljs-attr">        position:</span> <span class="hljs-string">left</span></span><br><span class="line"><span class="hljs-bullet">    -</span></span><br><span class="line">        <span class="hljs-comment"># 归档</span></span><br><span class="line"><span class="hljs-attr">        type:</span> <span class="hljs-string">archive</span></span><br><span class="line">        <span class="hljs-comment"># Where should the widget be placed, left or right</span></span><br><span class="line"><span class="hljs-attr">        position:</span> <span class="hljs-string">right</span></span><br><span class="line"><span class="hljs-bullet">    -</span></span><br><span class="line">        <span class="hljs-comment"># 标签</span></span><br><span class="line"><span class="hljs-attr">        type:</span> <span class="hljs-string">tag</span></span><br><span class="line">        <span class="hljs-comment"># Where should the widget be placed, left or right</span></span><br><span class="line"><span class="hljs-attr">        position:</span> <span class="hljs-string">right</span></span><br><span class="line"><span class="hljs-bullet">    -</span></span><br><span class="line">        <span class="hljs-comment"># 外部链接</span></span><br><span class="line"><span class="hljs-attr">        type:</span> <span class="hljs-string">links</span></span><br><span class="line">        <span class="hljs-comment"># Where should the widget be placed, left or right</span></span><br><span class="line"><span class="hljs-attr">        position:</span> <span class="hljs-string">left</span></span><br><span class="line">        <span class="hljs-comment"># Links to be shown in the links widget</span></span><br><span class="line"><span class="hljs-attr">        links:</span></span><br><span class="line"><span class="hljs-attr">            Google:</span> <span class="hljs-string">'https://google.com'</span></span><br><span class="line"><span class="hljs-attr">            Baidu:</span> <span class="hljs-string">'https://baidu.com'</span></span><br></pre></td></tr></table></figure>
+<p>上述设置已经让你的博客稍微有点属于你的样子了，下面来添加一些有意思的元素。</p>
+<hr>
+<h3 id="添加雪花飘落效果"><a href="#添加雪花飘落效果" class="headerlink" title="添加雪花飘落效果"></a>添加雪花飘落效果</h3><ul>
+<li>在 $\color{DarkTurquoise}{/themes/icarus/sourse/js/src}$目录下新建一个 snow.js 文件(若没有src/文件夹可以自己新建)，复制粘贴以下代码：<br><strong> 样式1：六边形雪花 </strong><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line">(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">$</span>)</span>&#123;</span><br><span class="line">	$.fn.snow = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">options</span>)</span>&#123;</span><br><span class="line">	<span class="hljs-keyword">var</span> $flake = $(<span class="hljs-string">''</span>).css(&#123;<span class="hljs-string">'position'</span>: <span class="hljs-string">'absolute'</span>,<span class="hljs-string">'z-index'</span>:<span class="hljs-string">'9999'</span>, <span class="hljs-string">'top'</span>: <span class="hljs-string">'-50px'</span>&#125;).html(<span class="hljs-string">'❄'</span>),</span><br><span class="line">	documentHeight 	= $(<span class="hljs-built_in">document</span>).height(),</span><br><span class="line">	documentWidth	= $(<span class="hljs-built_in">document</span>).width(),</span><br><span class="line">	defaults = &#123;</span><br><span class="line">		minSize		: <span class="hljs-number">10</span>,</span><br><span class="line">		maxSize		: <span class="hljs-number">20</span>,</span><br><span class="line">		newOn		: <span class="hljs-number">1000</span>,</span><br><span class="line">		flakeColor	: <span class="hljs-string">"#AFDAEF"</span> <span class="hljs-comment">/* 此处可以定义雪花颜色，若要白色可以改为#FFFFFF */</span></span><br><span class="line">	&#125;,</span><br><span class="line">	options	= $.extend(&#123;&#125;, defaults, options);</span><br><span class="line">	<span class="hljs-keyword">var</span> interval= setInterval( <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">	<span class="hljs-keyword">var</span> startPositionLeft = <span class="hljs-built_in">Math</span>.random() * documentWidth - <span class="hljs-number">100</span>,</span><br><span class="line">	startOpacity = <span class="hljs-number">0.5</span> + <span class="hljs-built_in">Math</span>.random(),</span><br><span class="line">	sizeFlake = options.minSize + <span class="hljs-built_in">Math</span>.random() * options.maxSize,</span><br><span class="line">	endPositionTop = documentHeight - <span class="hljs-number">200</span>,</span><br><span class="line">	endPositionLeft = startPositionLeft - <span class="hljs-number">500</span> + <span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">500</span>,</span><br><span class="line">	durationFall = documentHeight * <span class="hljs-number">10</span> + <span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">5000</span>;</span><br><span class="line">	$flake.clone().appendTo(<span class="hljs-string">'body'</span>).css(&#123;</span><br><span class="line">		left: startPositionLeft,</span><br><span class="line">		opacity: startOpacity,</span><br><span class="line">		<span class="hljs-string">'font-size'</span>: sizeFlake,</span><br><span class="line">		color: options.flakeColor</span><br><span class="line">	&#125;).animate(&#123;</span><br><span class="line">		top: endPositionTop,</span><br><span class="line">		left: endPositionLeft,</span><br><span class="line">		opacity: <span class="hljs-number">0.2</span></span><br><span class="line">	&#125;,durationFall,<span class="hljs-string">'linear'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">		$(<span class="hljs-keyword">this</span>).remove()</span><br><span class="line">	&#125;);</span><br><span class="line">	&#125;, options.newOn);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;)(jQuery);</span><br><span class="line">$(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    $.fn.snow(&#123; </span><br><span class="line">	    minSize: <span class="hljs-number">5</span>, <span class="hljs-comment">/* 定义雪花最小尺寸 */</span></span><br><span class="line">	    maxSize: <span class="hljs-number">50</span>,<span class="hljs-comment">/* 定义雪花最大尺寸 */</span></span><br><span class="line">	    newOn: <span class="hljs-number">300</span>  <span class="hljs-comment">/* 定义密集程度，数字越小越密集 */</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">作者：donlex</span><br><span class="line">链接：http:<span class="hljs-comment">//www.imooc.com/article/272005</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong> 样式2：圆点状雪花 </strong><br><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">snowFall</span>(<span class="hljs-params">snow</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">/* 可配置属性 */</span></span><br><span class="line">    snow = snow || &#123;&#125;;</span><br><span class="line">    <span class="hljs-keyword">this</span>.maxFlake = snow.maxFlake || <span class="hljs-number">200</span>;   <span class="hljs-comment">/* 最多片数 */</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.flakeSize = snow.flakeSize || <span class="hljs-number">10</span>;  <span class="hljs-comment">/* 雪花形状 */</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.fallSpeed = snow.fallSpeed || <span class="hljs-number">1</span>;   <span class="hljs-comment">/* 坠落速度 */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">/* 兼容写法 */</span></span><br><span class="line">requestAnimationFrame = <span class="hljs-built_in">window</span>.requestAnimationFrame ||</span><br><span class="line">    <span class="hljs-built_in">window</span>.mozRequestAnimationFrame ||</span><br><span class="line">    <span class="hljs-built_in">window</span>.webkitRequestAnimationFrame ||</span><br><span class="line">    <span class="hljs-built_in">window</span>.msRequestAnimationFrame ||</span><br><span class="line">    <span class="hljs-built_in">window</span>.oRequestAnimationFrame ||</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">callback</span>) </span>&#123; setTimeout(callback, <span class="hljs-number">1000</span> / <span class="hljs-number">60</span>); &#125;;</span><br><span class="line"></span><br><span class="line">cancelAnimationFrame = <span class="hljs-built_in">window</span>.cancelAnimationFrame ||</span><br><span class="line">    <span class="hljs-built_in">window</span>.mozCancelAnimationFrame ||</span><br><span class="line">    <span class="hljs-built_in">window</span>.webkitCancelAnimationFrame ||</span><br><span class="line">    <span class="hljs-built_in">window</span>.msCancelAnimationFrame ||</span><br><span class="line">	<span class="hljs-built_in">window</span>.oCancelAnimationFrame;</span><br><span class="line"><span class="hljs-comment">/* 开始下雪 */</span></span><br><span class="line">snowFall.prototype.start = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-comment">/* 创建画布 */</span></span><br><span class="line">    snowCanvas.apply(<span class="hljs-keyword">this</span>);</span><br><span class="line">    <span class="hljs-comment">/* 创建雪花形状 */</span></span><br><span class="line">    createFlakes.apply(<span class="hljs-keyword">this</span>);</span><br><span class="line">    <span class="hljs-comment">/* 画雪 */</span></span><br><span class="line">    drawSnow.apply(<span class="hljs-keyword">this</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">/* 创建画布 */</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">snowCanvas</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">/* 添加Dom结点 */</span></span><br><span class="line">    <span class="hljs-keyword">var</span> snowcanvas = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"canvas"</span>);</span><br><span class="line">    snowcanvas.id = <span class="hljs-string">"snowfall"</span>;</span><br><span class="line">    snowcanvas.width = <span class="hljs-built_in">window</span>.innerWidth;</span><br><span class="line">    snowcanvas.height = <span class="hljs-built_in">document</span>.body.clientHeight;</span><br><span class="line">    snowcanvas.setAttribute(<span class="hljs-string">"style"</span>, <span class="hljs-string">"position:absolute; top: 0; left: 0; z-index: 1; pointer-events: none;"</span>);</span><br><span class="line">    <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"body"</span>)[<span class="hljs-number">0</span>].appendChild(snowcanvas);</span><br><span class="line">    <span class="hljs-keyword">this</span>.canvas = snowcanvas;</span><br><span class="line">    <span class="hljs-keyword">this</span>.ctx = snowcanvas.getContext(<span class="hljs-string">"2d"</span>);</span><br><span class="line">    <span class="hljs-comment">/* 窗口大小改变的处理 */</span></span><br><span class="line">    <span class="hljs-built_in">window</span>.onresize = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">        snowcanvas.width = <span class="hljs-built_in">window</span>.innerWidth;</span><br><span class="line">        <span class="hljs-comment">/* snowcanvas.height = window.innerHeight */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">/* 雪运动对象 */</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">flakeMove</span>(<span class="hljs-params">canvasWidth, canvasHeight, flakeSize, fallSpeed</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.x = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * canvasWidth);   <span class="hljs-comment">/* x坐标 */</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.y = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * canvasHeight);  <span class="hljs-comment">/* y坐标 */</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.size = <span class="hljs-built_in">Math</span>.random() * flakeSize + <span class="hljs-number">2</span>;          <span class="hljs-comment">/* 形状 */</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.maxSize = flakeSize;                           <span class="hljs-comment">/* 最大形状 */</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.speed = <span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">1</span> + fallSpeed;         <span class="hljs-comment">/* 坠落速度 */</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.fallSpeed = fallSpeed;                         <span class="hljs-comment">/* 坠落速度 */</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.velY = <span class="hljs-keyword">this</span>.speed;                             <span class="hljs-comment">/* Y方向速度 */</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.velX = <span class="hljs-number">0</span>;                                      <span class="hljs-comment">/* X方向速度 */</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.stepSize = <span class="hljs-built_in">Math</span>.random() / <span class="hljs-number">30</span>;                 <span class="hljs-comment">/* 步长 */</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.step = <span class="hljs-number">0</span>                                       <span class="hljs-comment">/* 步数 */</span></span><br><span class="line">&#125;</span><br><span class="line">flakeMove.prototype.update = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> x = <span class="hljs-keyword">this</span>.x,</span><br><span class="line">        y = <span class="hljs-keyword">this</span>.y;</span><br><span class="line">    <span class="hljs-comment">/* 左右摆动(余弦) */</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.velX *= <span class="hljs-number">0.98</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.velY &lt;= <span class="hljs-keyword">this</span>.speed) &#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.velY = <span class="hljs-keyword">this</span>.speed</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">this</span>.velX += <span class="hljs-built_in">Math</span>.cos(<span class="hljs-keyword">this</span>.step += <span class="hljs-number">.05</span>) * <span class="hljs-keyword">this</span>.stepSize;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">this</span>.y += <span class="hljs-keyword">this</span>.velY;</span><br><span class="line">    <span class="hljs-keyword">this</span>.x += <span class="hljs-keyword">this</span>.velX;</span><br><span class="line">    <span class="hljs-comment">/* 飞出边界的处理 */</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.x &gt;= canvas.width || <span class="hljs-keyword">this</span>.x &lt;= <span class="hljs-number">0</span> || <span class="hljs-keyword">this</span>.y &gt;= canvas.height || <span class="hljs-keyword">this</span>.y &lt;= <span class="hljs-number">0</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.reset(canvas.width, canvas.height)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="hljs-comment">/* 飞出边界-放置最顶端继续坠落 */</span></span><br><span class="line">flakeMove.prototype.reset = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">width, height</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.x = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * width);</span><br><span class="line">    <span class="hljs-keyword">this</span>.y = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">this</span>.size = <span class="hljs-built_in">Math</span>.random() * <span class="hljs-keyword">this</span>.maxSize + <span class="hljs-number">2</span>;</span><br><span class="line">    <span class="hljs-keyword">this</span>.speed = <span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">1</span> + <span class="hljs-keyword">this</span>.fallSpeed;</span><br><span class="line">    <span class="hljs-keyword">this</span>.velY = <span class="hljs-keyword">this</span>.speed;</span><br><span class="line">    <span class="hljs-keyword">this</span>.velX = <span class="hljs-number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="hljs-comment">// 渲染雪花-随机形状（此处可修改雪花颜色！！！）</span></span><br><span class="line">flakeMove.prototype.render = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">ctx</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> snowFlake = ctx.createRadialGradient(<span class="hljs-keyword">this</span>.x, <span class="hljs-keyword">this</span>.y, <span class="hljs-number">0</span>, <span class="hljs-keyword">this</span>.x, <span class="hljs-keyword">this</span>.y, <span class="hljs-keyword">this</span>.size);</span><br><span class="line">    snowFlake.addColorStop(<span class="hljs-number">0</span>, <span class="hljs-string">"rgba(255, 255, 255, 0.9)"</span>);  <span class="hljs-comment">/* 此处是雪花颜色，默认是白色 */</span></span><br><span class="line">    snowFlake.addColorStop(<span class="hljs-number">.5</span>, <span class="hljs-string">"rgba(255, 255, 255, 0.5)"</span>); <span class="hljs-comment">/* 若要改为其他颜色，请自行查 */</span></span><br><span class="line">    snowFlake.addColorStop(<span class="hljs-number">1</span>, <span class="hljs-string">"rgba(255, 255, 255, 0)"</span>);    <span class="hljs-comment">/* 找16进制的RGB 颜色代码。 */</span></span><br><span class="line">    ctx.save();</span><br><span class="line">    ctx.fillStyle = snowFlake;</span><br><span class="line">    ctx.beginPath();</span><br><span class="line">    ctx.arc(<span class="hljs-keyword">this</span>.x, <span class="hljs-keyword">this</span>.y, <span class="hljs-keyword">this</span>.size, <span class="hljs-number">0</span>, <span class="hljs-built_in">Math</span>.PI * <span class="hljs-number">2</span>);</span><br><span class="line">    ctx.fill();</span><br><span class="line">    ctx.restore();</span><br><span class="line">&#125;;</span><br><span class="line"><span class="hljs-comment">/* 创建雪花-定义形状 */</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createFlakes</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> maxFlake = <span class="hljs-keyword">this</span>.maxFlake,</span><br><span class="line">        flakes = <span class="hljs-keyword">this</span>.flakes = [],</span><br><span class="line">        canvas = <span class="hljs-keyword">this</span>.canvas;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; maxFlake; i++) &#123;</span><br><span class="line">        flakes.push(<span class="hljs-keyword">new</span> flakeMove(canvas.width, canvas.height, <span class="hljs-keyword">this</span>.flakeSize, <span class="hljs-keyword">this</span>.fallSpeed))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">/* 画雪 */</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">drawSnow</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> maxFlake = <span class="hljs-keyword">this</span>.maxFlake,</span><br><span class="line">        flakes = <span class="hljs-keyword">this</span>.flakes;</span><br><span class="line">    ctx = <span class="hljs-keyword">this</span>.ctx, canvas = <span class="hljs-keyword">this</span>.canvas, that = <span class="hljs-keyword">this</span>;</span><br><span class="line">    <span class="hljs-comment">/* 清空雪花 */</span></span><br><span class="line">    ctx.clearRect(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, canvas.width, canvas.height);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> e = <span class="hljs-number">0</span>; e &lt; maxFlake; e++) &#123;</span><br><span class="line">        flakes[e].update();</span><br><span class="line">        flakes[e].render(ctx);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">/*  一帧一帧的画 */</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.loop = requestAnimationFrame(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">        drawSnow.apply(that);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">/* 调用及控制方法 */</span></span><br><span class="line"><span class="hljs-keyword">var</span> snow = <span class="hljs-keyword">new</span> snowFall(&#123;<span class="hljs-attr">maxFlake</span>:<span class="hljs-number">60</span>&#125;);</span><br><span class="line">snow.start();</span><br><span class="line"></span><br><span class="line">作者：donlex</span><br><span class="line">链接：http:<span class="hljs-comment">//www.imooc.com/article/272005</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>最后在$\color{DarkTurquoise}{/themes/icarus/layout/layout.ejs}$的$body$标签中添加代码：</p>
+<figure class="highlight html hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">&lt;!-- 雪花特效 --&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span><span class="hljs-undefined"></span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">var</span> windowWidth = $(<span class="hljs-built_in">window</span>).width();</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">if</span> (windowWidth &gt; <span class="hljs-number">480</span>) &#123;</span></span><br><span class="line"><span class="hljs-xml">        document.write('<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/js/src/snow.js"</span>&gt;</span><span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">\</span>/<span class="hljs-attr">script</span>&gt;</span>');</span></span></span><br><span class="line"><span class="hljs-undefined">      &#125;</span></span><br><span class="line"><span class="hljs-undefined">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>默认雪花为白色，可自行更改颜色，效果可见本站</p>
+</li>
+</ul>
+<hr>
+<h3 id="网站访问量与访客量统计"><a href="#网站访问量与访客量统计" class="headerlink" title="网站访问量与访客量统计"></a>网站访问量与访客量统计</h3><ul>
+<li>不蒜子官网：<a href="http://busuanzi.ibruce.info/" target="_blank" rel="noopener">http://busuanzi.ibruce.info/</a></li>
+<li><p>在$\color{DarkTurquoise}{/themes/icarus/layout/common/footer.ejs}$模板文件的中添加如下代码：</p>
+<figure class="highlight html hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"busuanzi_container_site_pv"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"theme-info"</span>&gt;</span></span><br><span class="line">  |  本站总访问量<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"busuanzi_value_site_pv"</span>&gt;</span>span&gt;次</span><br><span class="line"> span&gt;</span><br><span class="line"> <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"busuanzi_container_site_uv"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"theme-info"</span>&gt;</span></span><br><span class="line">  |  本站访客数<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"busuanzi_value_site_uv"</span>&gt;</span>span&gt;人次</span><br><span class="line"> span&gt;</span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">async</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"</span>&gt;</span><span class="hljs-undefined">script&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在$\color{DarkTurquoise}{/themes/icarus/_config.yml}$中添加：</p>
+<figure class="highlight yml hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-attr">busuanzi:</span></span><br><span class="line"><span class="hljs-attr">    enable:</span> <span class="hljs-literal">true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>最终效果：<br><div align="center"><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Hexo+icarus主题配置/20190429093801600.png" alt=""><br></div></p>
+<h3 id="网站运行时间统计"><a href="#网站运行时间统计" class="headerlink" title="网站运行时间统计"></a>网站运行时间统计</h3></li>
+<li><p>在$\color{DarkTurquoise}{/themes/icarus/layout/common/footer.ejs}$中添加：</p>
+<figure class="highlight html hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"timeDate"</span>&gt;</span>载入天数...<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"times"</span>&gt;</span>载入时分秒...<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="hljs-undefined"></span></span><br><span class="line"><span class="hljs-javascript">                <span class="hljs-keyword">var</span> now = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(); </span></span><br><span class="line"><span class="hljs-javascript">                <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createtime</span>(<span class="hljs-params"></span>) </span>&#123; </span></span><br><span class="line"><span class="hljs-javascript">                    <span class="hljs-keyword">var</span> grt= <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">"12/28/2018 12:49:00"</span>);<span class="hljs-comment">//此处修改你的建站时间或者网站上线时间 </span></span></span><br><span class="line"><span class="hljs-undefined">                    now.setTime(now.getTime()+250); </span></span><br><span class="line"><span class="hljs-javascript">                    days = (now - grt ) / <span class="hljs-number">1000</span> / <span class="hljs-number">60</span> / <span class="hljs-number">60</span> / <span class="hljs-number">24</span>; dnum = <span class="hljs-built_in">Math</span>.floor(days); </span></span><br><span class="line"><span class="hljs-javascript">                    hours = (now - grt ) / <span class="hljs-number">1000</span> / <span class="hljs-number">60</span> / <span class="hljs-number">60</span> - (<span class="hljs-number">24</span> * dnum); hnum = <span class="hljs-built_in">Math</span>.floor(hours); </span></span><br><span class="line"><span class="hljs-javascript">                    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>(hnum).length ==<span class="hljs-number">1</span> )&#123;hnum = <span class="hljs-string">"0"</span> + hnum;&#125; minutes = (now - grt ) / <span class="hljs-number">1000</span> /<span class="hljs-number">60</span> - (<span class="hljs-number">24</span> * <span class="hljs-number">60</span> * dnum) - (<span class="hljs-number">60</span> * hnum); </span></span><br><span class="line"><span class="hljs-javascript">                    mnum = <span class="hljs-built_in">Math</span>.floor(minutes); <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>(mnum).length ==<span class="hljs-number">1</span> )&#123;mnum = <span class="hljs-string">"0"</span> + mnum;&#125; </span></span><br><span class="line"><span class="hljs-undefined">                    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); </span></span><br><span class="line"><span class="hljs-javascript">                    snum = <span class="hljs-built_in">Math</span>.round(seconds); <span class="hljs-keyword">if</span>(<span class="hljs-built_in">String</span>(snum).length ==<span class="hljs-number">1</span> )&#123;snum = <span class="hljs-string">"0"</span> + snum;&#125; </span></span><br><span class="line"><span class="hljs-javascript">                    <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"timeDate"</span>).innerHTML = <span class="hljs-string">"本站已安全运行 "</span>+dnum+<span class="hljs-string">" 天 "</span>; </span></span><br><span class="line"><span class="hljs-javascript">                    <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"times"</span>).innerHTML = hnum + <span class="hljs-string">" 小时 "</span> + mnum + <span class="hljs-string">" 分 "</span> + snum + <span class="hljs-string">" 秒"</span>; </span></span><br><span class="line"><span class="hljs-undefined">                &#125; </span></span><br><span class="line"><span class="hljs-javascript">            setInterval(<span class="hljs-string">"createtime()"</span>,<span class="hljs-number">250</span>);</span></span><br><span class="line"><span class="hljs-undefined">            </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改自己的建站时间</p>
+</li>
+<li>最终效果：<div align="center"><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Hexo+icarus主题配置/20190429094726470.png" alt=""><br></div>
+
+</li>
+</ul>
+<hr>
+<h3 id="鼠标点击特效"><a href="#鼠标点击特效" class="headerlink" title="鼠标点击特效"></a>鼠标点击特效</h3><ul>
+<li><p>在 $\color{DarkTurquoise}{/themes/icarus/sourse/js/src}$中添加click.js文件，复制以下代码进去：</p>
+<figure class="highlight js hljs"><table><tr><td class="code"><pre><span class="line">!<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e,t,a</span>)</span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">n</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">        c(<span class="hljs-string">".heart&#123;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);&#125;.heart:after,.heart:before&#123;content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;&#125;.heart:after&#123;top: -5px;&#125;.heart:before&#123;left: -5px;&#125;"</span>),</span><br><span class="line">        o(),</span><br><span class="line">        r()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">r</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> e=<span class="hljs-number">0</span>;e&lt;d.length;e++)</span><br><span class="line">            d[e].alpha&lt;=<span class="hljs-number">0</span>?(t.body.removeChild(d[e].el),d.splice(e,<span class="hljs-number">1</span>)):(d[e].y--,d[e].scale+=<span class="hljs-number">.004</span>,d[e].alpha-=<span class="hljs-number">.013</span>,d[e].el.style.cssText=<span class="hljs-string">"left:"</span>+d[e].x+<span class="hljs-string">"px;top:"</span>+d[e].y+<span class="hljs-string">"px;opacity:"</span>+d[e].alpha+<span class="hljs-string">";transform:scale("</span>+d[e].scale+<span class="hljs-string">","</span>+d[e].scale+<span class="hljs-string">") rotate(45deg);background:"</span>+d[e].color+<span class="hljs-string">";z-index:99999"</span>);</span><br><span class="line">        requestAnimationFrame(r)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">o</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">        <span class="hljs-keyword">var</span> t=<span class="hljs-string">"function"</span>==<span class="hljs-keyword">typeof</span> e.onclick&amp;&amp;e.onclick;</span><br><span class="line">        e.onclick=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>)</span>&#123;</span><br><span class="line">            t&amp;&amp;t(),i(e)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">i</span>(<span class="hljs-params">e</span>)</span>&#123;</span><br><span class="line">            <span class="hljs-keyword">var</span> a=t.createElement(<span class="hljs-string">"div"</span>);</span><br><span class="line">            a.className=<span class="hljs-string">"heart"</span>,d.push(&#123;<span class="hljs-attr">el</span>:a,<span class="hljs-attr">x</span>:e.clientX<span class="hljs-number">-5</span>,<span class="hljs-attr">y</span>:e.clientY<span class="hljs-number">-5</span>,<span class="hljs-attr">scale</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">alpha</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">color</span>:s()&#125;),t.body.appendChild(a)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">c</span>(<span class="hljs-params">e</span>)</span>&#123;</span><br><span class="line">        <span class="hljs-keyword">var</span> a=t.createElement(<span class="hljs-string">"style"</span>);a.type=<span class="hljs-string">"text/css"</span>;</span><br><span class="line">        <span class="hljs-keyword">try</span>&#123;</span><br><span class="line">            a.appendChild(t.createTextNode(e))</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">catch</span>(t)&#123;</span><br><span class="line">            a.styleSheet.cssText=e</span><br><span class="line">        &#125;</span><br><span class="line">        t.getElementsByTagName(<span class="hljs-string">"head"</span>)[<span class="hljs-number">0</span>].appendChild(a)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">s</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span><span class="hljs-string">"rgb("</span>+~~(<span class="hljs-number">255</span>*<span class="hljs-built_in">Math</span>.random())+<span class="hljs-string">","</span>+~~(<span class="hljs-number">255</span>*<span class="hljs-built_in">Math</span>.random())+<span class="hljs-string">","</span>+~~(<span class="hljs-number">255</span>*<span class="hljs-built_in">Math</span>.random())+<span class="hljs-string">")"</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">var</span> d=[];</span><br><span class="line">    e.requestAnimationFrame=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> e.requestAnimationFrame||e.webkitRequestAnimationFrame||e.mozRequestAnimationFrame||e.oRequestAnimationFrame||e.msRequestAnimationFrame||<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>)</span>&#123;</span><br><span class="line">            setTimeout(e,<span class="hljs-number">1e3</span>/<span class="hljs-number">60</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;(),</span><br><span class="line">    n()</span><br><span class="line">&#125;</span><br><span class="line">(<span class="hljs-built_in">window</span>,<span class="hljs-built_in">document</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>最后在$\color{DarkTurquoise}{/themes/icarus/layout/layout.ejs}$文件中的</p>
+<figure class="highlight html hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>的下一行添加：</p>
+<figure class="highlight html hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/js/src/click.js"</span>&gt;</span><span class="hljs-undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>效果见本站</p>
+</li>
+</ul>
+<hr>
+<h3 id="看板娘插件"><a href="#看板娘插件" class="headerlink" title="看板娘插件"></a>看板娘插件</h3><ul>
+<li>在博客主目录下进入点击进入<strong>Git Bash Here</strong></li>
+<li><p>输入命令：</p>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">npm install hexo-helper-live2d --save</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在网站配置文件或主题配置文件$\color{green}{_config.yml}$中添加：</p>
+<figure class="highlight yml hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-attr">live2d:</span></span><br><span class="line"><span class="hljs-attr">  enable:</span> <span class="hljs-literal">true</span>                                   <span class="hljs-comment">#开启看板娘</span></span><br><span class="line"><span class="hljs-attr">  scriptFrom:</span> <span class="hljs-string">local</span></span><br><span class="line"><span class="hljs-attr">  pluginRootPath:</span> <span class="hljs-string">live2dw/</span></span><br><span class="line"><span class="hljs-attr">  pluginJsPath:</span> <span class="hljs-string">lib/</span></span><br><span class="line"><span class="hljs-attr">  pluginModelPath:</span> <span class="hljs-string">assets/</span></span><br><span class="line"><span class="hljs-attr">  tagMode:</span> <span class="hljs-literal">false</span></span><br><span class="line"><span class="hljs-attr">  log:</span> <span class="hljs-literal">false</span></span><br><span class="line"><span class="hljs-attr">  model:</span></span><br><span class="line"><span class="hljs-attr">    use:</span> <span class="hljs-string">live2d-widget-model-z16</span>     <span class="hljs-comment">#指定模型任务</span></span><br><span class="line"><span class="hljs-attr">  display:</span></span><br><span class="line"><span class="hljs-attr">    position:</span> <span class="hljs-string">right</span>                              <span class="hljs-comment">#显示位置</span></span><br><span class="line"><span class="hljs-attr">    width:</span> <span class="hljs-number">200</span>                                   <span class="hljs-comment">#模型宽度</span></span><br><span class="line"><span class="hljs-attr">    height:</span> <span class="hljs-number">400</span>                                  <span class="hljs-comment">#模型高度</span></span><br><span class="line"><span class="hljs-attr">  mobile:</span></span><br><span class="line"><span class="hljs-attr">    show:</span> <span class="hljs-literal">true</span>                                  <span class="hljs-comment">#是否在移动端显示</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>效果：见本站</p>
+</li>
+</ul>
+<hr>
+<h3 id="遇到的坑及解决方法"><a href="#遇到的坑及解决方法" class="headerlink" title="遇到的坑及解决方法"></a>遇到的坑及解决方法</h3><ul>
+<li>..公式渲染问题</li>
+<li>..</li>
+<li>..<div align="center"><br>$\color{green}{Waiting….for….update….}$<br></div>
+
+</li>
+</ul>
+<hr>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Hexo/">Hexo</a>
+                </div>
+            </div>
+            <div align="center">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- article -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7097707906527513" data-ad-slot="2635009920" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+        </div>
+        
+        
+
+        
+        
+<div class="sharethis-inline-share-buttons"></div>
+<script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5d123718ccac450012baa1b1&amp;product=social-ab" async="async"></script>
+
+        
+  <div>
+    <ul class="post-copyright">
+      <li class="post-copyright-author">
+      <strong>本文作者：</strong>lyh
+      </li>
+      <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="" title="{{ page.title }}">Hexo+icarus主题配置</a>
+      </li>
+      <li class="post-copyright-link">
+      <strong>发布时间：</strong>
+      <a href="" title="{{ page.title }}">2019年4月29日 - 17时04分</a>
+      </li>
+      <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！
+      </li>
+    </ul>
+  <div>
+    
+
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？点个赞再走吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="/images/wechatpay.png" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>WeChatPay</span>
+    <div class="qrcode"><img src="/images/wechatpay.png" alt="WeChatPay"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/04/30/Hexo用MathJax渲染数学公式/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Hexo用MathJax渲染数学公式</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/17/【算法】DP最大和问题/">
+                <span class="level-item">【算法】DP最大和问题</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'oR2IQXqpGEFy4GHNDgdmfSMR-gzGzoHsz',
+        app_key: 'hwYfVGzICBlXGiokUXaNqJsx',
+        placeholder: 'Type something slowly...'
+    });
+</script>
+
+    </div>
+</div>
+</div></div>
+</div>
+                
+
+
+
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-left is-sticky">
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#下载icarus主题">
+        <span class="has-mr-6">1</span>
+        <span>下载icarus主题</span>
+        </a></li><li>
+        <a class="is-flex" href="#配置主题">
+        <span class="has-mr-6">2</span>
+        <span>配置主题</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#主题配置文件（部分）">
+        <span class="has-mr-6">2.1</span>
+        <span>主题配置文件（部分）</span>
+        </a></li><li>
+        <a class="is-flex" href="#添加雪花飘落效果">
+        <span class="has-mr-6">2.2</span>
+        <span>添加雪花飘落效果</span>
+        </a></li><li>
+        <a class="is-flex" href="#网站访问量与访客量统计">
+        <span class="has-mr-6">2.3</span>
+        <span>网站访问量与访客量统计</span>
+        </a></li><li>
+        <a class="is-flex" href="#网站运行时间统计">
+        <span class="has-mr-6">2.4</span>
+        <span>网站运行时间统计</span>
+        </a></li><li>
+        <a class="is-flex" href="#鼠标点击特效">
+        <span class="has-mr-6">2.5</span>
+        <span>鼠标点击特效</span>
+        </a></li><li>
+        <a class="is-flex" href="#看板娘插件">
+        <span class="has-mr-6">2.6</span>
+        <span>看板娘插件</span>
+        </a></li><li>
+        <a class="is-flex" href="#遇到的坑及解决方法">
+        <span class="has-mr-6">2.7</span>
+        <span>遇到的坑及解决方法</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <img class="image is-128x128 has-mb-6" src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/github.jpg" alt="lyh">
+                    
+                    <p class="is-size-4 is-block">
+                        lyh
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        人在蒙古·刚下航母
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Fujian·China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        32
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        7
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        16
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://blog.csdn.net/Marvine">
+                关注我</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/YHCClin">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Twitter" href="https://twitter.com/echo_scottlin">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/C/">
+            <span class="level-start">
+                <span class="level-item">C++</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/工具/">
+            <span class="level-start">
+                <span class="level-item">工具</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/底层原理/">
+            <span class="level-start">
+                <span class="level-item">底层原理</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/教程/">
+            <span class="level-start">
+                <span class="level-item">教程</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/数据结构/">
+            <span class="level-start">
+                <span class="level-item">数据结构</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/机器学习/">
+            <span class="level-start">
+                <span class="level-item">机器学习</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/算法/">
+            <span class="level-start">
+                <span class="level-item">算法</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">12</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/25/二分图最大匹配问题(匈牙利算法)/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="二分图最大匹配问题(匈牙利算法)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-25T20:33:10.000Z">2019-11-25</time></div>
+                    <a href="/2019/11/25/二分图最大匹配问题(匈牙利算法)/" class="has-link-black-ter is-size-6">二分图最大匹配问题(匈牙利算法)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        
+        <article class="media">
+            
+            <a href="/2019/11/21/Tarjan算法求图的强连通分量/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Tarjan算法求图的强连通分量">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-21T21:58:23.000Z">2019-11-21</time></div>
+                    <a href="/2019/11/21/Tarjan算法求图的强连通分量/" class="has-link-black-ter is-size-6">Tarjan算法求图的强连通分量</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        
+        <article class="media">
+            
+            <a href="/2019/11/19/快速排序及其改进/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/QuickSort/quicksort.jpg" alt="快速排序及其改进">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-19T22:37:51.000Z">2019-11-19</time></div>
+                    <a href="/2019/11/19/快速排序及其改进/" class="has-link-black-ter is-size-6">快速排序及其改进</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        
+        <article class="media">
+            
+            <a href="/2019/11/13/侯捷C++学习笔记[未整理版]/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="侯捷C++学习笔记[未整理版]">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-13T22:13:59.000Z">2019-11-13</time></div>
+                    <a href="/2019/11/13/侯捷C++学习笔记[未整理版]/" class="has-link-black-ter is-size-6">侯捷C++学习笔记[未整理版]</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/C/">C++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        
+        <article class="media">
+            
+            <a href="/2019/09/10/LeetCode23合并-K-个排序链表(Hard)/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="LeetCode23 合并 K 个排序链表(Hard)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-10T13:43:26.000Z">2019-09-10</time></div>
+                    <a href="/2019/09/10/LeetCode23合并-K-个排序链表(Hard)/" class="has-link-black-ter is-size-6">LeetCode23 合并 K 个排序链表(Hard)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        
+    </div>
+</div>
+
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            光阴似箭
+        </h3>
+        <ul class="menu-list">
+        
+        </ul>
+        </div>
+    </div>
+    <div class="card-content">
+        <!-- weather -->
+        <canvas id="canvas" style="width:100%;" width="820" height="250">
+        <script type="text/javascript" src="/js/clock.js"></script>
+    </canvas></div>
+    <div>
+    
+    </div>
+    <div align="center" bacground-color="#ebeef200">
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <div>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="250" height="86" src="http://music.163.com/outchain/player?type=2&id=1993765&auto=1&height=66">
+        <!-- weather -->
+            <canvas id="canvas" style="width:100%;" width="820" height="250">
+            <script type="text/javascript" src="/js/clock.js"></script>
+
+</canvas></iframe>
+	</div>
+    </div>
+</div>
+
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/Algorithm/" style="font-size: 17.5px;">Algorithm</a> <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Graph/" style="font-size: 10px;">Graph</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Knapsack/" style="font-size: 10px;">Knapsack</a> <a href="/tags/LeetCode/" style="font-size: 15px;">LeetCode</a> <a href="/tags/List/" style="font-size: 12.5px;">List</a> <a href="/tags/ML/" style="font-size: 20px;">ML</a> <a href="/tags/QuickSort/" style="font-size: 10px;">QuickSort</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/Tree/" style="font-size: 10px;">Tree</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a>
+    </div>
+    <div align="center">
+    
+    </div>
+    <div align="center">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-7097707906527513",
+          enable_page_level_ads: true
+     });
+</script>
+	</div>
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- link -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7097707906527513" data-ad-slot="9954084985" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">11</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Algorithm/">
+                        <span class="tag">Algorithm</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Array/">
+                        <span class="tag">Array</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Blog/">
+                        <span class="tag">Blog</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Graph/">
+                        <span class="tag">Graph</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Hexo/">
+                        <span class="tag">Hexo</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Knapsack/">
+                        <span class="tag">Knapsack</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/LeetCode/">
+                        <span class="tag">LeetCode</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/List/">
+                        <span class="tag">List</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ML/">
+                        <span class="tag">ML</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/QuickSort/">
+                        <span class="tag">QuickSort</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/String/">
+                        <span class="tag">String</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Tools/">
+                        <span class="tag">Tools</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Tree/">
+                        <span class="tag">Tree</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/algorithm/">
+                        <span class="tag">algorithm</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/codehub.ico" alt="Hexo+icarus主题配置" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 lyh&nbsp;
+                Powered &#10084; YH · Lin
+                </p>
+            </div>
+            
+            <script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+            
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        <div align="center">
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date(); 
+                function createtime() { 
+                    var grt= new Date("4/1/2019 12:49:00");//此处修改你的建站时间或者网站上线时间 
+                    now.setTime(now.getTime()+250); 
+                    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+                } 
+            setInterval("createtime()",250);
+            </script>
+            <div align="center">
+            <span id="busuanzi_container_site_pv" class="theme-info">本站总访问量-<span id="busuanzi_value_site_pv"></span>-次|
+              </span>
+              <span id="busuanzi_container_site_uv" class="theme-info">您是第-<span id="busuanzi_value_site_uv"></span>-位小伙伴</span>
+
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            </div>
+        </div>
+        <span>
+        <script type="text/javascript" src="//rf.revolvermaps.com/0/0/2.js?i=0xetp0d4rdh&amp;m=7&amp;s=130&amp;c=00fff6&amp;t=1" async="async"></script>
+        </span>
+        </div>
+
+    </div>
+
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            bp.src = '//push.zhanzhang.baidu.com/push.js';
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {matchFontHeight: true},
+        SVG: {matchFontHeight: true},
+        CommonHTML: {matchFontHeight: true}
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
+<script src="/js/src/firework.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+    <!-- 雪花特效 -->
+    <script type="text/javascript">
+      var windowWidth = $(window).width();
+      if (windowWidth > 480) {
+        document.write('<script type="text/javascript" src="/js/src/snow.js"><\/script>');
+      }
+    </script>
+    <!-- tidio -->
+    
+    <script src="//code.tidio.co/ui3pfxbwv0bfvkvxwibyaejafrndrrqm.js"></script>
+    <amp-auto-ads type="adsense" data-ad-client="ca-pub-7097707906527513">
+</amp-auto-ads>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"admin":{"username":"aokilin","password_hash":"$2a$10$Ftok/UgFv5olradmR40PM.w57gZ.QOp2uXQlpSZevsU.pMi0KPHla","secret":"my super secret phrase"},"kramed":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true},"feed":{"type":"atom","path":"atom.xml","limit":20}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+</html>
