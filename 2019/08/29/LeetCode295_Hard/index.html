@@ -46,18 +46,10 @@
 <meta property="og:site_name" content="Code·Hub">
 <meta property="og:description" content="[LC295] 数据流中的中位数(类设计）题目描述：中位数是有序列表中间的数。如果列表长度是偶数，中位数则是中间两个数的平均值。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%5BLeetcode295_hard%5DMedianFinder/case1.png">
-<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%5BLeetcode295_hard%5DMedianFinder/case1_1.png">
-<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%5BLeetcode295_hard%5DMedianFinder/case2.png">
-<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%5BLeetcode295_hard%5DMedianFinder/case2_11.png">
-<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%5BLeetcode295_hard%5DMedianFinder/case3_1.png">
-<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%5BLeetcode295_hard%5DMedianFinder/case3_2.png">
-<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%5BLeetcode295_hard%5DMedianFinder/leetcode295.png">
-<meta property="og:updated_time" content="2020-01-23T02:41:42.296Z">
+<meta property="og:updated_time" content="2020-01-23T02:47:12.632Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图解LeetCode295_Hard_MedianFinder">
 <meta name="twitter:description" content="[LC295] 数据流中的中位数(类设计）题目描述：中位数是有序列表中间的数。如果列表长度是偶数，中位数则是中间两个数的平均值。">
-<meta name="twitter:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%5BLeetcode295_hard%5DMedianFinder/case1.png">
 
 
 
@@ -248,36 +240,52 @@
 <h4 id="case-1"><a href="#case-1" class="headerlink" title="case 1:"></a>case 1:</h4><ul>
 <li>如果两堆中的元素个数相同。这个时候无论插入哪一个堆，条件 1 都不会被破坏,因此考虑条件 2 ，将待插入元素与两堆的堆顶比较:若待插入元素为 5，显然这个时候若插入smaller会破坏条件 2，因此因插入bigger中。而若待插入为 9 则显然应插入 smaller 中。</li>
 </ul>
-<center><br><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%5BLeetcode295_hard%5DMedianFinder/case1.png" alt=""><br><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%5BLeetcode295_hard%5DMedianFinder/case1_1.png" alt=""><br><br></center>
+<center>
+
+![](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%5BLeetcode295_hard%5DMedianFinder/case1.png)
+
+![](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%5BLeetcode295_hard%5DMedianFinder/case1_1.png)
+
+</center>
 
 <hr>
 <h4 id="case-2"><a href="#case-2" class="headerlink" title="case 2:"></a>case 2:</h4><ul>
 <li>如果大顶堆元素个数小于小顶堆的元素个数。此时，将待插入元素与两堆堆顶比较:</li>
 <li>若小于等于Bigger.top则直接插入Bigger中；</li>
 </ul>
-<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%5BLeetcode295_hard%5DMedianFinder/case2.png" alt=""><br></center>
+<center>
+![](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%5BLeetcode295_hard%5DMedianFinder/case2.png)
+</center>
 
 <ul>
 <li>若大于smaller.top则为了保证条件1,需将smaller中的最小值（根）转存至Bigger中。</li>
 </ul>
-<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%5BLeetcode295_hard%5DMedianFinder/case2_11.png" alt=""><br></center>
+<center>
+![](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%5BLeetcode295_hard%5DMedianFinder/case2_11.png)
+</center>
 
 <hr>
 <h4 id="case-3"><a href="#case-3" class="headerlink" title="case 3:"></a>case 3:</h4><ul>
 <li>如果大顶堆的元素个数大于小顶堆的元素个数。此时，将待插入元素与两堆堆顶比较：</li>
 <li>若其大于等于Smaller.top则直接插入Smaller中；</li>
 </ul>
-<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%5BLeetcode295_hard%5DMedianFinder/case3_1.png" alt=""><br></center>
+<center>
+![](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%5BLeetcode295_hard%5DMedianFinder/case3_1.png)
+</center>
 
 <ul>
 <li>若小于Bigger.top则为了保证条件1，需将Bigger中的最大元素值（根）转存至Smaller中。</li>
 </ul>
-<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%5BLeetcode295_hard%5DMedianFinder/case3_2.png" alt=""><br></center>
+<center>
+![](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%5BLeetcode295_hard%5DMedianFinder/case3_2.png)
+</center>
 
 <hr>
 <h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"Include_all.h"</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MedianFinder</span> &#123;</span></span><br><span class="line"><span class="hljs-keyword">public</span>:</span><br><span class="line">	<span class="hljs-comment">/** initialize your data structure here. */</span></span><br><span class="line">	MedianFinder() &#123;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="hljs-comment">//插入过程中维持两堆元素个数的动态平衡</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addNum</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">		<span class="hljs-comment">//如果两堆元素个数相同</span></span><br><span class="line">		<span class="hljs-keyword">if</span>(smaller.size()==bigger.size())</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-keyword">if</span>(!bigger.empty() &amp;&amp; bigger.top()&gt;=num)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Push num "</span> &lt;&lt; num &lt;&lt;<span class="hljs-string">" into bigger"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">				bigger.push(num);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="hljs-keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Push num "</span> &lt;&lt; num &lt;&lt;<span class="hljs-string">" into smaller"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">				smaller.push(num);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-comment">//小顶堆&gt;大顶堆</span></span><br><span class="line">		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(smaller.size() &lt; bigger.size())</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-keyword">if</span>(bigger.top()&gt;num)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Push bigger's top "</span> &lt;&lt; bigger.top() &lt;&lt;<span class="hljs-string">" into smaller"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">				smaller.push(bigger.top());</span><br><span class="line">				<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Pop bigger's top'"</span> &lt;&lt; bigger.top() &lt;&lt;<span class="hljs-string">" from bigger"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">				bigger.pop();</span><br><span class="line">				<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Push num "</span> &lt;&lt; num &lt;&lt;<span class="hljs-string">" into bigger"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">				bigger.push(num);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="hljs-keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Push num "</span> &lt;&lt; num &lt;&lt;<span class="hljs-string">" into smaller"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">				smaller.push(num);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-comment">//大顶堆&gt;小顶堆</span></span><br><span class="line">		<span class="hljs-keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-keyword">if</span>(smaller.top() &lt; num)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Push smaller's top "</span> &lt;&lt; smaller.top() &lt;&lt;<span class="hljs-string">" into bigger"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">				bigger.push(smaller.top());</span><br><span class="line">				<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Pop smaller's top "</span> &lt;&lt; smaller.top() &lt;&lt;<span class="hljs-string">" from smaller"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">				smaller.pop();</span><br><span class="line">				<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Push num "</span> &lt;&lt; num &lt;&lt;<span class="hljs-string">" into smaller"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">				smaller.push(num);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="hljs-keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Push "</span> &lt;&lt; num &lt;&lt;<span class="hljs-string">" into bigger"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">				bigger.push(num);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="hljs-comment">//该函数返回中位数</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">findMedian</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">		<span class="hljs-keyword">if</span>(smaller.size()==bigger.size())</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-keyword">return</span> (smaller.top()+bigger.top())/<span class="hljs-number">2.0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(smaller.size()&gt;bigger.size())</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-keyword">return</span> smaller.top();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">else</span></span><br><span class="line">			<span class="hljs-keyword">return</span> bigger.top();</span><br><span class="line">	&#125;</span><br><span class="line"><span class="hljs-keyword">private</span>:</span><br><span class="line">	<span class="hljs-comment">//实现两个堆的动态平衡</span></span><br><span class="line">	priority_queue&lt;<span class="hljs-keyword">int</span>,<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;,greater&lt;<span class="hljs-keyword">int</span>&gt;&gt; smaller; <span class="hljs-comment">//小顶堆</span></span><br><span class="line">	priority_queue&lt;<span class="hljs-keyword">int</span>,<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;,less&lt;<span class="hljs-keyword">int</span>&gt;&gt; bigger; <span class="hljs-comment">//大顶堆</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Your MedianFinder object will be instantiated and called as such:</span></span><br><span class="line"><span class="hljs-comment"> * MedianFinder* obj = new MedianFinder();</span></span><br><span class="line"><span class="hljs-comment"> * obj-&gt;addNum(num);</span></span><br><span class="line"><span class="hljs-comment"> * double param_2 = obj-&gt;findMedian();</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; nums = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">5</span>,<span class="hljs-number">46</span>,<span class="hljs-number">4</span>,<span class="hljs-number">6</span>,<span class="hljs-number">3</span>,<span class="hljs-number">34</span>,<span class="hljs-number">5</span>,<span class="hljs-number">67</span>,<span class="hljs-number">34</span>,<span class="hljs-number">53</span>,<span class="hljs-number">23</span>,<span class="hljs-number">22</span>,<span class="hljs-number">12</span>,<span class="hljs-number">8</span>,<span class="hljs-number">67</span>,<span class="hljs-number">55</span>,<span class="hljs-number">66</span>&#125;;</span><br><span class="line">	MedianFinder* obj = <span class="hljs-keyword">new</span> MedianFinder();</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> i : nums)</span><br><span class="line">		obj-&gt;addNum(i);</span><br><span class="line">	<span class="hljs-keyword">double</span> param_2 = obj-&gt;findMedian();</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; param_2 &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
-<h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%5BLeetcode295_hard%5DMedianFinder/leetcode295.png" alt=""><br></center>
+<h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><center>
+![](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%5BLeetcode295_hard%5DMedianFinder/leetcode295.png)
+</center>
 
 <hr>
 <h4 id="end"><a href="#end" class="headerlink" title="end"></a>end</h4>
