@@ -6,7 +6,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-<title>【算法】DP最大和问题 - Code·Hub</title>
+<title>字典树 - Code·Hub</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
@@ -40,26 +40,26 @@
 
 
 
-    <meta name="description" content="动态规划">
-<meta name="keywords" content="Knapsack">
+    <meta name="description" content="Trie树 &amp;emsp;据不完全统计，世界上现存英语单词的数量为17万到100万不等。假设现在要你写一个词典APP，要求能够快速检索、删除、添加单词，。显然你很容易想到两种方案：  将所有单词按字典序排列，在按二分搜索来查询。 奖励首字母索引表，在各索引项表内按字典序排序单词，再在当中按二分搜索查询。但无疑上述方案的要求略高，需要大量的连续空间来存储数据，而且不方便添加删除操作。">
+<meta name="keywords" content="Trie">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【算法】DP最大和问题">
-<meta property="og:url" content="https://www.ccyh.xyz/2019/03/17/【算法】DP最大和问题/index.html">
+<meta property="og:title" content="字典树">
+<meta property="og:url" content="https://www.ccyh.xyz/2020/01/29/字典树/index.html">
 <meta property="og:site_name" content="Code·Hub">
-<meta property="og:description" content="动态规划">
+<meta property="og:description" content="Trie树 &amp;emsp;据不完全统计，世界上现存英语单词的数量为17万到100万不等。假设现在要你写一个词典APP，要求能够快速检索、删除、添加单词，。显然你很容易想到两种方案：  将所有单词按字典序排列，在按二分搜索来查询。 奖励首字母索引表，在各索引项表内按字典序排序单词，再在当中按二分搜索查询。但无疑上述方案的要求略高，需要大量的连续空间来存储数据，而且不方便添加删除操作。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91DP%E6%9C%80%E5%A4%A7%E5%92%8C%E9%97%AE%E9%A2%98/20190317082529638.png">
-<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91DP%E6%9C%80%E5%A4%A7%E5%92%8C%E9%97%AE%E9%A2%98/20190317083401575.png">
-<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91DP%E6%9C%80%E5%A4%A7%E5%92%8C%E9%97%AE%E9%A2%98/20190317084336292.png">
+<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E5%AD%97%E5%85%B8%E6%A0%91/20200129024314865.png">
+<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E5%AD%97%E5%85%B8%E6%A0%91/20200129030049923.png">
+<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E5%AD%97%E5%85%B8%E6%A0%91/20200129030856288.png">
 <meta property="og:updated_time" content="2020-01-29T07:32:22.672Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【算法】DP最大和问题">
-<meta name="twitter:description" content="动态规划">
-<meta name="twitter:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91DP%E6%9C%80%E5%A4%A7%E5%92%8C%E9%97%AE%E9%A2%98/20190317082529638.png">
+<meta name="twitter:title" content="字典树">
+<meta name="twitter:description" content="Trie树 &amp;emsp;据不完全统计，世界上现存英语单词的数量为17万到100万不等。假设现在要你写一个词典APP，要求能够快速检索、删除、添加单词，。显然你很容易想到两种方案：  将所有单词按字典序排列，在按二分搜索来查询。 奖励首字母索引表，在各索引项表内按字典序排序单词，再在当中按二分搜索查询。但无疑上述方案的要求略高，需要大量的连续空间来存储数据，而且不方便添加删除操作。">
+<meta name="twitter:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E5%AD%97%E5%85%B8%E6%A0%91/20200129024314865.png">
 
 
 
-<link rel="alternative" href="/atom.xml" title="【算法】DP最大和问题" type="application/atom+xml">
+<link rel="alternative" href="/atom.xml" title="字典树" type="application/atom+xml">
 
 
 
@@ -147,7 +147,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/codehub.ico" alt="【算法】DP最大和问题" height="28">
+                <img src="/images/codehub.ico" alt="字典树" height="28">
             
             </a>
         </div>
@@ -204,7 +204,7 @@
     
     <div class="card-image">
         <span class="image is-7by1">
-            <img class="thumbnail" src="https://media-cdn.jiuzhang.com/course/dp3_LkMISIN.png" alt="【算法】DP最大和问题">
+            <img class="thumbnail" src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E5%AD%97%E5%85%B8%E6%A0%91/Oxford.jpg" alt="字典树">
         </span>
     </div>
     
@@ -213,17 +213,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-17T19:55:27.000Z">2019-03-17</time>
+                <time class="level-item has-text-grey" datetime="2020-01-29T14:04:49.000Z">2020-01-29</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                <a class="has-link-grey -link" href="/categories/Trie/">Trie</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 406 个字)
+                    5 分钟 读完 (大约 821 个字)
                 </span>
                 
             </div>
@@ -231,35 +231,49 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                【算法】DP最大和问题
+                字典树
             
         </h1>
         <div class="content">
-            <h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><hr>
-<a id="more"></a>
-<h4 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h4><blockquote>
-<p>给定一个整数数字序列（用数组表示），在这个数列中选择若干个互不相邻的数，使得这些数的和达到最大值。</p>
-</blockquote>
-<h4 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h4><blockquote>
-<p>属于01背包问题同类问题，对于每一个数，都有两种选择（选或不选）。假设给定数组set[]的长度为n，最终要求OPT(n-1)的结果,也就是从下标0到下标n-1这些数中能组成的最大和，而要求OPT(n-1)就分为两种情况：<br>1.选择set[n-1],因为不能出现相邻选项故OPT[n-1]的结果为set[n-1]与OPT[n-3]的和。<br>2.不选择set[n-1],则OPT[n-1]的结果就与OPT[n-2]相等。<br>判断出口：<br>不难看出，OPT[0] = set[0]，OPT[1] = max(set[0],set[1]);</p>
-</blockquote>
-<p><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91DP%E6%9C%80%E5%A4%A7%E5%92%8C%E9%97%AE%E9%A2%98/20190317082529638.png" alt=""></p>
-<h4 id="因此其状态转移方程为："><a href="#因此其状态转移方程为：" class="headerlink" title="因此其状态转移方程为："></a>因此其状态转移方程为：</h4><p><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91DP%E6%9C%80%E5%A4%A7%E5%92%8C%E9%97%AE%E9%A2%98/20190317083401575.png" alt=""></p>
-<hr>
-<h4 id="算法实现："><a href="#算法实现：" class="headerlink" title="算法实现："></a>算法实现：</h4><p><em>递归实现：</em><br><figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">OPT</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(i == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-built_in">set</span>[<span class="hljs-number">0</span>];</span><br><span class="line">	<span class="hljs-keyword">if</span>(i == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-built_in">set</span>[<span class="hljs-number">0</span>]&gt;<span class="hljs-built_in">set</span>[<span class="hljs-number">1</span>] ? <span class="hljs-built_in">set</span>[<span class="hljs-number">0</span>]:<span class="hljs-built_in">set</span>[<span class="hljs-number">1</span>];</span><br><span class="line">	<span class="hljs-keyword">int</span> a = OPT(i<span class="hljs-number">-1</span>);</span><br><span class="line">	<span class="hljs-keyword">int</span> b = OPT(i<span class="hljs-number">-2</span>)+<span class="hljs-built_in">set</span>[i];</span><br><span class="line">	<span class="hljs-keyword">return</span> a&gt;b?a:b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><em>DP实现：</em><br><figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">OPT_</span><span class="hljs-params">(<span class="hljs-keyword">int</span> <span class="hljs-built_in">set</span>[],<span class="hljs-keyword">int</span> m)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> *opt = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">100</span>];<span class="hljs-comment">//状态数组</span></span><br><span class="line">    <span class="hljs-comment">//出口</span></span><br><span class="line">	opt[<span class="hljs-number">0</span>] = <span class="hljs-built_in">set</span>[<span class="hljs-number">0</span>];</span><br><span class="line">	opt[<span class="hljs-number">1</span>] = <span class="hljs-built_in">set</span>[<span class="hljs-number">0</span>]&gt;<span class="hljs-built_in">set</span>[<span class="hljs-number">1</span>] ? <span class="hljs-built_in">set</span>[<span class="hljs-number">0</span>]:<span class="hljs-built_in">set</span>[<span class="hljs-number">1</span>];</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>;i &lt; m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">int</span> a = opt[i<span class="hljs-number">-1</span>];</span><br><span class="line">		<span class="hljs-keyword">int</span> b = opt[i<span class="hljs-number">-2</span>] + <span class="hljs-built_in">set</span>[i];</span><br><span class="line">		opt[i] = a&gt;b?a:b;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> opt[m<span class="hljs-number">-1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><em>测试：</em></p>
-<blockquote>
-<p>输入：{1,5,8,9,7,8,2,1,6,3}<br>输出：<br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91DP%E6%9C%80%E5%A4%A7%E5%92%8C%E9%97%AE%E9%A2%98/20190317084336292.png" alt=""></p>
-</blockquote>
+            <h2 id="Trie树"><a href="#Trie树" class="headerlink" title="Trie树"></a>Trie树</h2><hr>
+<p>&emsp;据不完全统计，世界上现存英语单词的数量为17万到100万不等。假设现在要你写一个词典APP，要求能够快速检索、删除、添加单词，。显然你很容易想到两种方案：</p>
+<ol>
+<li>将所有单词按字典序排列，在按二分搜索来查询。</li>
+<li>奖励首字母索引表，在各索引项表内按字典序排序单词，再在当中按二分搜索查询。<br>但无疑上述方案的要求略高，需要大量的连续空间来存储数据，而且不方便添加删除操作。<a id="more"></a>
+&emsp;这时Trie树便发挥作用了，我们可以用Trie树来存储单词数据，树结构不需要大量连续的存储空间而且查询、添加结点、删除结点的操作的时间复杂度很小为$O(\log_{2}{N})$。<h3 id="举个例子："><a href="#举个例子：" class="headerlink" title="举个例子："></a>举个例子：</h3>&emsp;假设存储{“code”,”cook”,”five”,”file”,”fat”}这几个单词。其逻辑结构为：</li>
+</ol>
+<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E5%AD%97%E5%85%B8%E6%A0%91/20200129024314865.png" alt=""><br></center>
 
+<h2 id="Trie树的实现"><a href="#Trie树的实现" class="headerlink" title="Trie树的实现"></a>Trie树的实现</h2><hr>
+<h3 id="结点结构："><a href="#结点结构：" class="headerlink" title="结点结构："></a>结点结构：</h3><hr>
+<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E5%AD%97%E5%85%B8%E6%A0%91/20200129030049923.png" alt="结点结构"><br></center>
+
+<figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">TrieNode</span> &#123;</span></span><br><span class="line">    <span class="hljs-keyword">char</span> nodeChar;<span class="hljs-comment">// 该结点表示的字符</span></span><br><span class="line">    <span class="hljs-keyword">int</span> freq;<span class="hljs-comment">// 出现的频率</span></span><br><span class="line">    <span class="hljs-keyword">bool</span> isWord; <span class="hljs-comment">// 单词结点结束标记</span></span><br><span class="line">    <span class="hljs-built_in">vector</span>&lt;TrieNode*&gt; childNode;<span class="hljs-comment">// 先一个结点的指针</span></span><br><span class="line">    TrieNode()<span class="hljs-comment">// 初始化结点</span></span><br><span class="line">    &#123;</span><br><span class="line">        freq = <span class="hljs-number">0</span>;</span><br><span class="line">        isWord = <span class="hljs-literal">false</span>;</span><br><span class="line">        childNode = <span class="hljs-built_in">vector</span>&lt;TrieNode*&gt;(<span class="hljs-number">26</span>,<span class="hljs-literal">NULL</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="树的大致结构："><a href="#树的大致结构：" class="headerlink" title="树的大致结构："></a>树的大致结构：</h4><center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E5%AD%97%E5%85%B8%E6%A0%91/20200129030856288.png" alt="树的结构"><br></center>
+
+<ul>
+<li>根节点的nodeChar不存储字符， 其字符表示位于指针数组中，指针数组的某元素不空则表示存在以其为首字符的单词。</li>
+</ul>
+<hr>
+<h3 id="添加操作"><a href="#添加操作" class="headerlink" title="添加操作"></a>添加操作</h3><hr>
+<figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 添加操作</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addWord</span><span class="hljs-params">(TrieNode* root, <span class="hljs-built_in">string</span> word, <span class="hljs-keyword">int</span> k)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(k &gt;= word.size()) <span class="hljs-keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 将word的首字母插入到root的哪一个分叉中</span></span><br><span class="line">    <span class="hljs-keyword">int</span> index = word[k] - <span class="hljs-string">'a'</span>;</span><br><span class="line">    <span class="hljs-comment">// 若该树为空，插入新结点</span></span><br><span class="line">    <span class="hljs-keyword">if</span>(root-&gt;childNode[index] == <span class="hljs-literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        root-&gt;childNode[index] = <span class="hljs-keyword">new</span> TrieNode();</span><br><span class="line">        root-&gt;childNode[index]-&gt;nodeChar = word[<span class="hljs-number">0</span>];</span><br><span class="line">        <span class="hljs-keyword">if</span>(k == word.size()<span class="hljs-number">-1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-comment">// 终端结点标记</span></span><br><span class="line">            root-&gt;childNode[index]-&gt;isWord = <span class="hljs-literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        addWord(root-&gt;childNode[index], word, k+<span class="hljs-number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(k == word.size()<span class="hljs-number">-1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            root-&gt;childNode[index]-&gt;isWord = <span class="hljs-literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-comment">// 递归添加结点</span></span><br><span class="line">        addWord(root-&gt;childNode[index], word, k+<span class="hljs-number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="查询操作"><a href="#查询操作" class="headerlink" title="查询操作"></a>查询操作</h3><hr>
+<figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 查询操作</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">searchWord</span><span class="hljs-params">(TrieNode* root, <span class="hljs-built_in">string</span> word)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    TrieNode* p = root;</span><br><span class="line">    <span class="hljs-keyword">int</span> i;</span><br><span class="line">    <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>;i &lt; word.size() &amp;&amp; p != <span class="hljs-literal">NULL</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> index = word[i] - <span class="hljs-string">'a'</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span>(p-&gt;childNode[index] == <span class="hljs-literal">NULL</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span>(i == word.size()<span class="hljs-number">-1</span>)</span><br><span class="line">                p-&gt;childNode[index]-&gt;freq++;</span><br><span class="line">            p = p-&gt;childNode[index];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span>(i == word.size() &amp;&amp; p-&gt;isWord)</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;</span><br><span class="line">    <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h3><hr>
+<p>删除操作比较复杂，分三种情况：</p>
+<pre><code>1. 删除整个单词 （该单词的尾结点为叶子节点，且该单词独占一条路径）
+2. 删除前缀词 （该单词的尾结点非叶子节点）
+3. 删除分支单词 （该单词的尾结点为叶子节点但存在于其他单词共用的路径）
+</code></pre><figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isLeave</span><span class="hljs-params">(TrieNode* node)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; <span class="hljs-number">26</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(node-&gt;childNode[i] != <span class="hljs-literal">NULL</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">deleteWord</span><span class="hljs-params">(TrieNode* root, <span class="hljs-built_in">string</span> word, <span class="hljs-keyword">int</span> k)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(k &gt;= word.size()) <span class="hljs-keyword">return</span>;</span><br><span class="line">    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"delete into "</span> &lt;&lt; word[k] &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">    <span class="hljs-keyword">int</span> index = word[k] - <span class="hljs-string">'a'</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span>(root-&gt;childNode[index] == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span>;</span><br><span class="line">    <span class="hljs-keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">'d'</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">        deleteWord(root-&gt;childNode[index], word, k+<span class="hljs-number">1</span>);</span><br><span class="line">        <span class="hljs-keyword">if</span>(isLeave(root) &amp;&amp; !root-&gt;isWord)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"dc"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">            <span class="hljs-keyword">delete</span> root;</span><br><span class="line">            root = <span class="hljs-literal">NULL</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(k == word.size()<span class="hljs-number">-1</span> &amp;&amp; !isLeave(root))</span><br><span class="line">        &#123;</span><br><span class="line">            root-&gt;isWord = <span class="hljs-literal">false</span>;</span><br><span class="line">            <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"dd"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">DeleteKey</span><span class="hljs-params">(TrieNode *root, <span class="hljs-built_in">string</span> word)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(searchWord(root, word))</span><br><span class="line">    &#123;</span><br><span class="line">        deleteWord(root, word, <span class="hljs-number">0</span>);</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Knapsack/">Knapsack</a>
+                    <a class="has-link-grey -link" href="/tags/Trie/">Trie</a>
                 </div>
             </div>
             <div align="center">
@@ -287,11 +301,11 @@
       </li>
       <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="" title="{{ page.title }}">【算法】DP最大和问题</a>
+      <a href="" title="{{ page.title }}">字典树</a>
       </li>
       <li class="post-copyright-link">
       <strong>发布时间：</strong>
-      <a href="" title="{{ page.title }}">2019年3月17日 - 19时03分</a>
+      <a href="" title="{{ page.title }}">2020年1月29日 - 14时01分</a>
       </li>
       <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -342,16 +356,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/04/29/Hexo+icarus主题配置/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/01/29/DisjointSet_并查集/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Hexo+icarus主题配置</span>
+                <span class="level-item">DisjointSet</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/14/【算法】背包问题的DFS与DP解法/">
-                <span class="level-item">【算法】背包问题的DFS与DP解法</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/11/25/二分图最大匹配问题(匈牙利算法)/">
+                <span class="level-item">二分图最大匹配问题(匈牙利算法)</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -401,25 +415,37 @@
                 目录
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#动态规划">
+        <a class="is-flex" href="#Trie树">
         <span class="has-mr-6">1</span>
-        <span>动态规划</span>
+        <span>Trie树</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#问题描述：">
+        <a class="is-flex" href="#举个例子：">
         <span class="has-mr-6">1.1</span>
-        <span>问题描述：</span>
+        <span>举个例子：</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Trie树的实现">
+        <span class="has-mr-6">2</span>
+        <span>Trie树的实现</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#结点结构：">
+        <span class="has-mr-6">2.1</span>
+        <span>结点结构：</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#树的大致结构：">
+        <span class="has-mr-6">2.1.1</span>
+        <span>树的大致结构：</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#添加操作">
+        <span class="has-mr-6">2.2</span>
+        <span>添加操作</span>
         </a></li><li>
-        <a class="is-flex" href="#分析：">
-        <span class="has-mr-6">1.2</span>
-        <span>分析：</span>
+        <a class="is-flex" href="#查询操作">
+        <span class="has-mr-6">2.3</span>
+        <span>查询操作</span>
         </a></li><li>
-        <a class="is-flex" href="#因此其状态转移方程为：">
-        <span class="has-mr-6">1.3</span>
-        <span>因此其状态转移方程为：</span>
-        </a></li><li>
-        <a class="is-flex" href="#算法实现：">
-        <span class="has-mr-6">1.4</span>
-        <span>算法实现：</span>
+        <a class="is-flex" href="#删除操作">
+        <span class="has-mr-6">2.4</span>
+        <span>删除操作</span>
         </a></li></ul></li></ul>
         </div>
     </div>
@@ -1059,7 +1085,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/codehub.ico" alt="【算法】DP最大和问题" height="28">
+                    <img src="/images/codehub.ico" alt="字典树" height="28">
                 
                 </a>
                 <p class="is-size-7">
