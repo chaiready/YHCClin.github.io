@@ -239,54 +239,16 @@
         <div class="content">
             <h2 id="一文读懂并查集"><a href="#一文读懂并查集" class="headerlink" title="一文读懂并查集"></a>一文读懂并查集</h2><hr>
 <p>&emsp;假设你现在置身于一个鸡尾酒会中，任何人都不能通过直接搭讪来获得陌生漂亮妹子的微信号。于是你委托你的朋友帮忙，你的朋友委托他的朋友。。。直到找到一位与漂亮妹子认识的人拿到了微信号。因此，你通过这些中间朋友与妹子取得了联系，成功进入了她的社交圈。当然，你可以通过她认识跟多的漂亮妹子，走上人生巅峰。</p>
-<p>&lt;!- more –&gt;</p>
-<p>&emsp;但是设想一下这样一个悲剧，那位漂亮妹子刚来到地球，她与地球上所有的人类都没有联系，那么你就无法通过中间人去认识她。你与她属于两个互不相交的社交圈。<br>&emsp;现在，不妨稍稍抽象一下，将酒会比作一个个人（元素）组成的集合，而集合中人与人间的关系比作元素与元素间的关系。那么，想要探讨两个人（元素）间是否能取得联系，只要看两者是否属于同一社交圈中，即是否有联系。<br>&emsp;而 <strong>并查集</strong> 的作用就是依赖这些元素两两间的联系来将这些元素区分为各个不相交的集合（社交圈），这样就可以判断两个元素是否直接或间接有联系。</p>
-<hr>
-<h2 id="举个栗子："><a href="#举个栗子：" class="headerlink" title="举个栗子："></a>举个栗子：</h2><hr>
-<p>&emsp;现在我们假设酒会中有 6 个编号从 0 到 5 的人，并且他们两两之间的联系{(0,1),(1,2),(1,3),(4,5)}; 因此他们之间的关系网络如下图：</p>
-<center><br><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/DjSet/relation.PNG" alt=""><br><br></center>
-
-<p>&emsp;由于图中的边都是双向的，为了编程方便，不妨为各个连通分量分别指定一个根结点成为一棵棵树。如此一来要想判断两个结点之间是否有联系只需判断他们是否有相同的根节点即可（属于同一棵树）。由此关系网络转化为一个森林，森林中的每一棵树都是一个集合：</p>
-<center><br><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/DjSet/relationtree.PNG" alt=""><br><br></center>
-
-<p>&emsp;为了方便找出每一个结点的父结点，我们采用 <strong>树的双亲存储结构</strong> 来存储森林，如下图（ParentOf 数组）：</p>
-<center><br><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/DjSet/parantandchild.PNG" alt="ParentOf 数组"><br><br></center>
-
-<p>到此为止，已经了解了并查集是什么。接下来就是并查集的实现了。</p>
-<hr>
-<h2 id="并查集的实现"><a href="#并查集的实现" class="headerlink" title="并查集的实现"></a>并查集的实现</h2><hr>
-<h3 id="求节点所在集合的根节点："><a href="#求节点所在集合的根节点：" class="headerlink" title="求节点所在集合的根节点："></a>求节点所在集合的根节点：</h3><figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">get_root</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; parent)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> x_root = x;</span><br><span class="line">	<span class="hljs-keyword">while</span>(parent[x_root] != x_root)</span><br><span class="line">	&#123;</span><br><span class="line">		x_root = parent[x_root];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> x_root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="并操作（根据两俩关系建立森林（parent数组））："><a href="#并操作（根据两俩关系建立森林（parent数组））：" class="headerlink" title="并操作（根据两俩关系建立森林（parent数组））："></a>并操作（根据两俩关系建立森林（parent数组））：</h3><figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">union_verts</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y,<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; parent,<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; rank)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-comment">// 寻根</span></span><br><span class="line">	<span class="hljs-keyword">int</span> x_root = get_root(x,parent);</span><br><span class="line">	<span class="hljs-keyword">int</span> y_root = get_root(y,parent);</span><br><span class="line">	<span class="hljs-keyword">if</span>(x_root != y_root)    <span class="hljs-comment">// 若不属于同一个集合</span></span><br><span class="line">	&#123;</span><br><span class="line">		parent[y_root] = x_root;    <span class="hljs-comment">// 并操作</span></span><br><span class="line">		<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;                   <span class="hljs-comment">// 合并成功</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="查操作："><a href="#查操作：" class="headerlink" title="查操作："></a>查操作：</h3><figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">quary</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; parent)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> x_root = get_root(x, parent);</span><br><span class="line">    <span class="hljs-keyword">int</span> y_root = get_root(y, parent);</span><br><span class="line">    <span class="hljs-keyword">if</span>(x_root == y_root)</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;        <span class="hljs-comment">// x 与 y 有联系</span></span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;           <span class="hljs-comment">// x 与 y 无联系</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="缺陷及其优化"><a href="#缺陷及其优化" class="headerlink" title="缺陷及其优化"></a>缺陷及其优化</h2><hr>
-<p>&emsp;上述算法完全可以实现并查集，但是由于上述算法的并操作只是简单第将两棵树合并而不考虑两树的高度，这在某些极端情况下生成的树的高度会非常大（如下图）。而并查集操作的时间复杂度取决于树高，因此该算法的时间复杂度将会从 $O(\log_{2}{N})$ 退化成为 $O(N)$。</p>
-<p>&emsp;因此，在合并两棵树的操作时我们要判断是将哪一棵树的根节点作为新树的根节点才能保证新树的高度尽可能小。举例如下图：</p>
-<center><br><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/DjSet/Mergetree.PNG" alt=""><br><br></center>
-
-<p>显然，存在两种情况：</p>
-<ul>
-<li><p>情况 1：新树树高为 4</p>
-</li>
-<li><p>情况 2：新树树高为 3</p>
-<p>毫无疑问，应该按情况 2 来合并。</p>
-</li>
-</ul>
-<h4 id="在并操作中作相应修改（路径压缩）："><a href="#在并操作中作相应修改（路径压缩）：" class="headerlink" title="在并操作中作相应修改（路径压缩）："></a>在并操作中作相应修改（路径压缩）：</h4><p>总结所有的情况：</p>
-<ul>
-<li>两树等高：随便合并</li>
-<li>两树不等高：将较矮的树并到较高的树中</li>
-</ul>
-<p>因此，我们需要记录以某节点为根的子树的高度，存储在rank数组中。rank[i] 表示以 i 节点为根的子树的高度。</p>
-<figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">union_verts</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y,<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; parent,<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; rank)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> x_root = get_root(x,parent);</span><br><span class="line">	<span class="hljs-keyword">int</span> y_root = get_root(y,parent);</span><br><span class="line">	<span class="hljs-keyword">if</span>(x_root != y_root)</span><br><span class="line">	&#123;</span><br><span class="line">        <span class="hljs-comment">// 不等高</span></span><br><span class="line">		<span class="hljs-keyword">if</span>(rank[x_root] &gt; rank[y_root])</span><br><span class="line">		&#123;</span><br><span class="line">			parent[y_root] = x_root;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(rank[x_root] &lt; rank[y_root])</span><br><span class="line">		&#123;</span><br><span class="line">			parent[x_root] = y_root;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">else</span>	<span class="hljs-comment">// 等高</span></span><br><span class="line">		&#123;</span><br><span class="line">			parent[x_root] = y_root;</span><br><span class="line">			rank[y_root]++;			<span class="hljs-comment">// 改变树高</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样一来，就有效避免了树的狂长。</p>
-<hr>
-<h2 id="实验："><a href="#实验：" class="headerlink" title="实验："></a>实验：</h2><figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; parent(<span class="hljs-number">6</span>);</span><br><span class="line">    <span class="hljs-comment">// 初始化parent数组</span></span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; parent.size();i++) parent[i] = i;</span><br><span class="line">    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; rank(<span class="hljs-number">6</span>,<span class="hljs-number">0</span>);</span><br><span class="line">    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; edges = &#123;&#123;<span class="hljs-number">0</span>,<span class="hljs-number">1</span>&#125;,&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>&#125;,&#123;<span class="hljs-number">1</span>,<span class="hljs-number">3</span>&#125;,&#123;<span class="hljs-number">4</span>,<span class="hljs-number">5</span>&#125;&#125;;</span><br><span class="line">    <span class="hljs-comment">// 建立并查集</span></span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; edges.size();i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> x = edges[i][<span class="hljs-number">0</span>];</span><br><span class="line">        <span class="hljs-keyword">int</span> y = edges[i][<span class="hljs-number">1</span>];</span><br><span class="line">        union_verts(x,y,parent,rank)；</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">// 查看 1 与 5 , 2 与 3 是否有联系（同属一个集合）</span></span><br><span class="line">    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Boy 1 and Girl 5 will fall in love: "</span> &lt;&lt; quary(<span class="hljs-number">1</span>,<span class="hljs-number">5</span>) ? <span class="hljs-string">"Yes"</span> : <span class="hljs-string">"No"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="结果："><a href="#结果：" class="headerlink" title="结果："></a>结果：</h4><center><br><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/DjSet/Matchresult.PNG" alt=""><br><br></center>
-
-
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/01/29/DisjointSet_并查集/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
 
         

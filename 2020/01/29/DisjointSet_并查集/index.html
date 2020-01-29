@@ -40,23 +40,23 @@
 
 
 
-    <meta name="description" content="一文读懂并查集 &amp;emsp;假设你现在置身于一个鸡尾酒会中，任何人都不能通过直接搭讪来获得陌生漂亮妹子的微信号。于是你委托你的朋友帮忙，你的朋友委托他的朋友。。。直到找到一位与漂亮妹子认识的人拿到了微信号。因此，你通过这些中间朋友与妹子取得了联系，成功进入了她的社交圈。当然，你可以通过她认识跟多的漂亮妹子，走上人生巅峰。 &amp;lt;!- more –&amp;gt; &amp;emsp;但是设想一下这样一个悲剧，那">
+    <meta name="description" content="一文读懂并查集 &amp;emsp;假设你现在置身于一个鸡尾酒会中，任何人都不能通过直接搭讪来获得陌生漂亮妹子的微信号。于是你委托你的朋友帮忙，你的朋友委托他的朋友。。。直到找到一位与漂亮妹子认识的人拿到了微信号。因此，你通过这些中间朋友与妹子取得了联系，成功进入了她的社交圈。当然，你可以通过她认识跟多的漂亮妹子，走上人生巅峰。">
 <meta name="keywords" content="并查集">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DidjointSet">
 <meta property="og:url" content="https://www.ccyh.xyz/2020/01/29/DisjointSet_并查集/index.html">
 <meta property="og:site_name" content="Code·Hub">
-<meta property="og:description" content="一文读懂并查集 &amp;emsp;假设你现在置身于一个鸡尾酒会中，任何人都不能通过直接搭讪来获得陌生漂亮妹子的微信号。于是你委托你的朋友帮忙，你的朋友委托他的朋友。。。直到找到一位与漂亮妹子认识的人拿到了微信号。因此，你通过这些中间朋友与妹子取得了联系，成功进入了她的社交圈。当然，你可以通过她认识跟多的漂亮妹子，走上人生巅峰。 &amp;lt;!- more –&amp;gt; &amp;emsp;但是设想一下这样一个悲剧，那">
+<meta property="og:description" content="一文读懂并查集 &amp;emsp;假设你现在置身于一个鸡尾酒会中，任何人都不能通过直接搭讪来获得陌生漂亮妹子的微信号。于是你委托你的朋友帮忙，你的朋友委托他的朋友。。。直到找到一位与漂亮妹子认识的人拿到了微信号。因此，你通过这些中间朋友与妹子取得了联系，成功进入了她的社交圈。当然，你可以通过她认识跟多的漂亮妹子，走上人生巅峰。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/DjSet/relation.PNG">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/DjSet/relationtree.PNG">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/DjSet/parantandchild.PNG">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/DjSet/Mergetree.PNG">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/DjSet/Matchresult.PNG">
-<meta property="og:updated_time" content="2020-01-29T05:34:46.061Z">
+<meta property="og:updated_time" content="2020-01-29T05:40:48.799Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DidjointSet">
-<meta name="twitter:description" content="一文读懂并查集 &amp;emsp;假设你现在置身于一个鸡尾酒会中，任何人都不能通过直接搭讪来获得陌生漂亮妹子的微信号。于是你委托你的朋友帮忙，你的朋友委托他的朋友。。。直到找到一位与漂亮妹子认识的人拿到了微信号。因此，你通过这些中间朋友与妹子取得了联系，成功进入了她的社交圈。当然，你可以通过她认识跟多的漂亮妹子，走上人生巅峰。 &amp;lt;!- more –&amp;gt; &amp;emsp;但是设想一下这样一个悲剧，那">
+<meta name="twitter:description" content="一文读懂并查集 &amp;emsp;假设你现在置身于一个鸡尾酒会中，任何人都不能通过直接搭讪来获得陌生漂亮妹子的微信号。于是你委托你的朋友帮忙，你的朋友委托他的朋友。。。直到找到一位与漂亮妹子认识的人拿到了微信号。因此，你通过这些中间朋友与妹子取得了联系，成功进入了她的社交圈。当然，你可以通过她认识跟多的漂亮妹子，走上人生巅峰。">
 <meta name="twitter:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/DjSet/relation.PNG">
 
 
@@ -239,7 +239,7 @@
         <div class="content">
             <h2 id="一文读懂并查集"><a href="#一文读懂并查集" class="headerlink" title="一文读懂并查集"></a>一文读懂并查集</h2><hr>
 <p>&emsp;假设你现在置身于一个鸡尾酒会中，任何人都不能通过直接搭讪来获得陌生漂亮妹子的微信号。于是你委托你的朋友帮忙，你的朋友委托他的朋友。。。直到找到一位与漂亮妹子认识的人拿到了微信号。因此，你通过这些中间朋友与妹子取得了联系，成功进入了她的社交圈。当然，你可以通过她认识跟多的漂亮妹子，走上人生巅峰。</p>
-<p>&lt;!- more –&gt;</p>
+<a id="more"></a>
 <p>&emsp;但是设想一下这样一个悲剧，那位漂亮妹子刚来到地球，她与地球上所有的人类都没有联系，那么你就无法通过中间人去认识她。你与她属于两个互不相交的社交圈。<br>&emsp;现在，不妨稍稍抽象一下，将酒会比作一个个人（元素）组成的集合，而集合中人与人间的关系比作元素与元素间的关系。那么，想要探讨两个人（元素）间是否能取得联系，只要看两者是否属于同一社交圈中，即是否有联系。<br>&emsp;而 <strong>并查集</strong> 的作用就是依赖这些元素两两间的联系来将这些元素区分为各个不相交的集合（社交圈），这样就可以判断两个元素是否直接或间接有联系。</p>
 <hr>
 <h2 id="举个栗子："><a href="#举个栗子：" class="headerlink" title="举个栗子："></a>举个栗子：</h2><hr>
