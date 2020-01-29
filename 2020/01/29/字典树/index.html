@@ -41,7 +41,7 @@
 
 
     <meta name="description" content="Trie树 &amp;emsp;据不完全统计，世界上现存英语单词的数量为17万到100万不等。假设现在要你写一个词典APP，要求能够快速检索、删除、添加单词，。显然你很容易想到两种方案：  将所有单词按字典序排列，在按二分搜索来查询。 奖励首字母索引表，在各索引项表内按字典序排序单词，再在当中按二分搜索查询。但无疑上述方案的要求略高，需要大量的连续空间来存储数据，而且不方便添加删除操作。">
-<meta name="keywords" content="Trie">
+<meta name="keywords" content="Tree">
 <meta property="og:type" content="article">
 <meta property="og:title" content="字典树">
 <meta property="og:url" content="https://www.ccyh.xyz/2020/01/29/字典树/index.html">
@@ -51,7 +51,7 @@
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E5%AD%97%E5%85%B8%E6%A0%91/20200129024314865.png">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E5%AD%97%E5%85%B8%E6%A0%91/20200129030049923.png">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E5%AD%97%E5%85%B8%E6%A0%91/20200129030856288.png">
-<meta property="og:updated_time" content="2020-01-29T07:32:22.672Z">
+<meta property="og:updated_time" content="2020-01-29T07:58:09.886Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="字典树">
 <meta name="twitter:description" content="Trie树 &amp;emsp;据不完全统计，世界上现存英语单词的数量为17万到100万不等。假设现在要你写一个词典APP，要求能够快速检索、删除、添加单词，。显然你很容易想到两种方案：  将所有单词按字典序排列，在按二分搜索来查询。 奖励首字母索引表，在各索引项表内按字典序排序单词，再在当中按二分搜索查询。但无疑上述方案的要求略高，需要大量的连续空间来存储数据，而且不方便添加删除操作。">
@@ -216,14 +216,14 @@
                 <time class="level-item has-text-grey" datetime="2020-01-29T14:04:49.000Z">2020-01-29</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Trie/">Trie</a>
+                <a class="has-link-grey -link" href="/categories/数据结构/">数据结构</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分钟 读完 (大约 821 个字)
+                    5 分钟 读完 (大约 822 个字)
                 </span>
                 
             </div>
@@ -240,7 +240,7 @@
 <ol>
 <li>将所有单词按字典序排列，在按二分搜索来查询。</li>
 <li>奖励首字母索引表，在各索引项表内按字典序排序单词，再在当中按二分搜索查询。<br>但无疑上述方案的要求略高，需要大量的连续空间来存储数据，而且不方便添加删除操作。<a id="more"></a>
-&emsp;这时Trie树便发挥作用了，我们可以用Trie树来存储单词数据，树结构不需要大量连续的存储空间而且查询、添加结点、删除结点的操作的时间复杂度很小为$O(\log_{2}{N})$。<h3 id="举个例子："><a href="#举个例子：" class="headerlink" title="举个例子："></a>举个例子：</h3>&emsp;假设存储{“code”,”cook”,”five”,”file”,”fat”}这几个单词。其逻辑结构为：</li>
+&emsp;这时Trie树便发挥作用了，我们可以用Trie树来存储单词数据，树结构不需要大量连续的存储空间而且查询、添加结点、删除结点的操作的时间复杂度很小为$O(\log_{2}{N})$。<h3 id="举个例子："><a href="#举个例子：" class="headerlink" title="举个例子："></a>举个例子：</h3>&emsp;假设存储<br>$$[{“code”,”cook”,”five”,”file”,”fat”}]$$<br>&emsp;这几个单词。其逻辑结构为：</li>
 </ol>
 <center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E5%AD%97%E5%85%B8%E6%A0%91/20200129024314865.png" alt=""><br></center>
 
@@ -273,7 +273,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Trie/">Trie</a>
+                    <a class="has-link-grey -link" href="/tags/Tree/">Tree</a>
                 </div>
             </div>
             <div align="center">
@@ -495,7 +495,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        8
+                        7
                     </p>
                 </div>
             </div>
@@ -505,7 +505,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        18
+                        17
                     </p>
                 </div>
             </div>
@@ -564,14 +564,6 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/Trie/">
-            <span class="level-start">
-                <span class="level-item">Trie</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/工具/">
             <span class="level-start">
                 <span class="level-item">工具</span>
@@ -601,7 +593,7 @@
                 <span class="level-item">数据结构</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">6</span>
+                <span class="level-item tag">7</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/机器学习/">
@@ -665,7 +657,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-29T14:04:49.000Z">2020-01-29</time></div>
                     <a href="/2020/01/29/字典树/" class="has-link-black-ter is-size-6">字典树</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Trie/">Trie</a>
+                        <a class="has-link-grey -link" href="/categories/数据结构/">数据结构</a>
                     </p>
                 </div>
             </div>
@@ -782,7 +774,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Algorithm/" style="font-size: 17.5px;">Algorithm</a> <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Graph/" style="font-size: 10px;">Graph</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Knapsack/" style="font-size: 10px;">Knapsack</a> <a href="/tags/LeetCode/" style="font-size: 15px;">LeetCode</a> <a href="/tags/List/" style="font-size: 12.5px;">List</a> <a href="/tags/ML/" style="font-size: 20px;">ML</a> <a href="/tags/QuickSort/" style="font-size: 10px;">QuickSort</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/Tree/" style="font-size: 10px;">Tree</a> <a href="/tags/Trie/" style="font-size: 10px;">Trie</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/并查集/" style="font-size: 10px;">并查集</a>
+        <a href="/tags/Algorithm/" style="font-size: 17.5px;">Algorithm</a> <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Graph/" style="font-size: 10px;">Graph</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Knapsack/" style="font-size: 10px;">Knapsack</a> <a href="/tags/LeetCode/" style="font-size: 15px;">LeetCode</a> <a href="/tags/List/" style="font-size: 12.5px;">List</a> <a href="/tags/ML/" style="font-size: 20px;">ML</a> <a href="/tags/QuickSort/" style="font-size: 10px;">QuickSort</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/Tree/" style="font-size: 12.5px;">Tree</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/并查集/" style="font-size: 10px;">并查集</a>
     </div>
     <div align="center">
     
@@ -1037,14 +1029,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Tree/">
                         <span class="tag">Tree</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Trie/">
-                        <span class="tag">Trie</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
