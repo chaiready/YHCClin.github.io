@@ -6,7 +6,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-<title>RedBlackTree - Code·Hub</title>
+<title>图解红黑树 - Code·Hub</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
@@ -43,7 +43,7 @@
     <meta name="description" content="红黑树的基本结构 &amp;emsp;红黑树(Red-black tree) 是一种自平衡二叉查找树，是在计算机科学中用到的一种数据结构，常用于关联数组、字典等。C++ 中的标准关联容器set、multiset、map、multimap内部采用的数据结构就是红黑树。">
 <meta name="keywords" content="Tree">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RedBlackTree">
+<meta property="og:title" content="图解红黑树">
 <meta property="og:url" content="https://www.ccyh.xyz/2020/01/30/RedBlackTree/index.html">
 <meta property="og:site_name" content="Code·Hub">
 <meta property="og:description" content="红黑树的基本结构 &amp;emsp;红黑树(Red-black tree) 是一种自平衡二叉查找树，是在计算机科学中用到的一种数据结构，常用于关联数组、字典等。C++ 中的标准关联容器set、multiset、map、multimap内部采用的数据结构就是红黑树。">
@@ -53,18 +53,18 @@
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130071511715.png">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130074524660.png">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130075833445.png">
-<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130082232264.png">
-<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130083224625.png">
+<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200131101345963.png">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130112423899.png">
-<meta property="og:updated_time" content="2020-01-30T15:40:44.247Z">
+<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/threesituation.png">
+<meta property="og:updated_time" content="2020-01-31T05:02:18.059Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RedBlackTree">
+<meta name="twitter:title" content="图解红黑树">
 <meta name="twitter:description" content="红黑树的基本结构 &amp;emsp;红黑树(Red-black tree) 是一种自平衡二叉查找树，是在计算机科学中用到的一种数据结构，常用于关联数组、字典等。C++ 中的标准关联容器set、multiset、map、multimap内部采用的数据结构就是红黑树。">
 <meta name="twitter:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130062357515.png">
 
 
 
-<link rel="alternative" href="/atom.xml" title="RedBlackTree" type="application/atom+xml">
+<link rel="alternative" href="/atom.xml" title="图解红黑树" type="application/atom+xml">
 
 
 
@@ -152,7 +152,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/codehub.ico" alt="RedBlackTree" height="28">
+                <img src="/images/codehub.ico" alt="图解红黑树" height="28">
             
             </a>
         </div>
@@ -209,7 +209,7 @@
     
     <div class="card-image">
         <span class="image is-7by1">
-            <img class="thumbnail" src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130110010645.png" alt="RedBlackTree">
+            <img class="thumbnail" src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130110010645.png" alt="图解红黑树">
         </span>
     </div>
     
@@ -228,7 +228,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    9 分钟 读完 (大约 1287 个字)
+                    13 分钟 读完 (大约 1915 个字)
                 </span>
                 
             </div>
@@ -236,7 +236,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                RedBlackTree
+                图解红黑树
             
         </h1>
         <div class="content">
@@ -294,24 +294,24 @@
 <p>如此一来，便使得所有性质都满足了。</p>
 <hr>
 <h2 id="红黑树的创建"><a href="#红黑树的创建" class="headerlink" title="红黑树的创建"></a>红黑树的创建</h2><hr>
-<p>&emsp;前面提到，创建 <strong>2-3 树</strong> 的代码编写较为复杂，因此我们肯定不会先创建一棵 <strong>2-3树</strong> 再将其转换成红黑树。因为我们可以很方便地创建一棵二叉树，红黑树不过是性质比普通二叉树多了些，因此在创建红黑树时只需在创建二叉树的方法的基础上多加几种操作来保证红黑树的性质不被破坏就行了。让我们一遍创建一边思考需要添加哪些必要操作，还是以序列：<br>$${3,5,8,10,12,15,16,18,19,4,20}$$<br>为例子：</p>
-<p><strong>插入：</strong> 由于前面提到<strong>2-3树</strong>的插入操作都发生在叶子节点，且都是先将待插入元素与该叶子节点融合。因此新插入节点和原位置的叶子节点为平级关系。又前面提到红色节点与其父节点曾是原级关系，故<code>插入节点应为红色</code>。</p>
-<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130082232264.png" alt=""><br></center>
+<p>&emsp;前面提到，创建 <strong>2-3 树</strong> 的代码编写较为复杂，因此我们肯定不会先创建一棵 <strong>2-3树</strong> 再将其转换成红黑树。因为我们可以很方便地创建一棵二叉树，红黑树不过是性质比普通二叉树多了些，因此在创建红黑树时只需在创建二叉树的方法的基础上多加几种操作来保证红黑树的性质不被破坏就行了。</p>
+<p><strong>插入：</strong> 由于前面提到<strong>2-3树</strong>的插入操作都发生在叶子节点，且都是先将待插入元素与该叶子节点融合。因此新插入节点和原位置的叶子节点为平级关系。又前面提到红色节点与其父节点曾是原级关系，故<code>插入节点应为红色</code>。<br><strong>创建演示：</strong> 下图中红边所连接的子节点为我们说的红色节点（《算法 第四版》的说法为红分支所连节点为红节点，类比着看，其实没差别因为一条分支只唯一对应一个结点）。</p>
+<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200131101345963.png" alt=""><br></center>
 
-<p>此时，根节点为红色，不满足性质 2，因此需要一个 <code>转变颜色的操作: ColorChange()</code> 将结点变成黑色。</p>
-<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130083224625.png" alt=""><br></center>
+<p>观察上述创建过程，发现当插入节点位于右分支时我们需要左旋操作，因为红色节点只能出现在左分支。</p>
+<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130112423899.png" alt="左旋操作"><br></center>
 
-<p>首先 5 应该插入到 3 的右边，但观察上述2-3树转红黑树的过程可得红色的节点只能出现在左子树上，因此应该对其进行左旋以及换色操作。将左旋操作推广如下图：</p>
-<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130112423899.png" alt=""><br></center>
+<p><strong>左旋操作的伪码实现：</strong><br><figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function">RBNode* <span class="hljs-title">leftRotate</span><span class="hljs-params">(RBNode* node)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    RBNode *r_temp = node -&gt; right;</span><br><span class="line">    node -&gt; right = r_temp -&gt; left;</span><br><span class="line">    r_temp -&gt; left = node;</span><br><span class="line">    r_temp -&gt; color = node -&gt; color;</span><br><span class="line">    node -&gt; color = RED;</span><br><span class="line">    <span class="hljs-keyword">return</span> r_temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>右旋操作与左旋操作类似：</strong><br><figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function">RBNode* <span class="hljs-title">rightRotate</span><span class="hljs-params">(RBNode* node)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    RBNode *l_temp = node -&gt; left;</span><br><span class="line">    node -&gt; left = l_temp -&gt; right;</span><br><span class="line">    l_temp -&gt; right = node;</span><br><span class="line">    l_temp -&gt; color = node -&gt; color;</span><br><span class="line">    node -&gt; color = RED;</span><br><span class="line">    <span class="hljs-keyword">return</span> l_temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>翻转颜色操作：</strong><br><figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">flipColor</span><span class="hljs-params">(RBNode *node)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    node -&gt; color = RED;</span><br><span class="line">    node -&gt; left -&gt; color = BLACK;</span><br><span class="line">    node -&gt; right -&gt; color = BLACK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="插入操作："><a href="#插入操作：" class="headerlink" title="插入操作："></a>插入操作：</h3><hr>
+<p>有了上述基本操作的实现基础，我们来研究插入操作的实现。插入按插入位置分三种情况：</p>
+<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/threesituation.png" alt=""><br></center>
 
-<p><strong>左旋操作的实现：</strong><br><figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function">RBNode* <span class="hljs-title">leftRotate</span><span class="hljs-params">(RBNode* node)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    RBNode *r_temp = node -&gt; right;</span><br><span class="line">    node -&gt; right = r_temp-&gt;left;</span><br><span class="line">    r_temp -&gt; left = node;</span><br><span class="line">    r_temp -&gt; color = node -&gt; color;</span><br><span class="line">    node -&gt; color = RED;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>插入操作的实现：</strong><br><figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function">RBNode* <span class="hljs-title">insert</span><span class="hljs-params">(RBNode *&amp;root, KeyType key, ValueType value)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(root == <span class="hljs-literal">NULL</span>)</span><br><span class="line">		<span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> RBNode(key, value, <span class="hljs-number">1</span>, RED);<span class="hljs-comment">// 插入节点为红色</span></span><br><span class="line"></span><br><span class="line">	<span class="hljs-keyword">if</span>(key &lt; root-&gt;key) 	 	 root -&gt; left  = insert(root-&gt;left, key, value);</span><br><span class="line">	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(key &gt; root-&gt;key) 	 root -&gt; right = insert(root-&gt;right, key, value);</span><br><span class="line">        <span class="hljs-keyword">else</span>                 	root -&gt; value = value;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-comment">// 应对三种情况的操作</span></span><br><span class="line">	<span class="hljs-keyword">if</span>(isRed(root-&gt;left) &amp;&amp; !isRed(root-&gt;left))		root = leftRotate(root);	</span><br><span class="line">	<span class="hljs-keyword">if</span>(isRed(root-&gt;left) &amp;&amp; isRed(root-&gt;left-&gt;left))	root = rightRotate(root);</span><br><span class="line">	<span class="hljs-keyword">if</span>(isRed(root-&gt;left) &amp;&amp; isRed(root-&gt;right))		flipColor(root);</span><br><span class="line"></span><br><span class="line">	root -&gt; N = size(root-&gt;left) + size(root-&gt;right) + <span class="hljs-number">1</span>;</span><br><span class="line">	<span class="hljs-keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <hr>
-<h1 id="明天再写……"><a href="#明天再写……" class="headerlink" title="明天再写……"></a>明天再写……</h1><ul>
-<li>右旋</li>
-<li>变色</li>
-<li>插入</li>
-</ul>
-
+<h2 id="整体代码"><a href="#整体代码" class="headerlink" title="整体代码"></a>整体代码</h2><hr>
+<figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> RED true</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> BLACK false</span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">template</span> &lt;KeyType, ValueType&gt;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RBNode</span> &#123;</span></span><br><span class="line"></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">friend</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">isRed</span><span class="hljs-params">(RBNode *node)</span></span>;</span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">friend</span> RBNode* <span class="hljs-title">leftRotate</span><span class="hljs-params">(RBNode *node)</span></span>;</span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">friend</span> RBNode* <span class="hljs-title">rightRotate</span><span class="hljs-params">(RBNode *node)</span></span>;</span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">friend</span> <span class="hljs-keyword">void</span> <span class="hljs-title">flipColor</span><span class="hljs-params">(RBNode *node)</span></span>;</span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">friend</span> RBNode* <span class="hljs-title">insert</span><span class="hljs-params">(RBNode *&amp;root, KeyType key, ValueType value)</span></span>;</span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">friend</span> <span class="hljs-keyword">int</span> <span class="hljs-title">size</span><span class="hljs-params">(RBNode *node)</span></span>;</span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">friend</span> RBNode* <span class="hljs-title">search</span><span class="hljs-params">(RBNode *root, KeyType key)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span>:</span><br><span class="line">	RBNode(KeyType k, ValueType v, <span class="hljs-keyword">int</span> n, <span class="hljs-keyword">bool</span> c) : key(k), value(v), N(n), color(c), left(<span class="hljs-literal">NULL</span>), right(<span class="hljs-literal">NULL</span>) &#123; &#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">private</span>:</span><br><span class="line">	KeyType key;			<span class="hljs-comment">// 节点保存的键值</span></span><br><span class="line">	ValueType value;		<span class="hljs-comment">// 键值关联的值</span></span><br><span class="line">	RBNode *left, *right;	<span class="hljs-comment">// 左右孩子节点指针</span></span><br><span class="line">	<span class="hljs-keyword">int</span> N;					<span class="hljs-comment">// 这棵子树中的节点数</span></span><br><span class="line">	<span class="hljs-keyword">bool</span> color;				<span class="hljs-comment">// 节点颜色：真为红，假为黑</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 获得以node为根的树的节点数</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">size</span><span class="hljs-params">(RBNode *node)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(node == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">	<span class="hljs-keyword">return</span> node -&gt; N;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 获得节点颜色</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isRed</span><span class="hljs-params">(RBNode *node)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(node == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;</span><br><span class="line">	<span class="hljs-keyword">return</span> node-&gt;color == RED;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 改变节点颜色</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">flipColor</span><span class="hljs-params">(RBNode *node)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	node -&gt; color = RED;</span><br><span class="line">	node -&gt; left -&gt; color = BLACK;</span><br><span class="line">	node -&gt; right -&gt; color = BLACK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 左旋操作</span></span><br><span class="line"><span class="hljs-function">RBNode* <span class="hljs-title">leftRotate</span><span class="hljs-params">(RBNode *node)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	RBNode *temp  = node -&gt; right;</span><br><span class="line">	node -&gt; right = temp -&gt; left;</span><br><span class="line">	temp -&gt; left  = node;</span><br><span class="line">	temp -&gt; color = node -&gt; color;</span><br><span class="line">	node -&gt; color = RED;</span><br><span class="line">	temp -&gt; N     = node -&gt; N;</span><br><span class="line">	node -&gt; N     = <span class="hljs-number">1</span> + size(node-&gt;left) + size(node-&gt;right);</span><br><span class="line">	<span class="hljs-keyword">return</span> temp;	<span class="hljs-comment">// 返回重置父节点指针</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 右旋操作</span></span><br><span class="line"><span class="hljs-function">RBNode* <span class="hljs-title">rightRotate</span><span class="hljs-params">(RBNode *node)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	RBNode *temp  = node -&gt; left;</span><br><span class="line">	node -&gt; left  = temp -&gt; right;</span><br><span class="line">	temp -&gt; right = node;</span><br><span class="line">	temp -&gt; color = node -&gt; color;</span><br><span class="line">	node -&gt; color = RED;</span><br><span class="line">	temp -&gt; N     = node -&gt; N;</span><br><span class="line">	node -&gt; N     = <span class="hljs-number">1</span> + size(node-&gt;left) + size(node-&gt;right);</span><br><span class="line">	<span class="hljs-keyword">return</span> temp;	<span class="hljs-comment">// 返回重置父节点指针</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">template</span> &lt;KeyType&gt;</span><br><span class="line"><span class="hljs-function">RBNode* <span class="hljs-title">search</span><span class="hljs-params">(RBNode* root, KeyType key)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(root == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;</span><br><span class="line">	<span class="hljs-keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">if</span>(root -&gt; key == key) <span class="hljs-keyword">return</span> root;</span><br><span class="line">		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(root -&gt; key &lt; key)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-keyword">return</span> search(root -&gt; left, key);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-keyword">return</span> search(root -&gt; right, key);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">template</span> &lt;KeyType, ValueType&gt;</span><br><span class="line"><span class="hljs-function">RBNode* <span class="hljs-title">insert</span><span class="hljs-params">(RBNode *&amp;root, KeyType key, ValueType value)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(root == <span class="hljs-literal">NULL</span>)</span><br><span class="line">		<span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> RBNode(key, value, <span class="hljs-number">1</span>, RED);</span><br><span class="line"></span><br><span class="line">	<span class="hljs-keyword">if</span>(key &lt; root-&gt;key) 	 	root -&gt; left  = insert(root-&gt;left, key, value);</span><br><span class="line">	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(key &gt; root-&gt;key) 	root -&gt; right = insert(root-&gt;right, key, value);</span><br><span class="line">	<span class="hljs-keyword">else</span> 						root -&gt; value = value;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-comment">// 应对三种情况的操作</span></span><br><span class="line">	<span class="hljs-keyword">if</span>(isRed(root-&gt;left) &amp;&amp; !isRed(root-&gt;left))		root = leftRotate(root);	</span><br><span class="line">	<span class="hljs-keyword">if</span>(isRed(root-&gt;left) &amp;&amp; isRed(root-&gt;left-&gt;left))	root = rightRotate(root);</span><br><span class="line">	<span class="hljs-keyword">if</span>(isRed(root-&gt;left) &amp;&amp; isRed(root-&gt;right))		flipColor(root);</span><br><span class="line"></span><br><span class="line">	root -&gt; N = size(root-&gt;left) + size(root-&gt;right) + <span class="hljs-number">1</span>;</span><br><span class="line">	<span class="hljs-keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -346,7 +346,7 @@
       </li>
       <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="" title="{{ page.title }}">RedBlackTree</a>
+      <a href="" title="{{ page.title }}">图解红黑树</a>
       </li>
       <li class="post-copyright-link">
       <strong>发布时间：</strong>
@@ -452,26 +452,30 @@
             <h3 class="menu-label">
                 目录
             </h3>
-            <ul class="menu-list"><ul class="menu-list"><li>
+            <ul class="menu-list"><li>
         <a class="is-flex" href="#红黑树的基本结构">
-        <span class="has-mr-6">1.1</span>
+        <span class="has-mr-6">1</span>
         <span>红黑树的基本结构</span>
         </a></li><li>
         <a class="is-flex" href="#2-3-树">
-        <span class="has-mr-6">1.2</span>
+        <span class="has-mr-6">2</span>
         <span>2-3 树</span>
         </a></li><li>
         <a class="is-flex" href="#2-3-树-gt-红黑树">
-        <span class="has-mr-6">1.3</span>
+        <span class="has-mr-6">3</span>
         <span>2-3 树 -&gt; 红黑树</span>
         </a></li><li>
         <a class="is-flex" href="#红黑树的创建">
-        <span class="has-mr-6">1.4</span>
+        <span class="has-mr-6">4</span>
         <span>红黑树的创建</span>
-        </a></li></ul><li>
-        <a class="is-flex" href="#明天再写……">
-        <span class="has-mr-6">2</span>
-        <span>明天再写……</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#插入操作：">
+        <span class="has-mr-6">4.1</span>
+        <span>插入操作：</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#整体代码">
+        <span class="has-mr-6">5</span>
+        <span>整体代码</span>
         </a></li></ul>
         </div>
     </div>
@@ -654,14 +658,14 @@
             
             <a href="/2020/01/30/RedBlackTree/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130110010645.png" alt="RedBlackTree">
+                    <img class="thumbnail" src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130110010645.png" alt="图解红黑树">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-30T10:08:31.000Z">2020-01-30</time></div>
-                    <a href="/2020/01/30/RedBlackTree/" class="has-link-black-ter is-size-6">RedBlackTree</a>
+                    <a href="/2020/01/30/RedBlackTree/" class="has-link-black-ter is-size-6">图解红黑树</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/数据结构/">数据结构</a>
                     </p>
@@ -1096,7 +1100,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/codehub.ico" alt="RedBlackTree" height="28">
+                    <img src="/images/codehub.ico" alt="图解红黑树" height="28">
                 
                 </a>
                 <p class="is-size-7">
