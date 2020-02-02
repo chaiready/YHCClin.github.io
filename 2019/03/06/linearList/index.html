@@ -48,7 +48,7 @@
 <meta property="og:site_name" content="Code·Hub">
 <meta property="og:description" content="线性表的基本概念与实现">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-02-02T05:58:29.758Z">
+<meta property="og:updated_time" content="2020-02-02T07:31:39.179Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【数据结构】线性表">
 <meta name="twitter:description" content="线性表的基本概念与实现">
@@ -420,18 +420,19 @@
     <div class="card-content">
         <h3 class="title is-5 has-text-weight-normal">评论</h3>
         
-<div id="valine-thread"></div>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
 <script>
-    new Valine({
-        el: '#valine-thread' ,
-        notify: true,
-        verify: true,
-        app_id: 'oR2IQXqpGEFy4GHNDgdmfSMR-gzGzoHsz',
-        app_key: 'hwYfVGzICBlXGiokUXaNqJsx',
-        placeholder: 'Type something slowly...'
-    });
+    var gitalk = new Gitalk({
+        clientID: 'bc0b976990fb607ceea0',
+        clientSecret: '795a99dbb1a7696cb42c4748126da7b78f242cf6',
+        id: 'bf6a3d44b6e9836da9dbd03c5ede733b',
+        repo: 'git@github.com:YHCClin/gitalksource.git',
+        owner: 'YHCClin',
+        admin: "YHCClin"
+    })
+    gitalk.render('comment-container')
 </script>
 
     </div>

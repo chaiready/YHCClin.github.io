@@ -49,7 +49,7 @@
 <meta property="og:description" content="【PAT】B1019">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E6%95%B0%E5%AD%97%E9%BB%91%E6%B4%9E/20190313110514051.png">
-<meta property="og:updated_time" content="2020-02-02T05:58:29.774Z">
+<meta property="og:updated_time" content="2020-02-02T07:31:39.179Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【算法】数字黑洞">
 <meta name="twitter:description" content="【PAT】B1019">
@@ -349,18 +349,19 @@
     <div class="card-content">
         <h3 class="title is-5 has-text-weight-normal">评论</h3>
         
-<div id="valine-thread"></div>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
 <script>
-    new Valine({
-        el: '#valine-thread' ,
-        notify: true,
-        verify: true,
-        app_id: 'oR2IQXqpGEFy4GHNDgdmfSMR-gzGzoHsz',
-        app_key: 'hwYfVGzICBlXGiokUXaNqJsx',
-        placeholder: 'Type something slowly...'
-    });
+    var gitalk = new Gitalk({
+        clientID: 'bc0b976990fb607ceea0',
+        clientSecret: '795a99dbb1a7696cb42c4748126da7b78f242cf6',
+        id: '0924aa9210b7ba9404a9a5837595cd9b',
+        repo: 'git@github.com:YHCClin/gitalksource.git',
+        owner: 'YHCClin',
+        admin: "YHCClin"
+    })
+    gitalk.render('comment-container')
 </script>
 
     </div>
