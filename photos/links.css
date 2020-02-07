@@ -1,29 +1,30 @@
 .link_card {
     display: flex;
-    border-radius: 20px;
-    border: 1px solid #666;
-    box-shadow: 10px 10px 5px #888888;
-    width: 50%;
-    height: 70px;
+    border-radius: 16px;
+    border: 1px solid white;
+    width: 60%;
+    height: 100px;
     padding: 10px;
-    margin-top: 10px;
-    background-color: #F5F0FA;
-    align-content: center;
+    margin-top: 15px;
+    background-color: #FFFFFF;
     text-align: left;
+    font: "FangSong";
+}
+.link_card:hover{
+    box-shadow: 3px 3px 3px #888888;
 }
 .card_img{
     flex: 1;
-    margin: 0 auto;
     vertical-align: middle;
 }
 .link_content {
     flex: 8;
-    padding: 7px;
-    font-size: 13px;
+    margin-left: 10px;
 }
 
 .title{
-    color: #91CDAC;
+    padding: 0px;
+    color: #2CB692;
     font-weight: bold;
     font-size: 15px;
 }
@@ -31,18 +32,53 @@
     color: #91CDAC;
     font-weight: bold;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 16px;
+    padding: 0;
 }
 .title a:hover{
     color: #D480AA;
 }
 img{
-    border-radius: 20px;
-    margin-top: 7px;
-    vertical-align: middle;
+
+    border-radius: 16px;
+    margin-top: 13px;
     text-align: center;
 }
 .description{
     color: #BBD0D3;
-    padding-top: 10px;
+    text-align: justify;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+
+/*标题*/
+
+.category_dl{
+    font-family: "楷体","楷体_GB2312";
+    width: 60%;
+    height: 80px;
+    margin-top: 20px;
+    font-size: 24px;
+    text-align: center;
+    line-height: 80px;
+    vertical-align: middle;
+    border-radius: 8px;
+    color: black;
+    border-left: 4px solid #F0AD4E;
+    background-color: #FDF8EA
+}
+.category_py{
+    font-family: "楷体","楷体_GB2312";
+    width: 60%;
+    height: 80px;
+    margin-top: 20px;
+    font-size: 24px;
+    text-align: center;
+    line-height: 80px;
+    vertical-align: middle;
+    border-radius: 8px;
+    color: black;
+    border-left: 4px solid #6F42C1;
+    background-color: #F5F0FA;
 }
