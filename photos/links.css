@@ -107,3 +107,37 @@ img{
     box-shadow: 3px 3px 3px #888888;
     background-image: linear-gradient(to left, #D5E1E0,#29675F);
 }
+
+
+hr.style-one {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+.explain{
+    font-size: 18px;
+    font-family: "楷体","楷体_GB2312";
+    margin-top: 20px;
+    margin-left: 0;
+}
+
+.format{
+    font-family: "楷体","楷体_GB2312";
+    width: 60%;
+    margin-top: 20px;
+    font-size: 14px;
+    text-align: left;
+    line-height: 80px;
+    vertical-align: middle;
+    border-radius: 8px;
+    line-height: 25px;
+    color: black;
+    border-left: 4px solid #6F42C1;
+    background-color: #F5F0FA;
+    font-weight: bold;
+}
+.format p li{
+    text-align: left;
+}
