@@ -11,6 +11,7 @@
     font-style: "SimHei";
 }
 .link_card:hover{
+    background-size: 120%;
     box-shadow: 3px 3px 3px #888888;
     background-image: linear-gradient(to left, #D5E1E0,#29675F);
 }

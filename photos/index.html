@@ -251,7 +251,22 @@
         </div>
     </div>
     <div class="apply_button">
-        <a href="https://www.ccyh.xyz/2019/02/02/Messagebd/">申请友链</a>
+        <a href="https://www.ccyh.xyz/2019/02/02/Messagebd/">👉🏻 申请友链</a>
+    </div>
+    <div>
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+        <script>
+        var gitalk = new Gitalk({
+        clientID: 'bc0b976990fb607ceea0',
+        clientSecret: '795a99dbb1a7696cb42c4748126da7b78f242cf6',
+        repo: 'YHCClin.github.io',
+        owner: 'YHCClin',
+        admin: 'YHCClin',
+        })
+        gitalk.render('gitalk-container')
+        </script>
     </div>
     </body>
 </div>
