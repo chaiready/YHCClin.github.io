@@ -48,16 +48,10 @@
 <meta property="og:site_name" content="Code·Hub">
 <meta property="og:description" content="一文读懂并查集 &amp;emsp;假设你现在置身于一个鸡尾酒会中，任何人都不能通过直接搭讪来获得陌生漂亮妹子的微信号。于是你委托你的朋友帮忙，你的朋友委托他的朋友。。。直到找到一位与漂亮妹子认识的人拿到了微信号。因此，你通过这些中间朋友与妹子取得了联系，成功进入了她的社交圈。当然，你可以通过她认识跟多的漂亮妹子，走上人生巅峰。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/DjSet/relation.PNG">
-<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/DjSet/relationtree.PNG">
-<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/DjSet/parantandchild.PNG">
-<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/DjSet/Mergetree.PNG">
-<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/DjSet/Matchresult.PNG">
-<meta property="og:updated_time" content="2020-02-07T12:46:04.503Z">
+<meta property="og:updated_time" content="2020-02-07T12:51:33.635Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DisjointSet">
 <meta name="twitter:description" content="一文读懂并查集 &amp;emsp;假设你现在置身于一个鸡尾酒会中，任何人都不能通过直接搭讪来获得陌生漂亮妹子的微信号。于是你委托你的朋友帮忙，你的朋友委托他的朋友。。。直到找到一位与漂亮妹子认识的人拿到了微信号。因此，你通过这些中间朋友与妹子取得了联系，成功进入了她的社交圈。当然，你可以通过她认识跟多的漂亮妹子，走上人生巅峰。">
-<meta name="twitter:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/DjSet/relation.PNG">
 
 
 
@@ -246,13 +240,25 @@
 <hr>
 <h2 id="举个栗子："><a href="#举个栗子：" class="headerlink" title="举个栗子："></a>举个栗子：</h2><hr>
 <p>&emsp;现在我们假设酒会中有 6 个编号从 0 到 5 的人，并且他们两两之间的联系{(0,1),(1,2),(1,3),(4,5)}; 因此他们之间的关系网络如下图：</p>
-<center><br><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/DjSet/relation.PNG" alt=""><br><br></center>
+<center>
+
+![](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/DjSet/relation.PNG)
+
+</center>
 
 <p>&emsp;由于图中的边都是双向的，为了编程方便，不妨为各个连通分量分别指定一个根结点成为一棵棵树。如此一来要想判断两个结点之间是否有联系只需判断他们是否有相同的根节点即可（属于同一棵树）。由此关系网络转化为一个森林，森林中的每一棵树都是一个集合：</p>
-<center><br><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/DjSet/relationtree.PNG" alt=""><br><br></center>
+<center>
+
+![](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/DjSet/relationtree.PNG)
+
+</center>
 
 <p>&emsp;为了方便找出每一个结点的父结点，我们采用 <strong>树的双亲存储结构</strong> 来存储森林，如下图（ParentOf 数组）：</p>
-<center><br><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/DjSet/parantandchild.PNG" alt="ParentOf 数组"><br><br></center>
+<center>
+
+![ParentOf 数组](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/DjSet/parantandchild.PNG)
+
+</center>
 
 <p>到此为止，已经了解了并查集是什么。接下来就是并查集的实现了。</p>
 <hr>
@@ -264,7 +270,11 @@
 <h2 id="缺陷及其优化"><a href="#缺陷及其优化" class="headerlink" title="缺陷及其优化"></a>缺陷及其优化</h2><hr>
 <p>&emsp;上述算法完全可以实现并查集，但是由于上述算法的并操作只是简单第将两棵树合并而不考虑两树的高度，这在某些极端情况下生成的树的高度会非常大（如下图）。而并查集操作的时间复杂度取决于树高，因此该算法的时间复杂度将会从 $O(\log_{2}{N})$ 退化成为 $O(N)$。</p>
 <p>&emsp;因此，在合并两棵树的操作时我们要判断是将哪一棵树的根节点作为新树的根节点才能保证新树的高度尽可能小。举例如下图：</p>
-<center><br><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/DjSet/Mergetree.PNG" alt=""><br><br></center>
+<center>
+
+![](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/DjSet/Mergetree.PNG)
+
+</center>
 
 <p>显然，存在两种情况：</p>
 <ul>
@@ -284,7 +294,11 @@
 <p>这样一来，就有效避免了树的狂长。</p>
 <hr>
 <h2 id="实验："><a href="#实验：" class="headerlink" title="实验："></a>实验：</h2><figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; parent(<span class="hljs-number">6</span>);</span><br><span class="line">    <span class="hljs-comment">// 初始化parent数组</span></span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; parent.size();i++) parent[i] = i;</span><br><span class="line">    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; rank(<span class="hljs-number">6</span>,<span class="hljs-number">0</span>);</span><br><span class="line">    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; edges = &#123;&#123;<span class="hljs-number">0</span>,<span class="hljs-number">1</span>&#125;,&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>&#125;,&#123;<span class="hljs-number">1</span>,<span class="hljs-number">3</span>&#125;,&#123;<span class="hljs-number">4</span>,<span class="hljs-number">5</span>&#125;&#125;;</span><br><span class="line">    <span class="hljs-comment">// 建立并查集</span></span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; edges.size();i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> x = edges[i][<span class="hljs-number">0</span>];</span><br><span class="line">        <span class="hljs-keyword">int</span> y = edges[i][<span class="hljs-number">1</span>];</span><br><span class="line">        union_verts(x,y,parent,rank)；</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">// 查看 1 与 5 , 2 与 3 是否有联系（同属一个集合）</span></span><br><span class="line">    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Boy 1 and Girl 5 will fall in love: "</span> &lt;&lt; quary(<span class="hljs-number">1</span>,<span class="hljs-number">5</span>) ? <span class="hljs-string">"Yes"</span> : <span class="hljs-string">"No"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="结果："><a href="#结果：" class="headerlink" title="结果："></a>结果：</h4><center><br><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/DjSet/Matchresult.PNG" alt=""><br><br></center>
+<h4 id="结果："><a href="#结果：" class="headerlink" title="结果："></a>结果：</h4><center>
+
+![](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/DjSet/Matchresult.PNG)
+
+</center>
 
 
         </div>
@@ -1368,6 +1382,6 @@ document.addEventListener('DOMContentLoaded', function () {
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"admin":{"username":"aokilin","password_hash":"$2a$10$Ftok/UgFv5olradmR40PM.w57gZ.QOp2uXQlpSZevsU.pMi0KPHla","secret":"my super secret phrase"},"kramed":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true},"feed":{"type":"atom","path":"atom.xml","limit":20}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"admin":{"username":"aokilin","password_hash":"$2a$10$Ftok/UgFv5olradmR40PM.w57gZ.QOp2uXQlpSZevsU.pMi0KPHla","secret":"my super secret phrase"},"kramed":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true},"feed":{"type":"atom","path":"atom.xml","limit":20}});</script></body>
 </html>
