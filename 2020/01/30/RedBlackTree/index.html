@@ -48,10 +48,19 @@
 <meta property="og:site_name" content="Code·Hub">
 <meta property="og:description" content="红黑树的基本结构 &amp;emsp;红黑树(Red-black tree) 是一种自平衡二叉查找树，是在计算机科学中用到的一种数据结构，常用于关联数组、字典等。C++ 中的标准关联容器set、multiset、map、multimap内部采用的数据结构就是红黑树。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-02-07T05:16:58.153Z">
+<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130062357515.png">
+<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130064535147.png">
+<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130071511715.png">
+<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130074524660.png">
+<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130075833445.png">
+<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200131101345963.png">
+<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130112423899.png">
+<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/threesituation.png">
+<meta property="og:updated_time" content="2020-02-07T05:20:50.976Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图解红黑树">
 <meta name="twitter:description" content="红黑树的基本结构 &amp;emsp;红黑树(Red-black tree) 是一种自平衡二叉查找树，是在计算机科学中用到的一种数据结构，常用于关联数组、字典等。C++ 中的标准关联容器set、multiset、map、multimap内部采用的数据结构就是红黑树。">
+<meta name="twitter:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130062357515.png">
 
 
 
@@ -251,20 +260,15 @@
 <li>节点可以存放一个(<strong>2-节点</strong>)或两个(<strong>3-节点</strong>)关键字</li>
 <li>每个节点有两个或三个孩子节点</li>
 </ol>
-<center>
-![2-3树的两种节点](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130062357515.png)
-</center>
+<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130062357515.png" alt="2-3树的两种节点"><br></center>
 
 <p>学过<code>B-树</code>的会发现其节点与<code>B-树</code>相似，类似三阶<code>B-树</code>。统样，<strong>2-3 树</strong> 的基本操作也与<code>B-树</code>类似。<br><strong>2-3 树 的基本操作：</strong></p>
 <ol>
 <li><strong>插入：</strong> 插入新节点时，往叶子节点插入</li>
 <li><strong>分解：</strong> 4-节点可以被分解成 3 个 2-节点组成的树，且分解后树的根节点要向上与其原来的父节点融合。</li>
 </ol>
-<p>下面按序列</p>
-<script type="math/tex; mode=display">{1,2,3,4,5}</script><p>构建一棵 <strong>2-3 树</strong>：</p>
-<center>
-![](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130064535147.png)
-</center>
+<p>下面按序列<br>$${1,2,3,4,5}$$<br>构建一棵 <strong>2-3 树</strong>：</p>
+<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130064535147.png" alt=""><br></center>
 
 <p>不难发现在上述操作中 <strong>2-3 树</strong> 始终能够保持严格的平衡。但是由于其节点关键字个数不唯一，且拆分合并操作的编程实现较复杂，因此我们希望通过添加一些规则，将其转化成二叉树，且转换后的二叉树仍然具有2-3树的自平衡优点，这就是红黑树。</p>
 <h2 id="2-3-树-gt-红黑树"><a href="#2-3-树-gt-红黑树" class="headerlink" title="2-3 树 -&gt; 红黑树"></a>2-3 树 -&gt; 红黑树</h2><hr>
@@ -273,51 +277,38 @@
 <li><strong>2-结点：</strong> 直接转换成红黑树的黑节点</li>
 <li><strong>3-节点：</strong> 拆开两个关键字，左关键字标红（表示红色节点与其父节点在2-3树中曾经是同级关系），右关键字标黑，右关键字作左关键字的父节点</li>
 </ul>
-<center>
-![节点转化](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130071511715.png)
-</center>
+<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130071511715.png" alt="节点转化"><br></center>
 
-<p>按照上述规则，我们将序列</p>
-<script type="math/tex; mode=display">{3,5,8,10,12,15,16,18,19,4,20}</script><p>构建的 <strong>2-3 树</strong> 转化为一棵红黑树：</p>
-<center>
-![2-3树 转 红黑树](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130074524660.png)
-</center>
+<p>按照上述规则，我们将序列<br>$${3,5,8,10,12,15,16,18,19,4,20}$$<br>构建的 <strong>2-3 树</strong> 转化为一棵红黑树：</p>
+<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130074524660.png" alt="2-3树 转 红黑树"><br></center>
 
 <p>回顾一下红黑树的性质, 判断上图的树是否满足所有性质：</p>
 <ul>
-<li>[x] 每个节点只能是红色的或黑色的</li>
-<li>[x] 根节点是黑色的</li>
-<li>[ ] 每个叶子节点都是黑色的</li>
-<li>[x] 如果一个节点是红色的，那么它的孩子节点必须是黑色的</li>
-<li>[x] 从任意一个节点到叶子节点经过的黑色节点个数是一样的</li>
+<li style="list-style: none"><input type="checkbox" checked> 每个节点只能是红色的或黑色的</li>
+<li style="list-style: none"><input type="checkbox" checked> 根节点是黑色的</li>
+<li style="list-style: none"><input type="checkbox"> 每个叶子节点都是黑色的</li>
+<li style="list-style: none"><input type="checkbox" checked> 如果一个节点是红色的，那么它的孩子节点必须是黑色的</li>
+<li style="list-style: none"><input type="checkbox" checked> 从任意一个节点到叶子节点经过的黑色节点个数是一样的</li>
 </ul>
 <p>可以发现除了第三个性质其余都满足了。事实上，性质三中说的叶子节点指的是为空的叶子节点，所以，完整的红黑树应为：</p>
-<center>
-![](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130075833445.png)
-</center>
+<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130075833445.png" alt=""><br></center>
 
 <p>如此一来，便使得所有性质都满足了。</p>
 <hr>
 <h2 id="红黑树的创建"><a href="#红黑树的创建" class="headerlink" title="红黑树的创建"></a>红黑树的创建</h2><hr>
 <p>&emsp;前面提到，创建 <strong>2-3 树</strong> 的代码编写较为复杂，因此我们肯定不会先创建一棵 <strong>2-3树</strong> 再将其转换成红黑树。因为我们可以很方便地创建一棵二叉树，红黑树不过是性质比普通二叉树多了些，因此在创建红黑树时只需在创建二叉树的方法的基础上多加几种操作来保证红黑树的性质不被破坏就行了。</p>
 <p><strong>插入：</strong> 由于前面提到<strong>2-3树</strong>的插入操作都发生在叶子节点，且都是先将待插入元素与该叶子节点融合。因此新插入节点和原位置的叶子节点为平级关系。又前面提到红色节点与其父节点曾是原级关系，故<code>插入节点应为红色</code>。<br><strong>创建演示：</strong> 下图中红边所连接的子节点为我们说的红色节点（《算法 第四版》的说法为红分支所连节点为红节点，类比着看，其实没差别因为一条分支只唯一对应一个结点）。</p>
-<center>
-![](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200131101345963.png)
-</center>
+<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200131101345963.png" alt=""><br></center>
 
 <p>观察上述创建过程，发现当插入节点位于右分支时我们需要左旋操作，因为红色节点只能出现在左分支。</p>
-<center>
-![左旋操作](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130112423899.png)
-</center>
+<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/20200130112423899.png" alt="左旋操作"><br></center>
 
 <p><strong>左旋操作的伪码实现：</strong><br><figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function">RBNode* <span class="hljs-title">leftRotate</span><span class="hljs-params">(RBNode* node)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    RBNode *r_temp = node -&gt; right;</span><br><span class="line">    node -&gt; right = r_temp -&gt; left;</span><br><span class="line">    r_temp -&gt; left = node;</span><br><span class="line">    r_temp -&gt; color = node -&gt; color;</span><br><span class="line">    node -&gt; color = RED;</span><br><span class="line">    <span class="hljs-keyword">return</span> r_temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><strong>右旋操作与左旋操作类似：</strong><br><figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function">RBNode* <span class="hljs-title">rightRotate</span><span class="hljs-params">(RBNode* node)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    RBNode *l_temp = node -&gt; left;</span><br><span class="line">    node -&gt; left = l_temp -&gt; right;</span><br><span class="line">    l_temp -&gt; right = node;</span><br><span class="line">    l_temp -&gt; color = node -&gt; color;</span><br><span class="line">    node -&gt; color = RED;</span><br><span class="line">    <span class="hljs-keyword">return</span> l_temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><strong>翻转颜色操作：</strong><br><figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">flipColor</span><span class="hljs-params">(RBNode *node)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    node -&gt; color = RED;</span><br><span class="line">    node -&gt; left -&gt; color = BLACK;</span><br><span class="line">    node -&gt; right -&gt; color = BLACK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><strong>插入操作：</strong></p>
 <p>有了上述基本操作的实现基础，我们来研究插入操作的实现。插入按插入位置分三种情况：</p>
-<center>
-![](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/threesituation.png)
-</center>
+<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/RedBlackTree/threesituation.png" alt=""><br></center>
 
 <p><strong>插入操作的实现：</strong><br><figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function">RBNode* <span class="hljs-title">insert</span><span class="hljs-params">(RBNode *&amp;root, KeyType key, ValueType value)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(root == <span class="hljs-literal">NULL</span>)</span><br><span class="line">		<span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> RBNode(key, value, <span class="hljs-number">1</span>, RED);<span class="hljs-comment">// 插入节点为红色</span></span><br><span class="line"></span><br><span class="line">	<span class="hljs-keyword">if</span>(key &lt; root-&gt;key) 	 	 root -&gt; left  = insert(root-&gt;left, key, value);</span><br><span class="line">	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(key &gt; root-&gt;key) 	 root -&gt; right = insert(root-&gt;right, key, value);</span><br><span class="line">        <span class="hljs-keyword">else</span>                 	root -&gt; value = value;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-comment">// 应对三种情况的操作</span></span><br><span class="line">	<span class="hljs-keyword">if</span>(isRed(root-&gt;left) &amp;&amp; !isRed(root-&gt;left))		root = leftRotate(root);	</span><br><span class="line">	<span class="hljs-keyword">if</span>(isRed(root-&gt;left) &amp;&amp; isRed(root-&gt;left-&gt;left))	root = rightRotate(root);</span><br><span class="line">	<span class="hljs-keyword">if</span>(isRed(root-&gt;left) &amp;&amp; isRed(root-&gt;right))		flipColor(root);</span><br><span class="line"></span><br><span class="line">	root -&gt; N = size(root-&gt;left) + size(root-&gt;right) + <span class="hljs-number">1</span>;</span><br><span class="line">	<span class="hljs-keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <hr>
