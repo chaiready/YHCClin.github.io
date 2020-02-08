@@ -875,21 +875,21 @@
     margin-right: 0;
   }
   .gt-container .gt-btn-preview {
-    background-color: #fff;
-    color: #6190e8;
+    background-color: #FF9900;
+    color: #000;
   }
   .gt-container .gt-btn-preview:hover {
-    background-color: #f2f2f2;
-    border-color: #81a6ed;
+    background-color: #C1A214;
+    border-color: #c1a214;
   }
   .gt-container .gt-btn-public:hover {
-    background-color: #81a6ed;
-    border-color: #81a6ed;
+    background-color: #ff9900;
+    border-color: #ff9900;
   }
   .gt-container .gt-error {
     text-align: center;
     margin: 0.625em;
-    color: #ff3860;
+    color: #6F42C1;
   }
   .gt-container .gt-initing {
     padding: 1.25em 0;
