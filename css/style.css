@@ -77,9 +77,6 @@ a {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
-.card:hover {
-  box-shadow: 2px 2px 2px #888;
-}
 img.thumbnail {
   object-fit: cover;
   width: 100%;
