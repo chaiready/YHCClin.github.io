@@ -63,6 +63,8 @@ a {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 5px 10px 5px #e8e8e8;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .card + .column-right-shadow {
   margin-top: 1.5rem;
@@ -75,9 +77,6 @@ a {
   overflow: hidden;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-}
-.card:hover {
-  box-shadow: 5 10px 5px #00b29c;
 }
 img.thumbnail {
   object-fit: cover;
