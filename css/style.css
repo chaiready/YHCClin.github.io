@@ -77,6 +77,9 @@ a {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
+.card:hover {
+  box-shadow: 0 10px 10px #00b29c;
+}
 img.thumbnail {
   object-fit: cover;
   width: 100%;
@@ -133,7 +136,7 @@ img.thumbnail {
 }
 .footer {
   background: #fff;
-  box-shadow: 5 5px 10px #e8e8e8;
+  box-shadow: 10 10px 10px #e8e8e8;
 }
 .footer .field .button {
   background: transparent;
