@@ -63,8 +63,8 @@ a {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 5px 10px 5px #e8e8e8;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .card + .column-right-shadow {
   margin-top: 1.5rem;
