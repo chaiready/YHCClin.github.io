@@ -62,7 +62,7 @@ a {
 .card {
   background-color: #fff;
   border-radius: 6px;
-  box-shadow: 5 5px 10px #e8e8e8, 5 5 5px #e8e8e8;
+  box-shadow: 0px 8px 5px #e8e8e8, 5 5 5px #e8e8e8;
 }
 .card + .card,
 .card + .column-right-shadow {
@@ -78,7 +78,7 @@ a {
   border-top-right-radius: 4px;
 }
 .card:hover {
-  box-shadow: 0 10px 10px #00b29c;
+  box-shadow: 5 10px 5px #00b29c;
 }
 img.thumbnail {
   object-fit: cover;
@@ -136,7 +136,7 @@ img.thumbnail {
 }
 .footer {
   background: #fff;
-  box-shadow: 10 10px 10px #e8e8e8;
+  box-shadow: 0 10px 5px #e8e8e8;
 }
 .footer .field .button {
   background: transparent;
