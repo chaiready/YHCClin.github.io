@@ -62,9 +62,8 @@ a {
 .card {
   background-color: #fff;
   border-radius: 6px;
-  box-shadow: 0px 8px 5px #e8e8e8, 5 5 5px #e8e8e8;
+  box-shadow: 0px 10px 5px #e8e8e8;
 }
-.card + .card,
 .card + .column-right-shadow {
   margin-top: 1.5rem;
 }
@@ -91,7 +90,7 @@ img.thumbnail {
 }
 .navbar-main {
   background-color: #fff;
-  box-shadow: 5 5px 10px #e8e8e8;
+  box-shadow: 0 10px 5px #e8e8e8;
 }
 .navbar-main .navbar-menu,
 .navbar-main .navbar-start,
@@ -136,7 +135,7 @@ img.thumbnail {
 }
 .footer {
   background: #fff;
-  box-shadow: 0 10px 5px #e8e8e8;
+  box-shadow: 0 -10px 5px #e8e8e8;
 }
 .footer .field .button {
   background: transparent;
