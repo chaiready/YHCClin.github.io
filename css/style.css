@@ -5,7 +5,7 @@ html {
   font-size: 12px;
 }
 body {
-  background-color: #fff;
+  background-color: #e6e6e6;
 }
 body,
 input,
@@ -60,7 +60,7 @@ a {
   background: #e8e8e8;
 }
 .card {
-  background-color: #fff;
+  background: linear-gradient(45deg, rgba(254,172,94,0.5), rgba(199,121,208,0.5), rgba(75,192,200,0.5));
   border-radius: 8px;
   margin-top: 20px;
   margin-bottom: 20px;
