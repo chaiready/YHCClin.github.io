@@ -48,10 +48,14 @@
 <meta property="og:site_name" content="Code·Hub">
 <meta property="og:description" content="Trie树 &amp;emsp;据不完全统计，世界上现存英语单词的数量为17万到100万不等。假设现在要你写一个词典APP，要求能够快速检索、删除、添加单词，。显然你很容易想到两种方案：  将所有单词按字典序排列，在按二分搜索来查询。 奖励首字母索引表，在各索引项表内按字典序排序单词，再在当中按二分搜索查询。但无疑上述方案的要求略高，需要大量的连续空间来存储数据，而且不方便添加删除操作。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-02-25T15:11:04.568Z">
+<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E5%AD%97%E5%85%B8%E6%A0%91/20200129024314865.png">
+<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E5%AD%97%E5%85%B8%E6%A0%91/20200129030049923.png">
+<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E5%AD%97%E5%85%B8%E6%A0%91/20200129030856288.png">
+<meta property="og:updated_time" content="2020-02-25T15:15:59.568Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="字典树">
 <meta name="twitter:description" content="Trie树 &amp;emsp;据不完全统计，世界上现存英语单词的数量为17万到100万不等。假设现在要你写一个词典APP，要求能够快速检索、删除、添加单词，。显然你很容易想到两种方案：  将所有单词按字典序排列，在按二分搜索来查询。 奖励首字母索引表，在各索引项表内按字典序排序单词，再在当中按二分搜索查询。但无疑上述方案的要求略高，需要大量的连续空间来存储数据，而且不方便添加删除操作。">
+<meta name="twitter:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E5%AD%97%E5%85%B8%E6%A0%91/20200129024314865.png">
 
 
 
@@ -243,23 +247,16 @@
 </ol>
 <a id="more"></a>
 <p>&emsp;这时Trie树便发挥作用了，我们可以用Trie树来存储单词数据，树结构不需要大量连续的存储空间而且查询、添加结点、删除结点的操作的时间复杂度很小为$O(\log_{2}{N})$。</p>
-<h3 id="举个例子："><a href="#举个例子：" class="headerlink" title="举个例子："></a>举个例子：</h3><p>&emsp;假设存储</p>
-<script type="math/tex; mode=display">[{"code","cook","five","file","fat"}]</script><p>&emsp;这几个单词。其逻辑结构为：</p>
-<center>
-![](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E5%AD%97%E5%85%B8%E6%A0%91/20200129024314865.png)
-</center>
+<h3 id="举个例子："><a href="#举个例子：" class="headerlink" title="举个例子："></a>举个例子：</h3><p>&emsp;假设存储<br>$$[{“code”,”cook”,”five”,”file”,”fat”}]$$<br>&emsp;这几个单词。其逻辑结构为：</p>
+<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E5%AD%97%E5%85%B8%E6%A0%91/20200129024314865.png" alt=""><br></center>
 
 <h2 id="Trie树的实现"><a href="#Trie树的实现" class="headerlink" title="Trie树的实现"></a>Trie树的实现</h2><hr>
 <h3 id="结点结构："><a href="#结点结构：" class="headerlink" title="结点结构："></a>结点结构：</h3><hr>
-<center>
-![结点结构](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E5%AD%97%E5%85%B8%E6%A0%91/20200129030049923.png)
-</center>
+<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E5%AD%97%E5%85%B8%E6%A0%91/20200129030049923.png" alt="结点结构"><br></center>
 
 <figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">TrieNode</span> &#123;</span></span><br><span class="line">    <span class="hljs-keyword">char</span> nodeChar;<span class="hljs-comment">// 该结点表示的字符</span></span><br><span class="line">    <span class="hljs-keyword">int</span> freq;<span class="hljs-comment">// 出现的频率</span></span><br><span class="line">    <span class="hljs-keyword">bool</span> isWord; <span class="hljs-comment">// 单词结点结束标记</span></span><br><span class="line">    <span class="hljs-built_in">vector</span>&lt;TrieNode*&gt; childNode;<span class="hljs-comment">// 先一个结点的指针</span></span><br><span class="line">    TrieNode()<span class="hljs-comment">// 初始化结点</span></span><br><span class="line">    &#123;</span><br><span class="line">        freq = <span class="hljs-number">0</span>;</span><br><span class="line">        isWord = <span class="hljs-literal">false</span>;</span><br><span class="line">        childNode = <span class="hljs-built_in">vector</span>&lt;TrieNode*&gt;(<span class="hljs-number">26</span>,<span class="hljs-literal">NULL</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <hr>
-<h4 id="树的大致结构："><a href="#树的大致结构：" class="headerlink" title="树的大致结构："></a>树的大致结构：</h4><center>
-![树的结构](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E5%AD%97%E5%85%B8%E6%A0%91/20200129030856288.png)
-</center>
+<h4 id="树的大致结构："><a href="#树的大致结构：" class="headerlink" title="树的大致结构："></a>树的大致结构：</h4><center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E5%AD%97%E5%85%B8%E6%A0%91/20200129030856288.png" alt="树的结构"><br></center>
 
 <ul>
 <li>根节点的nodeChar不存储字符， 其字符表示位于指针数组中，指针数组的某元素不空则表示存在以其为首字符的单词。</li>
@@ -272,9 +269,9 @@
 <hr>
 <h3 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h3><hr>
 <p>删除操作比较复杂，分三种情况：</p>
-<pre><code>    1. 删除整个单词 （该单词的尾结点为叶子节点，且该单词独占一条路径）
-    2. 删除前缀词 （该单词的尾结点非叶子节点）
-    3. 删除分支单词 （该单词的尾结点为叶子节点但存在于其他单词共用的路径）
+<pre><code>1. 删除整个单词 （该单词的尾结点为叶子节点，且该单词独占一条路径）
+2. 删除前缀词 （该单词的尾结点非叶子节点）
+3. 删除分支单词 （该单词的尾结点为叶子节点但存在于其他单词共用的路径）
 </code></pre><figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isLeave</span><span class="hljs-params">(TrieNode* node)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; <span class="hljs-number">26</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(node-&gt;childNode[i] != <span class="hljs-literal">NULL</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">deleteWord</span><span class="hljs-params">(TrieNode* root, <span class="hljs-built_in">string</span> word, <span class="hljs-keyword">int</span> k)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(k &gt;= word.size()) <span class="hljs-keyword">return</span>;</span><br><span class="line">    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"delete into "</span> &lt;&lt; word[k] &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">    <span class="hljs-keyword">int</span> index = word[k] - <span class="hljs-string">'a'</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span>(root-&gt;childNode[index] == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span>;</span><br><span class="line">    <span class="hljs-keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">'d'</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">        deleteWord(root-&gt;childNode[index], word, k+<span class="hljs-number">1</span>);</span><br><span class="line">        <span class="hljs-keyword">if</span>(isLeave(root) &amp;&amp; !root-&gt;isWord)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"dc"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">            <span class="hljs-keyword">delete</span> root;</span><br><span class="line">            root = <span class="hljs-literal">NULL</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(k == word.size()<span class="hljs-number">-1</span> &amp;&amp; !isLeave(root))</span><br><span class="line">        &#123;</span><br><span class="line">            root-&gt;isWord = <span class="hljs-literal">false</span>;</span><br><span class="line">            <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"dd"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">DeleteKey</span><span class="hljs-params">(TrieNode *root, <span class="hljs-built_in">string</span> word)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(searchWord(root, word))</span><br><span class="line">    &#123;</span><br><span class="line">        deleteWord(root, word, <span class="hljs-number">0</span>);</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
