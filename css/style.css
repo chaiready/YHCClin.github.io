@@ -12,6 +12,7 @@ input,
 select,
 textarea {
   font-family: "SimHei", "Ubuntu", "Roboto", "Open Sans", "Microsoft YaHei", sans-serif;
+  font-weight: bold;
 }
 button {
   font-family: "SimHei", "Ubuntu", "Roboto", "Open Sans", "Microsoft YaHei", sans-serif;
