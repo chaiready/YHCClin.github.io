@@ -204,9 +204,9 @@ img.thumbnail {
 }
 .timeline .media:last-child:after {
   top: calc(1.3rem + 9px);
-  width: 9px;
+  width: 1px;
   bottom: 0;
-  background: #fff;
+  background: #808080;
 }
 .timeline .media:first-child:last-child:after {
   top: calc(0.3rem + 9px);
