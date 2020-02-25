@@ -6,6 +6,7 @@
 }
 .child{
     margin: 0;
+    margin-top: 20px;
     padding: 0;
     align-items: center;
     width: 100%;
@@ -21,4 +22,9 @@ hr.style-one {
 
 .child p{
     line-height: 20px;
+    font-size: 14px;
+}
+
+div {
+    background-color: #E6E6E6;
 }
