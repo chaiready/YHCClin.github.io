@@ -89,6 +89,7 @@ img.thumbnail {
 .navbar-main {
   background: linear-gradient(to right, #feac5e, #c779d0, #4bc0c8);
   font-weight: bold;
+  font-size: 17px;
 }
 .navbar-main .navbar-menu,
 .navbar-main .navbar-start,
@@ -132,7 +133,8 @@ img.thumbnail {
   }
 }
 .footer {
-  background: linear-gradient(45deg, rgba(254,172,94,0.5), rgba(199,121,208,0.5), rgba(75,192,200,0.5));
+  background: linear-gradient(to right, #feac5e, #c779d0, #4bc0c8);
+  font-weight: bold;
 }
 .footer .field .button {
   background: transparent;
