@@ -66,7 +66,7 @@ img{
 .category_dl{
     font-family: "楷体","楷体_GB2312";
     width: 80%;
-    height: 80px;
+    height: 60px;
     margin-top: 20px;
     font-size: 24px;
     text-align: center;
@@ -124,10 +124,12 @@ hr.style-one {
 }
 
 .explain{
+    width: 80%;
     font-size: 18px;
     font-family: "楷体","楷体_GB2312";
     margin-top: 20px;
     margin-left: 0;
+    text-align: left;
 }
 
 .format{
