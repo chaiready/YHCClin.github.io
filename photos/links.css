@@ -151,4 +151,11 @@ hr.style-one {
     text-align: left;
 }
 
-
+.atr {
+    color: black;
+    font-size:36px;
+    font-family: "黑体-简", "微软雅黑", "文泉驿微米黑";
+    text-align:center;
+    line-height: 36px;
+    margin: 26px;
+}
