@@ -13,18 +13,22 @@
 
 .searchbox.show {
     display: block;
+    background: linear-gradient(45deg,rgba(254,172,94,0.5),rgba(199,121,208,0.5),rgba(75,192,200,0.5));
 }
 
 .searchbox, .searchbox .searchbox-container {
     position: fixed;
+    background: linear-gradient(45deg,rgba(254,172,94,0.5),rgba(199,121,208,0.5),rgba(75,192,200,0.5));
 }
 
 .searchbox .searchbox-container {
     overflow: hidden;
+    background: linear-gradient(45deg,rgba(254,172,94,0.5),rgba(199,121,208,0.5),rgba(75,192,200,0.5));
 }
 
 .searchbox .searchbox-selectable {
     cursor: pointer;
+    background: linear-gradient(45deg,rgba(254,172,94,0.5),rgba(199,121,208,0.5),rgba(75,192,200,0.5));
 }
 
 .searchbox .searchbox-input-wrapper {
@@ -60,6 +64,7 @@
 
 .searchbox .searchbox-input-wrapper .searchbox-close:hover {
     color: #808080;
+    background: linear-gradient(to right,#feac5e,#c779d0,#4bc0c8);
 }
 
 .searchbox .searchbox-result-wrapper {
