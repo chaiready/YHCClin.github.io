@@ -6,10 +6,11 @@
     flex: 4;
     border-radius: 16px;
     border: 1px solid white;
-    width: 60%;
+    width: 40%;
     height: 100px;
     padding: 10px;
     margin-top: 15px;
+    margin: 20px;
     background-color: #FFFFFF;
     text-align: left;
     font-style: "SimHei";
