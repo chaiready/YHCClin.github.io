@@ -13,13 +13,26 @@
     margin: 10px;
     background-color: #E6E6E6;
     text-align: left;
-    font-style: "SimHei";
+    font-style: SimSun;
 }
 .link_card:hover{
     background-size: 120%;
     box-shadow: 3px 3px 3px #888888;
     color: #734ADD;
-    background: linear-gradient(to right,#feac5e,#c779d0,#4bc0c8);
+    position: relative;
+    padding: 1rem 3rem;
+    font-family: Lato, sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    background-color: white;
+    border: transparent;
+    outline: transparent;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
     animation: glow 8s linear infinite;
 }
 .card_img{
@@ -159,4 +172,10 @@ hr.style-one {
     text-align:center;
     line-height: 70px;
     margin: 20px;
+}
+
+@keyframes glow {
+  to {
+    background-position: 300%;
+  }
 }
