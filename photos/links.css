@@ -155,8 +155,8 @@ hr.style-one {
     color: black;
     height:70px;
     font-size:30px;
-    font-family: "黑体-简", "微软雅黑", "文泉驿微米黑";
+    font-family: SimSun;
     text-align:center;
     line-height: 70px;
-    margin: 26px;
+    margin: 20px;
 }
