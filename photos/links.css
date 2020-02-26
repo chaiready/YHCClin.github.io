@@ -22,7 +22,7 @@
     color: white;
     background: linear-gradient(90deg, #00dbde, #fc00ff, #00dbde);
     background-size: 300%;
-    border-radius: 2em;
+    border-radius: 8px;
     position: relative;
     padding: 1rem 3rem;
     font-family: Lato, sans-serif;
