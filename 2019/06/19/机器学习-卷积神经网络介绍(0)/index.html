@@ -48,32 +48,10 @@
 <meta property="og:site_name" content="Code·Hub">
 <meta property="og:description" content="&amp;emsp;作为本系列的第一篇文章，本文仅对卷积神经网络的工作过程做一个简单的介绍，并不涉及数学原理与推导。若想要深入了解数学原理，那么可以去查看相关文献或者我将会在之后更新相关内容的文章。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/google.gif">
-<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619123229184.png">
-<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/mnist_8.gif">
-<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/lenet.jpg">
-<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/lenet_cal.png">
-<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619045802129.png">
-<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619050403433.png">
-<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/cnn_image_sample.gif">
-<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619053433213.png">
-<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619054522781.png">
-<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619055337351.png">
-<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/ReLU.png">
-<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/relu_op.png">
-<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619072042438.png">
-<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619072936964.png">
-<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619072355283.png">
-<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619074946589.png">
-<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619075722203.png">
-<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619080251028.png">
-<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619080952782.png">
-<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619080746017.png">
-<meta property="og:updated_time" content="2020-02-26T08:29:36.861Z">
+<meta property="og:updated_time" content="2020-02-26T09:32:40.854Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度学习-卷积神经网络(0)">
 <meta name="twitter:description" content="&amp;emsp;作为本系列的第一篇文章，本文仅对卷积神经网络的工作过程做一个简单的介绍，并不涉及数学原理与推导。若想要深入了解数学原理，那么可以去查看相关文献或者我将会在之后更新相关内容的文章。">
-<meta name="twitter:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/google.gif">
 
 
 
@@ -267,67 +245,107 @@
 <hr>
 <h2 id="什么是卷积神经网络？"><a href="#什么是卷积神经网络？" class="headerlink" title="什么是卷积神经网络？"></a>什么是卷积神经网络？</h2><hr>
 <p>&emsp;卷积神经网络（Convolutional Neural Network，CNN）是前馈人工神经网络的一种。在图像识别领域有着广泛的应用并且非常有效。当人们谈到计算机视觉时，通常都绕不开卷积神经网络。</p>
-<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/google.gif" alt="谷歌相册图像搜索"><br></center>
+<center>
+![谷歌相册图像搜索](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/google.gif)
+</center>
 
 
 <hr>
 <h2 id="计算机眼中的图像"><a href="#计算机眼中的图像" class="headerlink" title="计算机眼中的图像"></a>计算机眼中的图像</h2><hr>
 <p>&emsp;毫无疑问，你可以很快分辨下图中的动物是只猫。但在计算机“眼中”，它仅仅是一个数字序列。图像由一个个像素组成，每一个像素通常以RGB(Red,Green,Blue)三原色表示。但为了简化，我们使用灰度（0-255）表示，仅仅一个数字就可以表示（0：黑色 255：白色）。如此一来，对于一张$200\times 200$像素的图片，在计算机眼中就为一个$200\times 200$的矩阵，也即一个$40000$维的向量。</p>
-<center><br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619123229184.png" alt="计算机眼中的图像"><br></center><br>&emsp;计算机学习（训练）识别图像的过程就是将许多图片向量输入某种算法处理后将结果与目标值相比对，对误差进行修正直到结果输出令人满意为止。待训练结束后再给它看一个从未看过的图像它也能准确地识别图像的内容。<br>&emsp;本系列文章我们将继续使用Mnist数据集来训练和测试神经网络。<br><center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/mnist_8.gif" alt="Mnist数据集"><br></center>
+<center>
+![计算机眼中的图像](http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619123229184.png)
+</center>
+&emsp;计算机学习（训练）识别图像的过程就是将许多图片向量输入某种算法处理后将结果与目标值相比对，对误差进行修正直到结果输出令人满意为止。待训练结束后再给它看一个从未看过的图像它也能准确地识别图像的内容。
+&emsp;本系列文章我们将继续使用Mnist数据集来训练和测试神经网络。
+<center>
+![Mnist数据集](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/mnist_8.gif)
+</center>
 
 <hr>
 <h2 id="LeNet框架（20世纪90年代）"><a href="#LeNet框架（20世纪90年代）" class="headerlink" title="LeNet框架（20世纪90年代）"></a>LeNet框架（20世纪90年代）</h2><hr>
 <p>&emsp;LeNet框架是卷积神经网络的祖师爷LeCun在1998年提出的，用于解决手写数字识别的视觉任务。自那时起，CNN的最基本的架构就定下来了：卷积层、池化层、全连接层。本篇文章也将围绕该框架来进行卷积神经网络的介绍。</p>
-<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/lenet.jpg" alt="LeNet框架简图"><br></center>
+<center>
+![LeNet框架简图](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/lenet.jpg)
+</center>
 
 <hr>
 <h2 id="LeNet-卷积神经网络的工作过程"><a href="#LeNet-卷积神经网络的工作过程" class="headerlink" title="LeNet 卷积神经网络的工作过程"></a>LeNet 卷积神经网络的工作过程</h2><hr>
-<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/lenet_cal.png" alt="卷积神经网络的计算过程"><br></center>
+<center>
+![卷积神经网络的计算过程](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/lenet_cal.png)
+</center>
 
 <hr>
 <h3 id="1、卷积运算："><a href="#1、卷积运算：" class="headerlink" title="1、卷积运算："></a>1、卷积运算：</h3><hr>
 <p>&emsp;顾名思义，卷积神经网络得名于“卷积”运算。在卷积神经网络中，卷积的主要目的是从目标图像中提取“特征”。通过使用输入数据中的小方块（矩阵分块）来学习图像特征，卷积运算保留了像素间的空间关系。<br>&emsp;正如前文所说，每个图像都可以被计算机看成是一个像素值矩阵。现仅考虑一个$5\times 5$像素的图像矩阵$W_{img}$：</p>
-<p><div align="center"><br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619045802129.png" alt=""><br></div><br>再令一个$3\times 3$的矩阵$W_{f}$：</p>
-<center><br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619050403433.png" alt=""><br></center><br>将$3\times 3$的矩阵在$5\times 5$矩阵上移动并将对应位的数值相乘并求和，得到一个新的矩阵即为卷积运算后的特征值矩阵：<br><center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/cnn_image_sample.gif" alt="卷积运算"><br></center>
+<p><div align="center">
+![](http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619045802129.png)
+</div><br>再令一个$3\times 3$的矩阵$W_{f}$：</p>
+<center>
+![](http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619050403433.png)
+</center>
+将$3\times 3$的矩阵在$5\times 5$矩阵上移动并将对应位的数值相乘并求和，得到一个新的矩阵即为卷积运算后的特征值矩阵：
+<center>
+![卷积运算](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/cnn_image_sample.gif)
+</center>
 
 <p>&emsp;这个由特征值组成的矩阵被称为 <strong>卷积特征</strong> 或 <strong>特征映射</strong> 。而上述参与卷积运算的$3\times 3$矩阵被称为 <strong>卷积滤波器</strong> 或 <strong>核</strong> 或 <strong>特征探测器</strong> （以下统称滤波器，但是事实上过滤器的作用就是原始图像的 <strong>特征检测器</strong>）。上述例子中过滤器在图像矩阵上每次移动1个像素单位，称为 <strong>步幅</strong> 。</p>
 <p>&emsp;不难发现，不同的滤波器作用于相同图像上会得到不同的特征映射，下图列出了一些滤波器的取值以及功能作用(边缘检测，锐化等)：</p>
-<center><br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619053433213.png" alt=""><br></center>
+<center>
+![](http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619053433213.png)
+</center>
 
 <p>&emsp;总的来说，一个滤波器在输入图像上移动（卷积操作）以生成特征映射。在同一张图像上，另一个滤波器的卷积生成了不同的特征图。需要注意到，卷积操作捕获原始图像中的局部依赖关系很重要。还要注意这两个不同的滤波器如何从同一张原始图像得到不同的特征图。请记住，以上图像和两个滤波器只是数值矩阵。<br>&emsp;实际上，卷积神经网络在训练过程中会自己学习这些滤波器的值（尽管在训练过程之前我们仍需要指定诸如滤波器数目、大小，网络框架等参数）。我们拥有的滤波器数目越多，提取的图像特征就越多，我们的网络在识别新图像时效果就会越好。</p>
 <p>特征映射（卷积特征）的大小由我们在执行卷积步骤之前需要决定的三个参数控制：</p>
 <ul>
 <li><strong>深度：</strong>深度对应于我们用于卷积运算的过滤器数量。在图6所示的网络中，我们使用三个不同的过滤器对初始的船图像进行卷积，从而生成三个不同的特征图。可以将这三个特征地图视为堆叠的二维矩阵，因此，特征映射的“深度”为3。</li>
 </ul>
-<center><br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619054522781.png" alt="卷积操作"><br></center>
+<center>
+![卷积操作](http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619054522781.png)
+</center>
 
 <ul>
 <li><strong>步幅：</strong>步幅是我们在输入矩阵上移动一次过滤器矩阵的像素数量。当步幅为1时，我们一次将过滤器移动1个像素。当步幅为2时，过滤器每次移动2个像素。步幅越大，生成的特征映射越小。</li>
 <li><strong>零填充：</strong>有时，将输入矩阵边界用零来填充会很方便，这样我们可以将过滤器应用于输入图像矩阵的边界元素。零填充一个很好的特性是它允许我们控制特征映射的大小。添加零填充也称为宽卷积，而不使用零填充是为窄卷积。</li>
 </ul>
-<center><br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619055337351.png" alt="边界零填充"><br></center>
+<center>
+![边界零填充](http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619055337351.png)
+</center>
 
 <hr>
 <h3 id="2、非线性操作（ReLU操作）"><a href="#2、非线性操作（ReLU操作）" class="headerlink" title="2、非线性操作（ReLU操作）"></a>2、非线性操作（ReLU操作）</h3><hr>
 <p>&emsp;每次卷积操作之后，都会进行一次ReLU操作，其全称为修正线性单元（Rectified Linear Unit),是一种非线性操作。以下为修正线性函数的图像及表达式：</p>
-<p>$$<br>f(x)=\begin{cases}<br>0, &amp; x&lt;0 \\<br>x, &amp; otherwise<br>\end{cases}<br>$$</p>
-<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/ReLU.png" alt="修正线性函数"><br></center>
+<script type="math/tex; mode=display">
+f(x)=\begin{cases}
+0, & x<0 \\\\
+x, & otherwise
+\end{cases}</script><center>
+![修正线性函数](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/ReLU.png)
+</center>
 
 <p>&emsp;ReLU 是一个针对元素的操作（应用于每个像素），并将特征映射中的所有负像素值替换为零。ReLU 的目的是在卷积神经网络中引入非线性因素，因为在实际生活中我们想要用神经网络学习的数据大多数都是非线性的（卷积是一个线性运算 —— 按元素进行矩阵乘法和加法，所以我们希望通过引入 ReLU 这样的非线性函数来解决非线性问题）。<br>从可以很清楚地理解 ReLU 操作。它展示了将 ReLU 作用于某个特征映射得到的结果。这里的输出特征映射也被称为“修正”特征映射。</p>
-<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/relu_op.png" alt="修正线性函数"><br></center>
+<center>
+![修正线性函数](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/relu_op.png)
+</center>
 
 <p>其他非线性函数如 <strong>Sigmoid</strong> 或 <strong>tanh</strong> 也能达到类似效果，但是 <strong>ReLU</strong> 函数的效果是最好的。</p>
 <hr>
 <h3 id="3、池化（Pooling）"><a href="#3、池化（Pooling）" class="headerlink" title="3、池化（Pooling）"></a>3、池化（Pooling）</h3><hr>
 <p>&emsp;空间池化（也称为子采样或下采样）可降低每个特征映射的维度，并保留最重要的信息。空间池化有几种不同的方式：<strong>最大值，平均值，求和等</strong>。</p>
 <p>&emsp;在最大池化的情况下，我们定义一个空间邻域（例如一个2 × 2窗口），并取修正特征映射在该窗口内最大的元素。当然我们也可以取该窗口内所有元素的平均值（<strong>平均池化</strong>）或所有元素的总和。在实际运用中，<strong>最大池化</strong> 的表现更好。<br>&ensp;下图展示了通过2 × 2窗口在修正特征映射（卷积+ ReLU 操作后得到）上应用最大池化操作的示例:</p>
-<center><br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619072042438.png" alt="Pooling"><br></center>
+<center>
+![Pooling](http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619072042438.png)
+</center>
 
 <p>&emsp;我们将2 x 2窗口移动2个单元格（也称为“步幅”），并取每个区域中的最大值。如图9所示，这样就降低了特征映射的维度,变成了一个$2\times 2$的矩阵。<br>&emsp;由于池化操作分别应用于每个特征映射（因此，我们从三个输入映射中得到了三个输出映射）。</p>
-<center><br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619072936964.png" alt="在修正后的特征映射上应用池化"><br></center>
+<center>
+![在修正后的特征映射上应用池化](http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619072936964.png)
+</center>
 
 <p>两种池化方法的结果对比：</p>
-<center><br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619072355283.png" alt="Pool Diffrent"><br></center>
+<center>
+![Pool Diffrent](http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619072355283.png)
+</center>
 
 <p>&emsp;池化的作用是逐步减少输入的空间大小。具体来说有以下四点：</p>
 <ul>
@@ -344,18 +362,27 @@
 <li><a href="http://scs.ryerson.ca/~aharley/vis/conv/flat.html" target="_blank" rel="noopener">2D Visualization of a Convolutional Neural Network.</a></li>
 </ul>
 <hr>
-<center><br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619074946589.png" alt=""><br></center>
+<center>
+![](http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619074946589.png)
+</center>
 
 <hr>
 <h3 id="1、卷积层"><a href="#1、卷积层" class="headerlink" title="1、卷积层"></a>1、卷积层</h3><p>&emsp;将鼠标放在卷积层的某个像素点上并点击会出现：</p>
-<center><br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619075722203.png" alt=""><br></center>
+<center>
+![](http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619075722203.png)
+</center>
 
 <hr>
-<h3 id="2、池化层"><a href="#2、池化层" class="headerlink" title="2、池化层"></a>2、池化层</h3><center><br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619080251028.png" alt=""><br></center>
+<h3 id="2、池化层"><a href="#2、池化层" class="headerlink" title="2、池化层"></a>2、池化层</h3><center>
+![](http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619080251028.png)
+</center>
 
 <hr>
 <h3 id="3、全连接层"><a href="#3、全连接层" class="headerlink" title="3、全连接层"></a>3、全连接层</h3><p>&emsp;全连接层的每一个结点都与其前一层的每一个结点相连接。</p>
-<center><br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619080952782.png" alt=""><br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619080746017.png" alt=""><br></center>
+<center>
+![](http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619080952782.png)
+![](http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A5%E9%97%A8%E7%BA%A7%E4%BB%8B%E7%BB%8D/20190619080746017.png)
+</center>
 
 <hr>
 <p>&emsp;该可视化项目还有3D版的，大家可以去玩玩，对于加深理解很有帮助。</p>
