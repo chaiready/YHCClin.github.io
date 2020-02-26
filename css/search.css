@@ -39,7 +39,7 @@
     box-shadow: none;
     font-weight: 200;
     border-radius: 0;
-    background: #fff;
+    background: linear-gradient(45deg,rgba(254,172,94,0.5),rgba(199,121,208,0.5),rgba(75,192,200,0.5));
     line-height: 20px;
     box-sizing: border-box;
     padding: 12px 28px 12px 20px;
@@ -69,6 +69,7 @@
     bottom: 0;
     overflow-y: auto;
     position: absolute;
+    background: linear-gradient(45deg,rgba(254,172,94,0.5),rgba(199,121,208,0.5),rgba(75,192,200,0.5));
 }
 
 .searchbox .searchbox-container {
@@ -79,6 +80,7 @@
     bottom: 100px;
     margin-left: -270px;
     box-sizing: border-box;
+    background: linear-gradient(45deg,rgba(254,172,94,0.5),rgba(199,121,208,0.5),rgba(75,192,200,0.5));
 }
 
 @media screen and (max-width: 559px), screen and (max-height: 479px) {

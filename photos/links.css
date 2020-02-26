@@ -1,5 +1,9 @@
+.row {
+    display: flex;
+}
 .link_card {
     display: flex;
+    flex: 4;
     border-radius: 16px;
     border: 1px solid white;
     width: 60%;
