@@ -9,7 +9,6 @@
     width: 85%;
     height: 100%;
     background-color: #E6E6E6;
-    align-items: center;
 }
 .child{
     margin: 0;
@@ -17,7 +16,7 @@
     margin-bottom: 30px;
     padding: 0;
     align-items: center;
-    width: 100%;
+    width: 80%;
     background-color: #E6E6E6;
 }
 
