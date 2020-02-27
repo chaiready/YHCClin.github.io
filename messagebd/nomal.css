@@ -1,7 +1,11 @@
+.back {
+    background: url("https://i0.hdslb.com/bfs/article/ef0c4f11707db38f5d61c21fcf1540a034440cc1.jpg@1320w_742h.webp");
+}
+
 .parent{
     margin: 0;
     padding: 0;
-    width: 100%;
+    width: 85%;
     height: 100%;
     background-color: #E6E6E6;
 }
@@ -24,6 +28,7 @@ hr.style-one {
 
 .child p{
     line-height: 30px;
-    font-size: 14px;
+    font-size: 16px;
+    font-family: SimSun;
     font-weight: bold;
 }
