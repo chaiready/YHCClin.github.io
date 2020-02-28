@@ -91,28 +91,7 @@ body {
     display: block;
 }
 </style>
-<div class="stars"></div>  <!--背景层，不要删除，不然没有作用-->
-    <script>
-        $(document).ready(function(){
-          var stars=800;  /*星星的密集程度，数字越大越多*/
-          var $stars=$(".stars");
-          var r=800;   /*星星的看起来的距离,值越大越远,可自行调制到自己满意的样子*/
-          for(var i=0;i<stars;i++){
-            var $star=$("<div/>").addClass("star");
-            $stars.append($star);
-          }
-          $(".star").each(function(){
-            var cur=$(this);
-            var s=0.2+(Math.random()*1);
-            var curR=r+(Math.random()*300);
-            cur.css({ 
-              transformOrigin:"0 0 "+curR+"px",
-              transform:" translate3d(0,0,-"+curR+"px) rotateY("+(Math.random()*360)+"deg) rotateX("+(Math.random()*-50)+"deg) scale("+s+","+s+")"
-               
-            })
-          })
-        })
-</script>
+
 <script>
 (function(){
     var bp = document.createElement('script');
@@ -145,7 +124,7 @@ body {
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%5BLeetcode295_hard%5DMedianFinder/case3_1.png">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%5BLeetcode295_hard%5DMedianFinder/case3_2.png">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%5BLeetcode295_hard%5DMedianFinder/leetcode295.png">
-<meta property="og:updated_time" content="2020-02-28T12:50:49.358Z">
+<meta property="og:updated_time" content="2020-02-28T13:28:46.807Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图解LeetCode295_Hard_MedianFinder">
 <meta name="twitter:description" content="[LC295] 数据流中的中位数(类设计）题目描述：中位数是有序列表中间的数。如果列表长度是偶数，中位数则是中间两个数的平均值。">
@@ -235,8 +214,9 @@ body {
 
 <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
-<body id="mydiv" class="is-3-column">
-    <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-main">
+<body class="is-3-column">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="stars"></div>
+    <nav class="navbar navbar-main">
     <div class="container">
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
@@ -1464,6 +1444,27 @@ document.addEventListener('DOMContentLoaded', function () {
             //调用
             CanvasParticle(config);
         }
+    </script>
+   <script type="text/javascript">
+        $(document).ready(function(){
+          var stars=800;  /*星星的密集程度，数字越大越多*/
+          var $stars=$(".stars");
+          var r=800;   /*星星的看起来的距离,值越大越远,可自行调制到自己满意的样子*/
+          for(var i=0;i<stars;i++){
+            var $star=$("<div/>").addClass("star");
+            $stars.append($star);
+          }
+          $(".star").each(function(){
+            var cur=$(this);
+            var s=0.2+(Math.random()*1);
+            var curR=r+(Math.random()*300);
+            cur.css({ 
+              transformOrigin:"0 0 "+curR+"px",
+              transform:" translate3d(0,0,-"+curR+"px) rotateY("+(Math.random()*360)+"deg) rotateX("+(Math.random()*-50)+"deg) scale("+s+","+s+")"
+               
+            })
+          })
+        })
     </script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({

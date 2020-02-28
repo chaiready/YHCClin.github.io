@@ -91,28 +91,7 @@ body {
     display: block;
 }
 </style>
-<div class="stars"></div>  <!--背景层，不要删除，不然没有作用-->
-    <script>
-        $(document).ready(function(){
-          var stars=800;  /*星星的密集程度，数字越大越多*/
-          var $stars=$(".stars");
-          var r=800;   /*星星的看起来的距离,值越大越远,可自行调制到自己满意的样子*/
-          for(var i=0;i<stars;i++){
-            var $star=$("<div/>").addClass("star");
-            $stars.append($star);
-          }
-          $(".star").each(function(){
-            var cur=$(this);
-            var s=0.2+(Math.random()*1);
-            var curR=r+(Math.random()*300);
-            cur.css({ 
-              transformOrigin:"0 0 "+curR+"px",
-              transform:" translate3d(0,0,-"+curR+"px) rotateY("+(Math.random()*360)+"deg) rotateX("+(Math.random()*-50)+"deg) scale("+s+","+s+")"
-               
-            })
-          })
-        })
-</script>
+
 <script>
 (function(){
     var bp = document.createElement('script');
@@ -142,7 +121,7 @@ body {
 <meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E3%80%91%E6%B5%AE%E7%82%B9%E6%95%B0%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E8%A1%A8%E7%A4%BA/20190222022411070.png">
 <meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E3%80%91%E6%B5%AE%E7%82%B9%E6%95%B0%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E8%A1%A8%E7%A4%BA/20190222023402771.png">
 <meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E3%80%91%E6%B5%AE%E7%82%B9%E6%95%B0%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E8%A1%A8%E7%A4%BA/20190222033629845.png">
-<meta property="og:updated_time" content="2020-02-28T12:50:49.358Z">
+<meta property="og:updated_time" content="2020-02-28T13:28:46.807Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【底层原理】浮点数在计算机中的表示">
 <meta name="twitter:description" content="一道C语言题：">
@@ -232,8 +211,9 @@ body {
 
 <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
-<body id="mydiv" class="is-3-column">
-    <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-main">
+<body class="is-3-column">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="stars"></div>
+    <nav class="navbar navbar-main">
     <div class="container">
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
@@ -1433,6 +1413,27 @@ document.addEventListener('DOMContentLoaded', function () {
             //调用
             CanvasParticle(config);
         }
+    </script>
+   <script type="text/javascript">
+        $(document).ready(function(){
+          var stars=800;  /*星星的密集程度，数字越大越多*/
+          var $stars=$(".stars");
+          var r=800;   /*星星的看起来的距离,值越大越远,可自行调制到自己满意的样子*/
+          for(var i=0;i<stars;i++){
+            var $star=$("<div/>").addClass("star");
+            $stars.append($star);
+          }
+          $(".star").each(function(){
+            var cur=$(this);
+            var s=0.2+(Math.random()*1);
+            var curR=r+(Math.random()*300);
+            cur.css({ 
+              transformOrigin:"0 0 "+curR+"px",
+              transform:" translate3d(0,0,-"+curR+"px) rotateY("+(Math.random()*360)+"deg) rotateX("+(Math.random()*-50)+"deg) scale("+s+","+s+")"
+               
+            })
+          })
+        })
     </script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({

@@ -91,28 +91,7 @@ body {
     display: block;
 }
 </style>
-<div class="stars"></div>  <!--背景层，不要删除，不然没有作用-->
-    <script>
-        $(document).ready(function(){
-          var stars=800;  /*星星的密集程度，数字越大越多*/
-          var $stars=$(".stars");
-          var r=800;   /*星星的看起来的距离,值越大越远,可自行调制到自己满意的样子*/
-          for(var i=0;i<stars;i++){
-            var $star=$("<div/>").addClass("star");
-            $stars.append($star);
-          }
-          $(".star").each(function(){
-            var cur=$(this);
-            var s=0.2+(Math.random()*1);
-            var curR=r+(Math.random()*300);
-            cur.css({ 
-              transformOrigin:"0 0 "+curR+"px",
-              transform:" translate3d(0,0,-"+curR+"px) rotateY("+(Math.random()*360)+"deg) rotateX("+(Math.random()*-50)+"deg) scale("+s+","+s+")"
-               
-            })
-          })
-        })
-</script>
+
 <script>
 (function(){
     var bp = document.createElement('script');
@@ -141,7 +120,7 @@ body {
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/SegmentTree/20200129054853716.png">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/SegmentTree/20200129082526967.png">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/SegmentTree/20200129084206509.png">
-<meta property="og:updated_time" content="2020-02-28T12:50:49.358Z">
+<meta property="og:updated_time" content="2020-02-28T13:28:46.807Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SegmentTree">
 <meta name="twitter:description" content="线段树 &amp;emsp;线段树是算法竞赛中常用的用来维护 区间信息 的数据结构。线段树可以在 $O(\log_{2}{N})$ 的时间复杂度内实现单点修改、区间修改、区间查询等操作。">
@@ -231,8 +210,9 @@ body {
 
 <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
-<body id="mydiv" class="is-3-column">
-    <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-main">
+<body class="is-3-column">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="stars"></div>
+    <nav class="navbar navbar-main">
     <div class="container">
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
@@ -1427,6 +1407,27 @@ document.addEventListener('DOMContentLoaded', function () {
             //调用
             CanvasParticle(config);
         }
+    </script>
+   <script type="text/javascript">
+        $(document).ready(function(){
+          var stars=800;  /*星星的密集程度，数字越大越多*/
+          var $stars=$(".stars");
+          var r=800;   /*星星的看起来的距离,值越大越远,可自行调制到自己满意的样子*/
+          for(var i=0;i<stars;i++){
+            var $star=$("<div/>").addClass("star");
+            $stars.append($star);
+          }
+          $(".star").each(function(){
+            var cur=$(this);
+            var s=0.2+(Math.random()*1);
+            var curR=r+(Math.random()*300);
+            cur.css({ 
+              transformOrigin:"0 0 "+curR+"px",
+              transform:" translate3d(0,0,-"+curR+"px) rotateY("+(Math.random()*360)+"deg) rotateX("+(Math.random()*-50)+"deg) scale("+s+","+s+")"
+               
+            })
+          })
+        })
     </script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
