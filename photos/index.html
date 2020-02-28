@@ -15,6 +15,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
 <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+
 <script>
   (adsbygoogle = window.adsbygoogle || []).push({
     google_ad_client: "ca-pub-7097707906527513",
@@ -151,6 +153,28 @@
 <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 <body class="is-3-column">
+    <div class="stars"></div>  <!--背景层，不要删除，不然没有作用-->
+    <script>
+        $(document).ready(function(){
+          var stars=800;  /*星星的密集程度，数字越大越多*/
+          var $stars=$(".stars");
+          var r=800;   /*星星的看起来的距离,值越大越远,可自行调制到自己满意的样子*/
+          for(var i=0;i<stars;i++){
+            var $star=$("<div/>").addClass("star");
+            $stars.append($star);
+          }
+          $(".star").each(function(){
+            var cur=$(this);
+            var s=0.2+(Math.random()*1);
+            var curR=r+(Math.random()*300);
+            cur.css({ 
+              transformOrigin:"0 0 "+curR+"px",
+              transform:" translate3d(0,0,-"+curR+"px) rotateY("+(Math.random()*360)+"deg) rotateX("+(Math.random()*-50)+"deg) scale("+s+","+s+")"
+               
+            })
+          })
+        })
+</script>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-main">
     <div class="container">
         <div class="navbar-brand is-flex-center">
