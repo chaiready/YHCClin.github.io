@@ -25,72 +25,6 @@
 <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
 </script>
 
-<style>
-body {
-  background: radial-gradient(200% 100% at bottom center, #f7f7b6, #e96f92, #75517d, #1b2947);
-  background: radial-gradient(220% 105% at top center, #1b2947 10%, #75517d 40%, #e96f92 65%, #f7f7b6);
-  background-attachment: fixed;
-  overflow: hidden;
-}
-
-@keyframes rotate {
-  0% {
-    transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(0);
-  }
-  100% {
-    transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(-360deg);
-  }
-}
-.stars {
-  transform: perspective(500px);
-  transform-style: preserve-3d;
-  position: absolute;
-  bottom: 0;
-  perspective-origin: 50% 100%;
-  left: 50%;
-  animation: rotate 90s infinite linear;
-}
-
-.star {
-  width: 2px;
-  height: 2px;
-  background: #F7F7B6;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform-origin: 0 0 -300px;
-  transform: translate3d(0, 0, -300px);
-  backface-visibility: hidden;
-}
-.table{
-    width: 400px;
-    height: 350px;
-    margin: 80px auto;
-}
-.table form{
-    width: 100%;
-}
-.table .name{
-    width: 280px;
-    margin: 20px auto 30px auto;
-    display: block;
-    height: 30px;
-    border-radius: 20px;
-    border: none;
-    background: rgba(0,0,0,0.2);
-    text-indent: 0.5em;
-}
-.table .btn{
-    width: 100px;
-    height: 30px;
-    background: rgba(0,0,0,0.1);
-    border-radius: 8px;
-    border: none;
-    color: white;
-    margin: 0 auto;
-    display: block;
-}
-</style>
 
 <script>
 (function(){
@@ -120,7 +54,7 @@ body {
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E5%AD%97%E5%85%B8%E6%A0%91/20200129024314865.png">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E5%AD%97%E5%85%B8%E6%A0%91/20200129030049923.png">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E5%AD%97%E5%85%B8%E6%A0%91/20200129030856288.png">
-<meta property="og:updated_time" content="2020-02-28T13:40:03.178Z">
+<meta property="og:updated_time" content="2020-02-28T13:48:29.559Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="字典树">
 <meta name="twitter:description" content="Trie树 &amp;emsp;据不完全统计，世界上现存英语单词的数量为17万到100万不等。假设现在要你写一个词典APP，要求能够快速检索、删除、添加单词，。显然你很容易想到两种方案：  将所有单词按字典序排列，在按二分搜索来查询。 奖励首字母索引表，在各索引项表内按字典序排序单词，再在当中按二分搜索查询。但无疑上述方案的要求略高，需要大量的连续空间来存储数据，而且不方便添加删除操作。">

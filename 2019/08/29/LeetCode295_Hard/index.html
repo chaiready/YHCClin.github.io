@@ -25,72 +25,6 @@
 <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
 </script>
 
-<style>
-body {
-  background: radial-gradient(200% 100% at bottom center, #f7f7b6, #e96f92, #75517d, #1b2947);
-  background: radial-gradient(220% 105% at top center, #1b2947 10%, #75517d 40%, #e96f92 65%, #f7f7b6);
-  background-attachment: fixed;
-  overflow: hidden;
-}
-
-@keyframes rotate {
-  0% {
-    transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(0);
-  }
-  100% {
-    transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(-360deg);
-  }
-}
-.stars {
-  transform: perspective(500px);
-  transform-style: preserve-3d;
-  position: absolute;
-  bottom: 0;
-  perspective-origin: 50% 100%;
-  left: 50%;
-  animation: rotate 90s infinite linear;
-}
-
-.star {
-  width: 2px;
-  height: 2px;
-  background: #F7F7B6;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform-origin: 0 0 -300px;
-  transform: translate3d(0, 0, -300px);
-  backface-visibility: hidden;
-}
-.table{
-    width: 400px;
-    height: 350px;
-    margin: 80px auto;
-}
-.table form{
-    width: 100%;
-}
-.table .name{
-    width: 280px;
-    margin: 20px auto 30px auto;
-    display: block;
-    height: 30px;
-    border-radius: 20px;
-    border: none;
-    background: rgba(0,0,0,0.2);
-    text-indent: 0.5em;
-}
-.table .btn{
-    width: 100px;
-    height: 30px;
-    background: rgba(0,0,0,0.1);
-    border-radius: 8px;
-    border: none;
-    color: white;
-    margin: 0 auto;
-    display: block;
-}
-</style>
 
 <script>
 (function(){
@@ -124,7 +58,7 @@ body {
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%5BLeetcode295_hard%5DMedianFinder/case3_1.png">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%5BLeetcode295_hard%5DMedianFinder/case3_2.png">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%5BLeetcode295_hard%5DMedianFinder/leetcode295.png">
-<meta property="og:updated_time" content="2020-02-28T13:40:03.178Z">
+<meta property="og:updated_time" content="2020-02-28T13:48:29.543Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图解LeetCode295_Hard_MedianFinder">
 <meta name="twitter:description" content="[LC295] 数据流中的中位数(类设计）题目描述：中位数是有序列表中间的数。如果列表长度是偶数，中位数则是中间两个数的平均值。">
