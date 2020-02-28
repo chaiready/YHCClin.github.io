@@ -2,6 +2,7 @@
 
 <script src="/js/cursor.js"></script>
 <script src="/js/fireworks.js"></script>
+<script src="/js/canvas-particle.js"></script>
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
@@ -58,7 +59,7 @@
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/memoveride%5B%5D.jpg">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Foo.png">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Foowithvirtual.png">
-<meta property="og:updated_time" content="2020-02-28T03:10:16.484Z">
+<meta property="og:updated_time" content="2020-02-28T03:56:06.465Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="侯捷C++学习笔记[未整理版]">
 <meta name="twitter:description" content="还没有整理过的笔记，有点乱">
@@ -1561,6 +1562,27 @@ document.addEventListener('DOMContentLoaded', function () {
     <script src="//code.tidio.co/ui3pfxbwv0bfvkvxwibyaejafrndrrqm.js"></script>
     <amp-auto-ads type="adsense" data-ad-client="ca-pub-7097707906527513">
 </amp-auto-ads>
+<div id="mydiv" style="height:100%;"></div>
+<script type="text/javascript">
+        window.onload = function() {
+            //配置
+            var config = {
+                vx: 4,  //小球x轴速度,正为右，负为左
+                vy: 4,  //小球y轴速度
+                height: 2,  //小球高宽，其实为正方形，所以不宜太大
+                width: 2,
+                count: 200,     //点个数
+                color: "121, 162, 185",     //点颜色
+                stroke: "130,255,255",      //线条颜色
+                dist: 6000,     //点吸附距离
+                e_dist: 20000,  //鼠标吸附加速距离
+                max_conn: 10    //点到点最大连接数
+            }
+
+            //调用
+            CanvasParticle(config);
+        }
+    </script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {

@@ -2,6 +2,7 @@
 
 <script src="/js/cursor.js"></script>
 <script src="/js/fireworks.js"></script>
+<script src="/js/canvas-particle.js"></script>
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
@@ -1445,6 +1446,27 @@ document.addEventListener('DOMContentLoaded', function () {
     <script src="//code.tidio.co/ui3pfxbwv0bfvkvxwibyaejafrndrrqm.js"></script>
     <amp-auto-ads type="adsense" data-ad-client="ca-pub-7097707906527513">
 </amp-auto-ads>
+<div id="mydiv" style="height:100%;"></div>
+<script type="text/javascript">
+        window.onload = function() {
+            //配置
+            var config = {
+                vx: 4,  //小球x轴速度,正为右，负为左
+                vy: 4,  //小球y轴速度
+                height: 2,  //小球高宽，其实为正方形，所以不宜太大
+                width: 2,
+                count: 200,     //点个数
+                color: "121, 162, 185",     //点颜色
+                stroke: "130,255,255",      //线条颜色
+                dist: 6000,     //点吸附距离
+                e_dist: 20000,  //鼠标吸附加速距离
+                max_conn: 10    //点到点最大连接数
+            }
+
+            //调用
+            CanvasParticle(config);
+        }
+    </script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {
@@ -1461,26 +1483,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"admin":{"username":"aokilin","password_hash":"$2a$10$Ftok/UgFv5olradmR40PM.w57gZ.QOp2uXQlpSZevsU.pMi0KPHla","secret":"my super secret phrase"},"kramed":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true},"feed":{"type":"atom","path":"atom.xml","limit":20}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
-</html>tive-commons-by"></i>
-                        
-                    </a>
-                </p>
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                </p>
-                
-                </div>
-            
-            </div>
-        <div align="center" style="font-family:SimSun;background-image: -webkit-linear-gradient(bottom, rgb(253, 171, 97), rgb(79, 189, 200));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;">
-            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+</html>d="times">载入时分秒...</span>
             <script>
                 var now = new Date(); 
                 function createtime() { 
@@ -1653,6 +1656,27 @@ document.addEventListener('DOMContentLoaded', function () {
     <script src="//code.tidio.co/ui3pfxbwv0bfvkvxwibyaejafrndrrqm.js"></script>
     <amp-auto-ads type="adsense" data-ad-client="ca-pub-7097707906527513">
 </amp-auto-ads>
+<div id="mydiv" style="height:100%;"></div>
+<script type="text/javascript">
+        window.onload = function() {
+            //配置
+            var config = {
+                vx: 4,  //小球x轴速度,正为右，负为左
+                vy: 4,  //小球y轴速度
+                height: 2,  //小球高宽，其实为正方形，所以不宜太大
+                width: 2,
+                count: 200,     //点个数
+                color: "121, 162, 185",     //点颜色
+                stroke: "130,255,255",      //线条颜色
+                dist: 6000,     //点吸附距离
+                e_dist: 20000,  //鼠标吸附加速距离
+                max_conn: 10    //点到点最大连接数
+            }
+
+            //调用
+            CanvasParticle(config);
+        }
+    </script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {

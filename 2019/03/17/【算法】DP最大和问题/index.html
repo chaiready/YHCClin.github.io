@@ -2,6 +2,7 @@
 
 <script src="/js/cursor.js"></script>
 <script src="/js/fireworks.js"></script>
+<script src="/js/canvas-particle.js"></script>
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
@@ -51,7 +52,7 @@
 <meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91DP%E6%9C%80%E5%A4%A7%E5%92%8C%E9%97%AE%E9%A2%98/20190317082529638.png">
 <meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91DP%E6%9C%80%E5%A4%A7%E5%92%8C%E9%97%AE%E9%A2%98/20190317083401575.png">
 <meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91DP%E6%9C%80%E5%A4%A7%E5%92%8C%E9%97%AE%E9%A2%98/20190317084336292.png">
-<meta property="og:updated_time" content="2020-02-28T03:10:16.484Z">
+<meta property="og:updated_time" content="2020-02-28T03:56:06.465Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【算法】DP最大和问题">
 <meta name="twitter:description" content="动态规划">
@@ -1301,6 +1302,27 @@ document.addEventListener('DOMContentLoaded', function () {
     <script src="//code.tidio.co/ui3pfxbwv0bfvkvxwibyaejafrndrrqm.js"></script>
     <amp-auto-ads type="adsense" data-ad-client="ca-pub-7097707906527513">
 </amp-auto-ads>
+<div id="mydiv" style="height:100%;"></div>
+<script type="text/javascript">
+        window.onload = function() {
+            //配置
+            var config = {
+                vx: 4,  //小球x轴速度,正为右，负为左
+                vy: 4,  //小球y轴速度
+                height: 2,  //小球高宽，其实为正方形，所以不宜太大
+                width: 2,
+                count: 200,     //点个数
+                color: "121, 162, 185",     //点颜色
+                stroke: "130,255,255",      //线条颜色
+                dist: 6000,     //点吸附距离
+                e_dist: 20000,  //鼠标吸附加速距离
+                max_conn: 10    //点到点最大连接数
+            }
+
+            //调用
+            CanvasParticle(config);
+        }
+    </script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {
