@@ -6,7 +6,7 @@ html {
   cursor: url("https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Aero_arrow.cur");
 }
 body {
-  background-color: transparent;
+  background-color: rgba(230,230,230,0.4);
 }
 body,
 input,
