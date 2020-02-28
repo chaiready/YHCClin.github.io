@@ -54,7 +54,7 @@
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Hexo+icarus主题配置/20190429082811950.png">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Hexo+icarus主题配置/20190429093801600.png">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Hexo+icarus主题配置/20190429094726470.png">
-<meta property="og:updated_time" content="2020-02-28T13:48:29.543Z">
+<meta property="og:updated_time" content="2020-02-28T14:01:39.047Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo+icarus主题配置">
 <meta name="twitter:description" content="下载icarus主题 进入博客主目录，点击鼠标右键Git Bash Here,进入命令行界面">
@@ -1411,27 +1411,6 @@ document.addEventListener('DOMContentLoaded', function () {
             //调用
             CanvasParticle(config);
         }
-    </script>
-   <script type="text/javascript">
-        $(document).ready(function(){
-          var stars=800;  /*星星的密集程度，数字越大越多*/
-          var $stars=$(".stars");
-          var r=800;   /*星星的看起来的距离,值越大越远,可自行调制到自己满意的样子*/
-          for(var i=0;i<stars;i++){
-            var $star=$("<div/>").addClass("star");
-            $stars.append($star);
-          }
-          $(".star").each(function(){
-            var cur=$(this);
-            var s=0.2+(Math.random()*1);
-            var curR=r+(Math.random()*300);
-            cur.css({ 
-              transformOrigin:"0 0 "+curR+"px",
-              transform:" translate3d(0,0,-"+curR+"px) rotateY("+(Math.random()*360)+"deg) rotateX("+(Math.random()*-50)+"deg) scale("+s+","+s+")"
-               
-            })
-          })
-        })
     </script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({

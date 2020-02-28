@@ -44,7 +44,7 @@
 
 
     <meta name="description" content="机器之心">
-<meta name="keywords" content="并查集,Tree,Hexo,Blog,Tools,LeetCode,Borring,List,String,Algorithm,Array,C,Knapsack,algorithm,Graph,ML,C++,QuickSort">
+<meta name="keywords" content="Tree,并查集,Hexo,Tools,Blog,LeetCode,List,Borring,String,Algorithm,Array,C,Knapsack,algorithm,Graph,ML,C++,QuickSort">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Code·Hub">
 <meta property="og:url" content="https://www.ccyh.xyz/categories/index.html">
@@ -1473,27 +1473,6 @@ document.addEventListener('DOMContentLoaded', function () {
             //调用
             CanvasParticle(config);
         }
-    </script>
-   <script type="text/javascript">
-        $(document).ready(function(){
-          var stars=800;  /*星星的密集程度，数字越大越多*/
-          var $stars=$(".stars");
-          var r=800;   /*星星的看起来的距离,值越大越远,可自行调制到自己满意的样子*/
-          for(var i=0;i<stars;i++){
-            var $star=$("<div/>").addClass("star");
-            $stars.append($star);
-          }
-          $(".star").each(function(){
-            var cur=$(this);
-            var s=0.2+(Math.random()*1);
-            var curR=r+(Math.random()*300);
-            cur.css({ 
-              transformOrigin:"0 0 "+curR+"px",
-              transform:" translate3d(0,0,-"+curR+"px) rotateY("+(Math.random()*360)+"deg) rotateX("+(Math.random()*-50)+"deg) scale("+s+","+s+")"
-               
-            })
-          })
-        })
     </script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
