@@ -46,7 +46,7 @@ hr.style-one {
 }
 
 body {
-  background-image: url(https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/sun.jpg);
+  background-image: url('https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/sun.jpg');
   background-attachment: fixed;
   overflow: hidden;
 }
