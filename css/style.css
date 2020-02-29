@@ -95,8 +95,8 @@ img.thumbnail {
 .navbar-main {
   background: linear-gradient(to right, rgba(254,172,94,0.9), rgba(199,121,208,0.9), rgba(75,192,200,0.9));
   font-weight: bold;
-  font-size: 14px;
-  height: 70px;
+  font-size: 12px;
+  height: 62px;
 }
 .navbar-main a:hover {
   background: linear-gradient(to right, #feac5e, #c779d0, #4bc0c8);
