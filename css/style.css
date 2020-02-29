@@ -8,7 +8,7 @@ html {
 body {
   background-image: url("https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%91-%E6%B2%B9%E7%94%BB.jpg");
   background-repeat: no-repeat;
-  background-size: auto 100%;
+  background-size: cover;
   background-attachment: fixed;
 }
 body,
@@ -95,6 +95,9 @@ img.thumbnail {
   background: linear-gradient(to right, #feac5e, #c779d0, #4bc0c8);
   font-weight: bold;
   font-size: 14px;
+}
+.navbar-main .navbar-start.a:hover {
+  background: linear-gradient(to right, #feac5e, #c779d0, #4bc0c8);
 }
 .navbar-main .navbar-menu,
 .navbar-main .navbar-start,
