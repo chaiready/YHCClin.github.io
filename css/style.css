@@ -90,7 +90,7 @@ img.thumbnail {
   max-height: 4rem;
 }
 .navbar-main {
-  background: linear-gradient(to right, #feac5e, #c779d0, #4bc0c8);
+  background: linear-gradient(to right, #feac5e, #c779d0, #4bc0c8, 0.6);
   font-weight: bold;
   font-size: 14px;
 }
@@ -136,7 +136,7 @@ img.thumbnail {
   }
 }
 .footer {
-  background: linear-gradient(to right, #feac5e, #c779d0, #4bc0c8);
+  background: linear-gradient(to right, #feac5e, #c779d0, #4bc0c8, 0.6);
   font-weight: bold;
 }
 .footer .field .button {
