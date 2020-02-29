@@ -84,7 +84,9 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/railscasts.css">
 
-
+<link rel="stylesheet" href="css/jsmodern.min.css">
+<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script src="jq/jsmodern.min.js"></script>
     
     
     
@@ -124,7 +126,48 @@
 </script>
 
 
-    
+<!-- video -->
+<script>
+        $(function () {
+            //视频
+            jsModern.video("#video");
+            //播放视频
+            $(".VideoBtn").click(function () {
+                var video = document.getElementById("videoShow");
+                video.play();
+                $('.VideoBtn').hide();
+            })
+            //监听视频的播放状态
+            var video = document.getElementById("videoShow");
+            video.oncanplay = function () {
+                $(".VideoBtn").show();
+                //$("#video").attr("poster","");
+            }
+            //视频播放事件
+            video.onplay = function () {
+                $("#videoShow").attr("poster", "");
+                $(".VideoBtn").hide();
+            };
+            video.onplaying = function () {
+                $(".VideoBtn").hide();
+            };
+
+            //视频暂停事件
+            video.onpause = function () {
+                $(".VideoBtn").show();
+            };
+            //点击视频周围暂停播放图片出现
+            video.onclick = function () {
+                if (video.paused) {
+                    $(".VideoBtn").hide();
+                    video.play();
+                } else {
+                    $(".VideoBtn").show();
+                    video.pause();
+                }
+            };
+        })
+    </script>
     
     
     
@@ -228,8 +271,11 @@
 </nav>
 
 <div align="center" class="parent">
-    <div align="center" class="child">
-        
+    <div align="center" class="child bodyBg">
+        <div id="video">
+    <video src="https://blz-videos.nosdn.127.net/1/OverWatch/AnimatedShots/Overwatch_AnimatedShot_Soldier76_Hero.mp4" id="videoShow"></video>
+    <span class="VideoBtn"><img src="images/bo1.png"></span>
+</div>
     </div>
 
     <div class="child">
