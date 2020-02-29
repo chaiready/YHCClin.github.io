@@ -96,7 +96,7 @@ img.thumbnail {
   background: linear-gradient(to right, rgba(254,172,94,0.9), rgba(199,121,208,0.9), rgba(75,192,200,0.9));
   font-weight: bold;
   font-size: 14px;
-  height: 80px;
+  height: 70px;
 }
 .navbar-main a:hover {
   background: linear-gradient(to right, #feac5e, #c779d0, #4bc0c8);
@@ -146,7 +146,7 @@ img.thumbnail {
   background: linear-gradient(to right, rgba(254,172,94,0.9), rgba(199,121,208,0.9), rgba(75,192,200,0.9));
   font-weight: bold;
   margin-bottom: 0;
-  height: 300px;
+  height: 240px;
 }
 .footer .field .button {
   background: transparent;
