@@ -75,7 +75,7 @@ a {
 }
 .card.card-transparent {
   box-shadow: none;
-  background: transparent;
+  background: rgba(255,255,255,0.5);
 }
 .card .card-image {
   overflow: hidden;
