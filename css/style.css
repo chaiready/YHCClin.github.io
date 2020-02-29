@@ -7,6 +7,9 @@ html {
 }
 body {
   background-image: url("https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/girl.jpg");
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-attachment: fixed;
 }
 body,
 input,
