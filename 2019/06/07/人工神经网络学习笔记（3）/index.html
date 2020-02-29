@@ -51,15 +51,13 @@
 <meta property="og:site_name" content="Code·Hub">
 <meta property="og:description" content="Python-numpy编码实现人工神经网络 前面的几篇文章我们熟悉了人工神经网络的数学原理及其推导过程，但有道是‘纸上得来终觉浅’，是时候将理论变为现实了。现在我们将应用Python语言以及其强大的扩充程序库Numpy来编写一个简单的神经网络。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89/20190607010119916.png">
-<meta property="og:image" content="https://www.ccyh.xyz/人工神经网络学习笔记（3）/20190607015526334.png">
 <meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89/20190607011216578.png">
 <meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89/20190607011510082.png">
-<meta property="og:updated_time" content="2020-02-29T12:31:59.394Z">
+<meta property="og:updated_time" content="2020-02-29T12:38:53.821Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="人工神经网络学习笔记（3）">
 <meta name="twitter:description" content="Python-numpy编码实现人工神经网络 前面的几篇文章我们熟悉了人工神经网络的数学原理及其推导过程，但有道是‘纸上得来终觉浅’，是时候将理论变为现实了。现在我们将应用Python语言以及其强大的扩充程序库Numpy来编写一个简单的神经网络。">
-<meta name="twitter:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89/20190607010119916.png">
+<meta name="twitter:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89/20190607011216578.png">
 
 
 
@@ -249,7 +247,12 @@
 <li><strong>训练集and测试集：</strong><a href="git@github.com:makeyourownneuralnetwork/makeyourownneuralnetwork.git">Mnist手写数字数据集(复制git链接克隆)</a>MINST数据库是由米国机器学习大佬Yann提供的手写数字数据库文件，其官方下载地址<a href="http://yann.lecun.com/exdb/mnist/" target="_blank" rel="noopener">Download Mnist</a>。该数据集将会是神经网络的输入信号。</li>
 </ul>
 <p>每一张图片像素都为$28\times 28$,因此可作为一个$784\times 1$的向量传入神经网络。</p>
-<div align="center"><br><br><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89/20190607010119916.png" alt="单个图片"><br><img src="/人工神经网络学习笔记（3）/20190607015526334.png" alt=""><br><br></div>
+<div align="center">
+
+![单个图片](http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89/20190607010119916.png)
+![](/人工神经网络学习笔记（3）/20190607015526334.png)
+
+</div>
 
 <ul>
 <li>初始花链接权重矩阵：使用正态概率分布采样权重，平均值为0，标准方差为结点传入链接数目的开方，即$\frac{1}{\sqrt{inputconnects}}$</li>
@@ -273,7 +276,7 @@
 <li>(训练神经网络)输入命令：<font color="green" face="黑体">python</font> <font color="blue" face="黑体">neural_network.py</font></li>
 </ol>
 <p><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89/20190607011216578.png" alt="Training"></p>
-<ol start="3">
+<ol>
 <li>（测试神经网络）输入命令：<font color="green" face="黑体">python</font> <font color="blue" face="黑体">network_test.py</font></li>
 </ol>
 <p><img src="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89/20190607011510082.png" alt="Testing"></p>
