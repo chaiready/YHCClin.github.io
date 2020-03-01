@@ -111,6 +111,12 @@ img.thumbnail {
 .navbar-main a:hover {
   background: linear-gradient(to right, #feac5e, #c779d0, #4bc0c8);
 }
+.navbar-main a:active {
+  color: #ff0;
+}
+.navbar-main a:focus {
+  color: #000;
+}
 .navbar-main .navbar-menu,
 .navbar-main .navbar-start,
 .navbar-main .navbar-end {
