@@ -65,7 +65,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/01/28/5c4e5bf2d25e8.png">
 <meta property="og:image" content="https://i.loli.net/2019/01/28/5c4e5bf2c9721.png">
 <meta property="og:image" content="https://i.loli.net/2019/01/28/5c4e5bf2d661c.png">
-<meta property="og:updated_time" content="2020-03-01T14:39:02.674Z">
+<meta property="og:updated_time" content="2020-03-01T14:45:12.843Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【数据结构】树">
 <meta name="twitter:description" content="树的基本概念">
@@ -481,19 +481,18 @@
     <div class="card-content">
         <h3 class="title is-5 has-text-weight-normal">评论</h3>
         
-<div id="comment-container"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 <script>
-    var gitalk = new Gitalk({
-        clientID: 'bc0b976990fb607ceea0',
-        clientSecret: '795a99dbb1a7696cb42c4748126da7b78f242cf6',
-        id: '5fcc235defef2dc2c8cd7c51a6c537f4',
-        repo: 'YHCClin.github.io',
-        owner: 'YHCClin',
-        admin: "YHCClin"
-    })
-    gitalk.render('comment-container')
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'oR2IQXqpGEFy4GHNDgdmfSMR-gzGzoHsz',
+        app_key: 'hwYfVGzICBlXGiokUXaNqJsx',
+        placeholder: '留下邮箱可以收到回复通知哦~'
+    });
 </script>
 
     </div>

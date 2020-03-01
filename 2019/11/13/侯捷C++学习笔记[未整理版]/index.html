@@ -61,7 +61,7 @@
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/memoveride%5B%5D.jpg">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Foo.png">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Foowithvirtual.png">
-<meta property="og:updated_time" content="2020-03-01T14:39:02.674Z">
+<meta property="og:updated_time" content="2020-03-01T14:45:12.859Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="侯捷C++学习笔记[未整理版]">
 <meta name="twitter:description" content="还没有整理过的笔记，有点乱">
@@ -509,19 +509,18 @@
     <div class="card-content">
         <h3 class="title is-5 has-text-weight-normal">评论</h3>
         
-<div id="comment-container"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 <script>
-    var gitalk = new Gitalk({
-        clientID: 'bc0b976990fb607ceea0',
-        clientSecret: '795a99dbb1a7696cb42c4748126da7b78f242cf6',
-        id: 'c55fb7386c16b453643c0d4f2c8127b2',
-        repo: 'YHCClin.github.io',
-        owner: 'YHCClin',
-        admin: "YHCClin"
-    })
-    gitalk.render('comment-container')
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'oR2IQXqpGEFy4GHNDgdmfSMR-gzGzoHsz',
+        app_key: 'hwYfVGzICBlXGiokUXaNqJsx',
+        placeholder: '留下邮箱可以收到回复通知哦~'
+    });
 </script>
 
     </div>

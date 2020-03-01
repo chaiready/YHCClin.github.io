@@ -81,7 +81,7 @@
 <meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9C%9F%E6%9C%89%E8%B6%A3-%E7%AC%AC3%E9%83%A8%E5%88%86-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8E%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/20190622094501144.png">
 <meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9C%9F%E6%9C%89%E8%B6%A3-%E7%AC%AC3%E9%83%A8%E5%88%86-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8E%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/20190622094712678.png">
 <meta property="og:image" content="http://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9C%9F%E6%9C%89%E8%B6%A3-%E7%AC%AC3%E9%83%A8%E5%88%86-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8E%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/20190622095809899.png">
-<meta property="og:updated_time" content="2020-03-01T14:39:02.674Z">
+<meta property="og:updated_time" content="2020-03-01T14:45:12.859Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习原来这么有趣-Part3-深度学习与卷积神经网络">
 <meta name="twitter:description" content="最近看了Adam Geitgey的机器学习系列文章。寻思着闲着也是闲着，干脆翻译以下，顺便学习下英语啥的哈哈哈。第一次做这种事，有不到位的地方欢迎指教噢。">
@@ -564,19 +564,18 @@
     <div class="card-content">
         <h3 class="title is-5 has-text-weight-normal">评论</h3>
         
-<div id="comment-container"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 <script>
-    var gitalk = new Gitalk({
-        clientID: 'bc0b976990fb607ceea0',
-        clientSecret: '795a99dbb1a7696cb42c4748126da7b78f242cf6',
-        id: '7b64ec227cea1af058c1e64153e37fa1',
-        repo: 'YHCClin.github.io',
-        owner: 'YHCClin',
-        admin: "YHCClin"
-    })
-    gitalk.render('comment-container')
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'oR2IQXqpGEFy4GHNDgdmfSMR-gzGzoHsz',
+        app_key: 'hwYfVGzICBlXGiokUXaNqJsx',
+        placeholder: '留下邮箱可以收到回复通知哦~'
+    });
 </script>
 
     </div>

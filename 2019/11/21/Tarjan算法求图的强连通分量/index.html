@@ -59,7 +59,7 @@
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Tarjan/5.PNG#pic_center">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Tarjan/6.PNG#pic_center">
 <meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/Tarjan/Tarjan.PNG#pic_center">
-<meta property="og:updated_time" content="2020-03-01T14:39:02.674Z">
+<meta property="og:updated_time" content="2020-03-01T14:45:12.843Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【图解算法】Tarjan算法求图的强连通分量">
 <meta name="twitter:description" content="强连通分量简介&amp;emsp;&amp;emsp;有向图强连通分量：在有向图G中，如果两个顶点$V_i, V_j$ 间（vi&amp;gt;vj）有一条从$V_i$到$V_j$的有向路径，同时还有一条从$V_j$到$V_i$的有向路径，则称两个顶点强连通(strongly connected)。如果有向图G的每两个顶点都强连通，称G是一个强连通图。有向图的极大强连通子图，称为强连通分量(strongly connec">
@@ -373,19 +373,18 @@
     <div class="card-content">
         <h3 class="title is-5 has-text-weight-normal">评论</h3>
         
-<div id="comment-container"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 <script>
-    var gitalk = new Gitalk({
-        clientID: 'bc0b976990fb607ceea0',
-        clientSecret: '795a99dbb1a7696cb42c4748126da7b78f242cf6',
-        id: '216aa3eb553b57bec4af1a8efbff7a66',
-        repo: 'YHCClin.github.io',
-        owner: 'YHCClin',
-        admin: "YHCClin"
-    })
-    gitalk.render('comment-container')
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'oR2IQXqpGEFy4GHNDgdmfSMR-gzGzoHsz',
+        app_key: 'hwYfVGzICBlXGiokUXaNqJsx',
+        placeholder: '留下邮箱可以收到回复通知哦~'
+    });
 </script>
 
     </div>
