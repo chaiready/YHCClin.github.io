@@ -99,6 +99,10 @@ img.thumbnail {
   font-family: SimSun;
   font-size: 14px;
 }
+.navbar-main a {
+  width: auto;
+  height: 65px;
+}
 .navbar-main a:hover {
   background: linear-gradient(to right, #feac5e, #c779d0, #4bc0c8);
 }
