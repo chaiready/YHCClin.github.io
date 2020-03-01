@@ -31,14 +31,21 @@ hr.style-one {
 }
 
 .child p{
-    line-height: 30px;
+    text-align: center;
+    font-style: italic;
     font-size: 14px;
-    font-family: italic 2em Georgia, serif;
-    margin: 10px;
+    font-family: chinese-zodiac,'EB Garamond','Noto Serif SC',serif;
+    line-height: 2;
 }
-.child h2 {
-  font-family: italic 2em Georgia, serif;
-  font-weight: bold;
+.child h1 {
+    margin-top: 50px;
+    font-size: 20px;
+    margin-bottom: -20px;
+    text-align: center;
+    background-image: linear-gradient(90deg,#a166ab 0,#a166ab 40%,#ef4e7b 45%,#f37055 50%,#ef4e7b 55%,#a166ab 60%,#a166ab 100%);
+    background-size: cover;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .font1{
