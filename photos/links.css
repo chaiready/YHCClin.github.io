@@ -1,12 +1,21 @@
 .row {
     display: flex;
-    width:80%;
+    width:60%;
+}
+.back {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: rgba(255,255,255,0.6);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
 }
 .link_card {
     display: flex;
-    flex: 4;
+    flex: 3;
     border-radius: 18px;
-    width: 36%;
+    width: 30%;
     height: 95px;
     padding: 10px;
     margin-top: 15px;
@@ -82,7 +91,7 @@ img{
 
 .category_dl{
     font-family: "楷体","楷体_GB2312";
-    width: 80%;
+    width: 65%;
     height: 60px;
     margin-top: 20px;
     font-size: 24px;
