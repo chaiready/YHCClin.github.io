@@ -85,6 +85,7 @@ a {
 }
 img.thumbnail {
   object-fit: cover;
+  border-radius: 8px;
   width: 100%;
   height: 100%;
 }
@@ -97,8 +98,6 @@ img.thumbnail {
   font-weight: bold;
   font-family: SimSun;
   font-size: 14px;
-  padding-top: 10px;
-  padding-bottom: 10px;
 }
 .navbar-main a:hover {
   background: linear-gradient(to right, #feac5e, #c779d0, #4bc0c8);
