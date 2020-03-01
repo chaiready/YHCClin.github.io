@@ -12,6 +12,10 @@ body {
   background-size: cover;
   background-attachment: fixed;
 }
+body ::selection {
+  background: #ff0;
+  color: #000;
+}
 body,
 input,
 select,
