@@ -95,8 +95,10 @@ img.thumbnail {
 .navbar-main {
   background: linear-gradient(to right, rgba(254,172,94,0.9), rgba(199,121,208,0.9), rgba(75,192,200,0.9));
   font-weight: bold;
-  font-size: 12px;
-  height: 62px;
+  font-family: SimSun;
+  font-size: 14px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .navbar-main a:hover {
   background: linear-gradient(to right, #feac5e, #c779d0, #4bc0c8);
@@ -145,8 +147,9 @@ img.thumbnail {
 .footer {
   background: linear-gradient(to right, rgba(254,172,94,0.9), rgba(199,121,208,0.9), rgba(75,192,200,0.9));
   font-weight: bold;
+  font-family: SimSun;
   height: 180px;
-  margin-bottom: 0;
+  margin-bottom: 0px;
 }
 .footer .field .button {
   background: transparent;
