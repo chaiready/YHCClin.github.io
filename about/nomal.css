@@ -33,10 +33,13 @@ hr.style-one {
 .child p{
     line-height: 30px;
     font-size: 14px;
-    font-family: SimSun;
-    font-weight: bold;
+    font-family: italic 2em Georgia, serif;
+    margin: 10px;
 }
-
+.child h2 {
+  font-family: italic 2em Georgia, serif;
+  font-weight: bold;
+}
 
 .font1{
     font-size:20px;

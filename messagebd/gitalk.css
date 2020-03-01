@@ -873,18 +873,19 @@
   }
   .gt-container .gt-btn-login {
     margin-right: 0;
+    color: #000;
   }
   .gt-container .gt-btn-preview {
     background-color: transparent;
     color: #000;
   }
   .gt-container .gt-btn-preview:hover {
-    background-color: #C1A214;
+    background-color: #ff9900;
     border-color: #c1a214;
   }
   .gt-container .gt-btn-public:hover {
     background-color: #ff9900;
-    border-color: #ff9900;
+    border-color: #c1a214;
   }
   .gt-container .gt-error {
     text-align: center;

@@ -198,28 +198,6 @@
 <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 <body class="is-3-column">
-    <div class="stars"></div>  <!--背景层，不要删除，不然没有作用-->
-    <script>
-        $(document).ready(function(){
-          var stars=800;  /*星星的密集程度，数字越大越多*/
-          var $stars=$(".stars");
-          var r=800;   /*星星的看起来的距离,值越大越远,可自行调制到自己满意的样子*/
-          for(var i=0;i<stars;i++){
-            var $star=$("<div/>").addClass("star");
-            $stars.append($star);
-          }
-          $(".star").each(function(){
-            var cur=$(this);
-            var s=0.2+(Math.random()*1);
-            var curR=r+(Math.random()*300);
-            cur.css({ 
-              transformOrigin:"0 0 "+curR+"px",
-              transform:" translate3d(0,0,-"+curR+"px) rotateY("+(Math.random()*360)+"deg) rotateX("+(Math.random()*-50)+"deg) scale("+s+","+s+")"
-               
-            })
-          })
-        })
-</script>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-main">
     <div class="container">
         <div class="navbar-brand is-flex-center">
@@ -274,7 +252,17 @@
     <video poster="https://blogimage-1258928558.cos.ap-guangzhou.myqcloud.com/backgroundimage/4k%20(4).jpg" src="https://bestzuo.cn/dreamitpossible.mp4" style="max-height:auto;max-width:95%;display:block;margin-left:auto;margin-right:auto;border-radius: 10px;" controls="" loop="" preload="meta">Your browser does not support the video tag.</video>
 
     <hr class="style-one" style="width:70%;" />
-</div>
+    <div class="child">
+        <h2> Dream it possible </h2>
+        
+        <p> When your dreams come alive you’re unstoppable </p>
+
+        <p> Take a shot, chase the sun, find the beautiful </p>
+
+        <p> We will glow in the dark turning dust to gold </p>
+
+        <p> And we’ll dream it possible </p>
+    </div>
 </div>
     
 </div>
