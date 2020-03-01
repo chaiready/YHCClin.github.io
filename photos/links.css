@@ -10,6 +10,7 @@
   margin-bottom: 20px;
   background-color: rgba(255,255,255,0.6);
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  padding: 10px;
 }
 .link_card {
     display: flex;
@@ -59,12 +60,12 @@
 
 .title{
     padding: 0px;
-    color: #2CB692;
+    color: #000;
     font-weight: bold;
     font-size: 15px;
 }
 .title a{
-    color: #91CDAC;
+    color: #000;
     font-weight: bold;
     text-decoration: none;
     font-size: 16px;
@@ -75,12 +76,12 @@
 }
 img{
 
-    border-radius: 16px;
+    border-radius: 50px;
     margin-top: 13px;
     text-align: center;
 }
 .description{
-    color: #BBD0D3;
+    color: #000;
     text-align: justify;
     font-size: 13px;
     margin-bottom: 15px;
