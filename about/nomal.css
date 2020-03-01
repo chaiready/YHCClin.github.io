@@ -30,14 +30,14 @@ hr.style-one {
     background-image: linear-gradient(to right, #ccc, #333, #ccc);
 }
 
-.child p{
+.content{
     text-align: center;
     font-style: italic;
     font-size: 14px;
     font-family: chinese-zodiac,'EB Garamond','Noto Serif SC',serif;
     line-height: 2;
 }
-.child h1 {
+.child .title {
     margin-top: 50px;
     font-size: 20px;
     margin-bottom: -20px;
