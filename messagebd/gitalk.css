@@ -830,7 +830,7 @@
   .gt-container .gt-avatar img {
     width: 100%;
     height: auto;
-    border-radius: 3px;
+    border-radius: 50px;
   }
   .gt-container .gt-avatar-github {
     width: 3em;
@@ -1115,9 +1115,13 @@
   .gt-container .gt-comment {
     position: relative;
     padding: 0.625em 0;
+    border-bottom: 1px solid #eaecef;
+    border-radius: 10px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px
   }
   .gt-container .gt-comment-content {
     -webkit-box-flex: 1;
