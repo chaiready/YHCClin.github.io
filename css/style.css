@@ -4,14 +4,13 @@
  * --------------------------------- */
 html {
   font-size: 12px;
-  cursor: url("https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/menghuan.ico");
+  cursor: url("./menghuan.ico");
 }
 body {
   background-image: url("https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/%E4%BA%91-%E6%B2%B9%E7%94%BB.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  cursor: url("https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/menghuan.ico");
 }
 body ::selection {
   background: #ff0;
@@ -152,7 +151,7 @@ img.thumbnail {
     box-shadow: none;
   }
   .navbar-main .navbar-start {
-    margin-right: 0;
+    margin: 0;
   }
   .navbar-main .navbar-end {
     margin-left: 0;
@@ -163,7 +162,7 @@ img.thumbnail {
   font-weight: bold;
   font-family: SimSun;
   height: 180px;
-  margin: 0;
+  margin-bottom: 0;
 }
 .footer .field .button {
   background: transparent;
