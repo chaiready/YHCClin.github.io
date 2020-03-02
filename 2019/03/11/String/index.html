@@ -51,7 +51,7 @@
 <meta property="og:site_name" content="💻 Dream it possible">
 <meta property="og:description" content="串的定义">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-02T08:15:21.861Z">
+<meta property="og:updated_time" content="2020-03-02T08:23:31.414Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【数据结构】 字符串">
 <meta name="twitter:description" content="串的定义">
@@ -264,7 +264,7 @@
 </ol>
 <p><strong>4. 串的连接操作：</strong><br><figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">concat</span><span class="hljs-params">(LStr &amp;str,LStr str1,LStr str2)</span></span>&#123;  <span class="hljs-comment">// 将两个字符串连接并用一个新的字符串str返回</span></span><br><span class="line">    <span class="hljs-keyword">if</span>(str.ch) &#123; <span class="hljs-comment">// 清除原有空间</span></span><br><span class="line">      <span class="hljs-built_in">free</span>(str.ch);</span><br><span class="line">      str.ch = <span class="hljs-literal">NULL</span>;</span><br><span class="line">      str.len = <span class="hljs-number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    str.ch = (<span class="hljs-keyword">char</span>*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">char</span>)*(str1.len+str2.len+<span class="hljs-number">1</span>)); <span class="hljs-comment">// 分配连续空间，+1是为了多分配一个位置空间存放‘\0’</span></span><br><span class="line">    <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">while</span>(i &lt; str1.len)&#123; <span class="hljs-comment">// 插入str1;</span></span><br><span class="line">      str.ch[i] = str1.ch[i];</span><br><span class="line">      ++i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">while</span>(j &lt;= str2.len)&#123; <span class="hljs-comment">// 插入str2，注意这里用"&lt;="是为了吧'\0' 也加到末尾</span></span><br><span class="line">      str.ch[i+j] = str2.ch[j];</span><br><span class="line">      ++j;</span><br><span class="line">    &#125;</span><br><span class="line">    str.len = str1.len + str2.len; <span class="hljs-comment">// 更新字符串长度</span></span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>; <span class="hljs-comment">// 成功连接</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><strong>5. 求子串操作：</strong><br><figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">subStr</span><span class="hljs-params">(LStr &amp;substr,LStr str,<span class="hljs-keyword">int</span> pos,<span class="hljs-keyword">int</span> len)</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (pos + len &gt; str.len || pos &lt; <span class="hljs-number">0</span> || len &lt; <span class="hljs-number">0</span> || pos &gt;= str.len)&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;  <span class="hljs-comment">//判断输入是否合法</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span> (substr.ch)&#123; <span class="hljs-comment">// 清空原空间</span></span><br><span class="line">      <span class="hljs-built_in">free</span>(substr.ch);</span><br><span class="line">      substr.ch = <span class="hljs-literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span> (len == <span class="hljs-number">0</span>)&#123; <span class="hljs-comment">// 若子串长度为0.直接返回空子串</span></span><br><span class="line">      substr.ch = <span class="hljs-literal">NULL</span>;</span><br><span class="line">      substr.len = <span class="hljs-number">0</span>;</span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">else</span>&#123;</span><br><span class="line">    substr.ch = (<span class="hljs-keyword">char</span>*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">char</span>)*(len+<span class="hljs-number">1</span>)); <span class="hljs-comment">// 分配连续的内存空间</span></span><br><span class="line">    </span><br><span class="line">    <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">int</span> j = pos;</span><br><span class="line">    <span class="hljs-keyword">while</span>(i&lt;len)&#123; <span class="hljs-comment">// 从pos处开始遍历并赋值给子串</span></span><br><span class="line">        substr.ch[i] = str.ch[j];</span><br><span class="line">        ++i;</span><br><span class="line">        ++j;</span><br><span class="line">    &#125;</span><br><span class="line">    substr.ch[i] = <span class="hljs-string">'\0'</span>; <span class="hljs-comment">// 这个千万别忘了加进去</span></span><br><span class="line">    substr.len = len; <span class="hljs-comment">// 更新子串长度</span></span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>; <span class="hljs-comment">// 成功</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<ol start="6">
+<ol>
 <li>串的清空操作：<figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 串的清空操作在上诉各函数中均有用到</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">clearStr</span><span class="hljs-params">(LStr &amp;str)</span></span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (str.ch)&#123;</span><br><span class="line">      <span class="hljs-built_in">free</span>(str.ch);</span><br><span class="line">      str.ch = <span class="hljs-literal">NULL</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  str.len = <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
@@ -284,7 +284,7 @@
 </li>
 </ul>
 <hr>
-<ol start="2">
+<ol>
 <li><strong><em>KMP算法</em></strong>：</li>
 </ol>
 <ul>
@@ -1155,8 +1155,8 @@
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2020 Liam&nbsp;
-                Powered &#10084;
+                ©️ 2019 ~ 2020 Liam&nbsp;
+                Powered 💖;
                 </p>
             </div>
             
