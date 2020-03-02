@@ -36,6 +36,8 @@ hr.style-one {
     font-size: 14px;
     font-family: "楷体";
     font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
