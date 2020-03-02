@@ -163,7 +163,7 @@ img.thumbnail {
   font-weight: bold;
   font-family: SimSun;
   height: 180px;
-  margin-bottom: 0px;
+  margin: 0;
 }
 .footer .field .button {
   background: transparent;
