@@ -16,7 +16,7 @@
 #player {
 	float:left;
 	width:250px;
-	height:60px;
+	height:70px;
 	margin:0 auto;
 	position:relative;
 	background:rgb(255,255,255);
@@ -80,6 +80,7 @@
 	display:inline-block;
 	opacity:1;
 	cursor:pointer;
+	margin-bottom: 2px;
 	-moz-user-select:none;
 	-khtml-user-select:none;
 	-webkit-user-select:none;
