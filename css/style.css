@@ -161,6 +161,7 @@ img.thumbnail {
   background: linear-gradient(to right, rgba(254,172,94,0.8), rgba(199,121,208,0.8), rgba(75,192,200,0.8));
   font-weight: bold;
   font-family: SimSun;
+  max-height: 160px;
   margin: 0;
 }
 .footer .field .button {
