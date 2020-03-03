@@ -11,9 +11,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
-<link rel="stylesheet" type="text/css" href="links.css">
+<link rel="stylesheet" type="text/css" href="css/player.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
-<link rel="stylesheet" type="text/css" href="nomal.css">
 
 <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
 
@@ -249,7 +248,6 @@
 
                 <a class="navbar-item" href="/about">👤关于</a>
 
-                <audio src="./sjnmdhsyjn.mp3" controls="controls">Your browser does not support the audio element.</audio>
                 
             </div>
             
@@ -393,6 +391,57 @@
     </script>
 </div>
 </div>
+<div id="QPlayer">
+<div id="pContent">
+    <div id="player">
+        <span class="cover"></span>
+        <div class="ctrl">
+            <div class="musicTag marquee">
+                <strong>Title</strong>
+                 <span> - </span>
+                <span class="artist">Artist</span>
+            </div>
+            <div class="progress">
+                <div class="timer left">0:00</div>
+                <div class="contr">
+                    <div class="rewind icon"></div>
+                    <div class="playback icon"></div>
+                    <div class="fastforward icon"></div>
+                </div>
+                <div class="right">
+                    <div class="liebiao icon"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ssBtn">
+            <div class="adf"></div>
+    </div>
+</div>
+<ol id="playlist"></ol>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.marquee.min.js"></script>
+
+<script>
+    var playlist = [
+{title:"世界那么大还是遇见你",artist:"程",mp3:"./sjnmdhsyjn.mp3",cover:"http://p3.music.126.net/1odRfg3HXWmYw02EMXKRKQ==/116548232557498.jpg?param=106x106",},
+];
+  var isRotate = true;
+  var autoplay = false;
+</script>
+<script src="js/player.js"></script>
+<script>
+
+function bgChange(){
+    var lis= $('.lib');
+    for(var i=0; i<lis.length; i+=2)
+    lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
+}
+window.onload = bgChange;
+</script>
+
 </body>
 <!-- link -->
 </div>
