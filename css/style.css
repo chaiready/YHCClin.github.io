@@ -98,7 +98,7 @@ img.thumbnail {
   max-height: 4rem;
 }
 .navbar-main {
-  background: linear-gradient(to right, rgba(254,172,94,0.9), rgba(199,121,208,0.9), rgba(75,192,200,0.9));
+  background: linear-gradient(to right, rgba(254,172,94,0.8), rgba(199,121,208,0.8), rgba(75,192,200,0.8));
   font-weight: bold;
   font-family: SimSun;
   font-size: 14px;
@@ -158,10 +158,10 @@ img.thumbnail {
   }
 }
 .footer {
-  background: linear-gradient(to right, rgba(254,172,94,0.9), rgba(199,121,208,0.9), rgba(75,192,200,0.9));
+  background: linear-gradient(to right, rgba(254,172,94,0.8), rgba(199,121,208,0.8), rgba(75,192,200,0.8));
   font-weight: bold;
   font-family: SimSun;
-  margin-bottom: 0;
+  margin: 0;
 }
 .footer .field .button {
   background: transparent;
