@@ -51,14 +51,10 @@
 <meta property="og:site_name" content="💻Liam - Dream Chaser">
 <meta property="og:description" content="线段树 &amp;emsp;线段树是算法竞赛中常用的用来维护 区间信息 的数据结构。线段树可以在 $O(\log_{2}{N})$ 的时间复杂度内实现单点修改、区间修改、区间查询等操作。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/SegmentTree/20200129054853716.png">
-<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/SegmentTree/20200129082526967.png">
-<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/SegmentTree/20200129084206509.png">
-<meta property="og:updated_time" content="2020-03-04T04:18:11.284Z">
+<meta property="og:updated_time" content="2020-03-04T04:35:44.201Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SegmentTree">
 <meta name="twitter:description" content="线段树 &amp;emsp;线段树是算法竞赛中常用的用来维护 区间信息 的数据结构。线段树可以在 $O(\log_{2}{N})$ 的时间复杂度内实现单点修改、区间修改、区间查询等操作。">
-<meta name="twitter:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/SegmentTree/20200129054853716.png">
 
 
 
@@ -182,13 +178,13 @@
                     
                     <a class="navbar-item" target="_blank" title="My GitHub" href="https://github.com/YHCClin?tab=repositories">
                         
-                        <i class="fab fa-github"></i>
+                        <i class="fab fa-git-square"></i>
                         
                     </a>
                     
                     <a class="navbar-item" target="_blank" title="RSS" href="https://www.ccyh.xyz/atom.xml">
                         
-                        <i class="fab fa-rss-square"></i>
+                        <i class="fab fa-forumbee"></i>
                         
                     </a>
                     
@@ -250,8 +246,11 @@
             <h2 id="线段树"><a href="#线段树" class="headerlink" title="线段树"></a>线段树</h2><hr>
 <p>&emsp;线段树是算法竞赛中常用的用来维护 区间信息 的数据结构。线段树可以在 $O(\log_{2}{N})$ 的时间复杂度内实现单点修改、区间修改、区间查询等操作。<br><a id="more"></a></p>
 <h2 id="线段树的基本结构"><a href="#线段树的基本结构" class="headerlink" title="线段树的基本结构"></a>线段树的基本结构</h2><hr>
-<p>为数组（假设下标从1开始）：<br>$$a[5] = [{1,2,3,4,5}]$$<br>构造线段树如下图（采用堆式存储）：</p>
-<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/SegmentTree/20200129054853716.png" alt="线段树示意"><br></center>
+<p>为数组（假设下标从1开始）：</p>
+<script type="math/tex; mode=display">a[5] = [{1,2,3,4,5}]</script><p>构造线段树如下图（采用堆式存储）：</p>
+<center>
+![线段树示意](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/SegmentTree/20200129054853716.png)
+</center>
 
 <p>上述数组 $D$ 用来保存线段树，由于采用的是堆式存储，因此$D[i]$ 的左右孩子结点分别为$D[2\times i],D[2 \times i + 1]$。不难发现上图有两种结点，银色结点括号表示该结点包含的数组 $a$ 的区间，$D[i]$ 的值表示 $\sum_{k=i}^{j}a[k]$。且若区间两端点相等为$[k,k]$则$D[i] = a[k]$即值为绿色结点。</p>
 <h2 id="线段树的建立"><a href="#线段树的建立" class="headerlink" title="线段树的建立"></a>线段树的建立</h2><hr>
@@ -263,13 +262,17 @@
 <h3 id="区间修改："><a href="#区间修改：" class="headerlink" title="区间修改："></a>区间修改：</h3><hr>
 <p>$[cl,cr]$为当前区间，index为要修改的数组$a$的下标，$val$为修改的最终值，$p$为当前节点编号。<br><figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">updateST</span><span class="hljs-params">(<span class="hljs-keyword">int</span> cl, <span class="hljs-keyword">int</span> cr, <span class="hljs-keyword">int</span> index, <span class="hljs-keyword">int</span> val, <span class="hljs-keyword">int</span> p, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; D,<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; a)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(cl == cr)</span><br><span class="line">	&#123;</span><br><span class="line">		a[index] = val;</span><br><span class="line">		D[p] = val;</span><br><span class="line">		<span class="hljs-keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">int</span> mid = cl + (cr - cl)/<span class="hljs-number">2</span>;</span><br><span class="line">		<span class="hljs-keyword">if</span>(index &gt;= cl &amp;&amp; index &lt;= mid)</span><br><span class="line">			updateST(cl, mid, index, val, p * <span class="hljs-number">2</span>, D, a);</span><br><span class="line">		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(index &gt; mid &amp;&amp; index &lt;= cr)</span><br><span class="line">			updateST(mid + <span class="hljs-number">1</span>, cr, index, val, p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>, D, a);</span><br><span class="line">		D[p] = D[p * <span class="hljs-number">2</span>] + D[p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>此时如果将$a[1]$ 改成 $6$ ,则树变成(红色表示有修改的节点)：</p>
-<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/SegmentTree/20200129082526967.png" alt="更新后的树"><br></center>
+<center>
+![更新后的树](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/SegmentTree/20200129082526967.png)
+</center>
 
 <hr>
 <h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><hr>
 <figure class="highlight c++ hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; D(<span class="hljs-number">10</span>,<span class="hljs-number">0</span>);</span><br><span class="line">	<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; a(<span class="hljs-number">6</span>);</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; a.size();i++)</span><br><span class="line">		a[i] = i;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Building STree:"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	buildST(<span class="hljs-number">1</span>, <span class="hljs-number">5</span>, <span class="hljs-number">1</span>, D, a);</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"STree:"</span>;</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>;i &lt; D.size();i++)</span><br><span class="line">		<span class="hljs-built_in">cout</span> &lt;&lt; D[i] &lt;&lt; <span class="hljs-string">" "</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"================================"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Quary:(1,3)"</span>&lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; getSum(<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">5</span>,<span class="hljs-number">1</span>,D) &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"================================"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Update: a[1] = 6"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	updateST(<span class="hljs-number">1</span>,<span class="hljs-number">5</span>,<span class="hljs-number">1</span>,<span class="hljs-number">6</span>,<span class="hljs-number">1</span>,D,a);</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"STree:"</span>;</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>;i &lt; D.size();i++)</span><br><span class="line">		<span class="hljs-built_in">cout</span> &lt;&lt; D[i] &lt;&lt; <span class="hljs-string">" "</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"================================"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Quary:(1,3)"</span>&lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; getSum(<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">5</span>,<span class="hljs-number">1</span>,D) &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><hr>
-<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/SegmentTree/20200129084206509.png" alt="Result"><br></center>
+<center>
+![Result](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/SegmentTree/20200129084206509.png)
+</center>
         </div>
         
         <div class="level is-size-7 is-uppercase">
