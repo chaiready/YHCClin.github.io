@@ -51,10 +51,17 @@
 <meta property="og:site_name" content="💻Liam - Dream Chaser">
 <meta property="og:description" content="二分图&amp;emsp;二分图是这样的一个图：其顶点可以划分为两个集合 $ X $ 和 $ Y $, 任何一条边所关联的两个顶点中，恰好有一个属于集合 $X$ , 另一个属于 $Y$。 同一个集合内的顶点必没有边相连。如果一个图是二分图，那么它一定没有 奇环 (边为奇数的环路)， 如果一个图没有 奇环 ,那么它就一定是 二分图。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-05T01:27:17.270Z">
+<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/binaryGraph/bm.PNG#pic_center">
+<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/binaryGraph/match.PNG#pic_center">
+<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/binaryGraph/maxmatch.PNG#pic_center">
+<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/binaryGraph/m.PNG#pic_center">
+<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/binaryGraph/road.PNG#pic_center">
+<meta property="og:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/binaryGraph/nroad.PNG#pic_center">
+<meta property="og:updated_time" content="2020-03-05T03:38:23.095Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二分图最大匹配问题(匈牙利算法)">
 <meta name="twitter:description" content="二分图&amp;emsp;二分图是这样的一个图：其顶点可以划分为两个集合 $ X $ 和 $ Y $, 任何一条边所关联的两个顶点中，恰好有一个属于集合 $X$ , 另一个属于 $Y$。 同一个集合内的顶点必没有边相连。如果一个图是二分图，那么它一定没有 奇环 (边为奇数的环路)， 如果一个图没有 奇环 ,那么它就一定是 二分图。">
+<meta name="twitter:image" content="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/binaryGraph/bm.PNG#pic_center">
 
 
 
@@ -245,36 +252,24 @@
         <div class="content">
             <h2 id="二分图"><a href="#二分图" class="headerlink" title="二分图"></a>二分图</h2><p>&emsp;二分图是这样的一个图：其顶点可以划分为两个集合 $ X $ 和 $ Y $, 任何一条边所关联的两个顶点中，恰好有一个属于集合 $X$ , 另一个属于 $Y$。 同一个集合内的顶点必没有边相连。如果一个图是二分图，那么它一定没有 <strong>奇环</strong> (边为奇数的环路)， 如果一个图没有 <strong>奇环</strong> ,那么它就一定是 二分图。</p>
 <a id="more"></a>
-<center>
-![二分图](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/binaryGraph/bm.PNG#pic_center)
-</center>
+<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/binaryGraph/bm.PNG#pic_center" alt="二分图"><br></center>
 
 <h2 id="二分图的匹配"><a href="#二分图的匹配" class="headerlink" title="二分图的匹配"></a>二分图的匹配</h2><p>&emsp;给定一个二分图 G , 在 G 的一个子图 M 中， M 的边集 { E } 中的任意两条边都不依附于同一个顶点， 则称 M 是一个匹配。 翻译成人话就是 在图 G 中找到一些边构成一个集合， 这个集合中的任意一条边所连接的两个顶点都只属于这条边的连个端点，即每条边的顶点都不与其他边共用。如下图： 边集合 E = {(1,5),(3,6),(4,7)} 构成了一个匹配。</p>
-<center>
- ![匹配](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/binaryGraph/match.PNG#pic_center)
-</center>
+<center><br> <img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/binaryGraph/match.PNG#pic_center" alt="匹配"><br></center>
 
 <h2 id="最大匹配"><a href="#最大匹配" class="headerlink" title="最大匹配"></a>最大匹配</h2><p> &emsp;顾名思义，就是最大化满足上述规定的边集 E 。如上图的一个最大匹配结果为：</p>
-<center>
- ![最大匹配](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/binaryGraph/maxmatch.PNG#pic_center)
-</center>
+<center><br> <img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/binaryGraph/maxmatch.PNG#pic_center" alt="最大匹配"><br></center>
 
 
 <hr>
 <h2 id="匈牙利算法"><a href="#匈牙利算法" class="headerlink" title="匈牙利算法"></a>匈牙利算法</h2><p>&emsp;此算法由美国数学家 <strong>哈罗德·库恩</strong> 于1955年提出该算法。先介绍两个概念：<br>&emsp;<strong>交替路</strong>： 从一个未匹配顶点出发，依次经过非匹配边、匹配边、非匹配边 … 形成的路径叫作 交替路。<br>&emsp;<strong>增广路</strong>： 从一个未匹配点出发，走交替路，如果途径另一个未匹配点（出发的点不算），则这条交替路就称为增广路(agumenting path)，且增广路中非匹配边的数目要大于匹配边的数目。 如下图：图中已匹配点带蓝色标记，红色箭头边为一条匹配边，黑色箭头边为非匹配边。</p>
-<center>
-![](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/binaryGraph/m.PNG#pic_center)
-</center>
+<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/binaryGraph/m.PNG#pic_center" alt=""><br></center>
 
 <p>&emsp;展开来就是这样的一条 <strong>增广路</strong>：</p>
-<center>
-![](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/binaryGraph/road.PNG#pic_center)
-</center>
+<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/binaryGraph/road.PNG#pic_center" alt=""><br></center>
 
 <p>&emsp;如果此时将上述增广路的 匹配边与非匹配边<strong>对调</strong> ：</p>
-<center>
-![](https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/binaryGraph/nroad.PNG#pic_center)
-</center>
+<center><br><img src="https://hexoblog-1257022783.cos.ap-chengdu.myqcloud.com/binaryGraph/nroad.PNG#pic_center" alt=""><br></center>
 
 <p>&emsp;不难发现，匹配边多了一条（两条变三条），并且新增了两个匹配顶点。如此一来，边集 E 内不就多了一条边吗，符合我们的目标（最大化边集 E）。因此，匈牙利算法的 <strong>核心</strong> 就是 <strong>不断地寻找增广路径</strong> ，以便可以不断扩大边集 E，得到一个更大的匹配。</p>
 <p><strong>总结增广路的定义：</strong></p>
